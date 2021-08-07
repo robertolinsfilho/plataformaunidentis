@@ -87,7 +87,7 @@ $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 	<div class="main-container">
 		<div  class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 			<div style="background-color:#ededed;padding-top:18px" class="row clearfix progress-box">
-
+				
 				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-50-p">
 						<div class="project-info clearfix">
@@ -98,7 +98,7 @@ $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 							</div>
 							<div class="project-info-right">
 								<span class="no text-blue weight-500 font-24"><?php echo $row_usuario7['total'] ?></span>
-								<p class="weight-400 font-18">Novas</p>
+								<p class="weight-400 font-18">teste</p>
 							</div>
 						</div>
 						
