@@ -232,41 +232,16 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											
 										</div>
 									</div>
-									<?php
-									if($row_usuario['plano'] == 'UNIDENTISVIPEMPRESARIAL'  or $row_usuario['plano'] == 'UNIDENTISVIPBOLETO'){
-										
-										$total = $row_usuario15['total'] + 1;
-										
-										$preco = $row_usuario8['preco'] * $total  ;
-									
-									?>
+								
 									<div class="col-md-2">
 										<div class="form-group">
 											<label >Preço :</label>
-											<input type="text"  name="preco" value="R$: <?php echo $preco ?>"class="form-control"readonly>
+											<input type="text"  name="preco" value="R$: <?php echo $row_usuario['preco']; ?>"class="form-control"readonly>
 										</div>
 									</div>
-									<?php
-									}else{
+								
 									
-										$total = $row_usuario15['total'] + 1;
-										if($row_usuario['plano'] == 'UNIDENTISVIPFAMILIACARTAO' ){
-											$preco = $row_usuario2['preco']; 
-										}else{
-											$preco = $row_usuario2['preco'] * $total;
-										}
-										
-									?>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label >Preço :</label>
-											
-											<input type="text"  value="R$: <?php echo $preco ?>"class="form-control"readonly>
-											</div>
-									</div>
-									<?php
-									}
-									?>
+								
 									<div class="col-md-3">
 										<div class="form-group">
 											<label >Data :</label>
