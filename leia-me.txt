@@ -1,0 +1,1 @@
+Apenas execute o index em um navegador insira o numero e click em enviar e o resultado irá aparecer.
