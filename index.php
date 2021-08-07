@@ -98,7 +98,7 @@ $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 							</div>
 							<div class="project-info-right">
 								<span class="no text-blue weight-500 font-24"><?php echo $row_usuario7['total'] ?></span>
-								<p class="weight-400 font-18">teste</p>
+								<p class="weight-400 font-18">Novas</p>
 							</div>
 						</div>
 						
