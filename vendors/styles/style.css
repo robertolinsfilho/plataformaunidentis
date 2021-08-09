@@ -2619,7 +2619,11 @@ tbody.collapse.show {
 
 @media (max-width: 480px){
   .dropdown{
-    top: .75rem;
+    position: absolute;
+    top: 1.75rem;
+    right: 1.25rem;
+    padding: 0;
+    max-height: 40px;
   }
 }
 
