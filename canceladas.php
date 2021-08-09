@@ -152,7 +152,7 @@ td{
 				}],
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
-					"info": "_START_-_END_ of _TOTAL_ entries",
+					"info": "_START_ de _TOTAL_ entradas",
 					searchPlaceholder: "Procurar",
 					lengthMenu: "Mostrar _MENU_ registos",
 					paginate: {
