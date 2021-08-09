@@ -148,7 +148,11 @@ td{
 				}],
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
+<<<<<<< HEAD
 					info: "_START_-_END_ de _TOTAL_ linhas",
+=======
+					"info": "_START_ de _TOTAL_ entradas",
+>>>>>>> 9382c37dce35dbad2cf585c3fe9f4c6b17e7591d
 					searchPlaceholder: "Procurar",
 					lengthMenu: "Mostrar _MENU_ registos",
 					paginate: {

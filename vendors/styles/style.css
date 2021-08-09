@@ -2617,6 +2617,16 @@ tbody.collapse.show {
 .dropdown {
   position: relative; }
 
+@media (max-width: 480px){
+  .dropdown{
+    position: absolute;
+    top: 1.75rem;
+    right: 1.25rem;
+    padding: 0;
+    max-height: 40px;
+  }
+}
+
 .dropdown-toggle::after {
   display: inline-block;
   width: 0;

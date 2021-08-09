@@ -112,136 +112,107 @@ if(isset($_SESSION['sms'])){
 
 
     #input{
+        display: inline-block;
         background-color: white;
-        margin-left: -16%;
-        height: 400px;
-        width: 450px;
         border-radius: 30px;
-        padding-top: 40%;
-        padding-left: 10%;
-        padding-right: 10%;
         border: solid 2px white;
+        padding: 2rem;
+        max-width: 28rem;
+        width: 100%;
     }
     #borda{
         background-color: white;
-        width: 500px;
-        height: 78px;
         border: solid 2px white;
         border-radius: 30px;
-        margin-left: -4.45%;
-        margin-top: -5%;
         position:absolute
         
     }
     #titulo{
         background-color: white;
+        width: 100vw;
         height: 100px;
-        width: 361%;
-        margin-left: -131%;
         border-radius: 5px;
-        margin-top:-2%
+        padding-top: 1.5rem;
+        padding-left: 5%;
     }
     h1{
-        margin-left: -65%;
-        padding-top:2%;
+        text-align: left;
     }
     img{
-       margin-left:-19%;
-       margin-top:-9%;
-       position:absolute; 
+        display: block;
+        max-width: 280px;
+        width: 80%; 
+        margin: 0 auto;
     }
     label{
+        display: block;
+        text-align: left;
         color: #cccc; 
-        margin-left:-88%;
+    }
+    .flex-fix{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        gap: 1rem;
+
     }
     button{
-        margin-left:60%;
-        margin-top:3%; 
-        width:30%;
-    }
-    #div{
         width:30%;
     }
     body{
         background-image: url("./assets/img/fundocliente1.png");
-      
     }
     #butao{
-       margin-left:-1%;
        color:#BEBEBE;
-       position: absolute;
    }
    #butao:hover{
        
        color:blue;
       
    }
-    @media(max-width: 574px){
+    @media(max-width: 360px){
         #titulo{
-        background-color: white;
-        width:300px;
-        margin-left:-125%;
-        margin-top:-10%
-    }
-    h1{
-        margin-left:1%;
-        padding-top: 30px;
-        font-size:30px;
-    }
-    img{
-        margin-left:-50%;
-        width: 50%;
-        margin-top:-19%;
-        position:absolute;
-    }
-    #input{
-        background-color: white;
-        margin-left:-125%;
-        height: 320px;
-        width:300px;
-        border-radius: 10px;
-        padding-top: 100%;
-    }
-   #butao{
-       margin-left:-5%;
-       margin-top: 10%;
-       position: absolute;
-   }
-    #div{
-        background: url("../img/BANNERPRINCIPAL16.png");
-    }
+            height: 80px;
+        }
+        h1{
+            font-size: 2rem;
+        }
+
+        button{
+            width: 100%;
+        }
     }
 
     </style>
     <br><br>
   
-<body style="width:99%" class="text-center">
+<body class="text-center">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+<div id="titulo">
+    <h1 style="color: #BEBEBE;font-family:poppins;"> Área do <span style="color: #BEBEBE;font-family:poppins;">Cliente</span></h2>
+</div>
+<br>
 <div class="container" id="div">
-    <form action="valida2.php" method="POST" class="form-signin">
-     <div id="titulo">
-     <h1 style="color: #BEBEBE;font-family:poppins;"> Área do <span style="color: #BEBEBE;font-family:poppins;">Cliente</span></h2>
-    
-     </div>
-     <br>
-     
+    <form action="valida2.php" method="POST" class="form-signin"> 
      <div id="back">
         <div id="azul">
-            
+
             <div id="input">
-            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" style="" width="265" >
-             <label style="color: #BEBEBE;font-family:poppins;">E-MAIL</label>   
-          <input style="border-radius:5px"type="text" name="usuario"   class="form-control">
-          <br>
-          <label style="color: #BEBEBE;font-family:poppins;">SENHA</label>  
-          <input   style="border-radius:5px;" type="password" name="senha"  class="form-control">
-          <a id="butao"style="margin-top:2%;" href="renamesenha">Esqueci minha senha</a> 
-      <button  style="background-color:#023bbf"type="submit" class="btn btn-primary">Entrar</button>
-        </div>
-    
-    
-         
+                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" >
+                    <label style="color: #BEBEBE;font-family:poppins;">E-MAIL</label>   
+                <input style="border-radius:5px"type="text" name="usuario"   class="form-control">
+                <br>
+                <label style="color: #BEBEBE;font-family:poppins;">SENHA</label>  
+                <input   style="border-radius:5px;" type="password" name="senha"  class="form-control">
+                <div class="flex-fix">
+                    <a id="butao" href="renamesenha">Esqueci minha senha</a> 
+                    <button  style="background-color:#023bbf" type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </div>
       </div>
      <div id="space"></div>
     </form>

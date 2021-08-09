@@ -56,62 +56,58 @@ h2{
 
 
     #input{
+        display: inline-block;
         background-color: white;
-        margin-left: -16%;
-        height: 400px;
-        width: 450px;
         border-radius: 30px;
-        padding-top: 40%;
-        padding-left: 10%;
-        padding-right: 10%;
         border: solid 2px white;
+        padding: 2rem;
+        max-width: 28rem;
+        width: 100%;
     }
     #borda{
         background-color: white;
-        width: 500px;
-        height: 78px;
         border: solid 2px white;
         border-radius: 30px;
-        margin-left: -4.45%;
-        margin-top: -5%;
         position:absolute
         
     }
     #titulo{
+        margin-top: -3.5rem;
         background-color: white;
+        width: 100vw;
         height: 100px;
-        width: 361%;
-        margin-left: -131%;
         border-radius: 5px;
-        margin-top:-2%
+        padding-top: 1.5rem;
+        padding-left: 5%;
     }
     h1{
-        margin-left: -65%;
-        padding-top:2%;
+        text-align: left;
     }
     img{
-       margin-left:-19%;
-       margin-top:-15%;
-       position:absolute; 
+        display: block;
+        max-width: 280px;
+        width: 80%; 
+        margin: 0 auto;
     }
     label{
+        display: block;
+        text-align: left;
         color: #cccc; 
-        margin-left:-88%;
     }
     button{
-        margin-left:60%;
-        margin-top:3%; 
-        width:30%;
+        display: block;
+        width: 30%;
     }
-    #div{
-        width:30%;
+
+    button.close{
+        width: 4rem;
     }
+
     body{
         background-image: url("./assets/img/fundocliente1.png");
       
     }
     #butao{
-       margin-left:-1%;
        color:#BEBEBE;
        position: absolute;
    }
@@ -120,40 +116,17 @@ h2{
        color:blue;
       
    }
-    @media(max-width: 574px){
+   @media(max-width: 360px){
         #titulo{
-        background-color: white;
-        width:300px;
-        margin-left:-125%;
-        margin-top:-10%
-    }
-    h1{
-        margin-left:1%;
-        padding-top: 30px;
-        font-size:30px;
-    }
-    img{
-        margin-left:-50%;
-        width: 50%;
-        margin-top:-35%;
-        position:absolute;
-    }
-    #input{
-        background-color: white;
-        margin-left:-125%;
-        height: 320px;
-        width:300px;
-        border-radius: 10px;
-        padding-top: 100%;
-    }
-   #butao{
-       margin-left:-5%;
-       margin-top: 10%;
-       position: absolute;
-   }
-    #div{
-        background: url("../img/BANNERPRINCIPAL16.png");
-    }
+            height: 80px;
+        }
+        h1{
+            font-size: 2rem;
+        }
+
+        button{
+            width: 100%;
+        }
     }
 
     </style>
@@ -170,12 +143,9 @@ h2{
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Insira seu E-mail
-            </div>
+            <div class="modal-body">Insira seu E-mail</div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-secondary" >Fechar</button>
-
+                <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>
             </div>
         </div>
     </div>
@@ -186,47 +156,33 @@ h2{
         <div class="contact-info mr-auto">
             <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
             <i class="icofont-phone"></i> 83 30443000
-
         </div>
         <div class="social-links">
-
             <a href="https://pt-br.facebook.com/unidentisplanoodontologico" class="facebook"><i class="icofont-facebook"></i></a>
             <a href="https://www.instagram.com/unidentisplanoodontologico/?hl=en" class="instagram"><i class="icofont-instagram"></i></a>
-
             <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
         </div>
     </div>
 </div>
-      
-       
-      
-    
    
-<body style="width:99%"lass="text-center">
+<body lass="text-center">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+<div id="titulo">
+    <h1 style="color: #BEBEBE;font-family:poppins;"> Área do <span style="color: #BEBEBE;font-family:poppins;">Cliente</span></h2>
+</div>
+<br>
 <div class="container" id="div">
     <form action="processa2.php" method="POST" class="form-signin">
-     <div id="titulo">
-     <h1 style="color: #BEBEBE;font-family:poppins;"> Área do <span style="color: #BEBEBE;font-family:poppins;">Cliente</span></h2>
-    
-     </div>
-     <br>
-     
      <div id="back">
         <div id="azul">
-            
             <div id="input">
-            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" style="" width="265" >
-             <label style="color: #BEBEBE;font-family:poppins;">E-MAIL</label>   
-          <input style="border-radius:5px"type="text" name="email"   class="form-control">
-          <br>
-          
-      <button  style="background-color:#023bbf"type="submit" class="btn btn-primary">Entrar</button>
-        </div>
-    
-    
-         
+            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" >
+            <label style="color: #BEBEBE;font-family:poppins;">E-MAIL</label>   
+            <input style="border-radius:5px"type="text" name="email"   class="form-control">
+            <br>
+            <button  style="background-color:#023bbf" type="submit" class="btn btn-primary">Entrar</button>
+            </div>
       </div>
      <div id="space"></div>
     </form>
