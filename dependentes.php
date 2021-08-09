@@ -133,15 +133,30 @@ td{
 				scrollCollapse: true,
 				autoWidth: false,
 				responsive: true,
+				
 				columnDefs: [{
 					targets: "datatable-nosort",
 					orderable: false,
 				}],
+		
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
-					"info": "_START_-_END_ of _TOTAL_ entries",
-					searchPlaceholder: "Search"
+					info: "_START_-_END_ de _TOTAL_ linhas",
+					searchPlaceholder: "Procurar",
+					lengthMenu: "Mostrar _MENU_ registros",
+					paginate: {
+        			first: "Primeiro",
+					previous: "Anterior",
+					next: "Seguinte"
+					
+					},
+					
 				},
+				dom: 'Bfrtip',
+        		buttons: [
+            	'copy', 'csv', 'excel', 'pdf', 'print'
+        		],
+				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 			});
 			$('.data-table-export').DataTable({
 				scrollCollapse: true,
