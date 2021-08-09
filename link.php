@@ -62,9 +62,9 @@ session_start();
                                 <label >Pessoa Física:</label>
 								<hr style="width: 85%;position: relative;margin-top: -2.0%;margin-left: 15%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
 									<div class="input-group">											
-									<input type="text" id="texto" class="form-control"  value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>#2" readonly>
+									<input type="text" id="texto" class="form-control"  value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>" readonly>
 									<i class="fa fa-files-o" id="btnCopiar" style ="font-size:31px;padding:5px;cursor:pointer"aria-hidden="true"></i>
-									<a target="_blank"  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>#2"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
+									<a target="_blank"  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
 									</div>
 								</div>
 
@@ -72,9 +72,9 @@ session_start();
                                 <label >Servidor Público:</label>
 								<hr style="width: 85%;position: relative;margin-top: -2.0%;margin-left: 15%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
                                 	<div class="input-group">											
-									<input type="text"  id="texto2"  class="form-control" value="unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>#2"  readonly>
+									<input type="text"  id="texto2"  class="form-control" value="unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"  readonly>
 									<i  class="fa fa-files-o" id="btnCopiar2" style ="font-size:31px;padding:5px;cursor:pointer"aria-hidden="true"></i>
-									<a target="_blank" href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>#2"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
+									<a target="_blank" href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
 									</div>
 								</div>
 								
@@ -82,9 +82,9 @@ session_start();
                                 <label >Dependentes:</label>
 								<hr style="width: 85%;position: relative;margin-top: -2.0%;margin-left: 15%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
                                 	<div class="input-group">											
-									<input type="text"   id="texto3"class="form-control" value="unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>#2"  readonly>
+									<input type="text"   id="texto3"class="form-control" value="unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"  readonly>
 									<i class="fa fa-files-o" id="btnCopiar3" style ="font-size:31px;padding:5px;cursor:pointer"aria-hidden="true"></i>
-									<a target="_blank"  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>#2"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
+									<a target="_blank"  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"><i class="fab fa-whatsapp" style ="font-size:31px;padding:5px"></i></a>
 									</div>
 								</div>
 							
