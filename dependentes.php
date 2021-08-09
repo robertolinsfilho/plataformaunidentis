@@ -142,6 +142,7 @@ td{
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
 					info: "_START_-_END_ de _TOTAL_ linhas",
+					infoEmpty: "Mostrando 0 até 0 de 0 registros",
 					searchPlaceholder: "Procurar",
 					lengthMenu: "Mostrar _MENU_ registros",
 					paginate: {
