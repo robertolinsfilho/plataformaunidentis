@@ -213,14 +213,14 @@ $_SESSION['estado1'] = $_POST['produtos'];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <div style="align-items: center;margin-left:30%;" class="form-group col-md-5">
 
-<form   method="post"  style="padding:50px;background-color:#f6f6f6;border-radius:5%"action="pessoafisica?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
+<form   method="post"  style="margin: 0 auto;border-radius:5%;width: 80%;padding-bottom: 1.25rem;background-color: #E7E7E7"action="pessoafisica?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
 <div class="topoazul" style="background-color:#284ebf;width:100%;color:white;font-size:28px;border-radius:10px 10px 0px 0px;text-align: center;">Escolha Seu Plano</div>
 <br>
 
 <div style="padding:10px" class="container">
 <h4>Tipo de Plano:</h4>
 					<br>
-					<select  class="form-control" id="1"name='fabricante'>
+					<select  class="form-control" id="1"name='fabricante' style='filter: drop-shadow(4px 4px 1px black);'>
 					<option value='1'>Pessoa Fisica</option>
 				
 				
@@ -228,7 +228,7 @@ $_SESSION['estado1'] = $_POST['produtos'];
 					<br>
 					<h4>Localidade:</h4>
 					<br>
-				<select name='produtos' class="form-control">
+				<select name='produtos' class="form-control" style='filter: drop-shadow(4px 4px 1px black);'>
 					</select>
 					
 					
