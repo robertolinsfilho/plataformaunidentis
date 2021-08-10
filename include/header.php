@@ -1,6 +1,6 @@
 <?php
 include "conexao.php";
-session_start();
+session_status() == '2'? '' : session_start();
 $result_usuario2 = "SELECT * from vendedor where email = '$_SESSION[usuario]'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);

@@ -2731,3 +2731,43 @@ background:#2d2d2d;}
 #pessoafisica .btn-get-started:hover {
   background: #247cf0;
 }
+
+.pessoafisicaPlano{
+  display: block;
+  margin: 5% auto;
+  padding: 0 1rem;
+  max-width: 28rem;
+}
+
+.pessoafisicaPlano .topoazul{
+  background-color:#284ebf;
+  width:100%;
+  color:white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  border-radius: 1rem 1rem 0 0;
+  text-align: center;
+  border:none;
+  background-color:#284ebf;
+  width:100%;
+  color:white;
+  border-radius: 1rem 1rem 0 0;
+  text-align: center;
+}
+
+.pessoafisicaPlano .container h4{
+  font-size: 1.25rem;
+  margin-bottom: -1rem;
+}
+
+.pessoafisicaPlano .container {
+  padding: 10px 2rem;
+}
+
+@media (max-width: 480px){
+  .pessoafisicaPlano .topoazul{
+    font-size: 1.25rem;
+  }
+}

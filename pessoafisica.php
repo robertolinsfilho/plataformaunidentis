@@ -206,16 +206,16 @@ $_SESSION['estado1'] = $_POST['produtos'];
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<div style="display: block;margin: 5% auto;padding: 0 1rem; max-width: 30rem;" class="form-group col-md-5">
+<div class="form-group col-md-5 pessoafisicaPlano">
  
   <form   method="post"  style="width: 90%; margin: 0 auto;border-radius:1rem;padding-bottom: .25rem;background-color: #E7E7E7;box-shadow: 0 0 5px #000000;" action="pessoafisica?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
-    <div class="topoazul" style="background-color:#284ebf;width:100%;color:white;font-size:28px;border-radius: 1rem 1rem 0 0;text-align: center;border:none;">Escolha Seu Plano</div>
+    <div class="topoazul">Escolha Seu Plano</div>
     <br>
 
-    <div style="padding:10px" class="container">
+    <div class="container">
       <h4>Tipo de Plano:</h4>
       <br>
-      <select  class="form-control" id="1"name='fabricante'>
+      <select  class="form-control" id="1"name='fabricante' style="margin-bottom: 1rem;">
         <option value='1'>Pessoa Fisica</option>
       </select>
       <br>
