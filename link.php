@@ -109,7 +109,7 @@
                   target="_blank"
                   href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"
                   ><i
-                    class="fab fa-whatsapp"
+                    class="fa fa-whatsapp"
                     style="font-size: 31px; padding: 5px"
                   ></i
                 ></a>
@@ -148,7 +148,7 @@
                   target="_blank"
                   href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"
                   ><i
-                    class="fab fa-whatsapp"
+                    class="fa fa-whatsapp"
                     style="font-size: 31px; padding: 5px"
                   ></i
                 ></a>
@@ -187,7 +187,7 @@
                   target="_blank"
                   href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"
                   ><i
-                    class="fab fa-whatsapp"
+                    class="fa fa-whatsappfa fa-whatsapp"
                     style="font-size: 31px; padding: 5px"
                   ></i
                 ></a>

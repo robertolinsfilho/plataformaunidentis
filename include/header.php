@@ -35,7 +35,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
     </div>
 
 	<div class="header clearfix">
-		<div style="background-color: #284ebf;;height:130%" class="header-right">
+		<div style="background-color: #284ebf;height:130%;" class="header-right">
 			<div class="brand-logo">
 				<a href="index.php">
 					<img src="https://unidentisdigital.com.br/assets/img/LOGO.png" alt="" class="mobile-logo">
