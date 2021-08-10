@@ -2665,8 +2665,7 @@ background:#2d2d2d;}
 }
 #pessoafisica {
   width: 100%;
-  height:340vh;
- 
+  height: auto;
   background-size: cover;
   position: relative;
 }
