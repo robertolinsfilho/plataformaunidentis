@@ -39,7 +39,7 @@ session_start();
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
-		<div style="margin-top:-5%" class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+		<div style="margin-top:5%" class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 			
 				<!-- Default Basic Forms Start -->
 				<div class="pd-20  border-radius-4 box-shadow mb-30">
