@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script
+    <!-- <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
@@ -23,7 +23,7 @@
     </script>
     <script type="text/javascript">
       $("#cpf").mask("000.000.000-00");
-    </script>
+    </script> -->
     <?php include('include/head.php'); ?>
     <!-- <link
       rel="stylesheet"
@@ -34,7 +34,7 @@
   </head>
   <body>
   	<?php include('include/header.php'); ?>
-	<?php include('include/sidebar.php'); ?>
+	  <?php include('include/sidebar.php'); ?>
     <style>
       .col-md-6,
       .col-md-5,
@@ -52,6 +52,12 @@
         color: #606060;
         font-weight: bold;
       }
+      .containerLinks{
+        background-color: #f6f6f6;
+      }
+      .containerLinks input{
+        background-color: #f6f6f6 !important;
+      }
     </style>
     
     <div class="main-container">
@@ -65,7 +71,7 @@
         "
       >
         <!-- Default Basic Forms Start -->
-        <div class="pd-20 border-radius-4 box-shadow mb-30">
+        <div class="pd-20 border-radius-4 box-shadow mb-30 containerLinks">
           <div class="clearfix">
             <div class="pull-left">
               <h4 class="nome">Link Vendedores</h4>
