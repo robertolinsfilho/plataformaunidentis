@@ -11,11 +11,6 @@ $_SESSION['estado1'] = $_POST['produtos'];
 <html lang="en">
 
 <head>
-  <style>
-    #txtform1{
-      height: 200vh;
-    }
-    </style>
   
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -71,14 +66,14 @@ $_SESSION['estado1'] = $_POST['produtos'];
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
    
-<style>
-  h1, h2,h3,h4,h5,label,a{
+        <style>
+          h1, h2,h3,h4,h5,label,a{
             color:#606060
-        }
-        input, select{
-             border: 1px solid #606060 !important; 
-        }
-</style>
+          }
+          input, select{
+              border: 1px solid #606060 !important; 
+          }
+        </style>
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
@@ -90,21 +85,21 @@ $_SESSION['estado1'] = $_POST['produtos'];
         ======================================================== -->
 
     </head>
-    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-    <div class="container d-flex">
-        <div class="contact-info mr-auto">
-            <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
-            <i class="icofont-phone"></i> 83 30443000
+<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+  <div class="container d-flex">
+      <div class="contact-info mr-auto">
+          <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
+          <i class="icofont-phone"></i> 83 30443000
 
-        </div>
-        <div class="social-links">
+      </div>
+      <div class="social-links">
 
-            <a href="https://pt-br.facebook.com/unidentisplanoodontologico" class="facebook"><i class="icofont-facebook"></i></a>
-            <a href="https://www.instagram.com/unidentisplanoodontologico/?hl=en" class="instagram"><i class="icofont-instagram"></i></a>
+          <a href="https://pt-br.facebook.com/unidentisplanoodontologico" class="facebook"><i class="icofont-facebook"></i></a>
+          <a href="https://www.instagram.com/unidentisplanoodontologico/?hl=en" class="instagram"><i class="icofont-instagram"></i></a>
 
-            <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
-        </div>
-    </div>
+          <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
+      </div>
+  </div>
 </div>
 
 <header id="header" class="fixed-top">
@@ -146,7 +141,7 @@ $_SESSION['estado1'] = $_POST['produtos'];
 
 
   <section id="pessoafisica"  >
-    <div class="container" data-aos="zoom-out" data-aos-delay="200">
+    <div class="container" style='margin-bottom: 3.5rem;' data-aos="zoom-out" data-aos-delay="200">
       <h3><span>A Unidentis</span></h3>
       <h5>A Unidentis oferece soluções adequadas às necessidades de cada 
         cliente, sempre a um custo compatível e por meio de contratos 
@@ -211,49 +206,42 @@ $_SESSION['estado1'] = $_POST['produtos'];
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<div style="align-items: center;margin-left:30%;" class="form-group col-md-5">
+<div class="form-group col-md-5 pessoafisicaPlano">
+ 
+  <form   method="post"  style="width: 90%; margin: 0 auto;border-radius:1rem;padding-bottom: .25rem;background-color: #E7E7E7;box-shadow: 0 0 5px #000000;" action="pessoafisica?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
+    <div class="topoazul">Escolha Seu Plano</div>
+    <br>
 
-<form   method="post"  style="margin: 0 auto;border-radius:5%;width: 80%;padding-bottom: 1.25rem;background-color: #E7E7E7"action="pessoafisica?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
-<div class="topoazul" style="background-color:#284ebf;width:100%;color:white;font-size:28px;border-radius:10px 10px 0px 0px;text-align: center;">Escolha Seu Plano</div>
-<br>
+    <div class="container">
+      <h4>Tipo de Plano:</h4>
+      <br>
+      <select  class="form-control" id="1"name='fabricante' style="margin-bottom: 1rem;">
+        <option value='1'>Pessoa Fisica</option>
+      </select>
+      <br>
+      <h4>Localidade:</h4>
+      <br>
+      <select name='produtos' class="form-control"></select>
 
-<div style="padding:10px" class="container">
-<h4>Tipo de Plano:</h4>
-					<br>
-					<select  class="form-control" id="1"name='fabricante' style='filter: drop-shadow(4px 4px 1px black);'>
-					<option value='1'>Pessoa Fisica</option>
-				
-				
-					</select>
-					<br>
-					<h4>Localidade:</h4>
-					<br>
-				<select name='produtos' class="form-control" style='filter: drop-shadow(4px 4px 1px black);'>
-					</select>
-					
-					
-				<div class="hidden produtos-f1">
-				
-					<option value='PB'>Grupo de Municipios PB</option>
-					<option value='RN'>Grupo de Municipios RN</option>
-				</div>
+      <div class="hidden produtos-f1">
+        <option value='PB'>Grupo de Municipios PB</option>
+        <option value='RN'>Grupo de Municipios RN</option>
+      </div>
 
-				<div class="hidden produtos-f2">
-				
-				<option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
-				<option value="PREFEITURA MUNICIPAL DE CABEDELO">PREFEITURA MUNICIPAL DE CABEDELO</option>
-				<option value="SEMOB">SEMOB</option>
-				<option value="EMLUR">EMLUR</option>
-				<option value="SECRETARIA DE SAUDE DO MUNICIPIO">SECRETARIA DE SAUDE DO MUNICIPIO</option>
-				<option value="FUNDAC">FUNDAC</option>
-				<option value="PREFEITURA MUNICIPAL DE SANTA RITA">PREFEITURA MUNICIPAL DE SANTA RITA</option>
-				
-				</div>
+      <div class="hidden produtos-f2">
+        <option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
+        <option value="PREFEITURA MUNICIPAL DE CABEDELO">PREFEITURA MUNICIPAL DE CABEDELO</option>
+        <option value="SEMOB">SEMOB</option>
+        <option value="EMLUR">EMLUR</option>
+        <option value="SECRETARIA DE SAUDE DO MUNICIPIO">SECRETARIA DE SAUDE DO MUNICIPIO</option>
+        <option value="FUNDAC">FUNDAC</option>
+        <option value="PREFEITURA MUNICIPAL DE SANTA RITA">PREFEITURA MUNICIPAL DE SANTA RITA</option>
+      </div>
 
-      </div>   
-                <input style ="position:relative;margin-top:15%;margin-left:40%;background-color:#284ebf"class="btn btn-primary"type="submit" value="Selecionar"/>
-                </form>
-              </div>
+    </div>   
+    <input style ="display:block; text-align: center; margin: 5% auto;background-color:#284ebf"class="btn btn-primary"type="submit" value="Selecionar"/>
+  </form>
+</div>
 
 <?php
 if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
@@ -434,7 +422,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
 <form  action="plano" method="POST">
     <div  class="row">
 
-     <div style="margin-left: 35%; width:30%" data-aos="fade-up" data-aos-delay="400">
+     <div style="margin: 0 auto;" data-aos="fade-up" data-aos-delay="400">
         <div class="box">
        
           <h3 style="padding:18px">UNIDENTIS VIP EMPRESARIAL </h3>

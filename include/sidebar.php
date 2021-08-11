@@ -8,7 +8,7 @@
 <?php
 
 
-session_start();
+session_status() == '2'? '' : session_start();
 if($_SESSION['usuario'] === 'vendedor'){
 
 ?>
