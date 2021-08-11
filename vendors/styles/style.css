@@ -18632,8 +18632,9 @@ textarea.form-control {
   top: 13px;
   text-align: center; }
 
+
 .sidebar-menu .dropdown-toggle:hover .fa, .sidebar-menu .show > .dropdown-toggle .fa {
-  color: #0099ff; }
+  color: #ffffff; }
 
 .sidebar-menu .dropdown-toggle .new {
   font-size: 24px;
