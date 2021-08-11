@@ -18535,6 +18535,12 @@ textarea.form-control {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: table; }
 
+@media (max-width: 1200px){
+  .brand-logo {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.1); 
+  }
+}
+
 .brand-logo a {
   display: table-cell;
   vertical-align: middle;

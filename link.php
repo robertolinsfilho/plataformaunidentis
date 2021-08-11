@@ -52,17 +52,95 @@
         color: #606060;
         font-weight: bold;
       }
+      
       .containerLinks{
-        background-color: #f6f6f6;
+        background-color: #eeeeee;
       }
-      .containerLinks input{
+
+      .containerLinks .flexLabel{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .containerLinks .flexLabel .labelInput{
+        font-size: .9rem;
+        white-space: nowrap;
+        padding-right: 1rem;
+        font-weight: bold;
+        color: #606060;
+        text-transform: uppercase;
+      }
+
+      .containerLinks .flexLabel hr{
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #606060;
+      }
+
+      .containerLinks .clearfix{
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+        letter-spacing: .05rem;
+      }
+      .containerLinks .clearfix h4{
+        font-size: 1.8rem;
+        color: #606060;
+      }
+      .containerLinks .input-group input{
         background-color: #f6f6f6 !important;
+        width: 50%;
+        border-top-right-radius: .5rem !important;
+        border-bottom-right-radius: .5rem !important;
+        border-radius: .5rem;
+        margin: .5rem 0;
       }
+
+      div.containerBG{
+        background-color: #f6f6f6;
+        margin-bottom: 1.5rem;
+        padding-top: 1.5rem;
+        border-radius: 10px; 
+      }
+      div.containerBG .flexIcon{
+        display: flex;
+        margin: 0 .5rem;
+        justify-content: space-around;
+        gap: .25rem;
+        align-items: center;
+        font-size: .9rem;
+        color: #606060;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      div.containerBG .flexIcon i{
+        font-size: 2rem;
+      }
+      
+      div.containerBG .flexIcon a:hover,
+      div.containerBG .flexIcon i:hover,
+      div.containerBG .flexIcon span:hover{
+        color: #60606099;
+      }
+
+      @media (max-width: 678px) {
+        .containerLinks .input-group input{
+          display: block;
+          width: 100%;
+        }
+        div.containerBG .flexIcon{
+          margin: .5rem auto;
+        }
+      }
+
     </style>
     
     <div class="main-container">
       <div
-        style="margin-top: 2.5%;"
+        style="margin-top: .5%;"
         class="
           pd-ltr-20
           customscroll customscroll-10-p
@@ -71,32 +149,20 @@
         "
       >
         <!-- Default Basic Forms Start -->
-        <div class="pd-20 border-radius-4 box-shadow mb-30 containerLinks">
+        <div class="pd-20 border-radius-4 mb-40 containerLinks">
           <div class="clearfix">
             <div class="pull-left">
               <h4 class="nome">Link Vendedores</h4>
             </div>
             <br />
           </div>
-
-          <br />
-
-          <br />
           <div class="row">
-            <div class="col-md-12">
-              <label>Pessoa Física:</label>
-              <hr
-                style="
-                  width: 85%;
-                  position: relative;
-                  margin-top: -2%;
-                  margin-left: 15%;
-                  font-weight: bold;
-                  height: 1px;
-                  background-color: #606060;
-                "
-                size="50"
-              />
+            <div class="col-md-12 containerBG">
+              <div class="flexLabel">
+                <label class="labelInput">Pessoa Física</label>
+                <hr>
+              </div>
+              <!-- flexLabel -->
               <div class="input-group">
                 <input
                   type="text"
@@ -105,37 +171,37 @@
                   value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"
                   readonly
                 />
-                <i
-                  class="fa fa-files-o"
-                  id="btnCopiar"
-                  style="font-size: 31px; padding: 5px; cursor: pointer"
-                  aria-hidden="true"
-                ></i>
-                <a
-                  target="_blank"
-                  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"
-                  ><i
-                    class="fa fa-whatsapp"
-                    style="font-size: 31px; padding: 5px"
-                  ></i
-                ></a>
+                
+                <label class="flexIcon">
+                  <a
+                    target="_blank"
+                    href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"
+                    ><i
+                      class="fa fa-whatsapp"
+                    ></i
+                  ></a>
+                  <a target="_blank" href='https://api.whatsapp.com/send?text=unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>'><span>Whatsapp</span></a>
+                </label>
+                <!-- FlexIcon -->
+
+                <label class="flexIcon">
+                  <i
+                    class="fa fa-files-o"
+                    id="btnCopiar"
+                    aria-hidden="true"
+                  ></i>
+                  <span id="btnCopiar_0" >Copiar</span>
+                </label>
+                <!-- flexIcon -->
+
               </div>
             </div>
 
-            <div class="col-md-12">
-              <label>Servidor Público:</label>
-              <hr
-                style="
-                  width: 85%;
-                  position: relative;
-                  margin-top: -2%;
-                  margin-left: 15%;
-                  font-weight: bold;
-                  height: 1px;
-                  background-color: #606060;
-                "
-                size="50"
-              />
+            <div class="col-md-12 containerBG">
+              <div class="flexLabel">
+                <label class="labelInput">Servidor Público</label>
+                <hr>
+              </div>
               <div class="input-group">
                 <input
                   type="text"
@@ -144,37 +210,33 @@
                   value="unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"
                   readonly
                 />
-                <i
-                  class="fa fa-files-o"
-                  id="btnCopiar2"
-                  style="font-size: 31px; padding: 5px; cursor: pointer"
-                  aria-hidden="true"
-                ></i>
-                <a
-                  target="_blank"
-                  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"
-                  ><i
-                    class="fa fa-whatsapp"
-                    style="font-size: 31px; padding: 5px"
-                  ></i
-                ></a>
+                
+                <label class="flexIcon">
+                  <a
+                    target="_blank"
+                    href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>"
+                    ><i
+                      class="fa fa-whatsapp"
+                    ></i
+                  ></a>
+                  <a target="_blank" href='https://api.whatsapp.com/send?text=unidentisdigital.com.br/servidorpublico?vendedor=<?php echo $_SESSION['usuario'] ?>'><span>Whatsapp</span></a>
+                </label>
+                <label class="flexIcon">
+                  <i
+                    class="fa fa-files-o"
+                    id="btnCopiar2"
+                    aria-hidden="true"
+                  ></i>
+                  <span id="btnCopiar_1">Copiar</span>
+                </label>
               </div>
             </div>
 
-            <div class="col-md-12">
-              <label>Dependentes:</label>
-              <hr
-                style="
-                  width: 85%;
-                  position: relative;
-                  margin-top: -2%;
-                  margin-left: 15%;
-                  font-weight: bold;
-                  height: 1px;
-                  background-color: #606060;
-                "
-                size="50"
-              />
+            <div class="col-md-12 containerBG">
+              <div class="flexLabel">
+                <label class="labelInput">Dependentes</label>
+                <hr>
+              </div>
               <div class="input-group">
                 <input
                   type="text"
@@ -183,20 +245,25 @@
                   value="unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"
                   readonly
                 />
-                <i
-                  class="fa fa-files-o"
-                  id="btnCopiar3"
-                  style="font-size: 31px; padding: 5px; cursor: pointer"
-                  aria-hidden="true"
-                ></i>
-                <a
-                  target="_blank"
-                  href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"
-                  ><i
-                    class="fa fa-whatsappfa fa-whatsapp"
-                    style="font-size: 31px; padding: 5px"
-                  ></i
-                ></a>
+                <label class="flexIcon">
+                  <a
+                    target="_blank"
+                    href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"
+                    ><i
+                      class="fa fa-whatsappfa fa-whatsapp"
+                    ></i
+                    ></a>
+                    <a target="_blank" href="https://api.whatsapp.com/send?text=unidentisdigital.com.br/incluirdependentes?vendedor=<?php echo $_SESSION['usuario'] ?>"><span>Whatsapp</span></a>
+                </label>
+                <label class="flexIcon">
+                  <i
+                    class="fa fa-files-o"
+                    id="btnCopiar3"
+                    aria-hidden="true"
+                  ></i>
+                  <span id="btnCopiar_2">Copiar</span>
+                </label>
+
               </div>
             </div>
           </div>
@@ -217,12 +284,27 @@
         texto.select();
         document.execCommand("Copy");
       });
+      $("#btnCopiar_0").on("click", function () {
+        var texto = document.getElementById("texto");
+        texto.select();
+        document.execCommand("Copy");
+      });
       $("#btnCopiar2").on("click", function () {
         var texto = document.getElementById("texto2");
         texto.select();
         document.execCommand("Copy");
       });
+      $("#btnCopiar_1").on("click", function () {
+        var texto = document.getElementById("texto2");
+        texto.select();
+        document.execCommand("Copy");
+      });
       $("#btnCopiar3").on("click", function () {
+        var texto = document.getElementById("texto3");
+        texto.select();
+        document.execCommand("Copy");
+      });
+      $("#btnCopiar_2").on("click", function () {
         var texto = document.getElementById("texto3");
         texto.select();
         document.execCommand("Copy");
