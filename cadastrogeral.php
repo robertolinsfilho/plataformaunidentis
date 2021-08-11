@@ -21,6 +21,7 @@ error_reporting(0);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
+
     <script>
            function Mudarestado(el) {
                 var display = document.getElementById(el).style.display;
@@ -29,6 +30,7 @@ error_reporting(0);
                 else
                     document.getElementById(el).style.display = 'block';
             }
+		
     </script>
     <style>
         label{
@@ -41,6 +43,9 @@ error_reporting(0);
             width: 80%;
 			
 		}
+		.col{
+			margin-left:0px;
+		}
         .row{
             margin-top:2%
         }
@@ -48,8 +53,177 @@ error_reporting(0);
             display: none;
 
         }
+		.modal-header{
+			background-color:#284ebf ;
+			color:white;
+			font-family: Poppins;
+			border-radius: 21px 21px 0px 0px;
+		}
+		.modal-title{
+			color:white;
+		}
+		.modal-content{
+			border-radius:21px;
+			background-color:#f6f6f6;
+		}
         
     </style>
+	<style>
+								.drop-zone {
+								width: 300px;
+								height: 200px;
+								padding: 20px;
+								display: inline;
+								align-items: center;
+								justify-content: center;
+								text-align: center;
+								font-family: "Quicksand", sans-serif;
+								font-weight: 500;
+								font-size: 20px; 
+								cursor: pointer;
+								color: #023bbf;
+								border: 4px solid #606060;
+								border-radius: 10px;
+								float:left;
+								margin-left:2%;
+								margin-top:2%;
+								overflow: auto;
+								
+
+								}
+
+
+								.drop-zone--over {
+								border-style: solid;
+								
+								}
+
+								.drop-zone__input {
+								display: none;
+								
+								}
+
+								.drop-zone__thumb {
+								width: 100%;
+								height: 100%;
+								border-radius: 10px;
+								overflow: hidden;
+								background-color: #cccccc;
+								background-size: cover;
+								position: relative;
+								}
+
+								.drop-zone__thumb::after {
+								content: attr(data-label);
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								width: 100%;
+								padding: 5px 0;
+								color: #ffffff;
+								background: rgba(0, 0, 0, 0.75);
+								font-size: 14px;
+								text-align: center;
+								}
+								#top{
+								margin-left:3%;
+								}
+								#h5{
+								margin-left:2%;
+								margin-top:4%;
+								}
+
+								input, select{
+										border: 1px solid #606060 !important; 
+									
+										background-color:#b3b3b3
+										;margin-left:5%;
+										text-align:center;
+									
+									}
+								.fundoazul{
+								background-color: #4177d0 ;
+								}
+								#submit{
+								margin-left:85%;
+								margin-top:2%;
+								background-color: #4177d0 ;
+								}
+
+								@media screen and (max-device-width: 720px) {
+								.text-blue1{
+									margin-left: 5%;
+									margin-top: 4%;
+									position: absolute;
+									font-size: 18px;
+									color: #3284f1;
+									width: 30%;
+									height: 100px;
+									background-color: #cccccc;
+								text-align: center;
+								padding-top: 30px;
+								border-radius: 5px;
+								
+
+								}
+								.text-blue2{
+									margin-left: 5%;
+									margin-top: 4%;
+									position: absolute;
+									font-size: 16px;
+									color: #3284f1;
+									width: 30%;
+									height: 100px;
+									background-color: #cccccc;
+								text-align: center;
+								padding-top: 20px;
+								border-radius: 5px;
+								
+
+								}
+								#submit{
+								margin-left:11%;
+								width:80%;
+								margin-top:5%;
+								
+								}
+								.drop-zone {
+								max-width: 350px;
+								height: 200px;
+								padding: 10px;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								text-align: center;
+								font-family: "Quicksand", sans-serif;
+								font-weight: 500;
+								font-size: 20px;
+								cursor: pointer;
+								color: #cccccc;
+								border: 2px solid #606060;
+								border-radius: 10px;
+								margin-left: 2%;
+								margin-top: 1%;
+								position: relative;
+								overflow: auto
+								}
+								#top{
+								width:70%;
+								margin-left:5%;
+								margin-top:10%;
+								}
+								.brand-logo{
+								margin-top:-15%
+								}
+								#h5{
+								margin-left:10%;
+								margin-top: 7%;
+								}
+								.inline{
+								width:50%
+								}
+								}
+							</style>
 </head>
 <body>
 
@@ -66,13 +240,13 @@ error_reporting(0);
 					<div class="wizard-content">
 						<form action="checkcadastro" method="POST" class="tab-wizard wizard-circle wizard"><br>				
 					
-						<h5 >Proposta</h5>
+						<h5 >Dados Pessoais</h5>
 							<section>
                             <h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS</h4>
 							<br>
                             <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
 								<div class="row">
-									<div class="col-5">																			
+									<div class="col-4">																			
 							<?php
 							if($_SESSION['cliente'] == 'servidorpublico'){
 							?>					
@@ -109,7 +283,7 @@ error_reporting(0);
 						</div>								
 								
 									<div class="col-4">																				
-                                            <input type="text" name="nome" id ="nome" placeholder="Nome Completo*" minlength="10" class="form-control" required>										
+									<input type="text"  id="a" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
 									</div>							
 									<div class="col-3">									
 										<input type="text" name="cpf"  placeholder="CPF*" id="cpf"class="form-control"required>
@@ -131,7 +305,7 @@ error_reporting(0);
 									</div>
 									
 									<div class="row">
-									<div class="col-3">
+									<div class="col-2">
                                     <select name="sexo"  class="custom-select form-control"required>
 											<option value="">Sexo*</option>
 											<option value="1">Masculino</option>
@@ -263,7 +437,7 @@ error_reporting(0);
 							<br>
 						
 							<!-- Step 2 -->
-                           <h5>Responsavel Financeiro</h5>
+                           <h5>Beneficiarios</h5>
                             <section id="resp">
                                 
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
@@ -313,17 +487,17 @@ error_reporting(0);
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <div  class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">UNIDENTIS</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                       
+                       <h4 style="color:#606060;font-weight:bold;text-align: center;">CADASTRAR DEPENDENTES</h4>
                         <div class="row">
-                        <div class="col-md-6">
-									<div class="form-group">											
+                        <div class="col-6">
+																				
 									<select class="form-control" name="parentesco">
 									<option value="3">Conjuge</option>
 									<option value="4">Filho</option>
@@ -331,31 +505,30 @@ error_reporting(0);
 									<option value="6">Enteado</option>
 									<option value="10">Outro</option>
 									</select>
-									</div>
+									
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">											
+								<div class="col-6">
+																			
 									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo"required>
-									</div>
+									
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
+								<br>
+								<div style ="margin-top:2%" class="col-6">
+									
 										
 										<input type="text" class="form-control"  name ="cpfdependente"placeholder="CPF" id="cpf" >
-									</div>
+									
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										
+								<div style ="margin-top:2%" class="col-6">																		
 									<input type="text" name="datadependente"  class="form-control " id="data" placeholder="Data de Nascimento" required>
-									</div>
+									
 								</div>
 						
 							</div>
 							<div class="row">
 						
-							<div class="col-md-6">
-									<div class="form-group">											
+							<div class="col-6">
+																				
 									<select class="form-control" name="estadodependente">
 									<option value="Solteiro">Solteiro</option>
 									<option value="Casado">Casado</option>
@@ -364,33 +537,28 @@ error_reporting(0);
 									<option value="Divorciado">Divorciado</option>
 									<option value="Relação Estavel">DRelação Estavel</option>
 									</select>
-									</div>
+									
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">											
+								<div class="col-6">
+																				
 									<select class="form-control" name="sexodependentes">
 									<option value="1">Masculino</option>
 									<option value="0">Feminino</option>
 								
 									</select>
-									</div>
-								</div>
-							<div class="col-md-6">
-								<div class="form-group">
 									
-									<input type="text" class="form-control" name ="maedependente"placeholder="Mãe"required>
 								</div>
+								
+							<div style ="margin-top:2%"class="col-6">																
+									<input type="text" class="form-control" name ="maedependente"placeholder="Mãe"required>								
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									
-								<input type="text" name="cnsdependente"  class="form-control" placeholder="Cartão do sus" >
-								</div>
+							<div style ="margin-top:2%" class="col-6">													
+								<input type="text" name="cnsdependente"  class="form-control" placeholder="Cartão do sus" >								
 							</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" style="background-color:#284ebf"class="btn btn-primary">Cadastrar</button>
                         </div>
                         </div>
                     </div>
@@ -399,559 +567,166 @@ error_reporting(0);
                   
 							</section>
 							<!-- Step 3 -->
-							<h5>Beneficiarios</h5>
+							<h5>Imagens</h5>
 							<section>
-							<h4 class="text-blue"> Titular: </h4>
-							<br>
-							<div class="row">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Nome:</label>
-											<input type="text"  value="<?php echo $row_usuario11['nome']?>" class="form-control"readonly>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Mae:</label>
-											<input type="text" value="<?php echo $row_usuario11['mae']?>"  class="form-control" readonly>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>CPF:</label>
-											<input type="text" value="<?php echo $row_usuario11['cpf']?>"  class="form-control" readonly>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Estado Civil:</label>
-											<input type="text" value="<?php echo $row_usuario11['estado']?>"  class="form-control" readonly>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>Sexo :</label>
-											<input type="text"  value="<?php echo $sexo?>" class="form-control" readonly>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Cartão do SUS:</label>
-											<input type="text" value="<?php echo $row_usuario11['sus']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Data de Nascimento:</label>
-											<input type="text" value="<?php echo $row_usuario11['nascimento']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									
-								</div>
-								<br><br>
-								
-								<?php
-								
-								
-								while ($row_usuario6 = mysqli_fetch_assoc($resultado_usuario6)){
-									
-								
-								?>
-								<h4 class="text-blue">Beneficiarios</h4><br>
-								<div class="row">
-								
-						
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>nome:</label>
-											<input type="text"  value="<?php echo $row_usuario6['nome']?>" class="form-control" readonly>
-										</div>
-									</div>
-									
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Cpf:</label>
-											<input type="text" value="<?php echo $row_usuario6['cpf']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Datas de nascimento:</label>
-											<input type="text" value="<?php echo $row_usuario6['datas']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Sexo:</label>
-											<input type="text" value="<?php echo $sexo ?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Mae:</label>
-											<input type="text" value="<?php echo $row_usuario6['mae']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Cns:</label>
-											<input type="text" value="<?php echo $row_usuario6['cns']?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									<?php 
-										if($row_usuario6['parentesco'] == 3){
-											$parentesco = 'Cônjuge';
-										}elseif($row_usuario6['parentesco'] == 4){
-											$parentesco = 'Filho';
-										}elseif($row_usuario6['parentesco'] == 6){
-											$parentesco = 'Enteado';
-										}elseif($row_usuario6['parentesco']  == 8){
-											$parentesco = 'Pai/Mãe';
-										}elseif($row_usuario6['parentesco'] == 10){
-											$parentesco = 'Outros';
-										}
-									?>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label>	Parentesco:</label>
-											<input type="text" value="<?php echo $parentesco?>"  class="form-control" readonly>
-										</div>
-
-									</div>
-									
-									</div>
-								
-								<?php
-								}
-								?>
-									
 							
+							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+							<div id="branco">                
+                   
+								<div class="drop-zone">
+									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
+									<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input" required>
+								</div>
 								
+								
+								<div class="drop-zone">
+									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG VERSO</div></span>
+									<input type="file" name="arquivo1[]"  multiple="multiple" class="drop-zone__input" required>
+								</div>
+								
+							
+								<div class="drop-zone">
+									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >CPF</div></span>
+									<input type="file" name="arquivo2[]"  multiple="multiple" class="drop-zone__input" required>
+								</div>
+								
+							
+								<div class="drop-zone">
+									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 7%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >COMPROVANTE DE RESIDÊNCIA</div></span>
+									<input type="file" name="arquivo3[]"  multiple="multiple" class="drop-zone__input" required>
+								</div>
+							
+								<?php if( $_SESSION['plano'] != 'UNIDENTISVIPBOLETO'){
+								?>
+							
+								<div class="drop-zone">
+									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >CARTÃO</div></span>
+									<input type="file" name="arquivo4[]"  multiple="multiple" class="drop-zone__input" required>
+								</div>
+								<?php }?>  
+								
+							
+								<div class="drop-zone">
+									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >OUTRO</div></span>
+									<input type="file" name="arquivo5[]"  multiple="multiple" class="drop-zone__input" required>
+								</div>
+								
+							
+									</div>
 							</section>
 							<!-- Step 4 -->
-							<?php 
-							if($row_usuario['plano'] != 'UNIDENTISVIPEMPRESARIAL'){
-							?>
-							<h5>Imagens</h5>
+						
+							<h5>Resumo</h5>
 							
 							<section>
-							
 							<div class="row">
-								
-
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Frente</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['rgfrente']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['rgfrente']?>"/></a>
-										
-										<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
-										Editar
-										</button>
+							<div class="col-4">																				
+									<input type="text"  id="a" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
+									</div>							
+									<div class="col-3">									
+										<input type="text" name="cpf"  placeholder="CPF*" id="cpf"class="form-control"required>
+                                    </div>
+								</div>																	
+								<div class="row">
+									<div class="col-5">													
+                                        <input type="email" placeholder="Email*" id="email" name="email" class="form-control"required>									
 									</div>
-								</div>
-
-								
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Verso</h3>
-                                        <br>
-                                        <a href="fotos/<?php echo $row_usuario7['rgverso']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['rgverso']?>"/></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
-										Editar
-										</button>
+									<div class="col-3">
+                                    <input type="text" name ="telefone" placeholder="Telefone* " id="telefone" class="form-control" required>
 									</div>
-
-								</div>
 								
-								
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">CPF</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['cpf']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['cpf']?>"/></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
-										Editar
-										</button>
-									</div>
-
-								</div>
-								
-								
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Comp Residência</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['compresidencia']?>" target="_blank"> <img  style="padding:10px" src="fotos/<?php echo $row_usuario7['compresidencia']?>"/></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
-										Editar
-										</button>
-									</div>
-
-								</div>
-								
-								<?php if($row_usuario['plano'] != 'UNIDENTISVIPBOLETO'){
-								?>
-								
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Cartão</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['cartao']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['cartao']?>"/></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">
-										Editar
-										</button>
-									</div>
-
-								</div>
-								<?php }?>
-								<div class="col-md-4">
-									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Outro</h3>
-                                        <br>
-                                       <a href="fotos/<?php echo $row_usuario7['outro']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['outro']?>"/></a>
-									   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">
-										Editar
-										</button>
-									</div>
-
-								</div>
-								
+							
 									
+									<div class="col-3">											
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control">
+									</div>
+									</div>
+									
+									<div class="row">
+									<div class="col-3">
+                                    <select name="sexo"  class="custom-select form-control"required>
+											<option value="">Sexo*</option>
+											<option value="1">Masculino</option>
+											<option value="0">Feminino</option>										
+										</select>
+									</div>
+									<div class="col-3">
+                                        <input type="text" class="form-control" name ="rg" minlength="7" maxlength="7" id ="rg"placeholder="RG*"required>
+									</div>						
+									<div class="col-3">
+                                        <input type="text" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
+									</div>
+                                    <div class="col-3">
+                                        <input type="text" class="form-control" id="data"name ="nascimento"placeholder="Data de Nascimento*"required>									
+									</div>
+                                  
+									</div>
+								
+								
+									<div class="row">
+									
+                                    <div class="col-4">
+                                    <input type="text" name="mae" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
+									</div>
+                                    <div class="col-3">
+                                    <select name="estado" id="estado" class="custom-select form-control"required>
+											<option value="">Estado Civil*</option>
+											<option value="Solteiro">Solteiro</option>
+											<option value="Casado">Casado</option>										
+										</select>							
+									</div>
+                                    <div class="col-3">
+                                        <input type="text" id="sus" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control">
+									</div>
 								</div>
-							</section>
+								
+                                <?php
+							if($_SESSION['cliente'] == 'servidorpublico'){
+                            ?>
+							<div class="row">
+							<div class="col-md-3">			
+								<input type="text" placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" require>
+							</div>
+							
+							<div class="col-md-3">						
+								<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" required>
+							</div>
+                            </div>
+
+
 							<?php
 							}
 							?>
-							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Motivo Indeferido</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
+                            <br>
+                            <h4 style="color:#606060;font-weight:bold">ENDEREÇO</h4>
+                            <br>
+                            <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
+                            <div class="row">
+									<div class="col-3">													
+                                        <input type="text" name="cep" id="cep"class="form-control" placeholder="CEP*"required>									
 									</div>
-									<div class="modal-body">
-									<select class="form-control" placeholder="selecione" name="motivo">
-									        <option value="001- CPF Irregular">001- CPF Irregular</option>
-											<option value="002- Divergência de DADOS">002- Divergência de DADOS </option>
-											<option value="003- Imagem em Anexo corrompida">003- Imagem em Anexo corrompida</option>
-											<option value="004- Imagem RG ilegível">004- Imagem RG ilegível</option>
-											<option value="005- Falta documentos em anexo">005- Falta documentos em anexo</option>
-											<option value="006- Falta cópia do Cartão de crédito">006- Falta cópia do Cartão de crédito</option>
-											<option value="007- Dados divergentes titular">007- Dados divergentes titular</option>
-											<option value="008- Dados divergentes dependente">008- Dados divergentes dependente</option>
-											<option value="009- Cartão não pertence ao responsável Financeiro">009- Cartão não pertence ao responsável Financeiro </option>
-											<option value="010- Cliente possui plano ativo">010- Cliente possui plano ativo</option>
-											<option value="011- Dependente com plano ativo">011- Dependente com plano ativo</option>
-											<option value="012- Cartão Ilegivel">012- Cartão Ilegivel</option>
-											<option value="013- outros">013- outros</option>
-											<option value="014- Campo de Descrição">014- Campo de Descrição</option>
-											<option value="015- Matricula Incorreta">015- Matricula Incorreta</option>
-											<option value="016- Comprovante de Residência ilegivel">016- Comprovante de Residência ilegivel</option>
-											<option value="017- Beneficiario sem CNS">017- Beneficiario sem CNS</option>
-											<option value="018- Falta Codigo de Validade do Cartão">018- Falta Codigo de Validade do Cartão</option>
-											<option value="019- Falta Frente do RG">019- Falta Frente do RG</option>
-									</select>
-																				
+                                    <div class="col-3">													
+                                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*"required>									
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit" value="Indeferido" name="status"  class="btn btn-danger">
+                                    <div class="col-3">													
+                                        <input type="text" class="form-control" id="numero"name ="numero"placeholder="Numero*"required>										
 									</div>
+                                    <div class="col-3">													
+                                        <input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required>									
 									</div>
-								</div>
-								</div>
-
-
-
-									
-							<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Motivo Cancelamento</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
+                            </div>
+                            <div class="row">
+									<div class="col-3">													
+                                        <input type="text" name="complemento" placeholder="Complemento" class="form-control">								
 									</div>
-									<div class="modal-body">
-									<select class="form-control" placeholder="selecione" name="motivo1">
-											<option value="001- Possui Codigo Ativo">001- Possui Codigo Ativo</option>
-											<option value="002- Possui Divida Ativa">002- Possui Divida Ativa</option>
-											<option value="003- Desistiu De Aderir ao Plano">003- Desistiu De Aderir ao Plano</option>
-											<option value="004- Outros">004- Outros</option>
-											<option value="005- Enviar Proposta Fisica">005- Enviar Proposta Fisica</option>
-											<option value="006- Data De Adesão Incorret">006- Data De Adesão Incorreta</option>
-											<option value="007- Proposta Cadastrada Incorretamente">007- Proposta Cadastrada Incorretamente</option>
-											<option value="008- Cartao De Credito Vencido">008- Cartao De Credito Vencido</option>
-											<option value="009- Cartao De Credito Nao Pertence a Responsavel">009- Cartao De Credito Nao Pertence a Responsavel</option>
-											<option value="010- Sem Cpf">010- Sem Cpf</option>
-											<option value="999- Rompimento De Contrato Por Solicitação Do Beneficiario">999- Rompimento De Contrato Por Solicitação Do Beneficiario</option>
-									</select>
-																				
+                                    <div class="col-3">													
+                                        <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>								
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit" value="Cancelado" name="status"  class="btn btn-danger">
+                                    <div class="col-3">													
+                                        <input type="text" name="bairro" id="bairro"class="form-control" placeholder="Bairro*" required>							
 									</div>
-									</div>
-								</div>
-								</div>
-						</form>
-					</div>
-				</div>
-
-					</div>
-				</div>
-
-			<style>
-				.drop-zone {
-				max-width: 350px;
-				height: 200px;
-				padding: 10px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				font-family: "Quicksand", sans-serif;
-				font-weight: 500;
-				font-size: 20px;
-				cursor: pointer;
-				color: #cccccc;
-				border: 4px dashed #3284f1;
-				border-radius: 10px;
-				margin-left: 15%;
-				margin-top: 0%;
-				position: relative;
-				}
-
-
-				.drop-zone--over {
-				border-style: solid;
-				}
-
-				.drop-zone__input {
-				display: none;
-				}
-
-				.drop-zone__thumb {
-				width: 100%;
-				height: 100%;
-				border-radius: 10px;
-				overflow: hidden;
-				background-color: #cccccc;
-				background-size: cover;
-				position: relative;
-				}
-
-				.drop-zone__thumb::after {
-				content: attr(data-label);
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				padding: 5px 0;
-				color: #ffffff;
-				background: rgba(0, 0, 0, 0.75);
-				font-size: 14px;
-				text-align: center;
-				}
-				.text-blue1{
-					margin-left: 16%;
-					margin-top: 4%;
-					position: absolute;
-					font-size: 28px;
-					color: #3284f1;
-					width: 20%;
-					height: 100px;
-					background-color: #cccccc;
-				text-align: center;
-				padding-top: 30px;
-				border-radius: 5px;
-  
-
-}
-</style>
-				
-				<!-- success Popup html End -->
-			</div>
-								<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-								
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-												
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
-								
-								<div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-								
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-											
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
-								
-								<div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-								
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-												
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
-								
-								<div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-									
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-												
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
-							
-								<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-									
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-												
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
-								
-								<div class="modal fade" id="exampleModal10?nome=outro&cpf=<?php echo $cpf ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Alterar Foto</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-
-									<div class="drop-zone">
-										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
-									</div>
-												
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
-									</div>
-									</form>	
-									</div>
-								</div>
-								</div>
+                            </div>  
+							</section>
 						<script>
 						document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 						const dropZoneElement = inputElement.closest(".drop-zone");
@@ -1028,9 +803,6 @@ error_reporting(0);
 						
 						</script>
 						
-									<?php 
-									
-									include('include/footer.php'); ?>
 								</div>
 							</div>
 							<?php include('include/script.php'); ?>
@@ -1123,6 +895,9 @@ $(document).ready(function() {
 
 </script>
 	
+<?php 
+									
+									include('include/footer.php'); ?>
 <script src="src/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
 	<script src="src/plugins/datatables/media/js/dataTables.responsive.js"></script>
