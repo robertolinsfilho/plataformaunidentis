@@ -18607,6 +18607,7 @@ textarea.form-control {
   display: block;
   padding: 10px 15px 10px 60px;
   font-size: 16px;
+  line-height: 20px;
   color: #131e22;
   font-weight: 500;
   position: relative;
@@ -18627,6 +18628,7 @@ textarea.form-control {
   position: absolute;
   left: 20px;
   font-size: 18px;
+  line-height: 14px;
   color: #91a8b0;
   width: 26px;
   top: 13px;

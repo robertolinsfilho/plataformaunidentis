@@ -120,9 +120,9 @@
         font-size: 2rem;
       }
       
-      div.containerBG .flexIcon a:hover,
-      div.containerBG .flexIcon i:hover,
-      div.containerBG .flexIcon span:hover{
+      div.containerBG .flexIcon:hover a,
+      div.containerBG .flexIcon:hover i,
+      div.containerBG .flexIcon:hover{
         color: #60606099;
       }
 
