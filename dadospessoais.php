@@ -72,28 +72,23 @@ ini_set(“display_errors”, 0 );
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
-	<div class="main-container">
-		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+	<div class="main-container" id="form-group">
+		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10" style="background-color: #eeeeee;">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
-						<div class="col-md-6 col-sm-12">
+						<div class="col-md-6 col-sm-12" style="background-color: #eeeeee; margin-bottom: .25rem;">
 							<div class="title">
 							<h5 style="font-size:17px;font-weight:bold;width:120%;color:#606060">INCLUIR PROPOSTA | VALOR TOTAL : 00.00 | PLANO :  | DEPENDENTES : 0</h5>
 								<BR>
                                     <?php
-
-                                    if(isset($_SESSION['menssagem'])) {
-
+                                      if(isset($_SESSION['menssagem'])) {
                                     ?>
                                 <div class="alert alert-primary" role="alert">
                                      <?php
                                         echo $_SESSION['menssagem'];
                                         unset($_SESSION['menssagem']);
-
-
                                     ?>
-
                                 </div>
                                 <?php
                                     }
@@ -164,15 +159,12 @@ ini_set(“display_errors”, 0 );
 					</div>
 				</div>
 				<!-- Default Basic Forms Start -->
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style="padding: 20px 2rem;">
           <div class="inline2" style="display:inline">
 					<div class="clearfix" >
 						<div class="pull-left">
-							<h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS </h4>
-              
-                             
+							<h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS </h4>             
 						</div>
-						
 					</div>
           <br>
           <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
@@ -296,18 +288,12 @@ ini_set(“display_errors”, 0 );
 									<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" required>
 								</div>
 							</div>
-
-
-
 							<?php
 							}
 							?>
-
-
 						</div>
             <br>
 						<h4 style="color:#606060;font-weight:bold">ENDEREÇO</h4>
-           
 						<br>
             <hr style="width: 87%;position: relative;margin-top: -3.5%;margin-left: 14%;height:1px;background-color:#606060;" size = 50>
 						<div class="row">
@@ -473,9 +459,9 @@ ini_set(“display_errors”, 0 );
 				<!-- Input Validation End -->
 
 			</div>
-			<?php include('include/footer.php'); ?>
 		</div>
 	</div>
+  <?php include('include/footer.php'); ?>
 	<?php include('include/script.php'); ?>
 	<script>
 	$(document).ready(function() {
