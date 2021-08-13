@@ -73,6 +73,8 @@
       }
 
       .containerLinks .flexLabel hr{
+        position: relative;
+        top: -.15rem;
         display: block;
         width: 100%;
         height: 1px;
@@ -127,6 +129,10 @@
       }
 
       @media (max-width: 678px) {
+        .containerLinks .clearfix h4{
+          font-size: 1.2rem;
+          color: #606060;
+        }
         .containerLinks .input-group input{
           display: block;
           width: 100%;
