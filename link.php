@@ -140,18 +140,22 @@
         div.containerBG .flexIcon{
           margin: .5rem auto;
         }
+        div.containerDTop{
+          margin-top: -4% !important;
+        }
       }
 
     </style>
     
     <div class="main-container">
       <div
-        style="margin-top: -4%;"
+        style="margin-top: .5%;"
         class="
           pd-ltr-20
           customscroll customscroll-10-p
           height-100-p
           xs-pd-20-10
+          containerDTop
         "
       >
         <!-- Default Basic Forms Start -->
