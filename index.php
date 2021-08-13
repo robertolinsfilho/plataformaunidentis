@@ -3,7 +3,7 @@
 		padding:8px;
 	}
 	i{
-padding-top:25%
+		padding-top:28%
 	}
 	</style>
 <?php
@@ -86,7 +86,7 @@ $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
 		<div  class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
-			<div style="background-color:#ededed;padding-top:18px" class="row clearfix progress-box">
+			<div style="background-color:#ededed; padding: 0 .5rem;padding-top:20px" class="row clearfix progress-box">
 				
 				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-50-p">

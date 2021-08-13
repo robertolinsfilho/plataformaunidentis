@@ -62,10 +62,10 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
                     </div>
                 </div>
             </div>
-			<div style=" color:white; "  class="user-info-dropdown">
+			<div style=" color:white;margin-top: 0;"  class="user-info-dropdown">
 
-				<div  style="margin-top:10%; color:white;" class="dropdown">
-					<a style=" color:white;margin-left: -4%;background-color: #4177d0;border-radius: 9px;margin-top: -4%;"class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+				<div  style="color:white;position:absolute; top: 1.5rem; right: .75rem;" class="dropdown">
+					<a style=" color:white;background-color: #4177d0;border-radius: 8px; padding: 10px;"class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span  style="color:white;"class="user-icon"><i style="color:white"class="fa fa-user-o"></i></span>
 						<span   style="color:white; "class="user-name"><?php echo $row_usuario2['vendedor']?></span>
 					</a>
