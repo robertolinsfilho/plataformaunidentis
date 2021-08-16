@@ -3,7 +3,7 @@
 		padding:8px;
 	}
 	.main-container i{
-		padding-top:28% !important;
+		padding-top:29% !important;
 	}
 	</style>
 <?php
