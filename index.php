@@ -2,8 +2,8 @@
 	.project-info.clearfix{
 		padding:8px;
 	}
-	i{
-		padding-top:28%
+	.main-container i{
+		padding-top:28% !important;
 	}
 	</style>
 <?php
