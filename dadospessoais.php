@@ -7,18 +7,16 @@ ini_set(“display_errors”, 0 );
 <!DOCTYPE html>
 <html >
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
-		<script type="text/javascript">
-          $("#telefone, #celular").mask("(00) 00000-0000");
-        </script>
-
-
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
+  <script type="text/javascript">
+        $("#telefone, #celular").mask("(00) 00000-0000");
+      </script>
 		<script type="text/javascript">
 	
          function Mudarestado(el) {
@@ -53,15 +51,28 @@ ini_set(“display_errors”, 0 );
       border: 1px solid #606060 !important; 
     }
     body{
-      background-color:#f6f6f6
+      background-color:#f6f6f6;
     }
+
+    div#form-group .row div.form-group{
+      margin-bottom: .05rem !important;
+    }
+
+    .form-control{
+      height: 2rem !important;
+    } 
+
+    .divPai h4{
+      margin-left: -.5rem !important;
+    }
+
     @media screen and (max-device-width: 720px) {
       .inline{
         width:54%;
        
       }
       .inline h4{
-        font-size:20px
+        font-size:20px;
        
       }
     }
@@ -95,7 +106,7 @@ ini_set(“display_errors”, 0 );
                                 ?>
 									<form  method="post" action="dadospessoaissession">
                              <div class="inline" style="display:-webkit-inline-box">   
-                  <h4 style="color:#606060;padding-top:7px ">Escolha o Plano :</h4>
+                  <h4 style="color:#606060;padding-top:3px;font-size: 1.25rem;line-height: 1.875rem; ">Escolha o Plano :</h4>
 								<br>
 								<?php
 							if($_SESSION['cliente'] == 'servidorpublico'){
@@ -103,7 +114,7 @@ ini_set(“display_errors”, 0 );
 									<div class="col-md-10">
 									<div class="form-group">
 										
-										<select style="background-color:#b3b3b3" name="plano" id="plano"class="custom-select form-control-lg" required>
+										<select style="background-color:#b3b3b3;height: calc(2.2rem + 2px) !important;" name="plano" id="plano"class="custom-select form-control-lg" required>
 										<option >Selecione</option>
 											<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
 											
@@ -117,7 +128,7 @@ ini_set(“display_errors”, 0 );
 							<div class="col-md-10">
 									<div class="form-group">
 										
-										<select style="background-color:#b3b3b3"  name="plano" id="plano" class="custom-select form-control-lg" required>
+										<select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;"  name="plano" id="plano" class="custom-select form-control-lg" required>
 										<option value="" >Selecione</option>
 											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
 											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
@@ -136,7 +147,7 @@ ini_set(“display_errors”, 0 );
                                 <div class="col-md-10">
                                     <div class="form-group">
 
-                                        <select style="background-color:#b3b3b3" name="plano" id="plano" class="custom-select form-control-lg" required>
+                                        <select style="background-color:#b3b3b3;height: calc(2.2rem + 2px) !important;" name="plano" id="plano" class="custom-select form-control-lg" required>
                                             <option value="" >Selecione</option>
                                             <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
                                             <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
@@ -159,7 +170,7 @@ ini_set(“display_errors”, 0 );
 					</div>
 				</div>
 				<!-- Default Basic Forms Start -->
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style="padding: 20px 2rem;">
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 divPai" style="padding: 20px 2rem;">
           <div class="inline2" style="display:inline">
 					<div class="clearfix" >
 						<div class="pull-left">
@@ -722,9 +733,9 @@ function validar(){
   }
   
 
+input.onkeyup = valida_form;
 }
 
-input.onkeyup = valida_form;
 
 
 
