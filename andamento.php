@@ -11,6 +11,12 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $result_usuario1 = "SELECT * from contratocartao where email = '{$_SESSION['emailplataforma']}'";
 $resultado_usuario1 = mysqli_query($conexao, $result_usuario1);
 $row_usuario1 = mysqli_fetch_assoc($resultado_usuario1);
+
+
+if($row_usuario2['status'] === 'Cancelado'   ) {
+    header('Location: login2');
+    
+}
 if ($row_usuario2['pagamento'] === 1){
 $url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&cpfAssociado=$cpf";
 $curl = curl_init($url);
@@ -41,6 +47,8 @@ foreach($resultado as $value){
   
 }
 
+
+
 if($value2 != 1){
            
     
@@ -51,6 +59,7 @@ if($value2 != 1){
 }
 }
 
+exit();
 if($row_usuario2['cpf'] == ''){
     header('Location: login2');
 }
