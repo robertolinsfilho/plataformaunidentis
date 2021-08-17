@@ -4,7 +4,7 @@ error_reporting(0);
 session_start();
 //consultar no banco de dados
 
-if($_SESSION['usuario'] === 'admin'){
+if($_SESSION['usuario'] === 'cadastro@s4e.com.br'){
 	$result_usuario = "SELECT * from dadospessoais where status = 'cadastro@s4e.com.br' ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }else{

@@ -23,6 +23,16 @@ error_reporting(0);
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
 
     <script>
+		function validateForm() {
+  		let x = document.forms["myForm"]["cpf"].value;
+		 var y = document.getElementById("cpf");
+  		if (x == "") {
+    	
+		
+		y.focus();
+    	return false;
+  }
+}
            function Mudarestado(el) {
                 var display = document.getElementById(el).style.display;
                 if(display == "block")
@@ -30,7 +40,11 @@ error_reporting(0);
                 else
                     document.getElementById(el).style.display = 'block';
             }
-		
+			$("#data").mask("00-00-0000", {reverse: true});
+			$("#cpf").mask("000.000.000-00");
+			$("#cpf1").mask("000.000.000-00");
+            $("#data1").mask("00-00-0000", {reverse: true});
+            $("#data2").mask("00-00-0000", {reverse: true});
     </script>
     <style>
         label{
@@ -65,6 +79,17 @@ error_reporting(0);
 		.modal-content{
 			border-radius:21px;
 			background-color:#f6f6f6;
+		}
+		.wizard-content .wizard>.steps>ul{
+			position:absolute;
+		}
+		#steps-uid-0-p-0{
+			margin-top:10% !important
+		}
+		.wizard-content .wizard.wizard-circle>.steps .step{
+			width: 35px !important;
+    		height: 35px !important;
+    		line-height: 31px !important;
 		}
         
     </style>
@@ -238,7 +263,7 @@ error_reporting(0);
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				
 					<div class="wizard-content">
-						<form action="checkcadastro" method="POST" class="tab-wizard wizard-circle wizard"><br>				
+						<form action="checkcadastro"  name="myForm"onsubmit="return validateForm()" method="POST" class="tab-wizard wizard-circle wizard"><br>				
 					
 						<h5 >Dados Pessoais</h5>
 							<section>
@@ -286,15 +311,15 @@ error_reporting(0);
 									<input type="text"  id="a" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
 									</div>							
 									<div class="col-3">									
-										<input type="text" name="cpf"  placeholder="CPF*" id="cpf"class="form-control"required>
+										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf"class="form-control">
                                     </div>
 								</div>																	
 								<div class="row">
 									<div class="col-5">													
-                                        <input type="email" placeholder="Email*" id="email" name="email" class="form-control"required>									
+                                        <input type="email" placeholder="Email*" id="email" onkeyup="document.getElementById('email-1').value = this.value;" name="email" class="form-control"required>									
 									</div>
 									<div class="col-3">
-                                    <input type="text" name ="telefone" placeholder="Telefone* " id="telefone" class="form-control" required>
+                                    <input type="text" name ="telefone" placeholder="Telefone* " onkeyup="document.getElementById('telefone-1').value = this.value;" id="telefone" class="form-control" required>
 									</div>
 								
 							
@@ -306,20 +331,20 @@ error_reporting(0);
 									
 									<div class="row">
 									<div class="col-2">
-                                    <select name="sexo"  class="custom-select form-control"required>
+                                    <select style="margin-left:14%" name="sexo" onkeyup="document.getElementById('sexo-1').value = this.value;" class="custom-select form-control"required>
 											<option value="">Sexo*</option>
 											<option value="1">Masculino</option>
 											<option value="0">Feminino</option>										
 										</select>
 									</div>
 									<div class="col-3">
-                                        <input type="text" class="form-control" name ="rg" minlength="7" maxlength="7" id ="rg"placeholder="RG*"required>
+                                        <input type="text" id ="rg" onkeyup="document.getElementById('rg-1').value = this.value;" class="form-control" name ="rg" minlength="7" maxlength="7" placeholder="RG*"required>
 									</div>						
 									<div class="col-3">
-                                        <input type="text" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
+                                        <input type="text" onkeyup="document.getElementById('emissor-1').value = this.value;" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
 									</div>
                                     <div class="col-3">
-                                        <input type="text" class="form-control" id="data"name ="nascimento"placeholder="Data de Nascimento*"required>									
+                                        <input type="text" class="form-control" id="data" onkeyup="document.getElementById('data-1').value = this.value;"name ="nascimento"placeholder="Data de Nascimento*"required>									
 									</div>
                                   
 									</div>
@@ -328,17 +353,17 @@ error_reporting(0);
 									<div class="row">
 									
                                     <div class="col-4">
-                                    <input type="text" name="mae" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
+                                    <input type="text" name="mae" onkeyup="document.getElementById('email-1').value = this.value;" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
 									</div>
                                     <div class="col-3">
-                                    <select name="estado" id="estado" class="custom-select form-control"required>
+                                    <select name="estado" id="estado" onkeyup="document.getElementById('estado-1').value = this.value;"class="custom-select form-control"required>
 											<option value="">Estado Civil*</option>
 											<option value="Solteiro">Solteiro</option>
 											<option value="Casado">Casado</option>										
 										</select>							
 									</div>
                                     <div class="col-3">
-                                        <input type="text" id="sus" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control">
+                                        <input type="text" id="sus" onkeyup="document.getElementById('sus-1').value = this.value;" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control">
 									</div>
 								</div>
 								
@@ -347,11 +372,11 @@ error_reporting(0);
                             ?>
 							<div class="row">
 							<div class="col-md-3">			
-								<input type="text" placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" require>
+								<input type="text"  onkeyup="document.getElementById('matricula-1').value = this.value;"  placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" require>
 							</div>
 							
 							<div class="col-md-3">						
-								<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" required>
+								<input type="date" placeholder="Admissao*"  onkeyup="document.getElementById('admissao-1').value = this.value;" name ="admissao" minlength="8" id="admissao" class="form-control" required>
 							</div>
                             </div>
 
@@ -365,27 +390,27 @@ error_reporting(0);
                             <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
                             <div class="row">
 									<div class="col-3">													
-                                        <input type="text" name="cep" id="cep"class="form-control" placeholder="CEP*"required>									
+                                        <input type="text" name="cep"  onkeyup="document.getElementById('cep-1').value = this.value;" id="cep"class="form-control" placeholder="CEP*"required>									
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*"required>									
+                                        <input type="text" class="form-control" id="rua"  onkeyup="document.getElementById('rua-1').value = this.value;" name="rua" placeholder="Rua*"required>									
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control" id="numero"name ="numero"placeholder="Numero*"required>										
+                                        <input type="text" class="form-control"  onkeyup="document.getElementById('numero-1').value = this.value;" id="numero"name ="numero"placeholder="Numero*"required>										
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required>									
+                                        <input type="text" name="uf" id="uf" class="form-control"  onkeyup="document.getElementById('uf-1').value = this.value;" placeholder="Estado*" required>									
 									</div>
                             </div>
                             <div class="row">
 									<div class="col-3">													
-                                        <input type="text" name="complemento" placeholder="Complemento" class="form-control">								
+                                        <input type="text" name="complemento" id="complemento" onkeyup="document.getElementById('complemento-1').value = this.value;" placeholder="Complemento" class="form-control">								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>								
+                                        <input type="text" name="cidade"  onkeyup="document.getElementById('cidade-1').value = this.value;" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="bairro" id="bairro"class="form-control" placeholder="Bairro*" required>							
+                                        <input type="text" name="bairro"  onkeyup="document.getElementById('bairro-1').value = this.value;" id="bairro"class="form-control" placeholder="Bairro*" required>							
 									</div>
                             </div>  
                             <br>
@@ -431,15 +456,16 @@ error_reporting(0);
 
                             </div>
                             </div>
-                           <button type="submit">tste<button>
+							<button type="submit">submit</button>
+						
 							</section>
-
+						
 							<br>
 						
 							<!-- Step 2 -->
                            <h5>Beneficiarios</h5>
                             <section id="resp">
-                                
+                                <!--
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
@@ -564,12 +590,12 @@ error_reporting(0);
                     </div>
                     
                     </div>
-                  
+								-->
 							</section>
 							<!-- Step 3 -->
 							<h5>Imagens</h5>
 							<section>
-							
+							<!--
 							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 							<div id="branco">                
                    
@@ -613,51 +639,52 @@ error_reporting(0);
 								
 							
 									</div>
+								-->
 							</section>
 							<!-- Step 4 -->
 						
 							<h5>Resumo</h5>
 							
 							<section>
+								
 							<div class="row">
 							<div class="col-4">																				
-									<input type="text"  id="a" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
+									<input type="text"  id="a-1" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a').value = this.value;" readonly>
 									</div>							
 									<div class="col-3">									
-										<input type="text" name="cpf"  placeholder="CPF*" id="cpf"class="form-control"required>
+										<input type="text" name="cpf"  onkeyup="document.getElementById('cpf').value = this.value;" placeholder="CPF*" id="cpf-1"class="form-control"readonly>
                                     </div>
 								</div>																	
 								<div class="row">
 									<div class="col-5">													
-                                        <input type="email" placeholder="Email*" id="email" name="email" class="form-control"required>									
+                                        <input type="email" placeholder="Email*"  onkeyup="document.getElementById('email').value = this.value;" id="email-1" name="email" class="form-control"readonly>								
 									</div>
 									<div class="col-3">
-                                    <input type="text" name ="telefone" placeholder="Telefone* " id="telefone" class="form-control" required>
-									</div>
-								
+                                    <input type="text" name ="telefone" placeholder="Telefone* "  onkeyup="document.getElementById('telefone').value = this.value;"  id="telefone-1" class="form-control" readonly>
+									</div>							
 							
 									
 									<div class="col-3">											
-									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control">
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control" readonly>
 									</div>
 									</div>
 									
 									<div class="row">
 									<div class="col-3">
-                                    <select name="sexo"  class="custom-select form-control"required>
+                                    <select name="sexo"  onkeyup="document.getElementById('sexo').value = this.value;"  id="sexo-1"class="custom-select form-control"readonly>
 											<option value="">Sexo*</option>
 											<option value="1">Masculino</option>
 											<option value="0">Feminino</option>										
 										</select>
 									</div>
 									<div class="col-3">
-                                        <input type="text" class="form-control" name ="rg" minlength="7" maxlength="7" id ="rg"placeholder="RG*"required>
+                                        <input type="text"  onkeyup="document.getElementById('rg').value = this.value;" class="form-control" name ="rg" minlength="7" maxlength="7" id ="rg-1"placeholder="RG*"readonly>
 									</div>						
 									<div class="col-3">
-                                        <input type="text" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
+                                        <input type="text" class="form-control" minlength="4"  onkeyup="document.getElementById('emissor').value = this.value;" id="emissor-1"name ="emissor"placeholder="Orgão Emissor*"readonly>
 									</div>
                                     <div class="col-3">
-                                        <input type="text" class="form-control" id="data"name ="nascimento"placeholder="Data de Nascimento*"required>									
+                                        <input type="text" class="form-control" id="data-1" onkeyup="document.getElementById('data').value = this.value;"  name ="nascimento"placeholder="Data de Nascimento*"readonly>								
 									</div>
                                   
 									</div>
@@ -666,17 +693,17 @@ error_reporting(0);
 									<div class="row">
 									
                                     <div class="col-4">
-                                    <input type="text" name="mae" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
+                                    <input type="text"  id="mae-1" name="mae" onkeyup="document.getElementById('mae').value = this.value;"  placeholder="Mãe*" minlength="10" class="form-control"readonly>
 									</div>
                                     <div class="col-3">
-                                    <select name="estado" id="estado" class="custom-select form-control"required>
+                                    <select name="estado"  onkeyup="document.getElementById('estado').value = this.value;"   id="estado-1" class="custom-select form-control"readonly>
 											<option value="">Estado Civil*</option>
 											<option value="Solteiro">Solteiro</option>
 											<option value="Casado">Casado</option>										
 										</select>							
 									</div>
                                     <div class="col-3">
-                                        <input type="text" id="sus" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control">
+                                        <input type="text"  onkeyup="document.getElementById('sus').value = this.value;"  id="sus-1" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control"readonly>
 									</div>
 								</div>
 								
@@ -685,11 +712,11 @@ error_reporting(0);
                             ?>
 							<div class="row">
 							<div class="col-md-3">			
-								<input type="text" placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" require>
+								<input type="text" placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" readonly>
 							</div>
 							
 							<div class="col-md-3">						
-								<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" required>
+								<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" readonly>
 							</div>
                             </div>
 
@@ -703,30 +730,33 @@ error_reporting(0);
                             <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
                             <div class="row">
 									<div class="col-3">													
-                                        <input type="text" name="cep" id="cep"class="form-control" placeholder="CEP*"required>									
+                                        <input type="text" name="cep" onkeyup="document.getElementById('cep').value = this.value;"  id="cep-1"class="form-control" placeholder="CEP*" readonly>								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*"required>									
+                                        <input type="text" class="form-control" id="rua-1" onkeyup="document.getElementById('rua').value = this.value;"  name="rua" placeholder="Rua*"readonly>								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control" id="numero"name ="numero"placeholder="Numero*"required>										
+                                        <input type="text" class="form-control" onkeyup="document.getElementById('numero').value = this.value;"  id="numero-1"name ="numero"placeholder="Numero*"readonly>									
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required>									
+                                        <input type="text" name="uf" id="uf-1" class="form-control" onkeyup="document.getElementById('uf').value = this.value;"  placeholder="Estado*" readonly>								
 									</div>
                             </div>
                             <div class="row">
 									<div class="col-3">													
-                                        <input type="text" name="complemento" placeholder="Complemento" class="form-control">								
+                                        <input type="text" name="complemento" onkeyup="document.getElementById('complemento').value = this.value;"  placeholder="Complemento" id="complemento-1" class="form-control" readonly>						
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>								
+                                        <input type="text" name="cidade" id="cidade-1" class="form-control" onkeyup="document.getElementById('cidade').value = this.value;"  placeholder="Ex: joao pessoa*" readonly>							
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="bairro" id="bairro"class="form-control" placeholder="Bairro*" required>							
+                                        <input type="text" id="bairro-1" name="bairro" onkeyup="document.getElementById('bairro').value = this.value;"  class="form-control" placeholder="Bairro*" readonly>							
 									</div>
+								
                             </div>  
+						
 							</section>
+							
 						<script>
 						document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 						const dropZoneElement = inputElement.closest(".drop-zone");
@@ -869,6 +899,11 @@ $(document).ready(function() {
                             $("#cidade").val(dados.localidade);
                             $("#uf").val(dados.uf);
                             $("#ibge").val(dados.ibge);
+							$("#rua-1").val(dados.logradouro);
+                            $("#bairro-1").val(dados.bairro);
+                            $("#cidade-1").val(dados.localidade);
+                            $("#uf-1").val(dados.uf);
+                            $("#ibge-1").val(dados.ibge);
                         } //end if.
                         else {
                             //CEP pesquisado não foi encontrado.
@@ -974,5 +1009,6 @@ $('#myModal').on('shown.bs.modal', function () {
 			});
 		});
 	</script>
+	</form>
 </body>
 </html>
