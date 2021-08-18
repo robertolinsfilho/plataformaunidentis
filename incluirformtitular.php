@@ -108,18 +108,18 @@ $cpf= $_SESSION['cpf'];
 
 
     </div>
-  </section>
+  </section >
   
-  <section id="form3" class="d-flex align-items-center"> 
-    <div class="container" data-aos="zoom-out" data-aos-delay="200">
-    <div style="font-size:26px"class="alert alert-primary" role="alert">
+  <section  id="form3" class="d-flex align-items-center">   
+    <div    class="container" data-aos="zoom-out" data-aos-delay="200">
+    <div  id="centro" style="font-size:26px;margin-top:-30px"class="alert alert-primary" role="alert">
  Inclusão Dependente - <?php echo $_SESSION['nomeplano']?>
 </div>
-         <h1>Dados do<span> Titular</span></h1>
+         <h1 >Dados do<span> Titular</span></h1>
  
      <br><br><br>
-     <form action="incluirformendereco#centro" method="POST">
-       <div id="centro" class="row">
+     <form  action="incluirformendereco#centro" method="POST">
+       <div  class="row">
        
          <div class="col">
             <label style="color: blue; font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>

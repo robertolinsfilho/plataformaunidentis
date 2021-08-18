@@ -78,7 +78,9 @@ if($value1['nomePlano'] == 'UNIDENTIS VIP EMPRESARIAL'){
   Plano Empresa
 </div>";
 header('Location: incluirdependentes');
+exit();
 }
+
 
 echo $x, $y, $z;
 if($x == 0 or $y == 0 or $z == 0  ){
