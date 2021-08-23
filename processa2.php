@@ -18,6 +18,8 @@ foreach($sql as $value) {
 } 
 $link = 'https://unidentisdigital.com.br//novasenha?email='.$email;
 
+// testando git
+
 $emailTemplate = '
 <table
   align="center"
