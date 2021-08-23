@@ -118,7 +118,7 @@ if($_SESSION['cpf'] === ''){
         $dono= "(Dono do Cartão)";
       }elseif($boleto40 ==='UNIDENTISVIPFAMILIACARTAO'){
         $dono= "(Dono do Cartão)";
-      }elseif($boleto40 ==='UNIDENTISVIPUNIVERSITARIO'){
+      }elseif($boleto40 ==='UNIDENTISVIPUNIVERSITARIOCARTAO'){
         $dono= "(Dono do Cartão)";
       }elseif($boleto40 ==='UNIDENTISVIPEMPRESARIAL'){
         $dono= " ";
