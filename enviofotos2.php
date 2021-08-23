@@ -128,7 +128,7 @@ if ($SendCadImg) {
 
         if (move_uploaded_file($arquivo6['tmp_name'][$cont], $destino6)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: formendereco?#form1");
+            header("Location: formendereco?#centro");
             $nome6 = $arquivo6['name'][$cont];
             
         } else {

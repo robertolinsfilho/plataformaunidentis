@@ -213,7 +213,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
       <h2>Preço por Dependente R$: <?php echo $preco?>
     <h1>Valor Total R$:<span> <?php echo $precod?></span></h1><br>
     <h2>Contrato:</h2>
-    <iframe  src="http://unidentisdigital.com.br/pdf/CONTRATO_IND_FAMILIAR.pdf"width="500" height="400"></iframe>
+    <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="400"></iframe>
     <img id="img1" src="assets/img/PDF.png" style="width: 3%"> <a href="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
    <img id="img1" src="assets/img/PDF.png" style="width: 3%"> <a href="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
    <img id="img1" src="assets/img/PDF.png" style="width: 3%"> <a href="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>

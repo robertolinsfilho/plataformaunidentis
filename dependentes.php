@@ -4,11 +4,11 @@ error_reporting(0);
 //consultar no banco de dados
 
 if($_SESSION['usuario'] = 'cadastro@s4e.com.br'){
-	$result_usuario = "SELECT a.nome ,a.plano, b.cpf_titular, b.data,b.cpf,b.status,b.vizu,b.id, b.vendedor, b.ativo FROM dadospessoais as a inner join dependentes as b on a.cpf = b.cpf_titular  where b.vizu ='1'  ";
+	$result_usuario = "SELECT * from dependentes  where vizu = '1'";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 	
 }else{
-	$result_usuario = "SELECT a.nome ,a.plano, b.cpf_titular, b.data,b.cpf,b.status,b.vizu,b.id, b.vendedor, b.ativo FROM dadospessoais as a inner join dependentes as b on a.cpf = b.cpf_titular  where b.vizu ='1'  and vendedor='$_SESSION[usuario]' ";
+	$result_usuario = "SELECT * from dependentes  where vizu = '1'  and vendedor='$_SESSION[usuario]' ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }
 
