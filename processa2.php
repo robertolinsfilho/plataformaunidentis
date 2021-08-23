@@ -16,7 +16,7 @@ $sql = $conexao->query("SELECT * FROM `usuario` WHERE usuario = '{$email}'");
 foreach($sql as $value) {
   $senha = strip_tags($value['senha']);
 } 
-$link = 'unidentisdigital.com.br/novasenha?email='.$email;
+$link = 'https://unidentisdigital.com.br//novasenha?email='.$email;
 
 $emailTemplate = '
 <table
@@ -56,6 +56,11 @@ $emailTemplate = '
       >
         <tr style="height: 2.5rem; width: 100%;">
           <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
+            <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">email:</span> '.strip_tags($email).'
+          </td>
+        </tr>
+        <tr style="height: 2.5rem; width: 100%;">
+          <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
             <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">senha:</span> '.$senha.'
           </td>
         </tr>
@@ -69,7 +74,7 @@ $emailTemplate = '
   </tr>
   <tr>
     <td>
-      <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: "Arial Black", Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
+      <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: '.'Arial Black'.', Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
     </td>
   </tr>
   <tr>

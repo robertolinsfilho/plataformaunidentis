@@ -68,7 +68,7 @@ style="border: 0px solid black; text-align: center; margin: 0 auto; border-radiu
 <tr>
   <tr>
     <td>
-      <h2 style="text-align: center; font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif; margin: 1rem 30px 0 30px;">acesse nosso sistema com os dados a seguir para concluir o cadastro da proposta</h2>
+      <h2 style="text-align: center; font-size: 1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 1rem 30px 0 30px;">acesse nosso sistema com os dados a seguir para concluir o cadastro da proposta</h2>
     </td>
   </tr>
   <!-- <tr>
@@ -104,7 +104,7 @@ style="border: 0px solid black; text-align: center; margin: 0 auto; border-radiu
 </tr>
 <tr>
   <td>
-    <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: "Arial Black", Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
+    <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: '.'Arial Black'.', Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
   </td>
 </tr>
 <tr>
