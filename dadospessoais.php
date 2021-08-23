@@ -40,7 +40,7 @@ ini_set(“display_errors”, 0 );
             display: none;
 
         }
-		.col-md-6,.col-md-5,.col-md-3,.col-md-4{
+		.col-md-6,.col-md-5,.col-md-3,.col-md-4,.col-md-2{
 			background-color:#f6f6f6;
 			padding:8px;
 			border-radius:5px;
@@ -66,16 +66,49 @@ ini_set(“display_errors”, 0 );
       margin-left: -.5rem !important;
     }
 
-    @media screen and (max-device-width: 720px) {
+    #tarjaH4{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+      font-size: 1.4rem;
+    }
+
+    #tarjaH4 span.flexH4{
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem !important;
+      line-height: 1.875rem !important;
+    }
+    
+    @media (max-width: 768px) {
+      #tarjaH4{
+        height: auto;
+        font-size: 1rem;
+      }
+
+      #tarjaH4 span.flexH4{
+        display: flex;
+        align-items: center;
+      }
+
       .inline{
         width:54%;
        
       }
       .inline h4{
         font-size:20px;
-       
       }
     }
+    @media (max-width: 600px){
+      #tarjaH4{
+        height: auto;
+        font-size: 1rem;
+        flex-direction: column;
+      }
+      
+    }
+    
 	</style>
 	
 </head>
@@ -90,7 +123,7 @@ ini_set(“display_errors”, 0 );
 					<div class="row">
 						<div class="col-md-6 col-sm-12" style="background-color: #eeeeee; margin-bottom: .25rem;">
 							<div class="title">
-							<h5 style="font-size:17px;font-weight:bold;width:120%;color:#606060">INCLUIR PROPOSTA | VALOR TOTAL : 00.00 | PLANO :  | DEPENDENTES : 0</h5>
+							<h5 style="font-size:16px;font-weight:bold;width:98vw;color:#606060;">INCLUIR PROPOSTA | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>
 								<BR>
                                     <?php
                                       if(isset($_SESSION['menssagem'])) {
@@ -105,8 +138,8 @@ ini_set(“display_errors”, 0 );
                                     }
                                 ?>
 									<form  method="post" action="dadospessoaissession">
-                             <div class="inline" style="display:-webkit-inline-box">   
-                  <h4 style="color:#606060;padding-top:3px;font-size: 1.25rem;line-height: 1.875rem; ">Escolha o Plano :</h4>
+                  <div class="inline" style="display:-webkit-inline-box">   
+                  <h4 id='inlineH4' style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem; ">Escolha o Plano :</h4>
 								<br>
 								<?php
 							if($_SESSION['cliente'] == 'servidorpublico'){
@@ -114,7 +147,7 @@ ini_set(“display_errors”, 0 );
 									<div class="col-md-10">
 									<div class="form-group">
 										
-										<select style="background-color:#b3b3b3;height: calc(2.2rem + 2px) !important;" name="plano" id="plano"class="custom-select form-control-lg" required>
+										<select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;" name="plano" id="plano"class="custom-select form-control-lg" required>
 										<option >Selecione</option>
 											<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
 											
@@ -129,11 +162,11 @@ ini_set(“display_errors”, 0 );
 									<div class="form-group">
 										
 										<select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;"  name="plano" id="plano" class="custom-select form-control-lg" required>
-										<option value="" >Selecione</option>
-											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
-											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
-											<option value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
-											<option value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
+										  <option valor="R$0.00" value="" selected>Selecione</option>
+											<option valor="R$40.00" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
+											<option valor="R$23.90" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
+											<option valor="R$60.00" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
+											<option valor="R$21.90" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
 										</select>
 										<span id="textinho0"></span>
 									</div>
@@ -147,12 +180,12 @@ ini_set(“display_errors”, 0 );
                                 <div class="col-md-10">
                                     <div class="form-group">
 
-                                        <select style="background-color:#b3b3b3;height: calc(2.2rem + 2px) !important;" name="plano" id="plano" class="custom-select form-control-lg" required>
-                                            <option value="" >Selecione</option>
-                                            <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
-                                            <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
-                                            <option value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
-                                            <option value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
+                                        <select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;" name="plano" id="plano" class="custom-select form-control-lg" required>
+                                            <option valor="R$0.00" value="" >Selecione</option>
+                                            <option valor="R$40.00" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
+                                            <option valor="R$25.90" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
+                                            <option valor="R$66.00" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
+                                            <option valor="R$25.00" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
                                         </select>
 										<span id="textinho0"></span>
                                     </div>
@@ -162,6 +195,19 @@ ini_set(“display_errors”, 0 );
                                 <?php
                             }
 							?>
+              <script>
+                let e = document.querySelector("#plano");
+                let plano = document.querySelector("#qPlano");
+                let valor = document.querySelector("#valorPlano");
+                function show(){
+                  let strPlano = e.options[e.selectedIndex].value;
+                  let strValor = e.options[e.selectedIndex].getAttribute("valor");
+                  plano.innerHTML = strPlano;
+                  valor.innerHTML = strValor;
+                }
+                e.onchange=show;
+                show();
+              </script>
               </div>
 							</div>
 							
@@ -172,270 +218,449 @@ ini_set(“display_errors”, 0 );
 				<!-- Default Basic Forms Start -->
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 divPai" style="padding: 20px 2rem;">
           <div class="inline2" style="display:inline">
-					<div class="clearfix" >
-						<div class="pull-left">
-							<h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS </h4>             
-						</div>
-					</div>
-          <br>
-          <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
-          <div>
-					<div class="row">
-								
-								<div class="col-md-6">
-									<div class="form-group">
-										
-										<input type="text" name="nome" id ="nome" placeholder="Nome Completo*" minlength="10" class="form-control" required>
-										<span id="textinho"></span>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										
-										<input type="text" name="cpf"  placeholder="CPF*" id="cpf"class="form-control"required>
-										<span id="textinho1"></span>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-									
-										<input type="email"placeholder="Email*" id="email" name="email" class="form-control"required>
-										<span id="textinho2"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-									<input type="text" name ="telefone" placeholder="Telefone* " id="telefone" class="form-control" required>
-									<span id="textinho3"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-									<input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-										
-                  <select name="sexo" id="sexo" class="custom-select form-control"required>
-											<option value="">Sexo*</option>
-											<option value="1">Masculino</option>
-											<option value="0">Feminino</option>
-										
-										</select>
-									
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-										<input type="text" class="form-control" name ="rg" minlength="7" maxlength="7" id ="rg"placeholder="RG*"required>
-                    <span id="textinho5"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-										<input type="text" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
-                    <span id="textinho6"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-										<input type="text" class="form-control" id="data"name ="nascimento"placeholder="Data de Nascimento*"required>
-                    <span id="textinho7"></span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-							
-							<div class="col-md-3">
-								<div class="form-group">
-									
-									<input type="text" name="mae" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
-                  <span id="textinho8"></span>
-								</div>
-							</div>
-							<div class="col-md-3">
-									<div class="form-group">
-										
-										<select name="estado" id="estado" class="custom-select form-control"required>
-											<option value="">Estado Civil*</option>
-											<option value="Solteiro">Solteiro</option>
-											<option value="Casado">Casado</option>
-										
-										</select>
-                    <span id="textinho9"></span>
-									</div>
-								</div>
-						
-							<div class="col-md-3">
-								<div class="form-group">
-									
-									<input type="text" id="sus" placeholder="Cartão do SUS" name ="sus" minlength="15" class="form-control">
-								</div>
-							</div>
-							<?php
-							if($_SESSION['cliente'] == 'servidorpublico'){
-                            ?>
-							
-							<div class="col-md-3">
-								<div class="form-group">
-									
-									<input type="text" placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" required>
-								</div>
-							</div>
-							
-							<div class="col-md-3">
-								<div class="form-group">
-									
-									<input type="date" placeholder="Admissao*" name ="admissao" minlength="8"  class="form-control" required>
-								</div>
-							</div>
-							<?php
-							}
-							?>
-						</div>
-            <br>
-						<h4 style="color:#606060;font-weight:bold">ENDEREÇO</h4>
-						<br>
-            <hr style="width: 87%;position: relative;margin-top: -3.5%;margin-left: 14%;height:1px;background-color:#606060;" size = 50>
-						<div class="row">
-							
-								<div class="col-md-3">
-									<div class="form-group">											
-									<input type="text" name="cep" id="cep"class="form-control" placeholder="CEP*"required>
-                  <span id="textinho10"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">											
-									<input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*"required>
-                  <span id="textinho11"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-										<input type="text" class="form-control" id="numero"name ="numero"placeholder="Numero*"required>									</div>
-                    <span id="textinho12"></span>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										
-									<input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required>
-                  <span id="textinho13"></span>
-									</div>
-								</div>
-						
-							</div>
-							
-							<div class="row">
-							
-							<div class="col-md-3">
-								<div class="form-group">
+            <div class="blockInline">
+              <div class="clearfix">
+                <div class="pull-left">
+                  <h4 style="color: #606060; font-weight: bold">DADOS PESSOAIS</h4>
+                </div>
+              </div>
+              <br />
+              <hr
+                style="
+                  width: 80%;
+                  position: relative;
+                  margin-top: -3.5%;
+                  margin-left: 21%;
+                  font-weight: bold;
+                  height: 1px;
+                  background-color: #606060;
+                "
+                size="50"
+              />
+              <div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="nome"
+                        id="nome"
+                        placeholder="Nome Completo*"
+                        minlength="10"
+                        class="form-control"
+                        required
+                      />
+                      <span id="textinho"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="cpf"
+                        placeholder="CPF*"
+                        id="cpf"
+                        class="form-control"
+                        required
+                      />
+                      <span id="textinho1"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="rg"
+                        minlength="7"
+                        maxlength="7"
+                        id="rg"
+                        placeholder="RG*"
+                        required
+                      />
+                      <span id="textinho5"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        minlength="4"
+                        id="emissor"
+                        name="emissor"
+                        placeholder="Orgão Emissor*"
+                        required
+                      />
+                      <span id="textinho6"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <select
+                        name="sexo"
+                        id="sexo"
+                        class="custom-select form-control"
+                        required
+                      >
+                        <option value="">Sexo*</option>
+                        <option value="1">Masculino</option>
+                        <option value="0">Feminino</option>
+                      </select>
+                    </div>
+                  </div>
 
-									<input type="text" name="complemento" placeholder="Complemento" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-3">
-									<div class="form-group">
-										
-									<input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>
-                  <span id="textinho14"></span>
-									</div>
-								</div>
-						
-							<div class="col-md-4">
-								<div class="form-group">
-								
-								<input type="text" name="bairro" id="bairro"class="form-control" placeholder="Bairro*" required>
-                <span id="textinho15"></span>
-								</div>
-							</div>
-							
-						   </div>
-                        <br>
-                        <h4 style="background-color:#4177d0; border-radius: 3px;color: white;padding:2% ">O RESPONSÁVEL FINANCEIRO SERÁ TITULAR DO PLANO? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" style="background-color:#4177d0;border-color:#4177d0;font-size:25px"class="btn btn-danger" >SIM</button>  |<button type="button" style="background-color:#4177d0;border-color:#4177d0;font-size:25px"class="btn btn-danger" onclick="Mudarestado('minhaDiv')"> NÃO</button></h4>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="data"
+                        name="nascimento"
+                        placeholder="Data de Nascimento*"
+                        required
+                      />
+                      <span id="textinho7"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <select
+                        name="estado"
+                        id="estado"
+                        class="custom-select form-control"
+                        required
+                      >
+                        <option value="">Estado Civil*</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Casado">Casado</option>
+                      </select>
+                      <span id="textinho9"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="mae"
+                        id="mae"
+                        placeholder="Mãe*"
+                        minlength="10"
+                        class="form-control"
+                        required
+                      />
+                      <span id="textinho8"></span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="sus"
+                        placeholder="Cartão do SUS"
+                        name="sus"
+                        minlength="15"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row"></div>
 
-                        <div id="minhaDiv">
-                        <br>
-                        <h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS </h4>
-                     
-                            <br>
-                            <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
-                            <div class="row">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        placeholder="Email*"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        required
+                      />
+                      <span id="textinho2"></span>
+                    </div>
+                  </div>
 
-                                <div class="col-md-5">
-                                    <div class="form-group">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Telefone :"
+                        name="fixo"
+                        id="telefone"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="telefone"
+                        placeholder="Telefone* "
+                        id="telefone"
+                        class="form-control"
+                        required
+                      />
+                      <span id="textinho3"></span>
+                    </div>
+                  </div>
 
-                                        <input type="text" name="nometitular" placeholder="Nome Completo*" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
+                  <?php
+                  if($_SESSION['cliente'] == 'servidorpublico'){
+                                ?>
 
-                                        <input type="text" name="cpftitular"  id="cpf1" class="form-control" placeholder="CPF*" >
-                                    </div>
-                                </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Matricula*"
+                        name="matricula"
+                        minlength="3"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-
-                                        <input type="text" name="nascimentotitular" id="data1" class="form-control" placeholder="Data Nascimento*" >
-                                    </div>
-                                </div>
-
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input
+                        type="date"
+                        placeholder="Admissao*"
+                        name="admissao"
+                        minlength="8"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <?php
+                  }
+                  ?>
+                </div>
+              </div>
+            <!--blockInline-->
+            </div>
+                      <div class="blcokInline">
+                        <br />
+                        <h4 style="color: #606060; font-weight: bold">ENDEREÇO</h4>
+                        <br />
+                        <hr
+                          style="
+                            width: 87%;
+                            position: relative;
+                            margin-top: -3.5%;
+                            margin-left: 14%;
+                            height: 1px;
+                            background-color: #606060;
+                          "
+                          size="50"
+                        />
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="cep"
+                                id="cep"
+                                class="form-control"
+                                placeholder="CEP*"
+                                required
+                              />
+                              <span id="textinho10"></span>
                             </div>
-                            <div class="row">
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-
-                                        <select name="estadotitular" class="custom-select form-control">
-                                            <option value="">Estado Civil*</option>
-                                            <option value="Solteiro">Solteiro</option>
-                                            <option value="Casado">Casado</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-
-                                        <select name="sexotitular" class="custom-select form-control">
-                                            <option value="1">Sexo*</option>
-                                            <option value="1">Masculino</option>
-                                            <option value="1">Feminino</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-
-                                        <input type="text" name="maetitular" placeholder="Mãe" minlength="10" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-
-                                        <input type="text" name="sustitular" placeholder="Cartão do SUS" minlength="15" class="form-control">
-                                    </div>
-                                </div>
-
-
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="rua"
+                                name="rua"
+                                placeholder="Rua*"
+                                required
+                              />
+                              <span id="textinho11"></span>
                             </div>
-
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="numero"
+                                name="numero"
+                                placeholder="Numero*"
+                                required
+                              />
+                            </div>
+                            <span id="textinho12"></span>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="uf"
+                                id="uf"
+                                class="form-control"
+                                placeholder="Estado*"
+                                required
+                              />
+                              <span id="textinho13"></span>
+                            </div>
+                          </div>
                         </div>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="complemento"
+                                placeholder="Complemento"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="cidade"
+                                id="cidade"
+                                class="form-control"
+                                placeholder="Ex: joao pessoa*"
+                                required
+                              />
+                              <span id="textinho14"></span>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="bairro"
+                                id="bairro"
+                                class="form-control"
+                                placeholder="Bairro*"
+                                required
+                              />
+                              <span id="textinho15"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--blockInline-->
+
+                      <br>
+                      <h4 id='tarjaH4' style="background-color:#4177d0; border-radius: 3px;color: white;padding:2% ">
+                        <span>O RESPONSÁVEL FINANCEIRO SERÁ TITULAR DO PLANO?</span>
+                        <span class='flexH4'>
+                          <button type="submit" style="background-color:#4177d0;border-color:#4177d0;font-size: 1.4rem;"class="btn btn-danger" >SIM</button> | <button type="button" style="background-color:#4177d0;border-color:#4177d0;font-size: 1.4rem;"class="btn btn-danger" onclick="Mudarestado('minhaDiv')"> NÃO</button>
+                        </span>
+                      </h4>
+
+                    <div id="minhaDiv">
+                      <br />
+                      <h4 style="color: #606060; font-weight: bold">DADOS PESSOAIS</h4>
+
+                      <br />
+                      <hr
+                        style="
+                          width: 80%;
+                          position: relative;
+                          margin-top: -3.5%;
+                          margin-left: 21%;
+                          height: 1px;
+                          background-color: #606060;
+                        "
+                        size="50"
+                      />
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="nometitular"
+                              placeholder="Nome Completo*"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="cpftitular"
+                              id="cpf1"
+                              class="form-control"
+                              placeholder="CPF*"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="nascimentotitular"
+                              id="data1"
+                              class="form-control"
+                              placeholder="Data Nascimento*"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <select name="estadotitular" class="custom-select form-control">
+                              <option value="">Estado Civil*</option>
+                              <option value="Solteiro">Solteiro</option>
+                              <option value="Casado">Casado</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <select name="sexotitular" class="custom-select form-control">
+                              <option value="1">Sexo*</option>
+                              <option value="1">Masculino</option>
+                              <option value="1">Feminino</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="maetitular"
+                              placeholder="Mãe"
+                              minlength="10"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              name="sustitular"
+                              placeholder="Cartão do SUS"
+                              minlength="15"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                         <br>
 						<style>
 						#avanca{

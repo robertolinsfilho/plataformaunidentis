@@ -3,36 +3,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
 ?>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">
     <?php include('include/head.php'); ?>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-        <title>Unidentis</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
-
-        <!-- Favicons -->
-        <link href="assets/img/icon.ico" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-        <!-- Vendor CSS Files -->
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-        <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
 
         <!-- =======================================================
         * Template Name: BizLand - v1.1.0
@@ -40,99 +11,126 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
         * Author: BootstrapMade.com
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
-        <style>
-.modal-header, .btn{
-    background-color:#023bbf
-}
-.modal-title, .close{
-color:white;
-font-family:Poppins;
-}
-h2{
-    font-family:Poppins;
-}
-</style>
-<style>
-
-
-    #input{
-        display: inline-block;
-        background-color: white;
-        border-radius: 30px;
-        border: solid 2px white;
-        padding: 2rem;
-        max-width: 28rem;
-        width: 100%;
-    }
-    #borda{
-        background-color: white;
-        border: solid 2px white;
-        border-radius: 30px;
-        position:absolute
-        
-    }
-    #titulo{
-        margin-top: -3.5rem;
-        background-color: white;
-        width: 100vw;
-        height: 100px;
-        border-radius: 5px;
-        padding-top: 1.5rem;
-        padding-left: 5%;
-    }
-    h1{
-        text-align: left;
-    }
-    img{
-        display: block;
-        max-width: 280px;
-        width: 80%; 
-        margin: 0 auto;
-    }
-    label{
-        display: block;
-        text-align: left;
-        color: #cccc; 
-    }
-    button{
-        display: block;
-        width: 30%;
-    }
-
-    button.close{
-        width: 4rem;
-    }
-
-    body{
-        background-image: url("./assets/img/fundocliente1.png");
-      
-    }
-    #butao{
-       color:#BEBEBE;
-       position: absolute;
-   }
-   #butao:hover{
-       
-       color:blue;
-      
-   }
-   @media(max-width: 360px){
-        #titulo{
-            height: 80px;
+        <style>body{
+            background-image: url(./assets/img/fundocliente1.png);
         }
-        h1{
-            font-size: 2rem;
+        .modal-header, .btn{
+            background-color:#023bbf
+        }
+        .modal-title, .close{
+            color:white;
+            font-family:Poppins;
+        }
+        .modal-header .close{
+            text-align: right;
+            font-size: 2em
         }
 
-        button{
-            width: 100%;
+        .barraTopo {
+            background-color: #FFF;
+            color: #BEBEBE;
+            font-family: Poppins;
+            padding: 1.2rem;
+            font-size: 32px;
+            text-align: initial;
+            text-transform: uppercase;
+        } 
+
+        img{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
-    }
+
+        span {
+            margin-left: 2rem;
+        }
+
+        input, .divPassword {
+            width: 22rem;
+            text-align: initial;
+        }
+
+        input, .divEmail{
+            width: 22rem;
+            text-align: initial;
+        }
+
+        label {
+            font-weight: bolder;
+            font-family: poppins;
+            text-transform: uppercase;
+            color: #BEBEBE;
+        }
+
+        input {
+            border-radius: 5px;
+        }
+
+        a {
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: #023bbf;
+            text-transform: uppercase;
+        }
+
+        .campoCentral {
+            max-width: 470px;
+            margin: 0 auto;
+            padding: 0.5rem 2rem;
+            display: flex;
+            margin-top: 4rem;
+            border-radius: 2rem;
+            flex-direction: column;
+            background-color: #FFF;
+        }
+
+        .campoCentral {
+            display: flex;
+            align-items: center;
+        }
+
+        .divPassword {
+            margin-top: 0.5rem;
+        }
+
+        .divEsqueciSenhaeEntrar {
+            margin-top: 1.0rem;
+        }
+
+        button#btn {
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+        }
+
+        @media screen and (max-width: 720px) {
+            .barraTopo {
+                font-size: 25px;
+            }
+            
+            .campoCentral{
+                max-width: 300px !important;
+            }
+            
+            input, .divPassword {
+                width: 14rem !important;
+                text-align: initial;
+            }
+
+            .divEsqueciSenhaeEntrar {
+                margin-top: 1rem !important;
+            }
+
+            button {
+                margin-left: 0 !important ;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
 
     </style>
     </head>
-
-    <br><br><br><br>
 <body class="text-center">
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -151,7 +149,7 @@ h2{
     </div>
 </div>
 
-<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+<!-- <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
         <div class="contact-info mr-auto">
             <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
@@ -163,28 +161,26 @@ h2{
             <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
         </div>
     </div>
-</div>
+</div> -->
    
 <body lass="text-center">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
-<div id="titulo">
-    <h1 style="color: #BEBEBE;font-family:poppins;"> Área do <span style="color: #BEBEBE;font-family:poppins;">Cliente</span></h2>
-</div>
-<br>
-<div class="container" id="div">
+<div class="container" style='margin: 0; padding: 0; max-width: 100%;'>
     <form action="processa2.php" method="POST" class="form-signin">
-     <div id="back">
-        <div id="azul">
-            <div id="input">
-            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" >
-            <label style="color: #BEBEBE;font-family:poppins;">E-MAIL</label>   
-            <input style="border-radius:5px"type="text" name="email"   class="form-control">
-            <br>
-            <button  style="background-color:#023bbf" type="submit" class="btn btn-primary">Entrar</button>
+        <div class="barraTopo">
+            <span>Área do Cliente</span>
+        </div>
+        <div class="campoCentral">
+            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width='300'>
+            <div class="divPassword">
+                <label>E-MAIL</label>   
+                <input type="text" name="email" class="form-control">
             </div>
-      </div>
-     <div id="space"></div>
+            <div class="divEsqueciSenhaeEntrar">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
     </form>
 </div>
 </div>
