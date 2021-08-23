@@ -8,45 +8,132 @@ $_SESSION['emailsenha'] = $_GET['email'];
 ?>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <?php include('include/head.php'); ?>
 
-        <title>Unidentis</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+        <style>
+        body{
+            background-image: url(./assets/img/fundocliente1.png);
+        }
+        .modal-header, .btn{
+            background-color:#023bbf
+        }
+        .modal-title, .close{
+            color:white;
+            font-family:Poppins;
+        }
+        .modal-header .close{
+            text-align: right;
+            font-size: 2em
+        }
 
-        <!-- Favicons -->
-        <link href="assets/img/icon.ico" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        .barraTopo {
+            background-color: #FFF;
+            color: #BEBEBE;
+            font-family: Poppins;
+            padding: 1.2rem;
+            font-size: 32px;
+            text-align: initial;
+            text-transform: uppercase;
+        } 
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        img{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
 
-        <!-- Vendor CSS Files -->
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        span {
+            margin-left: 2rem;
+        }
 
-        <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        input, .divPassword {
+            width: 22rem;
+            text-align: initial;
+        }
 
-        <!-- =======================================================
-        * Template Name: BizLand - v1.1.0
-        * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        input, .divEmail{
+            width: 22rem;
+            text-align: initial;
+        }
+
+        label {
+            font-weight: bolder;
+            font-family: poppins;
+            text-transform: uppercase;
+            color: #BEBEBE;
+        }
+
+        input {
+            border-radius: 5px;
+        }
+
+        a {
+            margin-top: 2rem;
+        }
+
+        button {
+            background-color: #023bbf;
+            text-transform: uppercase;
+        }
+
+        .campoCentral {
+            max-width: 470px;
+            margin: 0 auto;
+            padding: 0.5rem 2rem;
+            display: flex;
+            margin-top: 4rem;
+            border-radius: 2rem;
+            flex-direction: column;
+            background-color: #FFF;
+        }
+
+        .campoCentral {
+            display: flex;
+            align-items: center;
+        }
+
+        .divPassword {
+            margin-top: 0.5rem;
+        }
+
+        .divEsqueciSenhaeEntrar {
+            margin-top: 1.0rem;
+        }
+
+        button#btn {
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+        }
+
+        @media screen and (max-width: 720px) {
+            .barraTopo {
+                font-size: 25px;
+            }
+            
+            .campoCentral{
+                max-width: 300px !important;
+            }
+            
+            input, .divPassword {
+                width: 14rem !important;
+                text-align: initial;
+            }
+
+            .divEsqueciSenhaeEntrar {
+                margin-top: 1rem !important;
+            }
+
+            button {
+                margin-left: 0 !important ;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+        </style>
 
     </head>
 
-    <br><br><br><br>
 <body class="text-center">
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -67,7 +154,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
         </div>
     </div>
 </div>
-<div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+<!-- <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
         <div class="contact-info mr-auto">
             <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
@@ -82,184 +169,29 @@ $_SESSION['emailsenha'] = $_GET['email'];
             <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
         </div>
     </div>
-</div>
-<style>
+</div> -->
 
-.modal-header, .btn{
-    background-color:#023bbf
-}
-.modal-title, .close{
-color:white;
-font-family:Poppins;
-}
-h2{
-    font-family:Poppins;
-}
-
-
-    #input{
-        background-color: white;
-        margin-left: -16%;
-        height: 400px;
-        width: 450px;
-        border-radius: 30px;
-        padding-top: 40%;
-        padding-left: 10%;
-        padding-right: 10%;
-        border: solid 2px white;
-    }
-    #borda{
-        background-color: white;
-        width: 500px;
-        height: 78px;
-        border: solid 2px white;
-        border-radius: 30px;
-        margin-left: -4.45%;
-        margin-top: -5%;
-        position:absolute
-        
-    }
-    #titulo{
-        background-color: white;
-        height: 100px;
-        width: 361%;
-        margin-left: -131%;
-        border-radius: 5px;
-        margin-top:-2%
-    }
-    h1{
-        margin-left: -65%;
-        padding-top:2%;
-    }
-    img{
-       margin-left:-10%;
-       margin-top:-9%;
-       position:absolute; 
-    }
-    label{
-        color: #cccc; 
-        margin-left:-88%;
-    }
-    button{
-        margin-left:60%;
-        margin-top:3%; 
-        width:30%;
-    }
-    #div{
-        width:30%;
-    }
-    body{
-        background-image: url("./assets/img/fundocliente1.png");
-      
-    }
-    #butao{
-       margin-left:-1%;
-       color:#BEBEBE;
-       position: absolute;
-   }
-   #butao:hover{
-       
-       color:blue;
-      
-   }
-    @media(max-width: 574px){
-        #titulo{
-        background-color: white;
-        width:270px;
-        margin-left:-120%;
-        margin-top:-10%
-    }
-    h1{
-        margin-left:1%;
-        padding-top: 30px;
-        font-size:30px;
-    }
-    img{
-        margin-left:-25%;
-        width: 50%;
-        margin-top:-19%;
-        position:absolute;
-    }
-    label{
-        padding-left:15%
-    }
-    #input{
-        background-color: white;
-        margin-left:-125%;
-        height: 320px;
-        width: 275px;
-        border-radius: 10px;
-        padding-top: 100%;
-    }
-   #butao{
-       margin-left:-5%;
-       margin-top: 10%;
-       padding-top:20%;
-       position: absolute;
-   }
-    #div{
-        background: url("../img/BANNERPRINCIPAL16.png");
-    }
-    #btn {
-        margin-top:30%;
-        margin-right:-1%;
-    }
-    }
-
-    </style>
-<body class="text-center">
-<div class="container" style="width: 30%;">
+<div class="container" style='margin: 0; padding: 0; max-width: 100%;'>
     <form action="updatenovasenha" method="POST" class="form-signin">
-    <div id="titulo">
-     <h1 style="color: #BEBEBE;font-family:poppins;"> Redefinir <span style="color: #BEBEBE;font-family:poppins;">Senha</span></h2>
-    
-     </div>
-     <br>
-     
-     <div id="back">
-        <div id="azul">
-            
-            <div id="input">
-            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="265" >
-    
-          <br>
-          <label style="color: #BEBEBE;font-family:poppins;">SENHA</label>  
-          <input   style="border-radius:5px;" type="password" name="senha"  class="form-control">
-          <a id="butao"style="margin-top:2%;" href="renamesenha">Esqueci minha senha</a> 
-      <button id="btn" style="background-color:#023bbf"type="submit" class="btn btn-primary">Entrar</button>
+        <div class="barraTopo"> 
+            <span>Redefinir Senha</span>
+        </div>     
+        <div class="campoCentral">
+                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="300" >
+                <div class='divPassword'>
+                    <label>SENHA</label>  
+                    <input type="password" name="senha"  class="form-control">
+                </div>
+                <div class="divEsqueciSenhaeEntrar">
+                    <button id="btn" type="submit" class="btn btn-primary">Atualizar</button>
+                </div>        
         </div>
-    
-    
-         
-      </div>
-     <div id="space"></div>
     </form>
 </div>
 </body>
-
-
 <!-- Modal -->
 
-
-
-<script src="assets/js/main.js"></script>
-
-<!-- Vendor JS Files -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-<script src="assets/vendor/counterup/counterup.min.js"></script>
-<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="assets/vendor/venobox/venobox.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
-
+<?php include('include/script.php'); ?>
 
 <script>
     $(document).ready(function(){
