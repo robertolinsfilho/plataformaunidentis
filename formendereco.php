@@ -105,7 +105,7 @@ if(empty($_SESSION['cpf'])){
  
      <br><br><br>
      <form action="envioendereco" method="POST">
-       <div class="row">
+       <div id ="centro" class="row">
       
          <div class="col">
             <label style="color: blue; font-family:'Poppins', sans-serif;  " for="LabelNome">CEP:</label>
