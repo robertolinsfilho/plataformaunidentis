@@ -61,7 +61,7 @@ $emailTemplate = '
         </tr>
         <tr style="height: 3rem; align-items: center; width: 100%;">
           <td>
-            <a href="'.$link.'" style="text-decoration: none; color: none;font-family: Arial, Helvetica, sans-serif;text-transform: uppercase; font-weight: 500; padding: 7px 14px; border-radius: .5rem; border: none; background-color: #023bbf; color: #ffffff; line-height: 1.15rem; font-size: .7rem; cursor: pointer; box-shadow: 0 0 .15rem black; text-align: center;">Clique Aqui</a>
+            <a href="'.strip_tags($link).'" style="text-decoration: none; color: none;font-family: Arial, Helvetica, sans-serif;text-transform: uppercase; font-weight: 500; padding: 7px 14px; border-radius: .5rem; border: none; background-color: #023bbf; color: #ffffff; line-height: 1.15rem; font-size: .7rem; cursor: pointer; box-shadow: 0 0 .15rem black; text-align: center;">Clique Aqui</a>
           </td>
         </tr>
       </table>
@@ -69,7 +69,7 @@ $emailTemplate = '
   </tr>
   <tr>
     <td>
-      <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: '.'Arial Black'.', Arial, Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
+      <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: "Arial Black", Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
     </td>
   </tr>
   <tr>
