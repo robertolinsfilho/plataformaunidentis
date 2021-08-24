@@ -16,22 +16,26 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 if($row_usuario['etapa'] == 1){
-    $link = 'unidentisdigital.com.br/formpessoafisica?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formpessoafisica?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 2){
-    $link = 'unidentisdigital.com.br/formdadospessoais?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formdadospessoais?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 3 ){
-    $link = 'unidentisdigital.com.br/formenviofotos?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formenviofotos?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 4){
-    $link = 'unidentisdigital.com.br/formendereco?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formendereco?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 5 && $row_usuario['plano'] == 'UNIDENTISVIPBOLETO'){
-    $link = 'unidentisdigital.com.br/titular?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/titular?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 5){
-    $link = 'unidentisdigital.com.br/titularcartao?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/titularcartao?cpf='.$cpf;
 }elseif($row_usuario['etapa'] == 6){
-    $link = 'unidentisdigital.com.br/login2';
+    $link = 'https://unidentisdigital.com.br/login2';
 }
 
-
+$email = strip_tags($row_usuario['email']);
+$sql = $conexao->query("SELECT * FROM `usuario` WHERE usuario = '{$email}'");
+foreach($sql as $value) {
+  $senha = strip_tags($value['senha']);
+} 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -47,6 +51,7 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
+    $mail->CharSet    = 'UTF-8';                                // setting character encoding
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'ti@unidentis.com.br';                     // SMTP username
@@ -58,29 +63,158 @@ try {
     $mail->setFrom('ti@unidentis.com.br', 'Plano Unidentis');
     $mail->addAddress( $row_usuario['email']  , 'Unidentis');     // Add a recipient
              // Name is optional
-  
-
  
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Plano Unidentis';
-    $mail->Body    = '<body style="background-color:white">
+    $mail->Body    = '
+    <table
+    align="center"
+    border="0"
+    cellpadding="0"
+    cellspacing="0"
+    width="600"
+    style="border: 0px solid black; text-align: center; margin: 0 auto; border-radius: 1rem; overflow: hidden; box-shadow: 0 0px 8px #000000;"
+  >
+    <td
+      align="center"
+      style="
+        background: url('.'https://www.unidentis.com.br/assets/img/bannerExemploEmail.png'.');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 600px;
+        height: 8rem;
+      "
+      ;
+    >
+    </td>
+    <tr>
+      <tr>
+        <td>
+          <h2 style="text-align: center; font-size: 1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 1rem 30px 0 30px;">ACESSE NOSSO SISTEMA CLICANDO NO BOTÃO A SEGUIR PARA CONCLUIR O CADASTRO DA PROPOSTA</h2>
+        </td>
+      </tr>
+      <td bgcolor="#ffffff" style="padding: 1rem 30px">
+        <table
+          style="background-color: #f5f5f5; border-radius: 1rem; box-shadow: 0 0 .15rem black; font-family: Arial, Helvetica, sans-serif; margin: 0 auto; padding: .5rem 0;"
+          border="0"
+          cellpadding="0"
+          cellspacing="0"
+          width="90%"
+        >
+          <tr style="height: 2.5rem; width: 100%;">
+            <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
+              <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">email:</span> '.$email.'
+            </td>
+          </tr>
+          <tr style="height: 2.5rem; width: 100%;">
+            <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
+              <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">senha:</span> '.$senha.'
+            </td>
+          </tr>
+          <tr style="height: 3rem; align-items: center; width: 100%;">
+            <td>
+              <a href="'.strip_tags($link).'" style="text-decoration: none; color: none;font-family: Arial, Helvetica, sans-serif;text-transform: uppercase; font-weight: 500; padding: 7px 14px; border-radius: .5rem; border: none; background-color: #023bbf; color: #ffffff; line-height: 1.15rem; font-size: .7rem; cursor: pointer; box-shadow: 0 0 .15rem black; text-align: center;">Clique Aqui</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: '.'Arial Black'.', Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#023bbf">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td
+              width="75%"
+              style="
+                color: #f6f6f6;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                padding: 5px 2%;
+                text-align: left;
+              "
+            >
+              &copy; Unidentis Assistência Odontológica
+            </td>
+            <td align="right" style="padding: 5px 2%">
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <a href="https://www.unidentis.com.br/" target="_blank">
+                      <img
+                        src="https://www.unidentis.com.br/assets/img/Vectorsite.png"
+                        alt="Twitter"
+                        height="20"
+                        style="display: block"
+                        border="0"
+                      />
+                    </a>
+                  </td>
+                  <td style="font-size: 0; line-height: 0" width="20">
+                    &nbsp;
+                  </td>
+                  <td>
+                    <a href="https://www.instagram.com/unidentisoficial/" target="_blank">
+                      <img
+                        src="https://www.unidentis.com.br/assets/img/Vectorinsta.png"
+                        alt="Facebook"
+                        height="20"
+                        style="display: block"
+                        border="0"
+                      />
+                    </a>
+                  </td>
+                  <td style="font-size: 0; line-height: 0" width="20">
+                    &nbsp;
+                  </td>
+                  <td>
+                    <a href="https://www.facebook.com/unidentisoficial/" target="_blank">
+                      <img
+                        src="https://www.unidentis.com.br/assets/img/Vectorface.png"
+                        alt="Facebook"
+                        height="20"
+                        style="display: block"
+                        border="0"
+                      />
+                    </a>
+                  </td>
+                  <td style="font-size: 0; line-height: 0" width="20">
+                    &nbsp;
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  ' ;
     
-    <img style="width:100%"src="http://unidentisdigital.com.br/assets/img/PROPOSTACADASTRADA2.png"> 
-    <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
-    <h2 style="text-align:center;align-text:center;color:#404bb5" >FINALIZAR PROPOSTA</h2>
-    <h3 style="text-align:center;align-text:center;color:#404bb5">ACESSE NOSSO SISTEMA  CLICANDO NO BOTAO A SEGUIR  PARA CONCLUIR O CADASTRO DA PROPOSTA</h3>
+    //'<body style="background-color:white">
+    
+    // <img style="width:100%"src="http://unidentisdigital.com.br/assets/img/PROPOSTACADASTRADA2.png"> 
+    // <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
+    // <h2 style="text-align:center;align-text:center;color:#404bb5" >FINALIZAR PROPOSTA</h2>
+    // <h3 style="text-align:center;align-text:center;color:#404bb5">ACESSE NOSSO SISTEMA  CLICANDO NO BOTAO A SEGUIR  PARA CONCLUIR O CADASTRO DA PROPOSTA</h3>
    
    
     
-    </div>
-    <a href="'.$link.'"><button style="margin-left:18%;width:65%;border-color:blue;border-radius:7px;height:8%;font-size:18px;text-color:#f5f5f5">Clique aqui </button></a> <br><br></body>';
+    // </div>
+    // <a href="'.$link.'"><button style="margin-left:18%;width:65%;border-color:blue;border-radius:7px;height:8%;font-size:18px;text-color:#f5f5f5">Clique aqui </button></a> <br><br></body>';
    
 
     $mail->send();
     	
 //Resultado aleatório com 8 caraceters
-echo "<script>window.location.assign('index.php')</script>";
+    echo "<script>window.location.assign('index.php')</script>";
+    exit;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     echo 'Erro no Envio do E-mail contate o administrador ';

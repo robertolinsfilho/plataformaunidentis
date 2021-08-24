@@ -51,7 +51,7 @@ $_SESSION['estado1'] = $_POST['produtos'];
 
 </head>
 
-<body>
+<body style="background-color:#f6f6f6 ">
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,7 +139,7 @@ $_SESSION['estado1'] = $_POST['produtos'];
 
 
   <section id="pessoafisica"  >
-    <div class="container" data-aos="zoom-out" data-aos-delay="200">
+    <div class="container" style='margin-bottom: 3.5rem;' data-aos="zoom-out" data-aos-delay="200">
       <h3><span>A unidentis</span></h3>
       <h5>A Unidentis oferece soluções adequadas às necessidades de cada 
         cliente, sempre a um custo compatível e por meio de contratos 
@@ -194,50 +194,40 @@ $_SESSION['estado1'] = $_POST['produtos'];
               contratado, sendo este prazo
                contado da data de aceitação da Proposta de Adesão, que está entendida data de início de vigência do beneficiário.</h5>   
                 <img  src="assets/img/tabela.PNG"/>
-                
+                <div style="margin-top:-10%" id="1"></div>
               </div>
 </section>
 
 <br><br>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<div style="align-items: center;margin-left:30%;"class="form-group col-md-5">
-<form method="post"  style="padding:50px;background-color:aliceblue;border-radius:5%"action="servidorpublico?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <div class="form-group col-md-5 pessoafisicaPlano">
+    <form method="post"  style="width: 90%; margin: 0 auto;border-radius:1rem;padding-bottom: .25rem;background-color: #E7E7E7;box-shadow: 0 0 5px #000000;" action="servidorpublico?vendedor=<?php echo $_SESSION['vendedor1']?>#pricing2">
+        <div class="topoazul">Escolha Seu Plano</div>
+        <br>
+        <div class="container">
           <h4>Tipo de Plano:</h4>
-					<br>
-					<select class="form-control" id="1"name='fabricante'>
-					<option value='1'>Servidor Publico</option>				
-					</select>
-
-					<br>
-
-					<h4>Órgão Averbador </h4>
-          
-					<br>
-
-			  	<select name='produtos' class="form-control">
-					</select>
-					
-					
-				<div class="hidden produtos-f1">
-				<option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
-				<option value="PREFEITURA MUNICIPAL DE CABEDELO">PREFEITURA MUNICIPAL DE CABEDELO</option>
-				<option value="SEMOB">SEMOB</option>
-				<option value="EMLUR">EMLUR</option>
-				<option value="SECRETARIA DE SAUDE DO MUNICIPIO">SECRETARIA DE SAUDE DO MUNICIPIO</option>
-				<option value="FUNDAC">FUNDAC</option>
-				<option value="PREFEITURA MUNICIPAL DE SANTA RITA">PREFEITURA MUNICIPAL DE SANTA RITA</option>
-				</div>
-
-				<div class="hidden produtos-f2">
-				
-				
-				
-				</div>
-
-      
-                <input style ="position:relative;margin-top:15%;margin-left:40%"class="btn btn-primary"type="submit" value="Selecionar"/>
-                </form>
-              </div>
+          <br>
+          <select class="form-control" name='fabricante' style="margin-bottom: 1rem;">
+            <option value='1'>Servidor Publico</option>				
+          </select>
+          <br>
+          <h4>Órgão Averbador </h4>
+          <br>
+          <select name='produtos' class="form-control">
+          <div class="hidden produtos-f1">
+          <option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
+          <option value="PREFEITURA MUNICIPAL DE CABEDELO">PREFEITURA MUNICIPAL DE CABEDELO</option>
+          <option value="SEMOB">SEMOB</option>
+          <option value="EMLUR">EMLUR</option>
+          <option value="SECRETARIA DE SAUDE DO MUNICIPIO">SECRETARIA DE SAUDE DO MUNICIPIO</option>
+          <option value="FUNDAC">FUNDAC</option>
+          <option value="PREFEITURA MUNICIPAL DE SANTA RITA">PREFEITURA MUNICIPAL DE SANTA RITA</option>
+          </div>
+          </select>
+        </div>
+        <input style ="display:block; text-align: center; margin: 5% auto;background-color:#284ebf"class="btn btn-primary"type="submit" value="Selecionar"/>
+    </form>
+  </div>
 
 <?php
 if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
@@ -418,10 +408,10 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
 <form  action="plano" method="POST">
     <div  class="row">
 
-     <div style="margin-left: 35%; width:30%" data-aos="fade-up" data-aos-delay="400">
+    <div style="margin: 0 auto;" data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
         <div class="box">
        
-          <h3 style="padding:18px">UNIDENTIS SERVIDOR PUBLICO </h3>
+          <h3 style="padding:20px">UNIDENTIS SERVIDOR PUBLICO </h3>
           <h4><sup>R$</sup>18<span> / Mês</span></h4>
           <ul>
             <li><h5>GR. MUNICÍPIOS PB</h5></li>
