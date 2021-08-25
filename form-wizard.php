@@ -119,6 +119,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 			
 		}
     </style>
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 

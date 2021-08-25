@@ -70,7 +70,7 @@ if(isset($row_usuario['email']) && $num == 2 ){
                 </button>
             </div>
             <div class="modal-body">
-                Vendedor Já Cadastrado
+                <h4>Vendedor já Cadastrado</h4>
             </div>
             <div class="modal-footer">
               <a href="cadastrocorretora">  <button type="button"  class="btn btn-secondary" >Fechar</button></a>

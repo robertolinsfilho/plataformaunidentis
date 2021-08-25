@@ -93,6 +93,7 @@ class CreditCard
             $('#myModal').modal('show');
         });
     </script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -107,7 +108,7 @@ class CreditCard
                 </button>
             </div>
             <div class="modal-body">
-                <h2 style="text-align: center">Numero do Cartão Invalido</h2>
+                <h4 style="text-align: center">Numero do Cartão Inválido</h4>
             </div>
             <div class="modal-footer">
                <a  href="areacliente"  class="btn btn-secondary" type="button" >fechar</a>
@@ -148,6 +149,8 @@ if($brand ==38 or $brand == 41){
             $('#myModal').modal('show');
         });
     </script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
 </head>
 
 <body>
@@ -162,7 +165,7 @@ if($brand ==38 or $brand == 41){
                 </button>
             </div>
             <div class="modal-body">
-                <h2 style="text-align: center">Bandeira do Cartão Invalida</h2>
+                <h4 style="text-align: center">Bandeira do Cartão Inválida</h4>
             </div>
             <div class="modal-footer">
                <a  href="areacliente"  class="btn btn-secondary" type="button" >fechar</a>

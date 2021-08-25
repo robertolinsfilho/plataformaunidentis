@@ -90,12 +90,12 @@ h2{
             </div>
             <div class="modal-body">
             <img src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
-                <h3>Por favor, digite o código que foi enviado para <?php echo $_SESSION['emaildependente'] ?></h3>
+                <h4>Por favor, digite o código que foi enviado para <?php echo $_SESSION['emaildependente'] ?></h4>
                 <form method="post"  action="confirmarcodigo">
                <?php if($x != 1 && isset($_POST['codigo'])) {?>
                
                 <div class="alert alert-warning" role="alert">
-                Código incorreto tente novamente!!!
+                <h4>Código incorreto tente novamente!!!</h4>
                 </div>
                 <?php }?>
                 <br>

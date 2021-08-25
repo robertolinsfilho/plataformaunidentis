@@ -65,15 +65,15 @@ if($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])){
 			background-color:#284ebf ;
 			color:white;
 			font-family: Poppins;
-			border-radius: 21px 21px 0px 0px;
+			/* border-radius: 21px 21px 0px 0px; */
 		}
 		.modal-title{
 			color:white;
 		}
-		.modal-content{
+		/* .modal-content{
 			border-radius:21px;
 			background-color:#f6f6f6;
-		}
+		} */
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -83,6 +83,7 @@ if($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])){
             $('#myModal').modal('show');
         });
     </script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body class="text-center">
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,7 +96,7 @@ if($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])){
                 </button>
             </div>
             <div class="modal-body">            
-             <h4 style="color:#606060;font-weight:bold;text-align: center;"> CPF ou Email Já está vinculado a um plano</h4>
+             <h4 style="color:#606060;font-weight:bold;text-align: center;"> CPF ou Email já está vinculado a um plano</h4>
             </div>
             <div class="modal-footer">
                 <a href="cadastrogeral" type="button" class="btn btn-secondary" >Fechar</a>

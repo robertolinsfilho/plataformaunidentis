@@ -95,7 +95,7 @@ if($row_usuario2['cpf'] == ''){
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
     * Template Name: BizLand - v1.1.0

@@ -144,18 +144,13 @@ $plano = $_SESSION['plano'];
 	h2{
 		font-family:Poppins;
 	}
-	form{
-		width:80%;
-		margin-left:10%
-	}
-	.modal-content{
-		border-radius:10px !important;
-	}
+
 	button{
 		background-color:#284ebf ;
 	}
 		
 	</style>
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>
@@ -285,115 +280,168 @@ if($_SESSION['cliente'] === 'servidorpublico'){
 
                
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" style="font-weight:bold;font-size:18px"id="exampleModalLabel">UNIDENTIS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5
+          class="modal-title"
+          style="font-weight: bold; font-size: 18px"
+          id="exampleModalLabel"
+        >
+          UNIDENTIS
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-      <div style="background-color:#f6f6f6;"class="modal-body">
-	  <h5 style="color:#606060;font-weight: bold;margin-left:22%;">CADASTRAR DEPENDENTE</h4>
-	  <BR>
+      <div class="modal-body">
+        <h4 style="color: #606060; font-weight: bold;">
+          CADASTRAR DEPENDENTE
+        </h4>
+        <br />
         <form method="POST" action="cadastrodependentessession">
-        <div class="row">
-		<link href="assets/css/style.css" rel="stylesheet">
-<script type="text/javascript">
-$("#telefone, #celular").mask("(00) 00000-0000");
-</script>
-<script type="text/javascript">
-     $("#cpf").mask("000.000.000-00");
-</script>
- <script type="text/javascript">
-    $("#data").mask("00-00-0000", {reverse: true});
-</script>
-								
-								<div class="col-md-6">
-									<div class="form-group">											
-									<select class="form-control" name="parentesco">
-									<option value="3">Conjuge</option>
-									<option value="4">Filho</option>
-									<option value="8">Pai/Mae</option>
-									<option value="6">Enteado</option>
-									<option value="10">Outro</option>
-									</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">											
-									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo"required>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										
-										<input type="text" class="form-control"  name ="cpfdependente"placeholder="CPF" id="cpf" >
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										
-									<input type="text" name="datadependente"  class="form-control " id="data" placeholder="Data de Nascimento" required>
-									</div>
-								</div>
-						
-							</div>
-							<div class="row">
-						
-							<div class="col-md-6">
-									<div class="form-group">											
-									<select class="form-control" name="estadodependente">
-									<option value="Solteiro">Solteiro</option>
-									<option value="Casado">Casado</option>
-									<option value="Viúvo">Viúvo</option>
-									<option value="Separado">Separado</option>
-									<option value="Divorciado">Divorciado</option>
-									<option value="Relação Estavel">DRelação Estavel</option>
-									</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">											
-									<select class="form-control" name="sexodependentes">
-									<option value="1">Masculino</option>
-									<option value="0">Feminino</option>
-								
-									</select>
-									</div>
-								</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									
-									<input type="text" class="form-control" name ="maedependente"placeholder="Mãe"required>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									
-								<input type="text" name="cnsdependente"  class="form-control" placeholder="Cartão do sus" >
-								</div>
-							</div>
-					
-						</div>					
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" style="background-color:#606060;"class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-		</form> 
+          <div class="row">
+            <link href="assets/css/style.css" rel="stylesheet" />
+            <script type="text/javascript">
+              $("#telefone, #celular").mask("(00) 00000-0000");
+            </script>
+            <script type="text/javascript">
+              $("#cpf").mask("000.000.000-00");
+            </script>
+            <script type="text/javascript">
+              $("#data").mask("00-00-0000", { reverse: true });
+            </script>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <select class="form-control" name="parentesco">
+                  <option value="3">Conjuge</option>
+                  <option value="4">Filho</option>
+                  <option value="8">Pai/Mae</option>
+                  <option value="6">Enteado</option>
+                  <option value="10">Outro</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="nomedependente"
+                  class="form-control"
+                  placeholder="Nome Completo"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="cpfdependente"
+                  placeholder="CPF"
+                  id="cpf"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="datadependente"
+                  class="form-control"
+                  id="data"
+                  placeholder="Data de Nascimento"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <select class="form-control" name="estadodependente">
+                  <option value="Solteiro">Solteiro</option>
+                  <option value="Casado">Casado</option>
+                  <option value="Viúvo">Viúvo</option>
+                  <option value="Separado">Separado</option>
+                  <option value="Divorciado">Divorciado</option>
+                  <option value="Relação Estavel">DRelação Estavel</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <select class="form-control" name="sexodependentes">
+                  <option value="1">Masculino</option>
+                  <option value="0">Feminino</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="maedependente"
+                  placeholder="Mãe"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="cnsdependente"
+                  class="form-control"
+                  placeholder="Cartão do sus"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</div>		
+</div>
+		
 		
 				
 					

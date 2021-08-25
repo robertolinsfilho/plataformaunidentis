@@ -68,6 +68,7 @@ if($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])){
             $('#myModal').modal('show');
         });
     </script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 
@@ -82,7 +83,7 @@ if($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])){
                 </button>
             </div>
             <div class="modal-body">
-             CPF ou Email Já está vinculado a um plano
+             <h4>CPF ou Email Já está vinculado a um plano</h4>
             </div>
             <div class="modal-footer">
                 <a href="dadospessoais" type="button" class="btn btn-secondary" >Fechar</a>

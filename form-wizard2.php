@@ -43,6 +43,7 @@ $row_usuario8 = mysqli_fetch_assoc($resultado_usuario8);
             color:  #0099ff;
         }
     </style>
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>

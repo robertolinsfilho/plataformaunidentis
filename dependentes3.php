@@ -208,7 +208,7 @@ Confirmar Proposta
      <!-- Template Main JS File -->
      <script src="assets/js/main.js"></script>
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg" style='max-width: 530px !important;' role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cadastrar Dependentes</h5>
@@ -284,18 +284,8 @@ Confirmar Proposta
         </div>
         </div>
         <br>
-     
-        
-           
-     
-              
-     
-       
-      
-    
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
         <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
       </div>
@@ -312,9 +302,9 @@ Confirmar Proposta
          
       </div>
       <div class="modal-body">
-      <img style="margin-left:27%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+      <img style="margin: 0 auto;" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
             <br><br>
-                <h4 style="text-align: center">Um e-mail foi enviado para <?php echo $_SESSION['emaildependente']?> com o código de confirmação da inclusão que deverá ser informado no campo abaixo</h3>
+                <h4 style="text-align: center">Um e-mail foi enviado para <?php echo $_SESSION['emaildependente']?> com o código de confirmação da inclusão que deverá ser informado no campo abaixo</h4>
                 <input class="form-control" name="codigo" title="Digite o Código"placeholder="Digite o Código"> 
       </div>
       <div class="modal-footer">

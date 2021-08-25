@@ -35,6 +35,7 @@ $data1 = $data_atual - $data;
             $('#myModal').modal('show');
         });
     </script>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 
@@ -49,7 +50,7 @@ $data1 = $data_atual - $data;
                 </button>
             </div>
             <div class="modal-body">
-            Dependente maior de 18 anos por favor inserir CPF
+            <h5 style='font-weight: 600; color: #606060;'>Dependente maior de 18 anos, por favor inserir CPF</h5>
             </div>
             <div class="modal-footer">
                 <a href="cadastrodependentes" type="button" class="btn btn-secondary" >Fechar</a>

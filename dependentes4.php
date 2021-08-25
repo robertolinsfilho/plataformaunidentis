@@ -101,9 +101,9 @@ echo $cpf;
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+            <img style="margin: 0 auto;" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
             <br>
-                <h2>Maior de 18 anos e Obrigatorio CPF </h2>
+                <h5>Maior de 18 anos é obrigatorio CPF </h5>
             </div>
             <div class="modal-footer">
                <a href="dependentes3"> <button type="button" class="btn btn-secondary" >Fechar</button></a>

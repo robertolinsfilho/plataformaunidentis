@@ -58,14 +58,14 @@ button{
 
           <h4>Incluir Proposta</h4>
           <br />
-          <h5 style="color: #606060; font-weight: bold">Tipo de Cliente:</h5>
+          <h5 style="color: #606060; font-weight: bold; text-align: left;">Tipo de Cliente:</h5>
           <br />
           <select id="change" class="form-control" name="fabricante">
             <option value="1">Pessoa Fisica</option>
             <option value="2">Servidor Publico</option>
           </select>
           <br />
-          <h5 style="color: #606060; font-weight: bold">Localidade:</h5>
+          <h5 style="color: #606060; font-weight: bold; text-align: left;">Localidade:</h5>
           <br />
           <select name="produtos" class="form-control"></select>
 

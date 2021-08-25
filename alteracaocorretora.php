@@ -68,7 +68,7 @@ if(!isset($row_usuario['email']) && $num == 2 ){
                 </button>
             </div>
             <div class="modal-body">
-                Corretora Já Cadastrada
+                <h4>Corretora Já Cadastrada</h4>
             </div>
             <div class="modal-footer">
               <a href="cadastrocorretora">  <button type="button"  class="btn btn-secondary" >Fechar</button></a>

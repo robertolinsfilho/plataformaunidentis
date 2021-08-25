@@ -58,7 +58,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="./assets/css/style.css" rel="stylesheet">
 
         <!-- =======================================================
         * Template Name: BizLand - v1.1.0
@@ -81,7 +81,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
                 </button>
             </div>
             <div class="modal-body">
-                Número De Cartão Invalido
+                <h4>Número De Cartão Inválido</h4>
             </div>
             <div class="modal-footer">
                 <a href="titularcartao"><button type="button"  class="btn btn-secondary" >Fechar</button></a>

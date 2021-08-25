@@ -68,7 +68,7 @@ h2{
             <div class="modal-body">
             <br>
             <img  src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
-               <h2> <?php echo $_SESSION['sms'] ?></h2>
+               <h4> <?php echo $_SESSION['sms'] ?></h4>
             </div>
             <div class="modal-footer">
                <a href="incluirdependentes"> <button type="button" class="btn btn-secondary" >Fechar</button></a>
