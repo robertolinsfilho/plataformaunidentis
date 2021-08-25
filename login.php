@@ -85,7 +85,6 @@
             }
 
             button {
-                margin-left: 4rem;
                 margin-bottom: 0.5rem;
             }
 
@@ -151,7 +150,6 @@
                     </div>
 
                     <div class="divEsqueciSenhaeEntrar">
-                        <a class="butao" href="renamesenha">Esqueci minha senha</a>
                         <button type="submit" class="btn btn-primary">Entrar</button>
                     </div>
                 </div>
