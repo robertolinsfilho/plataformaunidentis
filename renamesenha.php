@@ -14,7 +14,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
         <style>body{
             background-image: url(./assets/img/fundocliente1.png);
         }
-        .modal-header, .btn{
+        /* .modal-header, .btn{
             background-color:#023bbf
         }
         .modal-title, .close{
@@ -24,7 +24,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
         .modal-header .close{
             text-align: right;
             font-size: 2em
-        }
+        } */
 
         .barraTopo {
             background-color: #FFF;
@@ -130,6 +130,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
         }
 
     </style>
+    <link rel="stylesheet" href="./assets/css/style.css">
     </head>
 <body class="text-center">
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,7 +142,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">Insira seu E-mail</div>
+            <div class="modal-body"><h4>Insira seu E-mail</h4></div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>
             </div>

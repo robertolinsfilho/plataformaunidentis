@@ -131,7 +131,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
             }
         }
         </style>
-
+        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
 
 <body class="text-center">
@@ -145,7 +145,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
                 </button>
             </div>
             <div class="modal-body">
-               DIGITE A NOVA SENHA
+               <h4 style="font-size: 1.15rem;">DIGITE A NOVA SENHA</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary" >Fechar</button>

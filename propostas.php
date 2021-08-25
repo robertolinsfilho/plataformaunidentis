@@ -27,100 +27,114 @@ font-family:Poppins;
 h2{
     font-family:Poppins;
 }
-form{
-	width:80%;
-	margin-left:10%
-}
-.modal-content{
-	border-radius:10px !important;
-}
 button{
 	background-color:#284ebf ;
 }
 </style>
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-					<h4 style="color:white">Unidentis</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						
-						<h4 class="modal-title" id="myModalLabel"></h4>
-                    </div>
-                    <div class="modal-body">
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-					
-					<form action="session.php" method="POST"> 
-
-					<h4 style="margin-left:27%;color:#606060;font-weight: bold;">Incluir Proposta</h4>
-					<br>
-					<h5 style="color:#606060;font-weight: bold;">Tipo de Cliente:</h4>
-					<br>
-					<select id="change" class="form-control" name='fabricante'>
-					<option value='1'>Pessoa Fisica</option>
-					<option value='2'>Servidor Publico</option>
-				
-					</select>
-					<br>
-					<h5 style="color:#606060;font-weight: bold;">Localidade:</h4>
-					<br>
-				<select name='produtos' class="form-control">
-					</select>
-					
-					
-				<div class="hidden produtos-f1">
-				
-					<option value='PB'>Grupo de Municipios PB</option>
-					<option value='RN'>Grupo de Municipios RN</option>
-				</div>
-
-				<div class="hidden produtos-f2">
-				<option value="PREFEITURA MUNICIPAL DE JOAO PESSSOA">PREFEITURA MUNICIPAL DE JOAO PESSOA</option>
-				<option value="PREFEITURA MUNICIPAL DE SANTA RITA">PREFEITURA MUNICIPAL DE SANTA RITA</option>
-				<option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
-				<option value="PREFEITURA MUNICIPAL DE CABEDELO">PREFEITURA MUNICIPAL DE CABEDELO</option>
-				<option value="SEMOB">SEMOB</option>
-				<option value="EMLUR">EMLUR</option>
-				<option value="SECRETARIA DE SAUDE DO MUNICIPIO">SECRETARIA DE SAUDE DO MUNICIPIO</option>
-				<option value="FUNDAC">FUNDAC</option>				
-				
-				
-				</div>
-				<br>
-				<div id="mostra">
-				<h4>Margem Resevada?</h4>
-				<br>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="sim">
-					<label class="form-check-label" for="flexRadioDefault1">
-						SIM
-					</label>
-				</div>
-				<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault" id="nao">
-				<label class="form-check-label" for="flexRadioDefault1">
-					NAO
-				</label>
-				</div>
-				<div id="msg">
-				<h6>LIGAR PARA 3044-3020, COM CPF E MATRÍCULA EM MÃOS!</h6>
-				</div>
-				</div>
-			
-				<br>
-				
-
-
-	<br>
-					<button class="btn btn-primary" style="background-color:#284ebf ;margin-left:70%"type="submit" id="prosseguir">Prosseguir</button>
-                    </div>
-					</form>
-                    <div class="modal-footer">
-                        
-                    </div>
-                </div>
-            </div>
+<link rel="stylesheet" href="./assets/css/style.css">
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="session.php" method="POST">
+        <div class="modal-header">
+          <h4 style="color: white">Unidentis</h4>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+          <h4>Incluir Proposta</h4>
+          <br />
+          <h5 style="color: #606060; font-weight: bold">Tipo de Cliente:</h5>
+          <br />
+          <select id="change" class="form-control" name="fabricante">
+            <option value="1">Pessoa Fisica</option>
+            <option value="2">Servidor Publico</option>
+          </select>
+          <br />
+          <h5 style="color: #606060; font-weight: bold">Localidade:</h5>
+          <br />
+          <select name="produtos" class="form-control"></select>
+
+          <div class="hidden produtos-f1">
+            <option value="PB">Grupo de Municipios PB</option>
+            <option value="RN">Grupo de Municipios RN</option>
+          </div>
+
+          <div class="hidden produtos-f2">
+            <option value="PREFEITURA MUNICIPAL DE JOAO PESSSOA">
+              PREFEITURA MUNICIPAL DE JOAO PESSOA
+            </option>
+            <option value="PREFEITURA MUNICIPAL DE SANTA RITA">
+              PREFEITURA MUNICIPAL DE SANTA RITA
+            </option>
+            <option value="GOVERNO DO ESTADO PB">GOVERNO DO ESTADO PB</option>
+            <option value="PREFEITURA MUNICIPAL DE CABEDELO">
+              PREFEITURA MUNICIPAL DE CABEDELO
+            </option>
+            <option value="SEMOB">SEMOB</option>
+            <option value="EMLUR">EMLUR</option>
+            <option value="SECRETARIA DE SAUDE DO MUNICIPIO">
+              SECRETARIA DE SAUDE DO MUNICIPIO
+            </option>
+            <option value="FUNDAC">FUNDAC</option>
+          </div>
+          <br />
+          <div id="mostra">
+            <h4>Margem Resevada?</h4>
+            <br />
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="sim"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                SIM
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="nao"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                NAO
+              </label>
+            </div>
+            <div id="msg">
+              <h6>LIGAR PARA 3044-3020, COM CPF E MATRÍCULA EM MÃOS!</h6>
+            </div>
+          </div>
+
+          <br />
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit" id="prosseguir">
+            Prosseguir
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!DOCTYPE html>
 <html>
 <head>

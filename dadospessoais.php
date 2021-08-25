@@ -677,7 +677,6 @@ ini_set(“display_errors”, 0 );
 								}
 								
 						</style>
-                        <br><br>
 						   <input onclick="validar()" class="btn btn-success" value="Avançar"type="submit" id="avanca" >
 					</form>
 					

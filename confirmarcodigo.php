@@ -30,6 +30,8 @@ if($x == 1){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <head>
+        <?php include('include/head.php'); ?>
+
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -87,7 +89,7 @@ h2{
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin-left:%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+            <img src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
                 <h3>Por favor, digite o código que foi enviado para <?php echo $_SESSION['emaildependente'] ?></h3>
                 <form method="post"  action="confirmarcodigo">
                <?php if($x != 1 && isset($_POST['codigo'])) {?>

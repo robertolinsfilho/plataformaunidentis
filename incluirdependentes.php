@@ -78,11 +78,11 @@ $_SESSION['vendedor1'] = $_GET['vendedor'];
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="redecredenciada.php">Rede Credenciada</a></li>
-          <li><a href="querosercliente.php">Quero Ser Cliente</a></li>
-          <li><a href="carteirinha.php">Carteira Digital</a></li>
-          <li><a href="segundavia.php">Boleto</a></li>
+          <li class="active"><a href="https://www.unidentis.com.br/">Home</a></li>
+          <li><a href="https://www.unidentis.com.br/redecredenciada">Rede Credenciada</a></li>
+          <li><a href="https://www.unidentis.com.br/querosercliente">Quero Ser Cliente</a></li>
+          <li><a href="https://www.unidentis.com.br/carteirinha">Carteira Digital</a></li>
+          <li><a href="https://www.unidentis.com.br/segundavia">Boleto</a></li>
           
           <li><a href="#contact">Contato</a></li>
 
@@ -92,36 +92,35 @@ $_SESSION['vendedor1'] = $_GET['vendedor'];
     </div>
   </header><!-- End Header -->
  
-  <section id="hero"  class="d-flex align-items-center">
-    
+  <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-    <?php
-         if(isset($_SESSION['msg'])){
+      <?php
+        if(isset($_SESSION['msg'])){
 
-         echo $_SESSION['msg'];
-         unset( $_SESSION['msg']);
-       
-         }
-         ?>
-      <h1>Bem Vindo a <span>Unidentis</span>
-      </h1>
-      <br>
-      <form action="check" method="POST">
-      <div class="col-5">
-      <h2>Digite o CPF :</h2>  <br> 
-        <input type="text"  id="cpf" class="form-control" placeholder="CPF" name="cpf"/>
-        <br> 
-     
-        <button class="btn btn-primary" type="submit">Incluir</button>
-   
-          </div>
-
-         
-      </form>
+        echo $_SESSION['msg'];
+        unset( $_SESSION['msg']);
       
-    
+        }
+        ?>
+      <h1>Bem Vindo a <span style="display: inline">Unidentis</span></h1>
+      <form action="check" method="POST">
+        <div class="col-5" style='margin-left:-1rem;'>
+        <br><br>
+          <h2>Digite o CPF :</h2>
+          <input
+            type="text"
+            id="cpf"
+            class="form-control"
+            placeholder="CPF"
+            name="cpf"
+          />
+          <br>
+          <button class="btn btn-primary" type="submit">Incluir</button>
+        </div>
+      </form>
     </div>
   </section>
+
 </body>
 <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

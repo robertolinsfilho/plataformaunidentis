@@ -1,95 +1,28 @@
-<div id="minhaDiv">
-  <br />
-  <h4 style="color: #606060; font-weight: bold">DADOS PESSOAIS</h4>
+<section id="hero" class="d-flex align-items-center">
+  <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <?php
+       if(isset($_SESSION['msg'])){
 
-  <br />
-  <hr
-    style="
-      width: 80%;
-      position: relative;
-      margin-top: -3.5%;
-      margin-left: 21%;
-      height: 1px;
-      background-color: #606060;
-    "
-    size="50"
-  />
-  <div class="row">
-    <div class="col-md-5">
-      <div class="form-group">
+       echo $_SESSION['msg'];
+       unset( $_SESSION['msg']);
+     
+       }
+       ?>
+    <h1>Bem Vindo a <span style="display: inline">Unidentis</span></h1>
+    <br />
+    <form action="check" method="POST">
+      <div class="col-5">
+        <h2>Digite o CPF :</h2>
         <input
           type="text"
-          name="nometitular"
-          placeholder="Nome Completo*"
+          id="cpf"
           class="form-control"
+          placeholder="CPF"
+          name="cpf"
         />
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <input
-          type="text"
-          name="cpftitular"
-          id="cpf1"
-          class="form-control"
-          placeholder="CPF*"
-        />
-      </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="form-group">
-        <input
-          type="text"
-          name="nascimentotitular"
-          id="data1"
-          class="form-control"
-          placeholder="Data Nascimento*"
-        />
+        <button class="btn btn-primary" type="submit">Incluir</button>
       </div>
-    </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <select name="estadotitular" class="custom-select form-control">
-          <option value="">Estado Civil*</option>
-          <option value="Solteiro">Solteiro</option>
-          <option value="Casado">Casado</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <select name="sexotitular" class="custom-select form-control">
-          <option value="1">Sexo*</option>
-          <option value="1">Masculino</option>
-          <option value="1">Feminino</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="form-group">
-        <input
-          type="text"
-          name="maetitular"
-          placeholder="Mãe"
-          minlength="10"
-          class="form-control"
-        />
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <input
-          type="text"
-          name="sustitular"
-          placeholder="Cartão do SUS"
-          minlength="15"
-          class="form-control"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+</section>

@@ -2771,3 +2771,80 @@ background:#2d2d2d;}
     font-size: 1.25rem;
   }
 }
+
+/* 
+*Modal
+*/
+div.modal-content{
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+div.modal-footer .btn, div.modal-body .btn{
+  font-size: 1.25rem;
+  line-height: 1.85rem;
+  padding: .5rem 1.5rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+div.modal-content div.modal-header h4, div.modal-content div.modal-header h5{
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+div.modal-content div.modal-header button.close{
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+
+div.modal-content div.modal-header, div.modal-content .btn{
+  background-color: #004dc3 !important;
+  color: #ffffff;
+}
+
+div.modal-content div.modal-body h4{
+  color:#606060;font-weight: bold;
+  text-align: center;
+}
+
+div.modal-body, div.modal-footer{
+  background-color: #eeeeee;
+  padding: .75rem 1rem;
+  border: none;
+}
+
+div.modal-footer{
+  padding-top: 0rem;
+  border: none;
+}
+
+div.modal-body{
+  min-height: 5rem;
+}
+
+/* parei aqui */
+
+div.modal-body h3{
+  color: #4b4b4b;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  padding: .5rem 1rem;
+}
+
+div.modal-body input{
+  padding: 1.25rem .5rem;
+}
+
+@media (min-width: 576px){
+  .modal-dialog {
+      max-width: 440px !important;
+      margin: 1.75rem auto;
+  }
+}

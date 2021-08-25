@@ -53,7 +53,7 @@ session_start();
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGOUNIDENTIS222.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="300">
             <br>
                 <h2><?php echo $_SESSION['msg2'] ?></h2>
             </div>

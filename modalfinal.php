@@ -64,7 +64,7 @@ h2{
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+            <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%" alt="logo da unidentis" width="300">
             <br>
             <br>
                 <h2><?php echo $_SESSION['msg1'] ?></h2>

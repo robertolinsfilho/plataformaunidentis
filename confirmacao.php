@@ -67,7 +67,7 @@ h2{
             </div>
             <div class="modal-body">
             <br>
-            <img  src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-2%;margin-left:0%"alt="" width="220" height="120">
+            <img  src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
                <h2> <?php echo $_SESSION['sms'] ?></h2>
             </div>
             <div class="modal-footer">
