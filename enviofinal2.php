@@ -57,7 +57,7 @@ $sql3 = "INSERT INTO  endereco (cpf,cep,rua,numero,bairro,cidade,estado,compleme
 VALUES ( '$cpf','$cep','$rua','$numero', '$bairro','$cidade','$uf','$complemento')";
 
 $sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$_SESSION[senhaemail]')";
-$_SESSION['msg1'] = '<h2>PROPOSTA CADASTRADA</h2><br><h4>FOI ENVIADO UM EMAIL PARA O RESPONSÁVEL FINANCEIRO COM AS INSTRUÇÕES DE PAGAMENTO</h4><br><h4>ESTA PROPOSTA PERMANECERÁ "EM (NOVAS)" ATÉ QUE O CLIENTE CONCLUIR A PROPOSTA PELO EMAIL"</h4>';
+$_SESSION['msg1'] = '<h4>PROPOSTA CADASTRADA</h4><br><h5>FOI ENVIADO UM EMAIL PARA O RESPONSÁVEL FINANCEIRO COM AS INSTRUÇÕES DE PAGAMENTO</h5><br><h5>ESTA PROPOSTA PERMANECERÁ "EM (NOVAS)" ATÉ QUE O CLIENTE CONCLUIR A PROPOSTA PELO EMAIL"</h5>';
 if ($conexao->query($sql) === TRUE and $conexao->query($sql2) === true and $conexao->query($sql3) === TRUE and $conexao->query($sql4) === TRUE) {
 
 

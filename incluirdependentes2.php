@@ -40,7 +40,6 @@
     <!-- Template Main CSS File -->
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
     <?php
     include_once("conexao.php");
     session_start();
@@ -95,6 +94,8 @@
             color: #106eea;
         }
     </style>
+  <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 
 

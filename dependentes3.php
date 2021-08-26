@@ -41,7 +41,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="./assets/css/style.css" rel="stylesheet">
   <script type="text/javascript">
           $("#telefone, #celular").mask("(00) 00000-0000");
         </script>
@@ -161,17 +161,17 @@ $preco = $preco * $cont;
 
 #resumo{
 	margin-left:0%;
-	background-color:aliceblue;
+  width: 40%;
+	background-color: #007bff;
+  color: #f6f6f6;
 	padding:20px;
 }
 </style>
 <div id="resumo">
-              <h2 style="font-family: 'Poppins', sans-serif;font-size:26px">Resumo da Proposta :</h2>
+              <h2 style="font-family: 'Poppins', sans-serif;font-size:26px; color: #ffffff;">Resumo da Proposta :</h2>
 							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px">Valor Por Dependente  R$:<?php echo $preco2?></h3>
-							<hr>
-							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px">Taxa de Implementação: R$:00,00</h3>
-							<hr>
-							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px">Total: R$:<?php echo $preco?></h3>
+							<hr style='background-color: #ffffff;'>
+							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px">Total R$<?php echo $preco?></h3>
 							
 							</div>
 

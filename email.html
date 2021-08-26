@@ -1,161 +1,458 @@
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5
-          class="modal-title"
-          style="font-weight: bold; font-size: 18px"
-          id="exampleModalLabel"
-        >
-          UNIDENTIS
-        </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+<?php 
+error_reporting(0);
+ini_set(“display_errors”, 0 );
+require __DIR__ . '/vendor/autoload.php';
 
-      <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"
-      ></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .drop-zone {
+        width: 300px;
+        height: 200px;
+        padding: 20px;
+        display: inline;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        color: #023bbf;
+        border: 4px solid #606060;
+        border-radius: 10px;
+        float: left;
+        margin-left: 2%;
+        margin-top: 2%;
+        overflow: auto;
+      }
 
-      <div style="background-color: #f6f6f6" class="modal-body">
-        <h4 style="color: #606060; font-weight: bold; margin-left: 22%">
-          CADASTRAR DEPENDENTE
-        </h4>
+      .drop-zone--over {
+        border-style: solid;
+      }
+
+      .drop-zone__input {
+        display: none;
+      }
+
+      .drop-zone__thumb {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #cccccc;
+        background-size: cover;
+        position: relative;
+      }
+
+      .drop-zone__thumb::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 0;
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.75);
+        font-size: 14px;
+        text-align: center;
+      }
+      #top {
+        margin-left: 3%;
+      }
+      #h5 {
+        margin-left: 2%;
+        margin-top: 3.5%;
+      }
+
+      input,
+      select {
+        border: 1px solid #606060 !important;
+        background-color: #b3b3b3;
+        margin-left: 5%;
+        text-align: center;
+      }
+
+      .fundoazul {
+        background-color: #4177d0;
+      }
+      #submit {
+        margin-left: 85%;
+        margin-top: 2%;
+        background-color: #4177d0;
+      }
+
+      .flexLabel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+      }
+
+      .flexLabel .labelInput {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        padding-right: 1rem;
+        font-weight: bold;
+        color: #606060;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        line-height: 1.875rem;
+      }
+
+      .flexLabel hr {
+        position: relative;
+        top: -0.15rem;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #606060;
+      }
+
+      @media screen and (max-device-width: 720px) {
+        .text-blue1 {
+          margin-left: 5%;
+          margin-top: 4%;
+          position: absolute;
+          font-size: 18px;
+          color: #3284f1;
+          width: 30%;
+          height: 100px;
+          background-color: #cccccc;
+          text-align: center;
+          padding-top: 30px;
+          border-radius: 5px;
+        }
+        .text-blue2 {
+          margin-left: 5%;
+          margin-top: 4%;
+          position: absolute;
+          font-size: 16px;
+          color: #3284f1;
+          width: 30%;
+          height: 100px;
+          background-color: #cccccc;
+          text-align: center;
+          padding-top: 20px;
+          border-radius: 5px;
+        }
+        #submit {
+          margin-left: 11%;
+          width: 80%;
+          margin-top: 5%;
+        }
+        .drop-zone {
+          max-width: 350px;
+          height: 200px;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          font-family: "Quicksand", sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          cursor: pointer;
+          color: #cccccc;
+          border: 2px solid #606060;
+          border-radius: 10px;
+          margin-left: 2%;
+          margin-top: 1%;
+          position: relative;
+          overflow: auto;
+        }
+        #top {
+          width: 70%;
+          margin-left: 5%;
+          margin-top: 10%;
+        }
+        .brand-logo {
+          margin-top: -15%;
+        }
+        #h5 {
+          margin-left: 10%;
+          margin-top: 7%;
+        }
+        .inline {
+          width: 50%;
+        }
+      }
+    </style>
+
+    <?php include('include/head.php'); ?>
+  </head>
+  <body>
+    <?php include('include/header.php'); ?>
+    <?php include('include/sidebar.php'); ?>
+
+    <style></style>
+    <div style="background-color: #eeeeee !important" class="main-container">
+      <div style="width: 96%; padding-left: 2%" class="min-height-200px">
+        <div class="page-header">
+          <div class="row">
+            <!-- <?php echo '<h5 id="h5" style="font-size: .9rem;width:98vw;margin-bottom: .25rem;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?>  -->
+            <div
+              class="inline"
+              style="
+                display: -webkit-inline-box;
+                margin-left: 2%;
+                margin-top: 1.5%;
+              "
+            >
+              <h4
+                id="h4"
+                style="
+                  color: #606060;
+                  padding-top: 2px;
+                  font-size: 1rem;
+                  line-height: 1.5rem;
+                "
+              >
+                Escolha o Plano :
+              </h4>
+              <input
+                id="plano"
+                class="form-control"
+                style="
+                  margin-left: 1rem;
+                  background-color: #b3b3b3;
+                  height: calc(2rem + 2px) !important;
+                "
+                value="<?php echo $_SESSION['plano']?>"
+                readonly
+              />
+              <br />
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="title"></div>
+              <br />
+            </div>
+          </div>
+        </div>
         <br />
-        <form method="POST" action="cadastrodependentessession">
-          <div class="row">
-            <link href="assets/css/style.css" rel="stylesheet" />
-            <script type="text/javascript">
-              $("#telefone, #celular").mask("(00) 00000-0000");
-            </script>
-            <script type="text/javascript">
-              $("#cpf").mask("000.000.000-00");
-            </script>
-            <script type="text/javascript">
-              $("#data").mask("00-00-0000", { reverse: true });
-            </script>
+        <!-- Default Basic Forms Start -->
+        <div
+          style="background-color: #f6f6f6 !important; margin-left: 1%"
+          class="pd-20 bg-white border-radius-4 box-shadow mb-30"
+        >
+          <div class="flexLabel">
+            <label class="labelInput">Incluir Arquivos</label>
+            <hr />
+          </div>
+          <br />
+          <div id="branco"></div>
 
-            <div class="col-md-6">
-              <div class="form-group">
-                <select class="form-control" name="parentesco">
-                  <option value="3">Conjuge</option>
-                  <option value="4">Filho</option>
-                  <option value="8">Pai/Mae</option>
-                  <option value="6">Enteado</option>
-                  <option value="10">Outro</option>
-                </select>
-              </div>
+          <form
+            method="POST"
+            action="enviofotos.php"
+            enctype="multipart/form-data"
+          >
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 11%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">RG FRENTE</div></span
+              >
+              <input
+                type="file"
+                name="arquivo10[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="nomedependente"
-                  class="form-control"
-                  placeholder="Nome Completo"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="cpfdependente"
-                  placeholder="CPF"
-                  id="cpf"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="datadependente"
-                  class="form-control"
-                  id="data"
-                  placeholder="Data de Nascimento"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <select class="form-control" name="estadodependente">
-                  <option value="Solteiro">Solteiro</option>
-                  <option value="Casado">Casado</option>
-                  <option value="Viúvo">Viúvo</option>
-                  <option value="Separado">Separado</option>
-                  <option value="Divorciado">Divorciado</option>
-                  <option value="Relação Estavel">DRelação Estavel</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <select class="form-control" name="sexodependentes">
-                  <option value="1">Masculino</option>
-                  <option value="0">Feminino</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="maedependente"
-                  placeholder="Mãe"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="cnsdependente"
-                  class="form-control"
-                  placeholder="Cartão do sus"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-          </div>
-        </form>
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 11%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">RG VERSO</div></span
+              >
+              <input
+                type="file"
+                name="arquivo1[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
+            </div>
+
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 11%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">CPF</div></span
+              >
+              <input
+                type="file"
+                name="arquivo2[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
+            </div>
+
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 7%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">COMPROVANTE DE RESIDÊNCIA</div></span
+              >
+              <input
+                type="file"
+                name="arquivo3[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
+            </div>
+
+            <?php if( $_SESSION['plano'] != 'UNIDENTISVIPBOLETO'){
+                      ?>
+
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 11%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">CARTÃO</div></span
+              >
+              <input
+                type="file"
+                name="arquivo4[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
+            </div>
+            <?php }?>
+
+            <div class="drop-zone">
+              <span style="color: white" class="drop-zone__prompt"
+                ><i
+                  style="font-size: 3.5rem; padding: 11%; color: #606060"
+                  class="fa fa-download"
+                ></i
+                ><br />
+                <div class="fundoazul">OUTRO</div></span
+              >
+              <input
+                type="file"
+                name="arquivo5[]"
+                multiple="multiple"
+                class="drop-zone__input"
+                required
+              />
+            </div>
+            <br />
+
+            <br /><br />
+
+            <input
+              name="SendCadImg"
+              type="submit"
+              id="submit"
+              class="btn btn-success"
+              value="Avançar"
+            />
+          </form>
+        </div>
+        <?php include('include/footer.php'); ?>
       </div>
+
+      <?php include('include/script.php'); ?>
+      <script>
+        document
+          .querySelectorAll(".drop-zone__input")
+          .forEach((inputElement) => {
+            const dropZoneElement = inputElement.closest(".drop-zone");
+
+            dropZoneElement.addEventListener("click", (e) => {
+              inputElement.click();
+            });
+
+            inputElement.addEventListener("change", (e) => {
+              if (inputElement.files.length) {
+                updateThumbnail(dropZoneElement, inputElement.files[0]);
+              }
+            });
+
+            dropZoneElement.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              dropZoneElement.classList.add("drop-zone--over");
+            });
+
+            ["dragleave", "dragend"].forEach((type) => {
+              dropZoneElement.addEventListener(type, (e) => {
+                dropZoneElement.classList.remove("drop-zone--over");
+              });
+            });
+
+            dropZoneElement.addEventListener("drop", (e) => {
+              e.preventDefault();
+
+              if (e.dataTransfer.files.length) {
+                inputElement.files = e.dataTransfer.files;
+                updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+              }
+
+              dropZoneElement.classList.remove("drop-zone--over");
+            });
+          });
+
+        /**
+         * Updates the thumbnail on a drop zone element.
+         *
+         * @param {HTMLElement} dropZoneElement
+         * @param {File} file
+         */
+        function updateThumbnail(dropZoneElement, file) {
+          let thumbnailElement =
+            dropZoneElement.querySelector(".drop-zone__thumb");
+
+          // First time - remove the prompt
+          if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+            dropZoneElement.querySelector(".drop-zone__prompt").remove();
+          }
+
+          // First time - there is no thumbnail element, so lets create it
+          if (!thumbnailElement) {
+            thumbnailElement = document.createElement("div");
+            thumbnailElement.classList.add("drop-zone__thumb");
+            dropZoneElement.appendChild(thumbnailElement);
+          }
+
+          thumbnailElement.dataset.label = file.name;
+
+          // Show thumbnail for image files
+          if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+              thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+            };
+          } else {
+            thumbnailElement.style.backgroundImage = null;
+          }
+        }
+      </script>
     </div>
-  </div>
-</div>
+  </body>
+</html>

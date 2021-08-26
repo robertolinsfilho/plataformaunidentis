@@ -434,7 +434,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
           </div>
 
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" id="prosseguir">Cadastrar</button>
           </div>
         </form>
       </div>

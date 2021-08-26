@@ -2780,12 +2780,17 @@ div.modal-content{
   overflow: hidden;
 }
 
-div.modal-footer .btn, div.modal-body .btn{
-  font-size: 1.25rem;
-  line-height: 1.85rem;
-  padding: .5rem 1.5rem;
+div.modal-footer a, div.modal-footer .btn, div.modal-body .btn{
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: .5rem 1rem;
   border-radius: 1rem;
   text-transform: uppercase;
+  margin: 0 auto;
+}
+
+div.modal-footer .btn#prosseguir, div.modal-body .btn#prosseguir{
+  margin: 0;
   margin-left: auto;
 }
 
@@ -2830,7 +2835,6 @@ div.modal-body{
   min-height: 5rem;
 }
 
-/* parei aqui */
 
 div.modal-body h3{
   color: #4b4b4b;

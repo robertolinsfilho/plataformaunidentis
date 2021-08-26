@@ -266,7 +266,7 @@ if( isset($resultado['mensagem'])){
 
             </div>
             <div class="modal-footer">
-                <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" >Acessar</button></a>
+                <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" id="prosseguir">Acessar</button></a>
 
             </div>
         </div>
@@ -478,8 +478,6 @@ if($row_usuario4['cpf_titular'] != $row_usuario4['cpf'] ){
             ?>
              <div  id="resumo">
 							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Plano Dental : R$:<?php echo $preco?></h3>
-							<hr>
-							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Taxa de Implementação: R$:00,00</h3>
 							<hr>
                             <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Dependentes :<?php echo $cont2?></h3>
 							<hr>

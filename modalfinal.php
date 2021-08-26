@@ -67,7 +67,7 @@ h2{
             <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%" alt="logo da unidentis" width="300">
             <br>
             <br>
-                <h2><?php echo $_SESSION['msg1'] ?></h2>
+                <?php echo $_SESSION['msg1'] ?>
             </div>
             <div class="modal-footer">
                <a href="index"> <button type="button" class="btn btn-primary" >Fechar</button></a>

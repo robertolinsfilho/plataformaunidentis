@@ -1,0 +1,42 @@
+.col-md-6,
+.col-md-5,
+.col-md-3,
+.col-md-4,
+.col-md-2 {
+  background-color: #f6f6f6;
+  padding: 8px;
+  border-radius: 5px;
+}
+label {
+  color: #606060;
+}
+input,
+select {
+  border: 1px solid #606060 !important;
+
+  background-color: #b3b3b3;
+}
+#resumo {
+  margin-left: 0%;
+  background-color: #4177d0;
+  padding: 20px;
+}
+#submit {
+  background-color: #3284f1;
+  margin-left: 80%;
+  width: 20%;
+}
+@media screen and (max-device-width: 720px) {
+  .inline {
+    width: 50%;
+  }
+  #submit {
+    background-color: #3284f1;
+    margin-left: 14%;
+    margin-top: 5%;
+    width: 76%;
+  }
+  #resumo {
+    width: 80%;
+  }
+}

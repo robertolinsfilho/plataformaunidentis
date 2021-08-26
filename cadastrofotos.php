@@ -69,17 +69,16 @@ require __DIR__ . '/vendor/autoload.php';
 }
 #h5{
   margin-left:2%;
-  margin-top:4%;
+  margin-top:3.5%;
 }
 
 input, select{
     	border: 1px solid #606060 !important; 
-      
-    	background-color:#b3b3b3
-		;margin-left:5%;
-		text-align:center;
-    
-    }
+    	background-color:#b3b3b3;
+      margin-left:5%;
+		  text-align:center;
+}
+
 .fundoazul{
   background-color: #4177d0 ;
 }
@@ -165,7 +164,6 @@ margin-left: 2%;
 </style>
 
 	<?php include('include/head.php'); ?>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
 
 </head>
@@ -178,16 +176,15 @@ margin-left: 2%;
 <style>
 
 </Style>
-	<div  style="background-color: #f6f6f6 !important;" class="main-container">
+	<div  style="background-color: #eeeeee !important;" class="main-container">
 		
 			<div style="width: 96%;padding-left: 2%;" class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
-         
-          <?php echo '<h5 id="h5" style="font-size:17px;font-weight:bold;width:120%;color:#606060">INCLUIR PROPOSTA | VALOR TOTAL : '.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
-          <div class="inline" style="display:-webkit-inline-box;margin-left:2%;margin-top:1%">
-					<h4 id="h4"style="color:#606060;padding-top:7px; ">Escolha o Plano :</h4>
-					<input id ="plano" class="form-control" style="background-color:#b3b3b3" value="<?php echo $_SESSION['plano']?>" readonly>
+          <?php echo '<h5 id="h5" style="font-size: .9rem;width:98vw;margin-bottom: .25rem;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+          <div class="inline" style="display:-webkit-inline-box;margin-left:2%;margin-top:1.5%">
+					<h4 id="h4"style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem; ">Escolha o Plano :</h4>
+					<input id ="plano" class="form-control" style="margin-left: 1rem;background-color:#b3b3b3;height: calc(2rem + 2px) !important;" value="<?php echo $_SESSION['plano']?>" readonly>
 					<br>
 	        </div>
           <div class="col-md-6 col-sm-12">
@@ -202,7 +199,7 @@ margin-left: 2%;
 				</div>
         <br>
 				<!-- Default Basic Forms Start -->
-				<div  style="background-color: #ededed !important;" class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+				<div  style="background-color: #f6f6f6 !important; margin-left: 1%;" class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				<div class="inline" style="display:inline">
         <div class="clearfix">
 						<div class="pull-left">
@@ -222,25 +219,25 @@ margin-left: 2%;
                     <form method="POST" action="enviofotos.php" enctype="multipart/form-data" >
                    
                     <div class="drop-zone">
-                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
+                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 11%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
                         <input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input" required>
                     </div>
                     
                     
                     <div class="drop-zone">
-                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG VERSO</div></span>
+                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 11%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul"  >RG VERSO</div></span>
                         <input type="file" name="arquivo1[]"  multiple="multiple" class="drop-zone__input" required>
                     </div>
                     
                    
                     <div class="drop-zone">
-                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >CPF</div></span>
+                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 11%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul" >CPF</div></span>
                         <input type="file" name="arquivo2[]"  multiple="multiple" class="drop-zone__input" required>
                     </div>
                     
                    
                     <div class="drop-zone">
-                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 7%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >COMPROVANTE DE RESIDÊNCIA</div></span>
+                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 7%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul"  >COMPROVANTE DE RESIDÊNCIA</div></span>
                         <input type="file" name="arquivo3[]"  multiple="multiple" class="drop-zone__input" required>
                     </div>
                   
@@ -248,14 +245,14 @@ margin-left: 2%;
                       ?>
                    
                     <div class="drop-zone">
-                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >CARTÃO</div></span>
+                        <span style="color:white"  class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 11%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul"  >CARTÃO</div></span>
                         <input type="file" name="arquivo4[]"  multiple="multiple" class="drop-zone__input" required>
                     </div>
                       <?php }?>  
                     
                   
                     <div class="drop-zone">
-                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >OUTRO</div></span>
+                        <span style="color:white" class="drop-zone__prompt"><i style="font-size: 3.5rem;padding: 11%;color:#606060" class="fa fa-download"></i><br><div class="fundoazul" >OUTRO</div></span>
                         <input type="file" name="arquivo5[]"  multiple="multiple" class="drop-zone__input" required>
                     </div>
                     <br>

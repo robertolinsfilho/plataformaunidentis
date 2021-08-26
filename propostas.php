@@ -56,17 +56,15 @@ button{
         <div class="modal-body">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-          <h4>Incluir Proposta</h4>
+          <h4 style='margin-top: 1rem;'>Incluir Proposta</h4>
           <br />
-          <h5 style="color: #606060; font-weight: bold; text-align: left;">Tipo de Cliente:</h5>
-          <br />
+          <h5 style="color: #606060; font-weight: bold; text-align: left; line-height: 2.5rem;">Tipo de Cliente:</h5>
           <select id="change" class="form-control" name="fabricante">
             <option value="1">Pessoa Fisica</option>
             <option value="2">Servidor Publico</option>
           </select>
           <br />
-          <h5 style="color: #606060; font-weight: bold; text-align: left;">Localidade:</h5>
-          <br />
+          <h5 style="color: #606060; font-weight: bold; text-align: left; line-height: 2.5rem;">Localidade:</h5>
           <select name="produtos" class="form-control"></select>
 
           <div class="hidden produtos-f1">
@@ -122,8 +120,6 @@ button{
               <h6>LIGAR PARA 3044-3020, COM CPF E MATRÍCULA EM MÃOS!</h6>
             </div>
           </div>
-
-          <br />
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" type="submit" id="prosseguir">
@@ -188,10 +184,12 @@ button{
 
 	$('#change').change(function(){
 	var valor = $('#change').val();
- if(valor = '1'){
+ if(valor == 2){
   $('#mostra').css('display','block')
-	
+ } else{
+  $('#mostra').css('display','none')
  }
+
 });
 
  $('#nao').click(function(){

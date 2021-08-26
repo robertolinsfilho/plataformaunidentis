@@ -31,8 +31,8 @@ ini_set(“display_errors”, 0 );
 			$("#data").mask("00-00-0000", {reverse: true});
 			$("#cpf").mask("000.000.000-00");
 			$("#cpf1").mask("000.000.000-00");
-            $("#data1").mask("00-00-0000", {reverse: true});
-            $("#data2").mask("00-00-0000", {reverse: true});
+      $("#data1").mask("00-00-0000", {reverse: true});
+      $("#data2").mask("00-00-0000", {reverse: true});
         </script>
 	<?php include('include/head.php'); ?>
     <style>
@@ -123,7 +123,7 @@ ini_set(“display_errors”, 0 );
 					<div class="row">
 						<div class="col-md-6 col-sm-12" style="background-color: #eeeeee; margin-bottom: .25rem;">
 							<div class="title">
-							<h5 style="font-size:16px;font-weight:bold;width:98vw;color:#606060;">INCLUIR PROPOSTA | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>
+							<h5 style="font-size: .9rem;width:98vw;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>
 								<BR>
                                     <?php
                                       if(isset($_SESSION['menssagem'])) {
