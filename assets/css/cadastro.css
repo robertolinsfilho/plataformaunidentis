@@ -1,0 +1,246 @@
+.flexLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  margin-left: -0.5rem;
+}
+
+.flexLabel .labelInput {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  padding-right: 1rem;
+  font-weight: bold;
+  color: #606060;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+}
+
+.flexLabel hr {
+  position: relative;
+  top: -0.15rem;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #606060;
+}
+
+input,
+select {
+  border: 1px solid #606060 !important;
+}
+body {
+  background-color: #f6f6f6;
+}
+
+div#form-group .row div.form-group {
+  margin-bottom: 0.05rem !important;
+}
+
+.form-control {
+  height: 2rem !important;
+}
+
+.divPai h4 {
+  margin-left: -0.5rem !important;
+}
+
+#tarjaH4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  font-size: 1.4rem;
+}
+
+#tarjaH4 span.flexH4 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem !important;
+  line-height: 1.875rem !important;
+}
+
+@media (max-width: 768px) {
+  #tarjaH4 {
+    height: auto;
+    font-size: 1rem;
+  }
+
+  #tarjaH4 span.flexH4 {
+    display: flex;
+    align-items: center;
+  }
+
+  .inline {
+    width: 54%;
+  }
+  .inline h4 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  #tarjaH4 {
+    height: auto;
+    font-size: 1rem;
+    flex-direction: column;
+  }
+  #avanca {
+    /* margin-left: 70%; */
+    /* width: 30%; */
+    font-family: -webkit-body;
+    background-color: #4177d0;
+    display: block !important;
+    margin: 1rem auto !important;
+    width: 60% !important;
+}
+}
+
+/* 
+  * CADASTROFOTOS
+*/
+.drop-zone {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #023bbf;
+  border: 4px solid #606060;
+  border-radius: 10px;
+  float: left;
+  margin-left: 2%;
+  margin-top: 2%;
+  overflow: auto;
+}
+
+.drop-zone--over {
+  border-style: solid;
+}
+
+.drop-zone__input {
+  display: none;
+}
+
+.drop-zone__thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+
+.drop-zone__thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  text-align: center;
+}
+#top {
+  margin-left: 3%;
+}
+#h5 {
+  margin-top: 3.5%;
+}
+
+.fundoazul {
+  background-color: #4177d0;
+}
+#submit {
+  margin-left: 85%;
+  margin-top: 2%;
+  background-color: #4177d0;
+}
+
+.footer-wrap {
+  width: 95%;
+  margin: 1rem auto;
+  position: relative;
+  /* height: 44px; */
+  text-align: center;
+  font-weight: 500;
+  /* padding: 2rem;*/
+}
+
+@media screen and (max-device-width: 720px) {
+  .text-blue1 {
+    margin-left: 5%;
+    margin-top: 4%;
+    position: absolute;
+    font-size: 18px;
+    color: #3284f1;
+    width: 30%;
+    height: 100px;
+    background-color: #cccccc;
+    text-align: center;
+    padding-top: 30px;
+    border-radius: 5px;
+  }
+  .text-blue2 {
+    margin-left: 5%;
+    margin-top: 4%;
+    position: absolute;
+    font-size: 16px;
+    color: #3284f1;
+    width: 30%;
+    height: 100px;
+    background-color: #cccccc;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 5px;
+  }
+  #submit {
+    margin-left: 11%;
+    width: 80%;
+    margin-top: 5%;
+  }
+  .drop-zone {
+    max-width: 350px;
+    height: 200px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    color: #cccccc;
+    border: 2px solid #606060;
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-top: 1%;
+    position: relative;
+    overflow: auto;
+  }
+  #top {
+    width: 70%;
+    margin-left: 5%;
+    margin-top: 10%;
+  }
+  .brand-logo {
+    margin-top: 0%;
+  }
+  #h5 {
+
+    margin-top: 7%;
+  }
+  .inline {
+    width: 50%;
+  }
+}

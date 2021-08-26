@@ -151,6 +151,7 @@ $plano = $_SESSION['plano'];
 		
 	</style>
 	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/cadastro.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>
@@ -160,11 +161,11 @@ $plano = $_SESSION['plano'];
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
-					<?php echo '<h5 style="font-size:17px;font-weight:bold;width:120%;margin-left:2%;color:#606060">INCLUIR PROPOSTA | VALOR TOTAL : '.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+					<?php echo '<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
 					<br>
-					<div class="inline" style="display:-webkit-inline-box;margin-left:2%;margin-top:1%">
-					<h4 id="h4"style="color:#606060;padding-top:7px; ">Escolha o Plano :</h4>
-					<input id ="plano" class="form-control" value="<?php echo $_SESSION['plano']?>" readonly>
+					<div class="inline" style="display:-webkit-inline-box;margin-left:1%;margin-top:1%">
+					<h4 id="h4"style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem;">Escolha o Plano :</h4>
+					<input style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;"  id ="plano" class="form-control" value="<?php echo $_SESSION['plano']?>" readonly>
 					<br>
 	</div>
                
@@ -180,15 +181,10 @@ $plano = $_SESSION['plano'];
 				<!-- Default Basic Forms Start -->
 				<div style="margin-top:1%"class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				<div class="inline" style="display:inline">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 style="color:#606060;font-weight:bold">Incluir Dependentes</h4>
-
-						</div>
-						<br>
+					<div class="flexLabel">
+			  			<label class="labelInput">Incluir Dependentes</label>
+						<hr>
 					</div>
-					<br>
-						<hr style="width: 78%;position: relative;margin-top: -3.5%;margin-left: 23%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
          		<div>
 				 <br>
 					<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">

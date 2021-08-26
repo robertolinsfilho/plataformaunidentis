@@ -43,74 +43,10 @@ ini_set(“display_errors”, 0 );
 		.col-md-6,.col-md-5,.col-md-3,.col-md-4,.col-md-2{
 			background-color:#f6f6f6;
 			padding:8px;
-			border-radius:5px;
-      
-			
+			border-radius:5px;	
 		}
-    input, select{
-      border: 1px solid #606060 !important; 
-    }
-    body{
-      background-color:#f6f6f6;
-    }
-
-    div#form-group .row div.form-group{
-      margin-bottom: .05rem !important;
-    }
-
-    .form-control{
-      height: 2rem !important;
-    } 
-
-    .divPai h4{
-      margin-left: -.5rem !important;
-    }
-
-    #tarjaH4{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 4rem;
-      font-size: 1.4rem;
-    }
-
-    #tarjaH4 span.flexH4{
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem !important;
-      line-height: 1.875rem !important;
-    }
-    
-    @media (max-width: 768px) {
-      #tarjaH4{
-        height: auto;
-        font-size: 1rem;
-      }
-
-      #tarjaH4 span.flexH4{
-        display: flex;
-        align-items: center;
-      }
-
-      .inline{
-        width:54%;
-       
-      }
-      .inline h4{
-        font-size:20px;
-      }
-    }
-    @media (max-width: 600px){
-      #tarjaH4{
-        height: auto;
-        font-size: 1rem;
-        flex-direction: column;
-      }
-      
-    }
-    
 	</style>
-	
+	<link rel="stylesheet" href="./assets/css/cadastro.css">
 </head>
 
 <body>
@@ -196,9 +132,9 @@ ini_set(“display_errors”, 0 );
                             }
 							?>
               <script>
-                let e = document.querySelector("#plano");
-                let plano = document.querySelector("#qPlano");
-                let valor = document.querySelector("#valorPlano");
+                const e = document.querySelector("#plano");
+                const plano = document.querySelector("#qPlano");
+                const valor = document.querySelector("#valorPlano");
                 function show(){
                   let strPlano = e.options[e.selectedIndex].value;
                   let strValor = e.options[e.selectedIndex].getAttribute("valor");
@@ -219,24 +155,10 @@ ini_set(“display_errors”, 0 );
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 divPai" style="padding: 20px 2rem;">
           <div class="inline2" style="display:inline">
             <div class="blockInline">
-              <div class="clearfix">
-                <div class="pull-left">
-                  <h4 style="color: #606060; font-weight: bold">DADOS PESSOAIS</h4>
-                </div>
+              <div class="flexLabel">
+			          <label class="labelInput">DADOS PESSOAIS</label>
+                <hr>
               </div>
-              <br />
-              <hr
-                style="
-                  width: 80%;
-                  position: relative;
-                  margin-top: -3.5%;
-                  margin-left: 21%;
-                  font-weight: bold;
-                  height: 1px;
-                  background-color: #606060;
-                "
-                size="50"
-              />
               <div>
                 <div class="row">
                   <div class="col-md-6">
@@ -446,20 +368,10 @@ ini_set(“display_errors”, 0 );
             <!--blockInline-->
             </div>
                       <div class="blcokInline">
-                        <br />
-                        <h4 style="color: #606060; font-weight: bold">ENDEREÇO</h4>
-                        <br />
-                        <hr
-                          style="
-                            width: 87%;
-                            position: relative;
-                            margin-top: -3.5%;
-                            margin-left: 14%;
-                            height: 1px;
-                            background-color: #606060;
-                          "
-                          size="50"
-                        />
+                        <div class="flexLabel">
+                          <label class="labelInput">ENDEREÇO</label>
+                          <hr/>
+                        </div>
                         <div class="row">
                           <div class="col-md-3">
                             <div class="form-group">
@@ -566,21 +478,10 @@ ini_set(“display_errors”, 0 );
                       </h4>
 
                     <div id="minhaDiv">
-                      <br />
-                      <h4 style="color: #606060; font-weight: bold">DADOS PESSOAIS</h4>
-
-                      <br />
-                      <hr
-                        style="
-                          width: 80%;
-                          position: relative;
-                          margin-top: -3.5%;
-                          margin-left: 21%;
-                          height: 1px;
-                          background-color: #606060;
-                        "
-                        size="50"
-                      />
+                      <div class="flexLabel">
+                        <label class="labelInput">DADOS PESSOAIS</label>
+                        <hr/>
+                      </div>
                       <div class="row">
                         <div class="col-md-5">
                           <div class="form-group">
