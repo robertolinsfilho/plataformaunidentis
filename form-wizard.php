@@ -112,11 +112,17 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
             color:  #0099ff;
         }
 		.form-group{
-			background-color: aliceblue;
-
 			border-radius: 5px;
-            width: 80%;
-			
+            width: 100%;
+			color: #606060;
+		}
+		.form-group input[type=text]{
+			background: #f9f9f9;
+		}
+
+		h4{
+			color: #606060;
+			font-weight: 600;
 		}
     </style>
 	<link rel="stylesheet" href="./assets/css/style.css">
@@ -141,11 +147,11 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-						
-				</div>
-
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style="
+					width: 97%;
+    				margin: 2rem auto;
+					margin-top: 0;
+    				border-radius: .5rem;">
 					<div class="clearfix">
 						<h4 class="text-blue">Detalhes</h4>
 						
@@ -842,8 +848,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 																				
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-										<input type="submit" value="Cancelado" name="status"  class="btn btn-danger">
+										<input type="submit" value="Cancelado" name="status"  class="btn btn-danger" id="prosseguir">
 									</div>
 									</div>
 								</div>

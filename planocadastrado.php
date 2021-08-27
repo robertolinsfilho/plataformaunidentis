@@ -34,7 +34,7 @@ session_start();
             </div>
             <div class="modal-body">
             <img style='display: block;margin: 0 auto;' src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="300">
-            <h4 style="font-size: 1.15rem;">PARABÉNS!<br> SEU PLANO FOI CONCLUÍDO COM SUCESSO. AGORA É SÓ AGUARDAR PARA QUE O PROPOSTA SEJA ANALISADA E FINALIZADA</h2>
+            <h4 style="font-size: 1.2rem;">PARABÉNS!<br> <span style="font-size:1rem; line-height: 1.5rem;">SEU PLANO FOI CONCLUÍDO COM SUCESSO. AGORA É SÓ AGUARDAR PARA QUE O PROPOSTA SEJA ANALISADA E FINALIZADA</span></h2>
             </div>
             <div class="modal-footer">
                <a  href="login2"  class="btn btn-secondary" type="button" >fechar</a>
