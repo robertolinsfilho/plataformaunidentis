@@ -291,14 +291,14 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
             <br><br><br><br>
 
             <div  id="resumo">
-							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Plano Dental : R$:<?php echo $preco?></h3>
-							<hr>
-                            <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Dependentes :<?php echo $cont2?></h3>
-							<hr>
-							<h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Total: R$:<?php echo $preco?></h3>
-							
-							</div>
-						   
+            <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Plano Dental : R$<?php echo $preco?></h3>
+            <hr>
+            <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Dependentes :<?php echo $cont2?></h3>
+            <hr>
+            <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Total: R$<?php echo $preco?></h3>
+            
+            </div>
+            
             <br>
 
 

@@ -28,7 +28,7 @@ if ($_SESSION['sexo'] = 1){
     <style>
 	.form-control{
 		height: 2rem !important;
-		background-color: #fff !important;
+		background-color: #f9f9f9 !important;
 	} 
 	.form-group{
 		margin-bottom: .5rem !important;
@@ -631,7 +631,7 @@ if ($_SESSION['sexo'] = 1){
 						  color: white;
 						"
 					  >
-						Plano Dental : R$:<?php echo $preco?>
+						Plano Dental : R$<?php echo $preco?>
 					  </h3>
 					  <hr />
 					  <h3
@@ -641,7 +641,7 @@ if ($_SESSION['sexo'] = 1){
 						  color: white;
 						"
 					  >
-						Total: R$:<?php echo $preco?>
+						Total: R$<?php echo $preco?>
 					  </h3>
 					</div>
 				  <input class="btn btn-success" id="submit" type="submit" style='margin-left: 0;' />

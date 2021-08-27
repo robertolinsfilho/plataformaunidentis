@@ -67,7 +67,7 @@ th{
 						
 				</div>
 				<!-- Simple Datatable start -->
-				<div class="pd-20  border-radius-4 box-shadow mb-30">
+				<div class="pd-20  border-radius-4 box-shadow mb-30" style="background-color: #f6f6f6;">
 					<div class="clearfix mb-20">
 						<div class="pull-left">
 							<h5 class="nome">Implantadas</h5>
