@@ -91,6 +91,9 @@ error_reporting(0);
     		height: 35px !important;
     		line-height: 31px !important;
 		}
+		#row4{
+			margin-top:10%
+		}
         
     </style>
 	<style>
@@ -308,10 +311,10 @@ error_reporting(0);
 						</div>								
 								
 									<div class="col-4">																				
-									<input type="text"  id="a" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
+									<input type="text"  id="a" name="nome" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
 									</div>							
 									<div class="col-3">									
-										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf"class="form-control">
+										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf" class="form-control" required>
                                     </div>
 								</div>																	
 								<div class="row">
@@ -465,7 +468,7 @@ error_reporting(0);
 							<!-- Step 2 -->
                            <h5>Beneficiarios</h5>
                             <section id="resp">
-                                <!--
+                               
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
@@ -473,7 +476,7 @@ error_reporting(0);
                             $result_usuario = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]'";
                             $resultado_usuario = mysqli_query($conexao, $result_usuario);
                             ?>
-                            	<div class="row">
+                            	<div id="row4" class="row">
 						<table  class="data-table stripe hover nowrap">
 							<thead>
 								<tr style="background-color:#4177d0 ">
@@ -590,7 +593,7 @@ error_reporting(0);
                     </div>
                     
                     </div>
-								-->
+								
 							</section>
 							<!-- Step 3 -->
 							<h5>Imagens</h5>
@@ -647,12 +650,12 @@ error_reporting(0);
 							
 							<section>
 								
-							<div class="row">
+							<div id="row4" class="row">
 							<div class="col-4">																				
 									<input type="text"  id="a-1" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a').value = this.value;" readonly>
 									</div>							
 									<div class="col-3">									
-										<input type="text" name="cpf"  onkeyup="document.getElementById('cpf').value = this.value;" placeholder="CPF*" id="cpf-1"class="form-control"readonly>
+										<input type="text"   onkeyup="document.getElementById('cpf').value = this.value;" placeholder="CPF*" id="cpf-1"class="form-control"readonly>
                                     </div>
 								</div>																	
 								<div class="row">

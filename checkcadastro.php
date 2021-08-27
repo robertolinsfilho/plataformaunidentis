@@ -6,7 +6,7 @@ $cpf = mysqli_real_escape_string($conexao, trim($_POST['cpf']));
 $cpf = str_replace(".", "", $cpf);
 $cpf = str_replace("-", "", $cpf);
 
-echo $cpf;
+
 $result_usuario = "SELECT * from contratocartao where cpf = '$cpf'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
