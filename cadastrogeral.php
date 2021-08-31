@@ -21,7 +21,7 @@ error_reporting(0);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
-
+	
     <script>
 		function validateForm() {
   		let x = document.forms["myForm"]["cpf"].value;
@@ -45,6 +45,10 @@ error_reporting(0);
 			$("#cpf1").mask("000.000.000-00");
             $("#data1").mask("00-00-0000", {reverse: true});
             $("#data2").mask("00-00-0000", {reverse: true});
+
+
+
+			
     </script>
     <style>
         label{
@@ -468,16 +472,42 @@ error_reporting(0);
 							<!-- Step 2 -->
                            <h5>Beneficiarios</h5>
                             <section id="resp">
-                               
+                              <script>
+								     //Funcao adiciona uma nova linha na tabela
+									 function adicionaLinha(idTabela) {
+										var nome = document.querySelector("#nomedependente");
+										var parentesco = document.querySelector("#parentesco");
+										$.ajax({
+										method: "POST",
+										url: "demo_test_post.php",
+										data: {nome: nome.value, }
+										});
+										
+										var tabela = document.getElementById(idTabela);
+										var numeroLinhas = tabela.rows.length;
+										var linha = tabela.insertRow(numeroLinhas);
+										var celula1 = linha.insertCell(0);
+										var celula2 = linha.insertCell(1);   
+										var celula3 = linha.insertCell(2);
+										var celula4 = linha.insertCell(3); 
+										celula1.innerHTML = nome.value; 
+										celula2.innerHTML =  Math.floor((Math.random() * 100) + 1); 
+										celula3.innerHTML =  'tese'; 
+										celula4.innerHTML =  "<a onclick='removeLinha(this)'><i class='fa fa-pencil'>Apagar</i></a>";
+										}
+
+										// funcao remove uma linha da tabela
+										function removeLinha(linha) {
+										var i=linha.parentNode.parentNode.rowIndex;
+										document.getElementById('tbl').deleteRow(i);
+										}            
+							  </script> 
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
                             <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
-							<?php 
-                            $result_usuario = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]'";
-                            $resultado_usuario = mysqli_query($conexao, $result_usuario);
-                            ?>
+						
                             	<div id="row4" class="row">
-						<table  class="data-table stripe hover nowrap">
+						<table id="tbl" class="data-table stripe hover nowrap">
 							<thead>
 								<tr style="background-color:#4177d0 ">
 									<th style="padding-left:5%" class="table-plus datatable-nosort">Nome</th>							
@@ -486,28 +516,7 @@ error_reporting(0);
 									<th style="padding-left:5%">Opções</th>	
 									
 								</tr>
-							</thead>
-
-
-							<tbody>
-							
-							<?php
-									while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
-										
-        					?>
-								<tr>
-								<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>	
-								<td class="table-plus"><?php echo $row_usuario['cpf']; ?></td>	
-								<td class="table-plus">R$ <?php echo $preco1 ?></td>				
-								
-
-									
-									<td><a class="dropdown-item" href="apagardependente.php?id=<?php echo $row_usuario['id'] ?>"><i class="fa fa-pencil"></i> Apagar</a></td>	
-								</tr>
-								<?php 
-									}
-								?>
-							</tbody>
+							</thead>						
 						</table>
 					</div>
                     <button type="button" style="background-color:#284ebf;padding:1% " class="btn btn-primary" id="att" data-toggle="modal" data-target="#exampleModal">
@@ -527,7 +536,7 @@ error_reporting(0);
                         <div class="row">
                         <div class="col-6">
 																				
-									<select class="form-control" name="parentesco">
+									<select class="form-control" name="parentesco" id="parentesco">
 									<option value="3">Conjuge</option>
 									<option value="4">Filho</option>
 									<option value="8">Pai/Mae</option>
@@ -538,7 +547,7 @@ error_reporting(0);
 								</div>
 								<div class="col-6">
 																			
-									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo"required>
+									<input type="text" name="nomedependente" class="form-control" id="nomedependente" placeholder="Nome Completo"required>
 									
 								</div>
 								<br>
@@ -587,7 +596,7 @@ error_reporting(0);
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" style="background-color:#284ebf"class="btn btn-primary">Cadastrar</button>
+                            <button type="button"  onclick="adicionaLinha('tbl')" style="background-color:#284ebf"class="btn btn-primary">Cadastrar</button>
                         </div>
                         </div>
                     </div>
