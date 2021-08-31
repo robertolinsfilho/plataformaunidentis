@@ -81,57 +81,7 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    <style>
-        iframe{
-            margin-left: 50%;
-            position: absolute;
-        }
-        #form2 .container {
-  
-            padding-top: 50px !important;
-        }
-        th,tr{
-               width:25%
-        }
-        #resumo{
-        margin-left:0%;
-        background-color:#4177d0 ;
-        padding:20px;
-        width:40%
-        
-        }
-        #submit{
-            margin-left:80%
-        }
-        @media screen and (max-device-width: 480px) {
-            iframe{
-                visibility: hidden;
-            }
-            th{
-                text-align:center
-            }
-            #submit{
-            margin-left:60%
-        }
-            #resumo{
-        margin-left:0%;
-        background-color:#4177d0 ;
-        padding:20px;
-        width:80%
-        
-        }
-        }
-        body{
-            background-color: #ededed !important;
-        }
-        h1, h2,h3,h4,h5,label,a{
-            color:#606060
-        }
-        input, select{
-             border: 1px solid #606060 !important; 
-        }
-        
-        </style>
+    <link rel="stylesheet" href="./assets/css/areaclienteboleto.css">
 </head>
 
 <body >
@@ -161,14 +111,19 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
         
 
         <br>
-        <div  style="background-color:#f6f6f6;padding:10px;border-radius:10px">
-        <h4>Titular</h4>
-        <hr style="width: 90%;position: relative;margin-top: -2.0%;margin-left: 10%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
+        <div class='box-areaBoleto' style="background-color:#f6f6f6;padding:10px;border-radius:10px">
+
+        <div class="flexLabel">
+            <label class="labelInput">Titular</label>
+            <hr>
+        </div>
+
+
         <form action="contrato.php" method="POST">
             <div class="row">
 
                 <div class="col-md-4">
-                    <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail:</label>
+                    <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail</label>
                     <input type="text" class="form-control" name="email" value = "<?php echo $row_usuario2['email'] ?>" readonly>
                 </div>
                 <div class="col-md-4">
@@ -188,9 +143,11 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 
 ?>
 <br>
-<div  style="background-color:#f6f6f6;padding:10px;border-radius:10px">
-            <h4>Dependentes</h4>
-           
+<div class='box-areaBoleto' style="background-color:#f6f6f6;padding:10px;border-radius:10px">
+            <div class="flexLabel">
+                <label class="labelInput">Dependentes</label>
+                <hr>
+            </div>
 
             
             <table class="table">

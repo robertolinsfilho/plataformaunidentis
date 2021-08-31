@@ -252,6 +252,17 @@ $plano = $_SESSION['plano'];
 					margin-left: 11%;
 				}
 			}
+
+			.form-group{
+				height: 2rem !important;
+				margin-bottom: 1.5rem;
+
+			}
+
+			.form-control{
+				height: 2.7rem !important;
+			}
+
 	</style>
 <?php
 if($_SESSION['cliente'] === 'servidorpublico'){
@@ -283,7 +294,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog">
+  <div class="modal-dialog" style='max-width: 580px !important;'>
     <div class="modal-content">
       <div class="modal-header">
         <h5
@@ -339,7 +350,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
               $("#data").mask("00-00-0000", { reverse: true });
             </script>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <select class="form-control" name="parentesco">
                   <option value="3">Conjuge</option>
@@ -350,7 +361,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 </select>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
                 <input
                   type="text"
@@ -361,7 +372,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 />
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <input
                   type="text"
@@ -372,7 +383,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 />
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <input
                   type="text"
@@ -384,9 +395,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 />
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
+			<div class="col-md-4">
               <div class="form-group">
                 <select class="form-control" name="estadodependente">
                   <option value="Solteiro">Solteiro</option>
@@ -398,7 +407,10 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 </select>
               </div>
             </div>
-            <div class="col-md-6">
+          </div>
+          <div class="row">
+            
+            <div class="col-md-3">
               <div class="form-group">
                 <select class="form-control" name="sexodependentes">
                   <option value="1">Masculino</option>
@@ -406,7 +418,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 </select>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="form-group">
                 <input
                   type="text"
@@ -417,7 +429,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
                 />
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <input
                   type="text"
@@ -429,7 +441,7 @@ if($_SESSION['cliente'] === 'servidorpublico'){
             </div>
           </div>
 
-          <div class="modal-footer">
+          <div class="modal-footer" style='padding-top: 1rem;'>
             <button type="submit" class="btn btn-primary" id="prosseguir">Cadastrar</button>
           </div>
         </form>
