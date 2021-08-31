@@ -83,3 +83,7 @@ div.box-areaBoleto{
     height: 1px;
     background-color: #606060;
 }
+
+.form-control:disabled, .form-control[readonly]{
+    background-color: #f6f6f6 !important;
+}
