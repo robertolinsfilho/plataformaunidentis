@@ -30,9 +30,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
         }
     </style>
   
-	<div class="pre-loader">
-  
-    </div>
+	<div id="preloader" class="pre-loader"></div>
 
 	<div class="header clearfix">
 		<div style="background-color: #284ebf;height:130%;" class="header-right">

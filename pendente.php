@@ -30,16 +30,12 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-td{
-	cursor:pointer;	
-}
-</style>
     <meta charset="UTF-8">
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
+	<link rel="stylesheet" href="./assets/css/datatable.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>
@@ -50,9 +46,6 @@ td{
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Pagamento Pendente</h4>
-							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -64,13 +57,12 @@ td{
 				</div>
 				<!-- Simple Datatable start -->
 				<div class="pd-20  border-radius-4 box-shadow mb-30" style='background-color: #f6f6f6;'>
-					<div class="clearfix mb-20">
-						<div class="pull-left">
-							<h5 class="nome">Pagamento Pendente</h5>
-							
-						</div>
+					
+					<div class="flexLabel">
+						<label class="labelInput">PAGAMENTO PENDENTE</label>
+						<hr>
 					</div>
-					<hr style="width: 75%;position: relative;margin-top: -3.2%;margin-left: 25%;font-weight:bold;height:1px;background-color:#606060;" size = "50"><br>
+					
 					<div class="row">
 						<table class="data-table stripe hover nowrap">
 							<thead>

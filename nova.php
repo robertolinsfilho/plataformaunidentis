@@ -26,27 +26,11 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-td{
-	cursor:pointer;	
-}
-th{
-	background-color:#4177d0 ;
-	color:white;
-}
-.nome{
-	color:#606060;
-	font-weight:bold
-}
-
-
-
-
-</style>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
+	<link rel="stylesheet" href="./assets/css/datatable.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>
@@ -57,9 +41,6 @@ th{
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Novas</h4>
-							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -72,14 +53,12 @@ th{
 				<!-- Simple Datatable start -->
 				
 				<div class="pd-20  border-radius-4 box-shadow mb-30" style="background-color: #f6f6f6;">
-				
-					<div class="clearfix mb-20">
-						<div class="pull-left">
-							<h5 class="nome">Novas</h5>
-							
-						</div>
+									
+					<div class="flexLabel">
+						<label class="labelInput">NOVAS</label>
+						<hr>
 					</div>
-					<hr style="width: 90%;position: relative;margin-top: -3.5%;margin-left: 10%;font-weight:bold;height:1px;background-color:#606060;" size = "50">
+
 					<div class="row">
 						<table class="data-table stripe hover nowrap">
 							<thead>

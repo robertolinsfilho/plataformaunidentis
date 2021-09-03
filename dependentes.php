@@ -12,23 +12,15 @@ if($_SESSION['usuario'] = 'cadastro@s4e.com.br'){
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }
 
-
-
-
-    ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-td{
-	cursor:pointer;	
-}
-</style>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
-	
+	<link rel="stylesheet" href="./assets/css/datatable.css">
 </head>
 <body>
 	<?php include('include/header.php'); ?>
@@ -39,9 +31,6 @@ td{
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Dependentes</h4>
-							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -53,12 +42,12 @@ td{
 				</div>
 				<!-- Simple Datatable start -->
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-					<div class="clearfix mb-20">
-						<div class="pull-left">
-							<h5 class="text-blue">Geral</h5>
-							
-						</div>
+
+					<div class="flexLabel">
+						<label class="labelInput">Dependentes</label>
+						<hr>
 					</div>
+
 					<div class="row">
 						<table class="data-table stripe hover nowrap">
 							<thead>

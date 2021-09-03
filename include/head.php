@@ -13,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 	<!-- CSS -->
 	<link rel="stylesheet" href="vendors/styles/style.css">
-
+	<link rel="stylesheet" href="assets/css/preloader.css">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 	<script>

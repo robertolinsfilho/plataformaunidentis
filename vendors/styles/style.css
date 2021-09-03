@@ -17727,16 +17727,6 @@ p {
 /*==============================================================
 	Global Styles Start
 ==============================================================*/
-.pre-loader {
-  background: url(../images/new-loader.gif) no-repeat #fffef2;
-  background-position: center center;
-  background-size: 13%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 12345; }
 
 .mx-w-150 {
   max-width: 150px; }
@@ -20340,8 +20330,6 @@ textarea.form-control {
     width: 100%; } }
 
 @media (max-width: 767px) {
-  .pre-loader {
-    background-size: 43%; }
   .xs-pd-20-10 {
     padding: 20px 10px; }
   .xs-mb-20 {

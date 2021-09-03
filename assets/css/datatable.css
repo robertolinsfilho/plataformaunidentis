@@ -1,0 +1,43 @@
+td{
+	cursor:pointer;	
+}
+th{
+	background-color:#4177d0 ;
+	color:white;
+}
+.nome{
+	color:#606060;
+	font-weight:bold
+}
+
+.flexLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    margin-left: -0.5rem;
+}
+  
+.flexLabel .labelInput {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    padding-right: 1rem;
+    font-weight: bold;
+    color: #606060;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+}
+
+.flexLabel hr {
+    position: relative;
+    top: -0.15rem;
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: #606060;
+}
+
+.form-control:disabled, .form-control[readonly]{
+    background-color: #f6f6f6 !important;
+}

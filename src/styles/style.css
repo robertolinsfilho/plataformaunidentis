@@ -96,17 +96,7 @@ p {
 /*==============================================================
 	Global Styles Start
 ==============================================================*/
-.pre-loader{
-	background: url(../images/new-loader.gif) no-repeat #fffef2;
-	background-position: center center;
-	background-size: 13%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 12345;
-}
+
 
 .mx-w-150{max-width: 150px;}
 .mx-h-300{max-height: 300px;}
