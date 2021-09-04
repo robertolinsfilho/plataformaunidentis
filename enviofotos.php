@@ -12,7 +12,7 @@ if ($SendCadImg) {
     $arquivo10 = $_FILES['arquivo10'];
     for ($cont = 0; $cont < count($arquivo10['name']); $cont++) {
 
-        $destino10 = "./fotos/" . $arquivo10['name'][$cont];
+        $destino10 = "./fotos/_" .uniqid(). $arquivo10['name'][$cont];
 
         if (move_uploaded_file($arquivo10['tmp_name'][$cont], $destino10)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
@@ -33,7 +33,7 @@ if ($SendCadImg) {
     $arquivo2 = $_FILES['arquivo1'];
     for ($cont = 0; $cont < count($arquivo2['name']); $cont++) {
 
-        $destino2 = "./fotos/" . $arquivo2['name'][$cont];
+        $destino2 = "./fotos/_" .uniqid(). $arquivo2['name'][$cont];
 
         if (move_uploaded_file($arquivo2['tmp_name'][$cont], $destino2)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
@@ -54,7 +54,7 @@ if ($SendCadImg) {
     $arquivo3 = $_FILES['arquivo2'];
     for ($cont = 0; $cont < count($arquivo3['name']); $cont++) {
 
-        $destino3 = "./fotos/" . $arquivo3['name'][$cont];
+        $destino3 = "./fotos/_" .uniqid(). $arquivo3['name'][$cont];
 
         if (move_uploaded_file($arquivo3['tmp_name'][$cont], $destino3)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
@@ -77,7 +77,7 @@ if ($SendCadImg) {
  
     for ($cont = 0; $cont < count($arquivo4['name']); $cont++) {
 
-        $destino4 = "./fotos/" . $arquivo4['name'][$cont];
+        $destino4 = "./fotos/_" .uniqid(). $arquivo4['name'][$cont];
 
         if (move_uploaded_file($arquivo4['tmp_name'][$cont], $destino4)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
@@ -102,7 +102,7 @@ if ($SendCadImg) {
  
     for ($cont = 0; $cont < count($arquivo5['name']); $cont++) {
 
-        $destino5 = "./fotos/" . $arquivo5['name'][$cont];
+        $destino5 = "./fotos/_" .uniqid(). $arquivo5['name'][$cont];
 
         if (move_uploaded_file($arquivo5['tmp_name'][$cont], $destino5)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
@@ -125,7 +125,7 @@ if ($SendCadImg) {
  
     for ($cont = 0; $cont < count($arquivo6['name']); $cont++) {
 
-        $destino6 = "./fotos/" . $arquivo6['name'][$cont];
+        $destino6 = "./fotos/_" .uniqid(). $arquivo6['name'][$cont];
 
         if (move_uploaded_file($arquivo6['tmp_name'][$cont], $destino6)) {
             $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
