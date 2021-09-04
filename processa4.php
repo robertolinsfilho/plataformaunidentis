@@ -13,6 +13,11 @@ $cpf = $_SESSION['cpf'];
 $link = 'https://unidentisdigital.com.br/login2';
 
 
+// $link = 'https://unidentisdigital.com.br/formpessoafisica?cpf='.$cpf;
+// $email = 'franklinhpf@hotmail.com';
+// $senha = '123456';
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -27,6 +32,7 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
+    $mail->CharSet    = 'UTF-8';                                // setting character encoding
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'ti@unidentis.com.br';                     // SMTP username
@@ -50,57 +56,65 @@ try {
     border="0"
     cellpadding="0"
     cellspacing="0"
-    width="600"
+    width="500"
     style="border: 0px solid black; text-align: center; margin: 0 auto; border-radius: 1rem; overflow: hidden; box-shadow: 0 0px 8px #000000;"
   >
-    <td
-      align="center"
-      style="
-        background: url('.'https://www.unidentis.com.br/assets/img/bannerExemploEmail.png'.');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 600px;
-        height: 8rem;
-      "
-      ;
-    >
-    </td>
+  <td
+  align="center"
+  style="
+    background: url('.'https://www.unidentis.com.br/assets/img/fundoEmail.png'.');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 8rem;
+  "
+  ;
+>
+  <img src="https://www.unidentis.com.br/assets/img/logoAnsEmail.png" alt="Logo Unidentis com Ans" width="240" style="display:block;filter:drop-shadow(0 0 4px #2b2b2b);margin-top: 8px;">
+</td>
     <tr>
       <tr>
         <td>
-          <h2 style="text-align: center; font-size: 1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 1rem 30px 0 30px;">ACESSE NOSSO SISTEMA COM OS DADOS A SEGUIR PARA CONCLUIR O CADASTRO DA PROPOSTA</h2>
+          <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: '.'Arial'.', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta Cadastrada</h2>
         </td>
       </tr>
-      <td bgcolor="#ffffff" style="padding: 1rem 30px">
+      <tr>
+        <td>
+          <h2 style="text-align: center; font-size: .72rem; line-height: 1rem; text-transform: uppercase; color: #606060;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 0 30px .25rem 30px;padding: .25rem 1.8rem;">acesse nosso sistema com os dados a seguir para concluir o cadastro da proposta</h2>
+        </td>
+      </tr>
+      <td style="padding: .5rem 30px">
         <table
-          style="background-color: #f5f5f5; border-radius: 1rem; box-shadow: 0 0 .15rem black; font-family: Arial, Helvetica, sans-serif; margin: 0 auto; padding: .5rem 0;"
+          style="background-color: #f5f5f5; border-radius: 1rem; box-shadow: 0 0 .15rem black; font-family: Arial, Helvetica, sans-serif; margin: 0 auto; padding: 8px 16px 8px 16px; height: 7.5rem;"
           border="0"
           cellpadding="0"
           cellspacing="0"
           width="90%"
         >
-          <tr style="height: 2.5rem; width: 100%;">
-            <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
-              <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">email:</span> '.$email.'
+          <tr></tr>
+          <tr style="height: 2rem; width: 100%; padding: 0 16px;">
+            <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">email:</span> '.$email.'
             </td>
           </tr>
-          <tr style="height: 2.5rem; width: 100%;">
-            <td style="line-height: 1.65rem; font-size: 1.15rem; text-align: center;color: #606060;">
-              <span style="font-size: 1.1rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">senha:</span> '.$senha.'
+          <tr style="height: 2rem; width: 100%; padding: 0 16px;">
+            <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">senha:</span> '.$senha.'
             </td>
           </tr>
-          <tr style="height: 3rem; align-items: center; width: 100%;">
+          <tr style="height: 2rem; align-items: center; width: 100%;">
             <td>
-              <a href="'.strip_tags($link).'" style="text-decoration: none; color: none;font-family: Arial, Helvetica, sans-serif;text-transform: uppercase; font-weight: 500; padding: 7px 14px; border-radius: .5rem; border: none; background-color: #023bbf; color: #ffffff; line-height: 1.15rem; font-size: .7rem; cursor: pointer; box-shadow: 0 0 .15rem black; text-align: center;">Clique Aqui</a>
+              <a href="'.strip_tags($link).'" style="text-decoration: none; color: none;font-family: Arial, Helvetica, sans-serif;text-transform: uppercase; font-weight: 500; padding: 5px 10px; border-radius: .5rem; border: none; background-color: #023bbf; color: #ffffff; line-height: 1rem; font-size: .65rem; cursor: pointer; box-shadow: 0 0 .15rem black; text-align: center;">Clique Aqui</a>
             </td>
           </tr>
+          <tr></tr>
         </table>
       </td>
     </tr>
     <tr>
       <td>
-        <h3 style="letter-spacing: -.025rem; color: #606060; text-transform: uppercase ;text-align: center; padding: 0 10px; line-height: 1.25rem; font-size: .9rem; font-family: '.'Arial Black'.', Helvetica, sans-serif;margin: .5rem 0;">Agradecemos a sua escolha!</h3>
+        <h3 style="text-align: center; font-size: .72rem; line-height: 1rem; text-transform: uppercase; color: #606060;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 0 30px .25rem 30px;padding: .25rem 2rem;">Agradecemos a sua escolha!</h3>
       </td>
     </tr>
     <tr>
@@ -112,7 +126,7 @@ try {
               style="
                 color: #f6f6f6;
                 font-family: Arial, sans-serif;
-                font-size: 14px;
+                font-size: .7rem;
                 padding: 5px 2%;
                 text-align: left;
               "
