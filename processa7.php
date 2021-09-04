@@ -19,7 +19,7 @@ $cpf = strip_tags($_GET['cpf']);;
 $corretor = strip_tags($_GET['corretor']);
 $status = strip_tags($_GET['status']);
 $motivo = strip_tags($_GET['motivo']);
-$link = 'unidentisdigital.com.br/login2';
+$link = strip_tags('unidentisdigital.com.br/login2');
 
 // $cpf = '11159630402';
 // $corretor = 'franklin henrique';
