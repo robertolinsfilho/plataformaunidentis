@@ -88,16 +88,6 @@ try {
           <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: '.'Arial'.', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta '.$status.'</h2>
         </td>
       </tr>
-      <tr>
-        <td>
-          <h2 style="text-align: center; font-size: .72rem; line-height: 1rem; text-transform: uppercase; color: #606060;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 0 30px .25rem 30px;padding: .25rem 1.8rem;">Cancelamento informado: '.$motivo.'</h2>
-        </td>
-      </tr>
-      <!-- <tr>
-        <td>
-          <h3 style="letter-spacing: -.025rem; text-align: center; padding: 0 10px; font-size: 1rem; font-family: Arial, Helvetica, sans-serif; color: #2b2b2b;">DADOS DE ACESSO</h3>
-        </td>
-      </tr> -->
       <td style="padding: .5rem 30px">
         <table
           style="background-color: #f5f5f5; border-radius: 1rem; box-shadow: 0 0 .15rem black; font-family: Arial, Helvetica, sans-serif; margin: 0 auto; padding: .5rem 0;"
@@ -107,6 +97,7 @@ try {
           width="90%"
         >
           <tr></tr>
+
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
               <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">nome:</span> '.$nome.'
@@ -120,6 +111,11 @@ try {
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
               <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">vendedor:</span> '.$corretor.'
+            </td>
+          </tr>
+          <tr style="height: 2rem; width: 100%; padding: 0 16px;">
+            <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">Motivo do cancelamento: </span> '.$motivo.'
             </td>
           </tr>
 

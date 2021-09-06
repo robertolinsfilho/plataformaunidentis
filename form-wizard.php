@@ -698,7 +698,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Frente</h3>
                                         <br>
-										<a href="fotos/<?php echo $row_usuario7['rgfrente']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['rgfrente']?>"/></a>
+										<a href="fotos/<?php echo $row_usuario7['rgfrente']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['rgfrente']?>"/></a>
 										
 										<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
 										Editar
@@ -711,7 +711,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Verso</h3>
                                         <br>
-                                        <a href="fotos/<?php echo $row_usuario7['rgverso']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['rgverso']?>"/></a>
+                                        <a href="fotos/<?php echo $row_usuario7['rgverso']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['rgverso']?>"/></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
 										Editar
 										</button>
@@ -724,7 +724,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">CPF</h3>
                                         <br>
-										<a href="fotos/<?php echo $row_usuario7['cpf']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['cpf']?>"/></a>
+										<a href="fotos/<?php echo $row_usuario7['cpf']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['cpf']?>"/></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
 										Editar
 										</button>
@@ -737,7 +737,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Comp Residência</h3>
                                         <br>
-										<a href="fotos/<?php echo $row_usuario7['compresidencia']?>" target="_blank"> <img  style="padding:10px" src="fotos/<?php echo $row_usuario7['compresidencia']?>"/></a>
+										<a href="fotos/<?php echo $row_usuario7['compresidencia']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['compresidencia']?>"/></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
 										Editar
 										</button>
@@ -752,7 +752,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Cartão</h3>
                                         <br>
-										<a href="fotos/<?php echo $row_usuario7['cartao']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['cartao']?>"/></a>
+										<a href="fotos/<?php echo $row_usuario7['cartao']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['cartao']?>"/></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">
 										Editar
 										</button>
@@ -764,7 +764,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<div class="form-group">
                                         <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Outro</h3>
                                         <br>
-                                       <a href="fotos/<?php echo $row_usuario7['outro']?>" target="_blank"> <img style="padding:10px" src="fotos/<?php echo $row_usuario7['outro']?>"/></a>
+                                       <a href="fotos/<?php echo $row_usuario7['outro']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['outro']?>"/></a>
 									   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">
 										Editar
 										</button>
@@ -812,7 +812,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 																				
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit" value="Indeferido" name="status"  class="btn btn-danger">
 									</div>
 									</div>
@@ -876,8 +875,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 				color: #cccccc;
 				border: 4px dashed #3284f1;
 				border-radius: 10px;
-				margin-left: 15%;
-				margin-top: 0%;
+				margin: 0 auto;
 				position: relative;
 				}
 
@@ -949,7 +947,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
@@ -975,7 +972,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
@@ -1001,7 +997,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
@@ -1027,7 +1022,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
@@ -1053,7 +1047,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
@@ -1079,7 +1072,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<input type="submit"  name="SendCadImg"  class="btn btn-primary">
 									</div>
 									</form>	
