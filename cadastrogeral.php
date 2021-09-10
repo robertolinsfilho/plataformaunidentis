@@ -476,11 +476,18 @@ error_reporting(0);
 								     //Funcao adiciona uma nova linha na tabela
 									 function adicionaLinha(idTabela) {
 										var nome = document.querySelector("#nomedependente");
+										var cpf = document.querySelector("#cpfdependente");
+										var data = document.querySelector("#datadependente");
 										var parentesco = document.querySelector("#parentesco");
+										var estado = document.querySelector("#estadodependente");
+										var sexo = document.querySelector("#sexodependente");
+										var mae = document.querySelector("#maedependente");
+										var cns = document.querySelector("#cnsdependente");
+										var cpftitular = document.querySelector("#cpf");
 										$.ajax({
 										method: "POST",
 										url: "demo_test_post.php",
-										data: {nome: nome.value, }
+										data: {nome: nome.value, cpf: cpf.value, data: data.value, parentesco: parentesco.value, estado: estado.value, sexo: sexo.value, mae: mae.value, cns: cnsdependente.value, cpftitular: cpftitular.value   }
 										});
 										
 										var tabela = document.getElementById(idTabela);
@@ -554,11 +561,11 @@ error_reporting(0);
 								<div style ="margin-top:2%" class="col-6">
 									
 										
-										<input type="text" class="form-control"  name ="cpfdependente"placeholder="CPF" id="cpf" >
+										<input type="text" class="form-control"  name ="cpfdependente" placeholder="CPF" id="cpfdependente" >
 									
 								</div>
 								<div style ="margin-top:2%" class="col-6">																		
-									<input type="text" name="datadependente"  class="form-control " id="data" placeholder="Data de Nascimento" required>
+									<input type="text" name="datadependente"  class="form-control " id="datadependente" placeholder="Data de Nascimento" required>
 									
 								</div>
 						
@@ -567,7 +574,7 @@ error_reporting(0);
 						
 							<div class="col-6">
 																				
-									<select class="form-control" name="estadodependente">
+									<select class="form-control" name="estadodependente" id="estadodependente">
 									<option value="Solteiro">Solteiro</option>
 									<option value="Casado">Casado</option>
 									<option value="Viúvo">Viúvo</option>
@@ -579,7 +586,7 @@ error_reporting(0);
 								</div>
 								<div class="col-6">
 																				
-									<select class="form-control" name="sexodependentes">
+									<select class="form-control" name="sexodependente" id="sexodependente">
 									<option value="1">Masculino</option>
 									<option value="0">Feminino</option>
 								
@@ -588,15 +595,15 @@ error_reporting(0);
 								</div>
 								
 							<div style ="margin-top:2%"class="col-6">																
-									<input type="text" class="form-control" name ="maedependente"placeholder="Mãe"required>								
+									<input type="text" class="form-control" id="maedependente" name ="maedependente"placeholder="Mãe"required>								
 							</div>
 							<div style ="margin-top:2%" class="col-6">													
-								<input type="text" name="cnsdependente"  class="form-control" placeholder="Cartão do sus" >								
+								<input type="text" name="cnsdependente" id="cnsdependente" class="form-control" placeholder="Cartão do sus" >								
 							</div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button"  onclick="adicionaLinha('tbl')" style="background-color:#284ebf"class="btn btn-primary">Cadastrar</button>
+                            <button type="button"  onclick="adicionaLinha('tbl')" style="background-color:#284ebf"class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
                         </div>
                         </div>
                     </div>
