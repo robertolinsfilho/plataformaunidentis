@@ -11715,7 +11715,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": ""
 		},
 	
 	

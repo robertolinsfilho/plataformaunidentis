@@ -484,6 +484,10 @@ error_reporting(0);
 										var mae = document.querySelector("#maedependente");
 										var cns = document.querySelector("#cnsdependente");
 										var cpftitular = document.querySelector("#cpf");
+										if(cpftitular.value.length < 11){
+											alert('Preencha o CPF do Titular');
+											
+										}else{
 										$.ajax({
 										method: "POST",
 										url: "demo_test_post.php",
@@ -498,9 +502,10 @@ error_reporting(0);
 										var celula3 = linha.insertCell(2);
 										var celula4 = linha.insertCell(3); 
 										celula1.innerHTML = nome.value; 
-										celula2.innerHTML =  Math.floor((Math.random() * 100) + 1); 
-										celula3.innerHTML =  'tese'; 
+										celula2.innerHTML =  cpf.value; 
+										celula3.innerHTML =  'R$:20.00'; 
 										celula4.innerHTML =  "<a onclick='removeLinha(this)'><i class='fa fa-pencil'>Apagar</i></a>";
+									}
 										}
 
 										// funcao remove uma linha da tabela
@@ -519,7 +524,7 @@ error_reporting(0);
 								<tr style="background-color:#4177d0 ">
 									<th style="padding-left:5%" class="table-plus datatable-nosort">Nome</th>							
 									<th style="padding-left:5%">CPF</th>
-									<th style="padding-left:10%">Valor Unitário</U></th>
+									<th style="padding-left:1%">Valor Unitário</U></th>
 									<th style="padding-left:5%">Opções</th>	
 									
 								</tr>
