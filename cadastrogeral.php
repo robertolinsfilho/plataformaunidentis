@@ -3,7 +3,7 @@
 include_once "conexao.php";
 session_start();
 error_reporting(0);
-
+require __DIR__ . '/vendor/autoload.php';
 
 
 
@@ -23,16 +23,7 @@ error_reporting(0);
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
 	
     <script>
-		function validateForm() {
-  		let x = document.forms["myForm"]["cpf"].value;
-		 var y = document.getElementById("cpf");
-  		if (x == "") {
-    	
-		
-		y.focus();
-    	return false;
-  }
-}
+	
            function Mudarestado(el) {
                 var display = document.getElementById(el).style.display;
                 if(display == "block")
@@ -270,7 +261,7 @@ error_reporting(0);
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				
 					<div class="wizard-content">
-						<form action="checkcadastro"  name="myForm"onsubmit="return validateForm()" method="POST" class="tab-wizard wizard-circle wizard"><br>				
+						<form action="checkcadastro"   enctype="multipart/form-data"  method="POST" class="tab-wizard wizard-circle wizard"><br>				
 					
 						<h5 >Dados Pessoais</h5>
 							<section>
@@ -283,7 +274,7 @@ error_reporting(0);
 							if($_SESSION['cliente'] == 'servidorpublico'){
 							?>					
 					
-										<select style="background-color:#b3b3b3" name="plano" id="plano"class="custom-select form-control-md" required>
+										<select style="background-color:#b3b3b3" name="plano" id="plano"class="custom-select form-control-md" >
 										<option >Selecione</option>
 										<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>											
 										</select>										
@@ -291,7 +282,7 @@ error_reporting(0);
 							<?php
 							    }elseif($_SESSION['escolha'] == 'PB'){
 							?>						
-										<select style="background-color:#b3b3b3"  name="plano" id="plano" class="custom-select form-control-md" required>
+										<select style="background-color:#b3b3b3"  name="plano" id="plano" class="custom-select form-control-md" >
 										<option value="" >Selecione</option>
 											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
 											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
@@ -301,7 +292,7 @@ error_reporting(0);
                             <?php
                             }elseif ($_SESSION['escolha'] == 'RN'){
                             ?>							                               
-                                        <select style="background-color:#b3b3b3" name="plano" id="plano" class="custom-select form-control-md" required>
+                                        <select style="background-color:#b3b3b3" name="plano" id="plano" class="custom-select form-control-md" >
                                             <option value="" >Selecione</option>
                                             <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
                                             <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
@@ -463,7 +454,7 @@ error_reporting(0);
 
                             </div>
                             </div>
-							<button type="submit">submit</button>
+
 						
 							</section>
 						
@@ -559,7 +550,7 @@ error_reporting(0);
 								</div>
 								<div class="col-6">
 																			
-									<input type="text" name="nomedependente" class="form-control" id="nomedependente" placeholder="Nome Completo"required>
+									<input type="text" name="nomedependente" class="form-control" id="nomedependente" placeholder="Nome Completo">
 									
 								</div>
 								<br>
@@ -570,7 +561,7 @@ error_reporting(0);
 									
 								</div>
 								<div style ="margin-top:2%" class="col-6">																		
-									<input type="text" name="datadependente"  class="form-control " id="datadependente" placeholder="Data de Nascimento" required>
+									<input type="text" name="datadependente"  class="form-control " id="datadependente" placeholder="Data de Nascimento" >
 									
 								</div>
 						
@@ -600,7 +591,7 @@ error_reporting(0);
 								</div>
 								
 							<div style ="margin-top:2%"class="col-6">																
-									<input type="text" class="form-control" id="maedependente" name ="maedependente"placeholder="Mãe"required>								
+									<input type="text" class="form-control" id="maedependente" name ="maedependente"placeholder="Mãe">								
 							</div>
 							<div style ="margin-top:2%" class="col-6">													
 								<input type="text" name="cnsdependente" id="cnsdependente" class="form-control" placeholder="Cartão do sus" >								
@@ -619,9 +610,9 @@ error_reporting(0);
 							<!-- Step 3 -->
 							<h5>Imagens</h5>
 							<section>
-							<!--
+							
 							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-							<div id="branco">                
+							<div style="margin-top:5%" id="branco">                
                    
 								<div class="drop-zone">
 									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
@@ -663,7 +654,7 @@ error_reporting(0);
 								
 							
 									</div>
-								-->
+									<button name="SendCadImg" type="submit">submit</button>
 							</section>
 							<!-- Step 4 -->
 						
