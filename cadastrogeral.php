@@ -3,7 +3,7 @@
 include_once "conexao.php";
 session_start();
 error_reporting(0);
-
+require __DIR__ . '/vendor/autoload.php';
 
 
 
@@ -22,44 +22,31 @@ error_reporting(0);
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
+	
+    <script>
+	
+           function Mudarestado(el) {
+                var display = document.getElementById(el).style.display;
+                if(display == "block")
+                    document.getElementById(el).style.display = 'none';
+                else
+                    document.getElementById(el).style.display = 'block';
+            }
+			$("#data").mask("00-00-0000", {reverse: true});
+			$("#cpf").mask("000.000.000-00");
+			$("#cpf1").mask("000.000.000-00");
+            $("#data1").mask("00-00-0000", {reverse: true});
+            $("#data2").mask("00-00-0000", {reverse: true});
 
-	<script>
-		function validateForm() {
-			let x = document.forms["myForm"]["cpf"].value;
-			var y = document.getElementById("cpf");
-			if (x == "") {
 
 
-				y.focus();
-				return false;
-			}
-		}
-
-		function Mudarestado(el) {
-			var display = document.getElementById(el).style.display;
-			if (display == "block")
-				document.getElementById(el).style.display = 'none';
-			else
-				document.getElementById(el).style.display = 'block';
-		}
-		$("#data").mask("00-00-0000", {
-			reverse: true
-		});
-		$("#cpf").mask("000.000.000-00");
-		$("#cpf1").mask("000.000.000-00");
-		$("#data1").mask("00-00-0000", {
-			reverse: true
-		});
-		$("#data2").mask("00-00-0000", {
-			reverse: true
-		});
-	</script>
-	<style>
-		label {
-			color: #0099ff;
-		}
-
-		.form-group {
+			
+    </script>
+    <style>
+        label{
+            color:  #0099ff;
+        }
+		.form-group{
 			background-color: aliceblue;
 
 			border-radius: 5px;
@@ -292,18 +279,77 @@ error_reporting(0);
 		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
+				
 
-
-					<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-
-						<div class="wizard-content">
-							<form action="checkcadastro" name="myForm" onsubmit="return validateForm()" method="POST" class="tab-wizard wizard-circle wizard"><br>
-
-								<h5>Dados Pessoais</h5>
-								<section>
-									<h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS</h4>
-									<br>
-									<hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size=50>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+				
+					<div class="wizard-content">
+						<form action="checkcadastro"   enctype="multipart/form-data"  method="POST" class="tab-wizard wizard-circle wizard"><br>				
+					
+						<h5 >Dados Pessoais</h5>
+							<section>
+                            <h4 style="color:#606060;font-weight:bold">DADOS PESSOAIS</h4>
+							<br>
+                            <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
+								<div class="row">
+									<div class="col-4">																			
+							<?php
+							if($_SESSION['cliente'] == 'servidorpublico'){
+							?>					
+					
+										<select style="background-color:#b3b3b3" name="plano" id="plano"class="custom-select form-control-md" >
+										<option >Selecione</option>
+										<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>											
+										</select>										
+								
+							<?php
+							    }elseif($_SESSION['escolha'] == 'PB'){
+							?>						
+										<select style="background-color:#b3b3b3"  name="plano" id="plano" class="custom-select form-control-md" >
+										<option value="" >Selecione</option>
+											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
+											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
+											<option value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
+											<option value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
+										</select>									
+                            <?php
+                            }elseif ($_SESSION['escolha'] == 'RN'){
+                            ?>							                               
+                                        <select style="background-color:#b3b3b3" name="plano" id="plano" class="custom-select form-control-md" >
+                                            <option value="" >Selecione</option>
+                                            <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
+                                            <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
+                                            <option value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
+                                            <option value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
+                                        </select>
+									<?php
+                            }
+							?>
+                           																
+						</div>								
+								
+									<div class="col-4">																				
+									<input type="text"  id="a" name="nome" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
+									</div>							
+									<div class="col-3">									
+										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf" class="form-control" required>
+                                    </div>
+								</div>																	
+								<div class="row">
+									<div class="col-5">													
+                                        <input type="email" placeholder="Email*" id="email" onkeyup="document.getElementById('email-1').value = this.value;" name="email" class="form-control"required>									
+									</div>
+									<div class="col-3">
+                                    <input type="text" name ="telefone" placeholder="Telefone* " onkeyup="document.getElementById('telefone-1').value = this.value;" id="telefone" class="form-control" required>
+									</div>
+								
+							
+									
+									<div class="col-3">											
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control">
+									</div>
+									</div>
+									
 									<div class="row">
 										<div class="col-4">
 											<?php
@@ -490,155 +536,209 @@ error_reporting(0);
 
 										</div>
 									</div>
-									<button type="submit">submit</button>
+                            </div>  
+                            <br>
+                            <h4 style="background-color:#4177d0; border-radius: 3px;color: white;padding:2% ">O RESPONSÁVEL FINANCEIRO SERÁ TITULAR DO PLANO? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" style="background-color:#4177d0;border-color:#4177d0;font-size:25px"class="btn btn-danger" >SIM</button>  |<button type="button" style="background-color:#4177d0;border-color:#4177d0;font-size:25px"class="btn btn-danger" onclick="Mudarestado('minhaDiv')"> NÃO</button></h4>      
+                            <div id="minhaDiv">
+                            <div class="row">
 
-								</section>
+                            <div class="col-5">                              
+                                    <input type="text" name="nometitular" placeholder="Nome Completo*" class="form-control">
+                            </div>
+                            <div class="col-3">                           
+                                    <input type="text" name="cpftitular"  id="cpf1" class="form-control" placeholder="CPF*" >                                
+                            </div>
 
-								<br>
+                            <div class="col-4">                              
+                                    <input type="text" name="nascimentotitular" id="data1" class="form-control" placeholder="Data Nascimento*" >                                
+                            </div>
 
-								<!-- Step 2 -->
-								<h5>Beneficiarios</h5>
-								<section id="resp">
-									<script>
-										//Funcao adiciona uma nova linha na tabela
-										function adicionaLinha(idTabela) {
-											var nome = document.querySelector("#nomedependente");
-											var parentesco = document.querySelector("#parentesco");
-											$.ajax({
-												method: "POST",
-												url: "demo_test_post.php",
-												data: {
-													nome: nome.value,
-												}
-											});
+                            </div>
+                            <div class="row">
 
-											var tabela = document.getElementById(idTabela);
-											var numeroLinhas = tabela.rows.length;
-											var linha = tabela.insertRow(numeroLinhas);
-											var celula1 = linha.insertCell(0);
-											var celula2 = linha.insertCell(1);
-											var celula3 = linha.insertCell(2);
-											var celula4 = linha.insertCell(3);
-											celula1.innerHTML = nome.value;
-											celula2.innerHTML = Math.floor((Math.random() * 100) + 1);
-											celula3.innerHTML = 'tese';
-											celula4.innerHTML = "<a onclick='removeLinha(this)'><i class='fa fa-pencil'>Apagar</i></a>";
+                            <div class="col-3">                               
+                                    <select name="estadotitular" class="custom-select form-control">
+                                        <option value="">Estado Civil*</option>
+                                        <option value="Solteiro">Solteiro</option>
+                                        <option value="Casado">Casado</option>
+                                    </select>                                
+                            </div>
+                            <div class="col-3">  
+                                    <select name="sexotitular" class="custom-select form-control">
+                                        <option value="1">Sexo*</option>
+                                        <option value="1">Masculino</option>
+                                        <option value="1">Feminino</option>
+                                    </select>                                
+                            </div>
+
+                            <div class="col-3">                               
+                                <input type="text" name="maetitular" placeholder="Mãe" minlength="10" class="form-control">                            
+                            </div>
+                            <div class="col-3">                                
+                                    <input type="text" name="sustitular" placeholder="Cartão do SUS" minlength="15" class="form-control">                                
+                            </div>                         
+
+                            </div>
+                            </div>
+
+						
+							</section>
+						
+							<br>
+						
+							<!-- Step 2 -->
+                           <h5>Beneficiarios</h5>
+                            <section id="resp">
+                              <script>
+								     //Funcao adiciona uma nova linha na tabela
+									 function adicionaLinha(idTabela) {
+										var nome = document.querySelector("#nomedependente");
+										var cpf = document.querySelector("#cpfdependente");
+										var data = document.querySelector("#datadependente");
+										var parentesco = document.querySelector("#parentesco");
+										var estado = document.querySelector("#estadodependente");
+										var sexo = document.querySelector("#sexodependente");
+										var mae = document.querySelector("#maedependente");
+										var cns = document.querySelector("#cnsdependente");
+										var cpftitular = document.querySelector("#cpf");
+										if(cpftitular.value.length < 11){
+											alert('Preencha o CPF do Titular');
+											
+										}else{
+										$.ajax({
+										method: "POST",
+										url: "demo_test_post.php",
+										data: {nome: nome.value, cpf: cpf.value, data: data.value, parentesco: parentesco.value, estado: estado.value, sexo: sexo.value, mae: mae.value, cns: cnsdependente.value, cpftitular: cpftitular.value   }
+										});
+										
+										var tabela = document.getElementById(idTabela);
+										var numeroLinhas = tabela.rows.length;
+										var linha = tabela.insertRow(numeroLinhas);
+										var celula1 = linha.insertCell(0);
+										var celula2 = linha.insertCell(1);   
+										var celula3 = linha.insertCell(2);
+										var celula4 = linha.insertCell(3); 
+										celula1.innerHTML = nome.value; 
+										celula2.innerHTML =  cpf.value; 
+										celula3.innerHTML =  'R$:20.00'; 
+										celula4.innerHTML =  "<a onclick='removeLinha(this)'><i class='fa fa-pencil'>Apagar</i></a>";
+									}
 										}
 
 										// funcao remove uma linha da tabela
 										function removeLinha(linha) {
-											var i = linha.parentNode.parentNode.rowIndex;
-											document.getElementById('tbl').deleteRow(i);
-										}
-									</script>
-									<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
-									<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
-									<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
-
-									<div id="row4" class="row">
-										<table id="tbl" class="data-table stripe hover nowrap">
-											<thead>
-												<tr style="background-color:#4177d0 ">
-													<th style="padding-left:5%" class="table-plus datatable-nosort">Nome</th>
-													<th style="padding-left:5%">CPF</th>
-													<th style="padding-left:10%">Valor Unitário</U></th>
-													<th style="padding-left:5%">Opções</th>
-
-												</tr>
-											</thead>
-										</table>
-									</div>
-									<button type="button" style="background-color:#284ebf;padding:1% " class="btn btn-primary" id="att" data-toggle="modal" data-target="#exampleModal">
-										Cadastrar Dependentes
-									</button>
-									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">UNIDENTIS</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													<h4 style="color:#606060;font-weight:bold;text-align: center;">CADASTRAR DEPENDENTES</h4>
-													<div class="row">
-														<div class="col-6">
-
-															<select class="form-control" name="parentesco" id="parentesco">
-																<option value="3">Conjuge</option>
-																<option value="4">Filho</option>
-																<option value="8">Pai/Mae</option>
-																<option value="6">Enteado</option>
-																<option value="10">Outro</option>
-															</select>
-
-														</div>
-														<div class="col-6">
-
-															<input type="text" name="nomedependente" class="form-control" id="nomedependente" placeholder="Nome Completo" required>
-
-														</div>
-														<br>
-														<div style="margin-top:2%" class="col-6">
-
-
-															<input type="text" class="form-control" name="cpfdependente" placeholder="CPF" id="cpf">
-
-														</div>
-														<div style="margin-top:2%" class="col-6">
-															<input type="text" name="datadependente" class="form-control " id="data" placeholder="Data de Nascimento" required>
-
-														</div>
-
-													</div>
-													<div class="row">
-
-														<div class="col-6">
-
-															<select class="form-control" name="estadodependente">
-																<option value="Solteiro">Solteiro</option>
-																<option value="Casado">Casado</option>
-																<option value="Viúvo">Viúvo</option>
-																<option value="Separado">Separado</option>
-																<option value="Divorciado">Divorciado</option>
-																<option value="Relação Estavel">DRelação Estavel</option>
-															</select>
-
-														</div>
-														<div class="col-6">
-
-															<select class="form-control" name="sexodependentes">
-																<option value="1">Masculino</option>
-																<option value="0">Feminino</option>
-
-															</select>
-
-														</div>
-
-														<div style="margin-top:2%" class="col-6">
-															<input type="text" class="form-control" name="maedependente" placeholder="Mãe" required>
-														</div>
-														<div style="margin-top:2%" class="col-6">
-															<input type="text" name="cnsdependente" class="form-control" placeholder="Cartão do sus">
-														</div>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-														<button type="button" onclick="adicionaLinha('tbl')" style="background-color:#284ebf" class="btn btn-primary">Cadastrar</button>
-													</div>
-												</div>
-											</div>
-
-										</div>
-
-								</section>
-								<!-- Step 3 -->
-								<h5>Imagens</h5>
-								<section>
-									<!--
+										var i=linha.parentNode.parentNode.rowIndex;
+										document.getElementById('tbl').deleteRow(i);
+										}            
+							  </script> 
+                            <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
+                            <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
+                            <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
+						
+                            	<div id="row4" class="row">
+						<table id="tbl" class="data-table stripe hover nowrap">
+							<thead>
+								<tr style="background-color:#4177d0 ">
+									<th style="padding-left:5%" class="table-plus datatable-nosort">Nome</th>							
+									<th style="padding-left:5%">CPF</th>
+									<th style="padding-left:1%">Valor Unitário</U></th>
+									<th style="padding-left:5%">Opções</th>	
+									
+								</tr>
+							</thead>						
+						</table>
+					</div>
+                    <button type="button" style="background-color:#284ebf;padding:1% " class="btn btn-primary" id="att" data-toggle="modal" data-target="#exampleModal">
+                        Cadastrar Dependentes
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div  class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">UNIDENTIS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                       <h4 style="color:#606060;font-weight:bold;text-align: center;">CADASTRAR DEPENDENTES</h4>
+                        <div class="row">
+                        <div class="col-6">
+																				
+									<select class="form-control" name="parentesco" id="parentesco">
+									<option value="3">Conjuge</option>
+									<option value="4">Filho</option>
+									<option value="8">Pai/Mae</option>
+									<option value="6">Enteado</option>
+									<option value="10">Outro</option>
+									</select>
+									
+								</div>
+								<div class="col-6">
+																			
+									<input type="text" name="nomedependente" class="form-control" id="nomedependente" placeholder="Nome Completo">
+									
+								</div>
+								<br>
+								<div style ="margin-top:2%" class="col-6">
+									
+										
+										<input type="text" class="form-control"  name ="cpfdependente" placeholder="CPF" id="cpfdependente" >
+									
+								</div>
+								<div style ="margin-top:2%" class="col-6">																		
+									<input type="text" name="datadependente"  class="form-control " id="datadependente" placeholder="Data de Nascimento" >
+									
+								</div>
+						
+							</div>
+							<div class="row">
+						
+							<div class="col-6">
+																				
+									<select class="form-control" name="estadodependente" id="estadodependente">
+									<option value="Solteiro">Solteiro</option>
+									<option value="Casado">Casado</option>
+									<option value="Viúvo">Viúvo</option>
+									<option value="Separado">Separado</option>
+									<option value="Divorciado">Divorciado</option>
+									<option value="Relação Estavel">DRelação Estavel</option>
+									</select>
+									
+								</div>
+								<div class="col-6">
+																				
+									<select class="form-control" name="sexodependente" id="sexodependente">
+									<option value="1">Masculino</option>
+									<option value="0">Feminino</option>
+								
+									</select>
+									
+								</div>
+								
+							<div style ="margin-top:2%"class="col-6">																
+									<input type="text" class="form-control" id="maedependente" name ="maedependente"placeholder="Mãe">								
+							</div>
+							<div style ="margin-top:2%" class="col-6">													
+								<input type="text" name="cnsdependente" id="cnsdependente" class="form-control" placeholder="Cartão do sus" >								
+							</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button"  onclick="adicionaLinha('tbl')" style="background-color:#284ebf"class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+								
+							</section>
+							<!-- Step 3 -->
+							<h5>Imagens</h5>
+							<section>
+							
 							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-							<div id="branco">                
+							<div style="margin-top:5%" id="branco">                
                    
 								<div class="drop-zone">
 									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
@@ -680,21 +780,34 @@ error_reporting(0);
 								
 							
 									</div>
-								-->
-								</section>
-								<!-- Step 4 -->
-
-								<h5>Resumo</h5>
-
-								<section>
-
-									<div id="row4" class="row">
-										<div class="col-4">
-											<input type="text" id="a-1" placeholder="Nome" class="form-control" onkeyup="document.getElementById('a').value = this.value;" readonly>
-										</div>
-										<div class="col-3">
-											<input type="text" onkeyup="document.getElementById('cpf').value = this.value;" placeholder="CPF*" id="cpf-1" class="form-control" readonly>
-										</div>
+									<button name="SendCadImg" type="submit">submit</button>
+							</section>
+							<!-- Step 4 -->
+						
+							<h5>Resumo</h5>
+							
+							<section>
+								
+							<div id="row4" class="row">
+							<div class="col-4">																				
+									<input type="text"  id="a-1" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a').value = this.value;" readonly>
+									</div>							
+									<div class="col-3">									
+										<input type="text"   onkeyup="document.getElementById('cpf').value = this.value;" placeholder="CPF*" id="cpf-1"class="form-control"readonly>
+                                    </div>
+								</div>																	
+								<div class="row">
+									<div class="col-5">													
+                                        <input type="email" placeholder="Email*"  onkeyup="document.getElementById('email').value = this.value;" id="email-1" name="email" class="form-control"readonly>								
+									</div>
+									<div class="col-3">
+                                    <input type="text" name ="telefone" placeholder="Telefone* "  onkeyup="document.getElementById('telefone').value = this.value;"  id="telefone-1" class="form-control" readonly>
+									</div>							
+							
+									
+									<div class="col-3">											
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control" readonly>
+									</div>
 									</div>
 									<div class="row">
 										<div class="col-5">
