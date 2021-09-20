@@ -1,0 +1,140 @@
+.bg-white {
+  background: #f6f6f6;
+}
+
+label {
+  color: #222222ee;
+  padding: 0 0.25rem;
+  background-color: #f6f6f6;
+  left: 0.5rem;
+  position: relative;
+  z-index: 999;
+  text-transform: lowercase;
+  font-size: 0.9rem;
+}
+h4.text-blue {
+  color: #606060 !important;
+  margin-bottom: 0.25rem;
+}
+.form-group {
+  border-radius: 5px;
+  width: 100%;
+  color: #606060;
+  margin-bottom: 0rem !important;
+}
+.form-group input[type="text"] {
+  position: relative;
+  top: -1rem;
+  background: #f6f6f6;
+  color: #606060;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  line-height: 0rem;
+  padding: 0.75rem;
+  padding-top: 1.25rem;
+  height: 1.75rem;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  position: relative;
+  top: -1rem;
+  background: #f6f6f6;
+}
+
+
+textarea.form-control {
+    margin: .5rem 0;
+    margin-bottom: 1rem;
+    height: 90px;
+}
+
+.form-group h3.imgS {
+    position: relative;
+    padding: .75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    color: #eeeeee;
+    background: #023bbf;
+    text-transform: uppercase;
+}
+
+.form-group h3.imgSEnd{
+    margin-top: 1.5rem;
+}
+
+.form-group .wBackImg{
+    margin-bottom: .5rem;
+    height: 10rem; 
+    background-position: center;
+    background-size: cover;
+}
+
+h4 {
+  color: #606060;
+  font-weight: 600;
+}
+
+.main-box-wizard {
+  width: 97%;
+  margin: 2rem auto;
+  margin-top: 0;
+  border-radius: 0.5rem;
+}
+
+.wizard-content .btn-relative {
+  position: relative;
+  right: 0%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+}
+
+.wizard-content .wizard > .actions {
+  position: absolute;
+  top: 8.5rem;
+  right: 2%;
+  margin: 0;
+}
+
+.wizard-content .wizard > .actions > ul > li > a {
+  border: none !important;
+  box-shadow: 0 0 0.1rem #222222;
+}
+
+@media (max-width: 500px) {
+
+  .main-box-wizard {
+    margin-top: 2.5rem;
+  }
+
+  .form-group h3.imgS {
+    margin-top: 1.5rem;
+  }
+
+  .wizard-content .btn-relative,
+  .wizard-content .wizard > .actions {
+    right: 0;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .wizard-content .wizard > .actions {
+    top: 10rem;
+  }
+
+  .wizard-content .btn-relative {
+    padding: 1.5rem;
+  }
+
+  .wizard-content .btn-relative .btn {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+  }
+}

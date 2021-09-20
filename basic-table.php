@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<?php include('include/head.php'); ?>
 </head>
+
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
@@ -44,7 +46,7 @@
 							<p>Add class <code>.table</code></p>
 						</div>
 						<div class="pull-right">
-							<a href="#basic-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+							<a href="#basic-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
 						</div>
 					</div>
 					<table class="table">
@@ -81,11 +83,11 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="collapse collapse-box" id="basic-table" >
+					<div class="collapse collapse-box" id="basic-table">
 						<div class="code-box">
 							<div class="clearfix">
-								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
-								<a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
 							</div>
 							<pre><code class="xml copy-pre" id="basic-table-code">
 <table class="table">
@@ -110,10 +112,10 @@
 					<div class="clearfix mb-20">
 						<div class="pull-left">
 							<h4 class="text-blue">Bordered table</h4>
-							<p>Add <code>.table  .table-bordered</code> for borders on all sides of the table and cells.</p>
+							<p>Add <code>.table .table-bordered</code> for borders on all sides of the table and cells.</p>
 						</div>
 						<div class="pull-right">
-							<a href="#border-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+							<a href="#border-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
 						</div>
 					</div>
 					<table class="table table-bordered">
@@ -153,8 +155,8 @@
 					<div class="collapse collapse-box" id="border-table">
 						<div class="code-box">
 							<div class="clearfix">
-								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#border-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
-								<a href="#border-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#border-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#border-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
 							</div>
 							<pre><code class="xml copy-pre" id="border-table-code">
 <table class="table table-bordered">
@@ -179,10 +181,10 @@
 					<div class="clearfix mb-20">
 						<div class="pull-left">
 							<h4 class="text-blue">Striped table</h4>
-							<p>Add <code>.table  .table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+							<p>Add <code>.table .table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
 						</div>
 						<div class="pull-right">
-							<a href="#striped-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+							<a href="#striped-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
 						</div>
 					</div>
 					<table class="table table-striped">
@@ -236,8 +238,8 @@
 					<div class="collapse collapse-box" id="striped-table">
 						<div class="code-box">
 							<div class="clearfix">
-								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#striped-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
-								<a href="#striped-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#striped-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#striped-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
 							</div>
 							<pre><code class="xml copy-pre" id="striped-table-code">
 <table class="table table-striped">
@@ -262,10 +264,10 @@
 					<div class="clearfix mb-20">
 						<div class="pull-left">
 							<h4 class="text-blue">Responsive table</h4>
-							<p>Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a <code>.table  .table-responsive</code> Or, pick a maximum breakpoint with which to have a responsive table up to by using<code>.table-responsive{-sm|-md|-lg|-xl}</code>.</p>
+							<p>Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a <code>.table .table-responsive</code> Or, pick a maximum breakpoint with which to have a responsive table up to by using<code>.table-responsive{-sm|-md|-lg|-xl}</code>.</p>
 						</div>
 						<div class="pull-right">
-							<a href="#responsive-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+							<a href="#responsive-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
 						</div>
 					</div>
 					<div class="table-responsive">
@@ -321,8 +323,8 @@
 					<div class="collapse collapse-box" id="responsive-table">
 						<div class="code-box">
 							<div class="clearfix">
-								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#responsive-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
-								<a href="#responsive-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#responsive-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#responsive-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
 							</div>
 							<pre><code class="xml copy-pre" id="responsive-table-code">
 <div class="table-responsive">
@@ -352,7 +354,7 @@
 							<p>Use classes <code>( .table-active, .table-success, .table-info, .table-warning, .table-danger )</code> to color table rows or individual cells</p>
 						</div>
 						<div class="pull-right">
-							<a href="#contextual-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+							<a href="#contextual-table" class="btn btn-primary btn-sm scroll-click" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
 						</div>
 					</div>
 					<div class="table-responsive">
@@ -436,8 +438,8 @@
 					<div class="collapse collapse-box" id="contextual-table">
 						<div class="code-box">
 							<div class="clearfix">
-								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#contextual-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
-								<a href="#contextual-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+								<a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left" data-clipboard-target="#contextual-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+								<a href="#contextual-table" class="btn btn-primary btn-sm pull-right" rel="content-y" data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
 							</div>
 							<pre><code class="xml copy-pre" id="contextual-table-code">
 <div class="table-responsive">
@@ -466,4 +468,5 @@
 	</div>
 	<?php include('include/script.php'); ?>
 </body>
+
 </html>

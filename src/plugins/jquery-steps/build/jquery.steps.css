@@ -47,7 +47,7 @@
 	position: relative;
 	padding-top: 52px;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: .5rem;
 	display: block
 }
 
@@ -72,7 +72,8 @@
 .wizard-content .wizard>.steps>ul>li.current .step {
 	border-color: #009efb ;
 	background-color: #fff;
-	color: #009efb
+	color: #009efb;
+	opacity: 1;
 }
 
 .wizard-content .wizard>.steps>ul>li.disabled a,
@@ -91,7 +92,8 @@
 .wizard-content .wizard>.steps>ul>li.done .step {
 	background-color: #009efb ;
 	border-color: #009efb ;
-	color: #fff
+	color: #fff;
+	opacity: 1;
 }
 
 .wizard-content .wizard>.steps>ul>li.error .step {

@@ -22,37 +22,32 @@ require __DIR__ . '/vendor/autoload.php';
   <body>
     <?php include('include/header.php'); ?>
     <?php include('include/sidebar.php'); ?>
-
-    <div style="background-color: #eeeeee !important" class="main-container">
-      <div class="min-height-200px">
+    <div class="main-container" style='background-color: #eeeeee; margin-top: 1.5rem;'>
+    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
+      <div class="min-height-200px CadFotos">
         <div class="page-header">
-          <div class="row" style='margin-left: 2%;'>
-            <?php echo '<h5 id="h5" style="font-size: .9rem;width:98vw;margin-bottom: .25rem;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+          <div class="row">
+            <?php echo '<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+            <br>
             <div
               class="inline"
               style="
-                display: -webkit-inline-box;
-                margin-top: 1.5%;
+                display:-webkit-inline-box;margin-left:1%;margin-top:1%;
               "
             >
               <h4
                 id="h4"
                 style="
-                  color: #606060;
-                  padding-top: 2px;
-                  font-size: 1rem;
-                  line-height: 1.5rem;
+                  color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem;
                 "
               >
-                Escolha o Plano :
+                Escolha o Plano:
               </h4>
               <input
                 id="plano"
                 class="form-control"
                 style="
-                  margin-left: 1rem;
-                  background-color: #b3b3b3;
-                  height: calc(2rem + 2px) !important;
+                  background-color: #b3b3b3 !important;height: calc(2rem + 2px) !important;
                 "
                 value="<?php echo $_SESSION['plano']?>"
                 readonly
@@ -65,15 +60,14 @@ require __DIR__ . '/vendor/autoload.php';
         <div style="background-color: #f6f6f6 !important;
             padding: 2rem;
             padding-top: 1rem;
-            width: 95%;
             margin: .5rem auto;
             box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+            position: relative;
             ">
           <div class="flexLabel">
             <label class="labelInput">Incluir Arquivos</label>
             <hr/>
           </div>
-          <br />
           <div id="branco"></div>
 
           <form
@@ -87,7 +81,7 @@ require __DIR__ . '/vendor/autoload.php';
                   style="font-size: 3.5rem; padding: 11%; color: #606060"
                   class="fa fa-download"
                 ></i
-                ><br />
+                ><br/>
                 <div class="fundoazul">RG FRENTE</div></span
               >
               <input
@@ -193,7 +187,7 @@ require __DIR__ . '/vendor/autoload.php';
               />
             </div>
             <br />
-
+            <div style="overflow: auto;clear: both;"></div>
             <br /><br />
 
             <input
@@ -206,6 +200,7 @@ require __DIR__ . '/vendor/autoload.php';
           </form>
         </div>
         <?php include('include/footer.php'); ?>
+        </div>
       </div>
 
       <?php include('include/script.php'); ?>

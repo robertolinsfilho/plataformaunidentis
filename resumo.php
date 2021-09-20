@@ -25,120 +25,37 @@ if ($_SESSION['sexo'] = 1){
 <html>
   <head>
     <?php include('include/head.php'); ?>
-    <style>
-	.form-control{
-		height: 2rem !important;
-		background-color: #f9f9f9 !important;
-	} 
-	.form-group{
-		margin-bottom: .5rem !important;
-	}
-      label {
-        color: #606060;
-      }
-      input,
-      select {
-        border: 1px solid #606060 !important;
-
-        background-color: #b3b3b3;
-      }
-      #resumo {
-        margin-left: 0%;
-        background-color: #4177d0;
-        padding: 20px;
-      }
-      #submit {
-        background-color: #3284f1;
-        margin-left: 80%;
-        width: 20%;
-      }
-	  #h5 {
-		margin-left: 1%;
-	  }
-	.flexLabel{
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin: .5rem 0;
-	}
-
-	.flexLabel .labelInput{
-		font-size: .9rem;
-		white-space: nowrap;
-		padding-right: 1rem;
-		font-weight: bold;
-		color: #606060;
-		text-transform: uppercase;
-		font-size: 1.5rem;
-        line-height: 1.875rem;
-	}
-
-	.flexLabel hr{
-		position: relative;
-		top: -.15rem;
-		display: block;
-		width: 100%;
-		height: 1px;
-		background-color: #606060;
-	}
-
-	h4.h4 {
-		font-size: 1.5rem;
-		line-height: 1.875rem;
-	}
-      @media screen and (max-device-width: 720px) {
-        .inline {
-          width: 50%;
-        }
-        #submit {
-          background-color: #3284f1;
-          margin-left: 14%;
-          margin-top: 5%;
-          width: 76%;
-        }
-        #resumo {
-          width: 80%;
-        }
-		.row.resumo{
-			align-items: center !important;
-    		justify-content: center !important;
-		}
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/css/cadastro.css">
   </head>
   <body>
     <?php include('include/header.php'); ?>
     <?php include('include/sidebar.php'); ?>
-    <div class="main-container" style='background-color: #eeeeee;'>
+    <div class="main-container" style='background-color: #eeeeee; margin-top: 1.5rem;'>
       <div
         class="
           pd-ltr-20
-          customscroll customscroll-10-p
           height-100-p
           xs-pd-20-10
         "
       >
-        <div class="min-height-200px">
+        <div class="min-height-200px mainResumo">
           <div class="page-header">
-            <div class="row" style='margin-top: .5rem;margin-bottom: .5rem;'>
-              <?php echo '<h5 id="h5" style="font-size: .9rem;width:98vw;margin-bottom: .25rem;"><span style="font-size:1rem;font-weight:bold;color:#606060;"> INCLUIR PROPOSTA</span> | VALOR TOTAL : '.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
-			</div>
-			<div class="row" style='margin-bottom: 1rem;'>
+            <div class="row">
+              <?php echo '<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+              <br>
               <div
                 class="inline"
                 style="
-                  display: -webkit-inline-box;
-                  margin-left: 1%;
-                  margin-top: 1%;
+                  display:-webkit-inline-box;margin-left:1%;margin-top:1%;
                 "
               >
                 <h4 id="h4" style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem; ">
-                  Escolha o Plano :
+                  Escolha o Plano: 
                 </h4>
                 <input
                   id="plano"
                   class="form-control"
-                  style="margin-left: 1rem;background-color:#b3b3b3;height: calc(2rem + 2px) !important;background-color: #b3b3b3 !important;"
+                  style="height: calc(2rem + 2px) !important;background-color: #b3b3b3 !important; text-align: center;margin-left: 5%;"
                   value="<?php echo $_SESSION['plano']?>"
                   readonly
                 />
@@ -146,7 +63,13 @@ if ($_SESSION['sexo'] = 1){
             </div>
           </div>
           <!-- Default Basic Forms Start -->
-          <div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style='background-color: #f6f6f6;padding: .5rem 1.5rem;'>
+          <div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style='
+            background-color: #f6f6f6 !important;
+            padding: 2rem;
+            padding-top: 1rem;
+            margin: .5rem auto;
+            box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+            position: relative;'>
 		  	<div class="flexLabel">
 			  <label class="labelInput">Resumo</label>
               <hr>

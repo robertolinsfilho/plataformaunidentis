@@ -17,7 +17,7 @@ function generatePassword($qtyCaraceters = 8)
     $specialCharacters = str_shuffle('!@#$%*-');
  
     //Junta tudo
-    $characters = $capitalLetters.$smallLetters.$numbers.$specialCharacters;
+    $characters = $numbers.$numbers.$numbers.$numbers;
  
     //Embaralha e pega apenas a quantidade de caracteres informada no parâmetro
     $password = substr(str_shuffle($characters), 0, $qtyCaraceters);

@@ -58,6 +58,3 @@ if($conexao->query($sql) === TRUE and $conexao->query($sql4) === TRUE and $conex
 }
 
 $conexao->close();
-
-
-?>

@@ -3,11 +3,10 @@ include_once "conexao.php";
 session_start();
 error_reporting(0);
 // Verifica se existe os dados da sessão de login
-if(!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"]))
-{
-// Usuário não logado! Redireciona para a página de login
-header("Location: login");
-exit;
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
+	// Usuário não logado! Redireciona para a página de login
+	header("Location: login");
+	exit;
 }
 
 
@@ -21,74 +20,76 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 //Verificar se encontrou resultado na tabela "usuarios"
 
-    ?>
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        .row{
-            padding: 0px;
-            margin-top: 4%;
+	<style>
+		.row {
+			padding: 0px;
+			margin-top: 4%;
 			padding-left: 20px;
-        }
-        .col-md-5{
-            padding-top: 20px;
-        }
-        .col-md-6{
-            padding-top: 20px;
-        }
-       
-       
-        </style>
-    <meta charset="UTF-8">
+		}
+
+		.col-md-5 {
+			padding-top: 20px;
+		}
+
+		.col-md-6 {
+			padding-top: 20px;
+		}
+	</style>
+	<meta charset="UTF-8">
 	<?php include('include/head.php'); ?>
 </head>
+
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
-        
-        <h2 style="margin-top: 4%;margin-left:2%;font-weight:bold">Informações do Vendedor</h2>
-	<form method="POST" action="alteracaovendedor?num=2">
-       <div class="row">
-           <div class="col-md-4">
-           <label>CPF:</label>
-            <input name="cpf" minlength="11" maxlength="11" palceholder="CPF"class="form-control" required>
-           </div>
 
-       </div>
-    
-    <div class="row">
-
-        <div class="col-md-7">
-        <label>Corretora:</label>
-        <input name="corretora"  placeholder="corretora"class="form-control" required>
-        </div>
-      
-        <div class="col-md-4">
-        <label>Email:</label>
-        <input name="email" placeholder="Email" class="form-control" required>
-        </div>
-
-        <div class="col-md-6">
-        <label>Link:</label>
-        <input  value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario']?>"class="form-control" readonly>
-        </div>
-        <div class="col-md-5">
-        <label>Nome Vendedor:</label>
-        <input name ="vendedor"class="form-control" placeholder="Vendedor"required>
-        </div>
-       
-       
-    </div>
-		<br>
-    <button style="margin-left:80%"class="btn btn-primary" type="submit">Salvar</button>
-    </form>	
-		
+		<h2 style="margin-top: 4%;margin-left:2%;font-weight:bold">Informações do Vendedor</h2>
+		<form method="POST" action="alteracaovendedor?num=2">
+			<div class="row">
+				<div class="col-md-4">
+					<label>CPF:</label>
+					<input name="cpf" minlength="11" maxlength="11" palceholder="CPF" class="form-control" required>
 				</div>
+
 			</div>
-			<?php include('include/footer.php'); ?>
-		</div>
+
+			<div class="row">
+
+				<div class="col-md-7">
+					<label>Corretora:</label>
+					<input name="corretora" placeholder="corretora" class="form-control" required>
+				</div>
+
+				<div class="col-md-4">
+					<label>Email:</label>
+					<input name="email" placeholder="Email" class="form-control" required>
+				</div>
+
+				<div class="col-md-6">
+					<label>Link:</label>
+					<input value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario'] ?>" class="form-control" readonly>
+				</div>
+				<div class="col-md-5">
+					<label>Nome Vendedor:</label>
+					<input name="vendedor" class="form-control" placeholder="Vendedor" required>
+				</div>
+
+
+			</div>
+			<br>
+			<button style="margin-left:80%" class="btn btn-primary" type="submit">Salvar</button>
+		</form>
+
+	</div>
+	</div>
+	<?php include('include/footer.php'); ?>
+	</div>
 	</div>
 	<?php include('include/script.php'); ?>
 	<script src="src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
@@ -126,8 +127,8 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 					to: 6.5,
 				}],
 				gridLineDashStyle: 'longdash',
-                gridLineWidth: 1,
-                crosshair: true
+				gridLineWidth: 1,
+				crosshair: true
 			},
 			yAxis: {
 				title: {
@@ -250,8 +251,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 				}, {
 					borderWidth: 0,
 					outerRadius: '107%'
-				}, {
-				}, {
+				}, {}, {
 					backgroundColor: '#fff',
 					borderWidth: 0,
 					outerRadius: '105%',
@@ -328,8 +328,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 				}, {
 					borderWidth: 0,
 					outerRadius: '107%'
-				}, {
-				}, {
+				}, {}, {
 					backgroundColor: '#fff',
 					borderWidth: 0,
 					outerRadius: '105%',
@@ -384,4 +383,5 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 		});
 	</script>
 </body>
+
 </html>

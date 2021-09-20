@@ -6,43 +6,42 @@ include_once('conexao.php');
 
 $usuario = $_SESSION['usuario'];
 $tipocliente = $_SESSION['cliente'];
-$nome = $_SESSION['nome'] ;
+$nome = $_SESSION['nome'];
 $cpf = $_SESSION['cpf'];
 
 $cpf = str_replace(".", "", $cpf);
 $cpf = str_replace("-", "", $cpf);
 
 $email = $_SESSION['email'];
-$fixo = $_SESSION['fixo'] ;
-$telefone = $_SESSION['telefone'] ;
-$sexo = $_SESSION['sexo'] ;
-$rg = $_SESSION['rg'] ;
-$nascimento = $_SESSION['nascimento'] ;
-$mae = $_SESSION['mae'] ;
-$estado = $_SESSION['estado'] ;
+$fixo = $_SESSION['fixo'];
+$telefone = $_SESSION['telefone'];
+$sexo = $_SESSION['sexo'];
+$rg = $_SESSION['rg'];
+$nascimento = $_SESSION['nascimento'];
+$mae = $_SESSION['mae'];
+$estado = $_SESSION['estado'];
 $sus = $_SESSION['sus'];
-$cep = $_SESSION['cep'] ;
-$rua = $_SESSION['rua'] ;
-$numero = $_SESSION['numero'] ;
-$uf = $_SESSION['uf'] ;
-$complemento = $_SESSION['complemento'] ;
-$cidade = $_SESSION['cidade'] ;
+$cep = $_SESSION['cep'];
+$rua = $_SESSION['rua'];
+$numero = $_SESSION['numero'];
+$uf = $_SESSION['uf'];
+$complemento = $_SESSION['complemento'];
+$cidade = $_SESSION['cidade'];
 $bairro = $_SESSION['bairro'];
 $plano = $_SESSION['plano'];
-$emissor =$_SESSION['emissor'];
+$emissor = $_SESSION['emissor'];
 $admissao = $_SESSION['admissao'];
-$matricula =$_SESSION['matricula'];
+$matricula = $_SESSION['matricula'];
 $responsavel = $_SESSION['cpftitular1'];
 echo $_SESSION['cpftitular1'];
 echo $cpf;
-if(empty($_SESSION['cpftitular1'])){
+if (empty($_SESSION['cpftitular1'])) {
     $cpftitular = $cpf;
     echo 'entrou1';
-}elseif($_SESSION['cpftitular1'] != $cpf && isset($_SESSION['cpftitular1'])){
+} elseif ($_SESSION['cpftitular1'] != $cpf && isset($_SESSION['cpftitular1'])) {
     $cpftitular = $_SESSION['cpftitular1'];
     echo 'entrou2';
-
-}else{
+} else {
     echo 'entrou3';
     $cpftitular = $cpf;
 }
@@ -57,24 +56,22 @@ $sql3 = "INSERT INTO  endereco (cpf,cep,rua,numero,bairro,cidade,estado,compleme
 VALUES ( '$cpf','$cep','$rua','$numero', '$bairro','$cidade','$uf','$complemento')";
 
 $sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$_SESSION[senhaemail]')";
-$_SESSION['msg1'] = '<h4>PROPOSTA CADASTRADA</h4><br><h5>FOI ENVIADO UM EMAIL PARA O RESPONSÁVEL FINANCEIRO COM AS INSTRUÇÕES DE PAGAMENTO</h5><br><h5>ESTA PROPOSTA PERMANECERÁ "EM (NOVAS)" ATÉ QUE O CLIENTE CONCLUIR A PROPOSTA PELO EMAIL"</h5>';
+$_SESSION['msg1'] = '<h4>Sua proposta foi cadastrada!</h4><h5>Enviamos um email ao Responsável Financeiro, com as instruções para pagamento.</h5><h5>Esta proposta permanecerá em "NOVAS" até que o cliente a conclua no e-mail recebido.</h5>';
 if ($conexao->query($sql) === TRUE and $conexao->query($sql2) === true and $conexao->query($sql3) === TRUE and $conexao->query($sql4) === TRUE) {
 
 
     if (isset($responsavel)) {
-        
+
         $sql5 = "INSERT INTO  responsavel  (nome,cpf,nascimento,estado,sexo,mae,sus ) 
         VALUES ('$_SESSION[nometitular]','$_SESSION[cpftitular1]','$_SESSION[nascimentotitular]','$_SESSION[estadotitular]','$_SESSION[sexotitular]','$_SESSION[maetitular]','$_SESSION[sustitular]')";
         $conexao->query($sql5);
         header('Location: modalfinal');
-    }else{
+    } else {
         echo "Error updating record: " . $conexao->error;
         header('Location: modalfinal');
     }
 
-        header('Location: modalfinal');
-
-
-}else{
+    header('Location: modalfinal');
+} else {
     echo "Error updating record: " . $conexao->error;
 }

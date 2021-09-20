@@ -9,9 +9,8 @@ $row = mysqli_fetch_assoc($result);
 
 $sql = "DELETE FROM `dependentes` WHERE id ='$id'";
 
-if($conexao->query($sql) === TRUE) {
+if ($conexao->query($sql) === TRUE) {
     $_SESSION['status_cadastro'] = true;
-   
 }
 
 header('Location: cadastrodependentes.php');
