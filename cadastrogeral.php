@@ -37,11 +37,31 @@ require __DIR__ . '/vendor/autoload.php';
             $("#data1").mask("00-00-0000", {reverse: true});
             $("#data2").mask("00-00-0000", {reverse: true});
 
-
+function validar(){
+	
+	var nome = document.getElementById('a');	
+	if(nome.value == ''){
+		document.getElementById("a").style.setProperty('border-color', 'red', 'important');
+		
+		
+	}
+	var cpf = document.getElementById('cpf');	
+	if(cpf.value == ''){
+		document.getElementById("cpf").style.setProperty('border-color', 'red', 'important');		
+		
+	}
+}
 
 			
     </script>
     <style>
+		@keyframes treme {
+			0% {margin-left: 0;}
+			25% {margin-left: 5px;}
+			50% {margin-left: 0;}
+			75% {margin-left: -5px;}
+			100% {margin-left: 0;}
+		}
         label{
             color:  #0099ff;
         }
@@ -306,43 +326,48 @@ require __DIR__ . '/vendor/autoload.php';
 						</div>								
 								
 									<div class="col-4">																				
-									<input type="text"  id="a" name="nome" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;">
+									<input type="text"  id="a" name="nome" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;"  required oninvalid="this.setCustomValidity(' ')" 
+									onchange="try{setCustomValidity('')}catch(e){}">
 									</div>							
 									<div class="col-3">									
-										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf" class="form-control" required>
+										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
+									onchange="try{setCustomValidity('')}catch(e){}"> 
                                     </div>
 								</div>																	
 								<div class="row">
 									<div class="col-5">													
-                                        <input type="email" placeholder="Email*" id="email" onkeyup="document.getElementById('email-1').value = this.value;" name="email" class="form-control"required>									
+                                        <input type="email" placeholder="Email*" id="email" onkeyup="document.getElementById('email-1').value = this.value;" name="email" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
+									onchange="try{setCustomValidity('')}catch(e){}"> 									
 									</div>
 									<div class="col-3">
-                                    <input type="text" name ="telefone" placeholder="Telefone* " onkeyup="document.getElementById('telefone-1').value = this.value;" id="telefone" class="form-control" required>
+                                    <input type="text" name ="telefone" placeholder="Telefone* " onkeyup="document.getElementById('telefone-1').value = this.value;" id="telefone" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
+									onchange="try{setCustomValidity('')}catch(e){}"> 
 									</div>
 								
 							
 									
 									<div class="col-3">											
-									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control">
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
+									onchange="try{setCustomValidity('')}catch(e){}"> 
 									</div>
 									</div>
 									
 									<div class="row">
 									<div class="col-2">
-                                    <select style="margin-left:14%" name="sexo" onkeyup="document.getElementById('sexo-1').value = this.value;" class="custom-select form-control"required>
+                                    <select style="margin-left:14%" name="sexo" onkeyup="document.getElementById('sexo-1').value = this.value;" class="custom-select form-control">
 											<option value="">Sexo*</option>
 											<option value="1">Masculino</option>
 											<option value="0">Feminino</option>										
 										</select>
 									</div>
 									<div class="col-3">
-                                        <input type="text" id ="rg" onkeyup="document.getElementById('rg-1').value = this.value;" class="form-control" name ="rg" minlength="7" maxlength="7" placeholder="RG*"required>
+                                        <input type="text" id ="rg" onkeyup="document.getElementById('rg-1').value = this.value;" class="form-control" name ="rg" minlength="7" maxlength="7" placeholder="RG*">
 									</div>						
 									<div class="col-3">
-                                        <input type="text" onkeyup="document.getElementById('emissor-1').value = this.value;" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*"required>
+                                        <input type="text" onkeyup="document.getElementById('emissor-1').value = this.value;" class="form-control" minlength="4" id="emissor"name ="emissor"placeholder="Orgão Emissor*">
 									</div>
                                     <div class="col-3">
-                                        <input type="text" class="form-control" id="data" onkeyup="document.getElementById('data-1').value = this.value;"name ="nascimento"placeholder="Data de Nascimento*"required>									
+                                        <input type="text" class="form-control" id="data" onkeyup="document.getElementById('data-1').value = this.value;"name ="nascimento"placeholder="Data de Nascimento*">									
 									</div>
                                   
 									</div>
@@ -351,10 +376,10 @@ require __DIR__ . '/vendor/autoload.php';
 									<div class="row">
 									
                                     <div class="col-4">
-                                    <input type="text" name="mae" onkeyup="document.getElementById('email-1').value = this.value;" id="mae"placeholder="Mãe*" minlength="10" class="form-control"required>
+                                    <input type="text" name="mae" onkeyup="document.getElementById('email-1').value = this.value;" id="mae"placeholder="Mãe*" minlength="10" class="form-control">
 									</div>
                                     <div class="col-3">
-                                    <select name="estado" id="estado" onkeyup="document.getElementById('estado-1').value = this.value;"class="custom-select form-control"required>
+                                    <select name="estado" id="estado" onkeyup="document.getElementById('estado-1').value = this.value;"class="custom-select form-control">
 											<option value="">Estado Civil*</option>
 											<option value="Solteiro">Solteiro</option>
 											<option value="Casado">Casado</option>										
@@ -370,11 +395,11 @@ require __DIR__ . '/vendor/autoload.php';
                             ?>
 							<div class="row">
 							<div class="col-md-3">			
-								<input type="text"  onkeyup="document.getElementById('matricula-1').value = this.value;"  placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" require>
+								<input type="text"  onkeyup="document.getElementById('matricula-1').value = this.value;"  placeholder="Matricula*"name ="matricula" minlength="3" class="form-control" >
 							</div>
 							
 							<div class="col-md-3">						
-								<input type="date" placeholder="Admissao*"  onkeyup="document.getElementById('admissao-1').value = this.value;" name ="admissao" minlength="8" id="admissao" class="form-control" required>
+								<input type="date" placeholder="Admissao*"  onkeyup="document.getElementById('admissao-1').value = this.value;" name ="admissao" minlength="8" id="admissao" class="form-control" >
 							</div>
                             </div>
 
@@ -388,16 +413,16 @@ require __DIR__ . '/vendor/autoload.php';
                             <hr style="width: 80%;position: relative;margin-top: -3.5%;margin-left: 21%;height:1px;background-color:#606060;" size = 50>
                             <div class="row">
 									<div class="col-3">													
-                                        <input type="text" name="cep"  onkeyup="document.getElementById('cep-1').value = this.value;" id="cep"class="form-control" placeholder="CEP*"required>									
+                                        <input type="text" name="cep"  onkeyup="document.getElementById('cep-1').value = this.value;" id="cep"class="form-control" placeholder="CEP*">									
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control" id="rua"  onkeyup="document.getElementById('rua-1').value = this.value;" name="rua" placeholder="Rua*"required>									
+                                        <input type="text" class="form-control" id="rua"  onkeyup="document.getElementById('rua-1').value = this.value;" name="rua" placeholder="Rua*">									
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" class="form-control"  onkeyup="document.getElementById('numero-1').value = this.value;" id="numero"name ="numero"placeholder="Numero*"required>										
+                                        <input type="text" class="form-control"  onkeyup="document.getElementById('numero-1').value = this.value;" id="numero"name ="numero"placeholder="Numero*">										
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="uf" id="uf" class="form-control"  onkeyup="document.getElementById('uf-1').value = this.value;" placeholder="Estado*" required>									
+                                        <input type="text" name="uf" id="uf" class="form-control"  onkeyup="document.getElementById('uf-1').value = this.value;" placeholder="Estado*" >									
 									</div>
                             </div>
                             <div class="row">
@@ -405,10 +430,10 @@ require __DIR__ . '/vendor/autoload.php';
                                         <input type="text" name="complemento" id="complemento" onkeyup="document.getElementById('complemento-1').value = this.value;" placeholder="Complemento" class="form-control">								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="cidade"  onkeyup="document.getElementById('cidade-1').value = this.value;" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>								
+                                        <input type="text" name="cidade"  onkeyup="document.getElementById('cidade-1').value = this.value;" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" >								
 									</div>
                                     <div class="col-3">													
-                                        <input type="text" name="bairro"  onkeyup="document.getElementById('bairro-1').value = this.value;" id="bairro"class="form-control" placeholder="Bairro*" required>							
+                                        <input type="text" name="bairro"  onkeyup="document.getElementById('bairro-1').value = this.value;" id="bairro"class="form-control" placeholder="Bairro*" >							
 									</div>
                             </div>  
                             <br>
@@ -455,7 +480,7 @@ require __DIR__ . '/vendor/autoload.php';
                             </div>
                             </div>
 
-						
+						<button  onclick="validar()">validar</button>
 							</section>
 						
 							<br>
@@ -616,25 +641,25 @@ require __DIR__ . '/vendor/autoload.php';
                    
 								<div class="drop-zone">
 									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG FRENTE</div></span>                    
-									<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input" required>
+									<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input" >
 								</div>
 								
 								
 								<div class="drop-zone">
 									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >RG VERSO</div></span>
-									<input type="file" name="arquivo1[]"  multiple="multiple" class="drop-zone__input" required>
+									<input type="file" name="arquivo1[]"  multiple="multiple" class="drop-zone__input" >
 								</div>
 								
 							
 								<div class="drop-zone">
 									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >CPF</div></span>
-									<input type="file" name="arquivo2[]"  multiple="multiple" class="drop-zone__input" required>
+									<input type="file" name="arquivo2[]"  multiple="multiple" class="drop-zone__input">
 								</div>
 								
 							
 								<div class="drop-zone">
 									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 7%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >COMPROVANTE DE RESIDÊNCIA</div></span>
-									<input type="file" name="arquivo3[]"  multiple="multiple" class="drop-zone__input" required>
+									<input type="file" name="arquivo3[]"  multiple="multiple" class="drop-zone__input" >
 								</div>
 							
 								<?php if( $_SESSION['plano'] != 'UNIDENTISVIPBOLETO'){
@@ -642,14 +667,14 @@ require __DIR__ . '/vendor/autoload.php';
 							
 								<div class="drop-zone">
 									<span style="color:white"  class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul"  >CARTÃO</div></span>
-									<input type="file" name="arquivo4[]"  multiple="multiple" class="drop-zone__input" required>
+									<input type="file" name="arquivo4[]"  multiple="multiple" class="drop-zone__input" >
 								</div>
 								<?php }?>  
 								
 							
 								<div class="drop-zone">
 									<span style="color:white" class="drop-zone__prompt"><i style="font-size: 297%;padding: 11%;color:#606060" class="fas fa-download"></i><br><div class="fundoazul" >OUTRO</div></span>
-									<input type="file" name="arquivo5[]"  multiple="multiple" class="drop-zone__input" required>
+									<input type="file" name="arquivo5[]"  multiple="multiple" class="drop-zone__input">
 								</div>
 								
 							
