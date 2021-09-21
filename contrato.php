@@ -32,6 +32,3 @@ if($conexao->query($sql) === TRUE and $conexao->query($sql2) === TRUE ) {
 }
 
 $conexao->close();
-
-
-?>

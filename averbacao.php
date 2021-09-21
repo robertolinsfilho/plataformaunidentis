@@ -4,10 +4,10 @@ error_reporting(0);
 session_start();
 //consultar no banco de dados
 
-if($_SESSION['usuario'] === 'cadastro@s4e.com.br'){
+if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 	$result_usuario = "SELECT * from dadospessoais where status = 'Em Averbação' ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
-}else{
+} else {
 	$result_usuario = "SELECT * from dadospessoais where status = 'Em Averbação' and vendedor = '$_SESSION[usuario]' ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }
@@ -19,9 +19,10 @@ $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 //Verificar se encontrou resultado na tabela "usuarios"
 
-    ?>
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
@@ -29,6 +30,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
 	<link rel="stylesheet" href="./assets/css/datatable.css">
 </head>
+
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
@@ -45,144 +47,150 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 								</ol>
 							</nav>
 						</div>
-						
-				</div>
-				<!-- Simple Datatable start -->
-				<div class="pd-20  border-radius-4 box-shadow mb-30" style="background-color: #f6f6f6;">
-					
-					<div class="flexLabel">
-						<label class="labelInput">EM AVERBAÇÃO</label>
-						<hr>
+
 					</div>
-					
-					<div class="row">
-						<table class="data-table stripe hover nowrap">
-							<thead>
-								<tr>
-								<th class="table-plus datatable-nosort">Nome</th>		
-															
-									<th>Titular</th>
-									<th>Vendedor</th>
-									<th>Plano</th>
-									<th>Status</th>
-									<th>Estado</th>
-                                   
-								
-                                    <th>Data</th>	
-                                    <th>Repartição</th>	
-								</tr>
-							</thead>
+					<!-- Simple Datatable start -->
+					<div class="pd-20  border-radius-4 box-shadow mb-30" style="background-color: #f6f6f6;">
+
+						<div class="flexLabel">
+							<label class="labelInput">EM AVERBAÇÃO</label>
+							<hr>
+						</div>
+
+						<div class="row">
+							<table class="data-table stripe hover nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Nome</th>
+
+										<th>Titular</th>
+										<th>Vendedor</th>
+										<th>Plano</th>
+										<th>Status</th>
+										<th>Estado</th>
 
 
-							<tbody>
+										<th>Data</th>
+										<th>Repartição</th>
+									</tr>
+								</thead>
 
-							<?php
-									while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
-        
-        					?>
-								<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
-								<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>	
-													
-									<td><?php echo $row_usuario['cpf']; ?></td>
-									<td><?php echo $row_usuario2['vendedor']; ?></td>
-									<td><?php echo $row_usuario['plano']; ?></td>
-									<td><?php echo $row_usuario['status']; ?></td>
-									<td><?php echo $row_usuario['estado']; ?></td>
-                                   
-								
-                                    <td><?php echo $row_usuario['data']; ?></td>
-                                    <td><?php echo $row_usuario['reparticao']; ?></td>	
-								</tr>
-                               
-								<?php 
+
+								<tbody>
+
+									<?php
+									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
+
+									?>
+										<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
+											<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>
+
+											<td><?php echo $row_usuario['cpf']; ?></td>
+											<td><?php echo $row_usuario2['vendedor']; ?></td>
+											<td><?php echo $row_usuario['plano']; ?></td>
+											<td><?php echo $row_usuario['status']; ?></td>
+											<td><?php echo $row_usuario['estado']; ?></td>
+
+
+											<td><?php echo $row_usuario['data']; ?></td>
+											<td><?php echo $row_usuario['reparticao']; ?></td>
+										</tr>
+
+									<?php
 									}
-								?>
-							</tbody>
-						</table>
+									?>
+								</tbody>
+							</table>
+						</div>
 					</div>
+					<!-- Simple Datatable End -->
+					<!-- multiple select row Datatable start -->
+
+					<!-- multiple select row Datatable End -->
+					<!-- Export Datatable start -->
+
+					<!-- Export Datatable End -->
 				</div>
-				<!-- Simple Datatable End -->
-				<!-- multiple select row Datatable start -->
-				
-				<!-- multiple select row Datatable End -->
-				<!-- Export Datatable start -->
-			
-				<!-- Export Datatable End -->
+				<?php include('include/footer.php'); ?>
 			</div>
-			<?php include('include/footer.php'); ?>
 		</div>
-	</div>
-	<?php include('include/script.php'); ?>
-	<script src="src/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
-	<script src="src/plugins/datatables/media/js/dataTables.responsive.js"></script>
-	<script src="src/plugins/datatables/media/js/responsive.bootstrap4.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/media/js/button/dataTables.buttons.js"></script>
-	<script src="src/plugins/datatables/media/js/button/buttons.bootstrap4.js"></script>
-	<script src="src/plugins/datatables/media/js/button/buttons.print.js"></script>
-	<script src="src/plugins/datatables/media/js/button/buttons.html5.js"></script>
-	<script src="src/plugins/datatables/media/js/button/buttons.flash.js"></script>
-	<script src="src/plugins/datatables/media/js/button/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/media/js/button/vfs_fonts.js"></script>
-	<script>
-		$('document').ready(function(){
-			$('.data-table').DataTable({
-				scrollCollapse: true,
-				autoWidth: false,
-				responsive: true,
-				columnDefs: [{
-					targets: "datatable-nosort",
-					orderable: false,
-				}],
-				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-				"language": {
-					info: "_START_-_END_ de _TOTAL_ linhas",
-					infoEmpty: "Mostrando 0 até 0 de 0 registros",
-					searchPlaceholder: "Procurar",
-					lengthMenu: "Mostrar _MENU_ registos",
-					paginate: {
-        			first: "Primeiro",
-					previous: "Anterior",
-					next: "Seguinte"
-					
+		<?php include('include/script.php'); ?>
+		<script src="src/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+		<script src="src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
+		<script src="src/plugins/datatables/media/js/dataTables.responsive.js"></script>
+		<script src="src/plugins/datatables/media/js/responsive.bootstrap4.js"></script>
+		<!-- buttons for Export datatable -->
+		<script src="src/plugins/datatables/media/js/button/dataTables.buttons.js"></script>
+		<script src="src/plugins/datatables/media/js/button/buttons.bootstrap4.js"></script>
+		<script src="src/plugins/datatables/media/js/button/buttons.print.js"></script>
+		<script src="src/plugins/datatables/media/js/button/buttons.html5.js"></script>
+		<script src="src/plugins/datatables/media/js/button/buttons.flash.js"></script>
+		<script src="src/plugins/datatables/media/js/button/pdfmake.min.js"></script>
+		<script src="src/plugins/datatables/media/js/button/vfs_fonts.js"></script>
+		<script>
+			$('document').ready(function() {
+				$('.data-table').DataTable({
+					scrollCollapse: true,
+					autoWidth: false,
+					responsive: true,
+					columnDefs: [{
+						targets: "datatable-nosort",
+						orderable: false,
+					}],
+					"lengthMenu": [
+						[10, 25, 50, -1],
+						[10, 25, 50, "All"]
+					],
+					"language": {
+						info: "_START_-_END_ de _TOTAL_ linhas",
+						infoEmpty: "Mostrando 0 até 0 de 0 registros",
+						searchPlaceholder: "Procurar",
+						lengthMenu: "Mostrar _MENU_ registos",
+						paginate: {
+							first: "Primeiro",
+							previous: "Anterior",
+							next: "Seguinte"
+
+						},
+
 					},
-					
-				},
+				});
+				$('.data-table-export').DataTable({
+					scrollCollapse: true,
+					autoWidth: false,
+					responsive: true,
+					columnDefs: [{
+						targets: "datatable-nosort",
+						orderable: false,
+					}],
+					"lengthMenu": [
+						[10, 25, 50, -1],
+						[10, 25, 50, "All"]
+					],
+					"language": {
+						"info": "_START_-_END_ of _TOTAL_ entries",
+						searchPlaceholder: "Search"
+					},
+					dom: 'Bfrtip',
+					buttons: [
+						'copy', 'csv', 'pdf', 'print'
+					]
+				});
+				var table = $('.select-row').DataTable();
+				$('.select-row tbody').on('click', 'tr', function() {
+					if ($(this).hasClass('selected')) {
+						$(this).removeClass('selected');
+					} else {
+						table.$('tr.selected').removeClass('selected');
+						$(this).addClass('selected');
+					}
+				});
+				var multipletable = $('.multiple-select-row').DataTable();
+				$('.multiple-select-row tbody').on('click', 'tr', function() {
+					$(this).toggleClass('selected');
+				});
 			});
-			$('.data-table-export').DataTable({
-				scrollCollapse: true,
-				autoWidth: false,
-				responsive: true,
-				columnDefs: [{
-					targets: "datatable-nosort",
-					orderable: false,
-				}],
-				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-				"language": {
-					"info": "_START_-_END_ of _TOTAL_ entries",
-					searchPlaceholder: "Search"
-				},
-				dom: 'Bfrtip',
-				buttons: [
-				'copy', 'csv', 'pdf', 'print'
-				]
-			});
-			var table = $('.select-row').DataTable();
-			$('.select-row tbody').on('click', 'tr', function () {
-				if ($(this).hasClass('selected')) {
-					$(this).removeClass('selected');
-				}
-				else {
-					table.$('tr.selected').removeClass('selected');
-					$(this).addClass('selected');
-				}
-			});
-			var multipletable = $('.multiple-select-row').DataTable();
-			$('.multiple-select-row tbody').on('click', 'tr', function () {
-				$(this).toggleClass('selected');
-			});
-		});
-	</script>
+		</script>
 </body>
+
 </html>

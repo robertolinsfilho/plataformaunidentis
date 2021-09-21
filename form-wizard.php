@@ -107,32 +107,15 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 <head>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
-    <style>
-        label{
-            color:  #0099ff;
-        }
-		.form-group{
-			border-radius: 5px;
-            width: 100%;
-			color: #606060;
-		}
-		.form-group input[type=text]{
-			background: #f9f9f9;
-		}
-
-		h4{
-			color: #606060;
-			font-weight: 600;
-		}
-    </style>
 	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/formWizard.css">
 </head>
 <body>
 
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
-		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+		<div class="pd-ltr-20 height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
@@ -147,18 +130,14 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								</ol>
 							</nav>
 						</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style="
-					width: 97%;
-    				margin: 2rem auto;
-					margin-top: 0;
-    				border-radius: .5rem;">
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 main-box-wizard" style="
+					">
 					<div class="clearfix">
-						<h4 class="text-blue">Detalhes</h4>
 						
 					</div>
 					<div class="wizard-content">
-						<form  action="alteracao.php?cpf=<?php echo $row_usuario['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard"><br>
-						<div style="text-align:right;">
+						<form  action="alteracao.php?cpf=<?php echo $row_usuario['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard">
+						<div class="btn-relative">
 						
 						<?php
 						if($row_usuario['status'] == 'Nova'){
@@ -223,18 +202,18 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 						}
 						
 							?>	
-						</div><br>
+						</div>
 						
 					
 						<h5>Proposta</h5>
 
 							<section>
 							<h4 class="text-blue">Plano Contrato</h4>
-							<br>
+							
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<label >Plano:</label>
+											<label >Plano</label>
 											<input type="text" name="plano" value="<?php echo $row_usuario['plano']; ?>"class="form-control" readonly> 
 											
 										</div>
@@ -242,7 +221,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 									<div class="col-md-2">
 										<div class="form-group">
-											<label >Preço :</label>
+											<label >Preço </label>
 											<input type="text"  name="preco" value="R$: <?php echo $row_usuario['preco']; ?>"class="form-control"readonly>
 										</div>
 									</div>
@@ -251,20 +230,20 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 									<div class="col-md-3">
 										<div class="form-group">
-											<label >Data :</label>
+											<label >Data </label>
 											<input type="text"  value="<?php echo substr($row_usuario['data'], 0, 10)?>"class="form-control"readonly>
 										</div>
 									</div>
 								</div>
-								<br>
+								
 								<?php 
 								if($_SESSION['usuario'] == 'cadastro@s4e.com.br'){
 								?>
-								<h4 class="text-blue">Data do Primeiro Pagamento</h4><br>
+								<h4 class="text-blue">Data do Primeiro Pagamento</h4>
 								<div class="row">
 								<div class="col-md-3">
 										<div class="form-group">
-											<label>Ano: </label>
+											<label>Ano </label>
 											<select class="form-control"  name="ano" >
 												<option value="<?php echo substr($row_usuario['1pag'], 0, 4) ?>"> <?php echo substr($row_usuario['1pag'], 0, 4) ?></option>
 												<option value="2022"></option>
@@ -274,7 +253,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Mês: </label>
+											<label>Mês </label>
 											<select class="form-control"  name="mes" >
 												<option value="<?php echo substr($row_usuario['1pag'], 4, 6) ?>"> <?php echo substr($row_usuario['1pag'], 4, 6) ?></option>
 												<option value="01">01</option>
@@ -300,17 +279,17 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 
 
-								<h4 class="text-blue">Corretora</h4><br>
+								<h4 class="text-blue">Corretora</h4>
 								<div class="row">
 									<div class="col-md-5">
 										<div class="form-group">
-											<label>Corretor :</label>
+											<label>Corretor </label>
 											<input type="text" name="corretor" value="<?php echo $row_usuario13['vendedor']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Nome da Corretora :</label>
+											<label>Nome da Corretora </label>
 											<input type="text" value="<?php echo $row_usuario13['corretora']?>" class="form-control"readonly>
 										</div>
 									</div>
@@ -319,28 +298,28 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label >Codigo Corretora :</label>
+											<label >Codigo Corretora </label>
 											<input type="text" value="<?php echo $row_usuario13['email']?>" class="form-control" readonly>
 										</div>
 									</div>
 									</div>
-									<br>
+									
 
 									<?php
 									if($row_usuario['plano'] === 'UNIDENTISVIPCARTAO' or $row_usuario['plano'] === 'UNIDENTISVIPFAMILIACARTAO'){
 									
 									?>
-								<h4 class="text-blue">Informações de Pagamento</h4><br>
+								<h4 class="text-blue">Informações de Pagamento</h4>
 									<div class="row">
 									<div class="col-md-5">
 										<div class="form-group">
-											<label>Titular :</label>
+											<label>Titular </label>
 											<input type="text" name="nomecartao" value="<?php echo $row_usuario2['nome']?>" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Numero do Cartão :</label>
+											<label>Numero do Cartão </label>
 											<input type="text" name="numerocartao" value="<?php echo $row_usuario2['cartao']?>" class="form-control">
 										</div>
 									</div>
@@ -349,7 +328,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label > Validade :</label>
+											<label > Validade </label>
 											<input type="text" name="validadecartao" value="<?php echo $row_usuario2['mes']?>" class="form-control" >
 										</div>
 									</div>
@@ -357,9 +336,9 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<?php
 								}
 								?>
-								<br>
+								
 								<h4 class="text-blue">Observação</h4>
-								<br>
+								
 									<div class="row">
 										<div class="col-md-8">
 										<div class="form-group">
@@ -368,7 +347,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										</div>
 									</div>
 									</div>
-									<br>
+									
 									<script>
 									function desaparecer(){
 										$(".form-check-input").removeAttr("required");
@@ -379,7 +358,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										?>
 									
 							<h4 class="text-blue">Pagamento da Adesão</h4>
-							<br>
+							
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
 										<label class="form-check-label" for="invalidCheck" >
@@ -394,7 +373,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									?>
 							</section>
 
-							<br>
+							
 						
 							<!-- Step 2 -->
                            <h5>Responsavel Financeiro</h5>
@@ -402,13 +381,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Nome :</label>
+											<label>Nome </label>
 											<input type="text" name="nome" value="<?php echo $row_usuario['nome']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Nome da Mae:</label>
+											<label>Nome da Mae</label>
 											<input type="text" value="<?php echo $row_usuario['mae']?>"  class="form-control"readonly>
 										</div>
 									</div>
@@ -417,20 +396,20 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Telefone 1:</label>
+											<label>Telefone 1</label>
 											<input type="text"  value="<?php echo $row_usuario['celular']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Telefone 2:</label>
+											<label>Telefone 2</label>
 											<input type="text" value="<?php echo $row_usuario3['whats']?>"  class="form-control"readonly>
 										</div>
 									</div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Local:</label>
+                                            <label>Local</label>
                                             <input type="text" value="<?php echo $row_usuario['local']?>"  class="form-control"readonly>
                                         </div>
                                     </div>
@@ -438,25 +417,25 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>E-mail:</label>
+											<label>E-mail</label>
 											<input type="text"  name="email" value="<?php echo $row_usuario['email']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>RG:</label>
+											<label>RG</label>
 											<input type="text" name="rg" value="<?php echo $row_usuario3['rg']?>"  class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Orgao Emissor:</label>
+											<label>Orgao Emissor</label>
 											<input type="text" name="expedidor" value="<?php echo $row_usuario3['expedidor']?>"  class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Cartão do SUS:</label>
+											<label>Cartão do SUS</label>
 											<input type="text" name="sus" value="<?php echo $row_usuario['sus'] ?>"  class="form-control"readonly>
 										</div>
 									</div>
@@ -464,25 +443,25 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>CPF:</label>
+											<label>CPF</label>
 											<input type="text"  value="<?php echo $row_usuario['cpf']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Data de Nascimento:</label>
+											<label>Data de Nascimento</label>
 											<input type="text" value="<?php echo $row_usuario3['datas']?>"  class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Estado Civil:</label>
+											<label>Estado Civil</label>
 											<input type="text" value="<?php echo $row_usuario3['estadocivil']?>"  class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Sexo:</label>
+											<label>Sexo</label>
 											<select class="form-control" name="sexo">
 											<option value="<?php $row_usuario3['sexo'] ?>"><?php echo $sexo ?></option>
 											<option value="1">Masculino</option>
@@ -494,25 +473,25 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>CEP:</label>
+											<label>CEP</label>
 											<input type="text" name="cep" value="<?php echo $row_usuario4['cep']?>" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Rua:</label>
+											<label>	Rua</label>
 											<input type="text" name="rua" value="<?php echo $row_usuario4['rua']?>"  class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Numero:</label>
+											<label>Numero</label>
 											<input type="text" name="numero" value="<?php echo $row_usuario4['numero']?>"  class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Cidade:</label>
+											<label>Cidade</label>
 											<input type="text" name="cidade" value="<?php echo $row_usuario4['cidade']?>"  class="form-control">
 										</div>
 									</div>
@@ -520,13 +499,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Estado:</label>
+											<label>Estado</label>
 											<input type="text" name="estado" value="<?php echo $row_usuario4['estado']?>" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Complemento:</label>
+											<label>	Complemento</label>
 											<input type="text" name="complemento"value="<?php echo $row_usuario4['complemento']?>"  class="form-control">
 										</div>
 									</div>
@@ -536,30 +515,30 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 							<!-- Step 3 -->
 							<h5>Beneficiarios</h5>
 							<section>
-							<h4 class="text-blue"> Titular: </h4>
-							<br>
+							<h4 class="text-blue"> Titular </h4>
+							
 							<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Nome:</label>
+											<label>Nome</label>
 											<input type="text"  value="<?php echo $row_usuario11['nome']?>" class="form-control"readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Mae:</label>
+											<label>	Mae</label>
 											<input type="text" value="<?php echo $row_usuario11['mae']?>"  class="form-control" readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>CPF:</label>
+											<label>CPF</label>
 											<input type="text" value="<?php echo $row_usuario11['cpf']?>"  class="form-control" readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Estado Civil:</label>
+											<label>Estado Civil</label>
 											<input type="text" value="<?php echo $row_usuario11['estado']?>"  class="form-control" readonly>
 										</div>
 									</div>
@@ -567,20 +546,20 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>Sexo :</label>
+											<label>Sexo </label>
 											<input type="text"  value="<?php echo $sexo?>" class="form-control" readonly>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Cartão do SUS:</label>
+											<label>	Cartão do SUS</label>
 											<input type="text" value="<?php echo $row_usuario11['sus']?>"  class="form-control" readonly>
 										</div>
 
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Data de Nascimento:</label>
+											<label>	Data de Nascimento</label>
 											<input type="text" value="<?php echo $row_usuario11['nascimento']?>"  class="form-control" readonly>
 										</div>
 
@@ -588,7 +567,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									
 								</div>
-								<br><br>
+								
 								
 								<?php
 								
@@ -597,13 +576,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 								
 								?>
-								<h4 class="text-blue">Beneficiarios</h4><br>
+								<h4 class="text-blue">Beneficiarios</h4>
 								<div class="row">
 								
 						
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>nome:</label>
+											<label>nome</label>
 											<input type="text"  value="<?php echo $row_usuario6['nome']?>" class="form-control" readonly>
 										</div>
 									</div>
@@ -611,7 +590,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Cpf:</label>
+											<label>	Cpf</label>
 											<input type="text" value="<?php echo $row_usuario6['cpf']?>"  class="form-control" readonly>
 										</div>
 
@@ -620,7 +599,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Datas de nascimento:</label>
+											<label>	Datas de nascimento</label>
 											<input type="text" value="<?php echo $row_usuario6['datas']?>"  class="form-control" readonly>
 										</div>
 
@@ -629,7 +608,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Sexo:</label>
+											<label>	Sexo</label>
 											<input type="text" value="<?php echo $sexo ?>"  class="form-control" readonly>
 										</div>
 
@@ -638,7 +617,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Mae:</label>
+											<label>	Mae</label>
 											<input type="text" value="<?php echo $row_usuario6['mae']?>"  class="form-control" readonly>
 										</div>
 
@@ -647,7 +626,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Cns:</label>
+											<label>	Cns</label>
 											<input type="text" value="<?php echo $row_usuario6['cns']?>"  class="form-control" readonly>
 										</div>
 
@@ -668,7 +647,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									?>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label>	Parentesco:</label>
+											<label>	Parentesco</label>
 											<input type="text" value="<?php echo $parentesco?>"  class="form-control" readonly>
 										</div>
 
@@ -696,10 +675,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Frente</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['rgfrente']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['rgfrente']?>"/></a>
-										
+                                        <h3 class='imgS'>RG Frente</h3>
+                                        
+										<a href="fotos/<?php echo $row_usuario7['rgfrente']?>" target="_blank">
+										<div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['rgfrente']?>")'></div></a>									
 										<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
 										Editar
 										</button>
@@ -709,9 +688,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">RG Verso</h3>
-                                        <br>
-                                        <a href="fotos/<?php echo $row_usuario7['rgverso']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['rgverso']?>"/></a>
+                                        <h3 class='imgS'>RG Verso</h3>
+                                        
+                                        <a href="fotos/<?php echo $row_usuario7['rgverso']?>" target="_blank">
+										<div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['rgverso']?>")'></div></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
 										Editar
 										</button>
@@ -722,9 +702,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">CPF</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['cpf']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['cpf']?>"/></a>
+                                        <h3 class='imgS'>CPF</h3>
+                                        
+										<a href="fotos/<?php echo $row_usuario7['cpf']?>" target="_blank"> 
+										<div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['cpf']?>");'></div></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
 										Editar
 										</button>
@@ -735,9 +716,9 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Comp Residência</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['compresidencia']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['compresidencia']?>"/></a>
+                                        <h3 class='imgS imgSEnd'>Comp Residência</h3>
+                                        
+										<a href="fotos/<?php echo $row_usuario7['compresidencia']?>" target="_blank"> <div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['compresidencia']?>");'></div></a>
 										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
 										Editar
 										</button>
@@ -750,24 +731,22 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Cartão</h3>
-                                        <br>
-										<a href="fotos/<?php echo $row_usuario7['cartao']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['cartao']?>"/></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">
-										Editar
-										</button>
+                                        <h3 class='imgS'>Cartão</h3>
+                                        
+										<a href="fotos/<?php echo $row_usuario7['cartao']?>" target="_blank">
+										<div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['cartao']?>")'></div></a>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Editar</button>
 									</div>
 
 								</div>
 								<?php }?>
 								<div class="col-md-4">
 									<div class="form-group">
-                                        <h3 style="background-color: #6c757d; border-radius: 3px; color: white;text-align: center;padding: 2px">Outro</h3>
-                                        <br>
-                                       <a href="fotos/<?php echo $row_usuario7['outro']?>" target="_blank"> <img style="padding:10px; height: 187px;" src="fotos/<?php echo $row_usuario7['outro']?>"/></a>
-									   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">
-										Editar
-										</button>
+                                        <h3 class='imgS imgSEnd'>Outro</h3>
+                                        
+                                       <a href="fotos/<?php echo $row_usuario7['outro']?>" target="_blank"> 
+									   <div class='wBackImg' style='background-image: url("fotos/<?php echo $row_usuario7['outro']?>")'></div></a>
+									   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">Editar</button>
 									</div>
 
 								</div>
@@ -788,7 +767,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										</button>
 									</div>
 									<div class="modal-body">
-									<select class="form-control" placeholder="selecione" name="motivo">
+									<select style='top: 0;' class="form-control" placeholder="selecione" name="motivo">
 									        <option value="001- CPF Irregular">001- CPF Irregular</option>
 											<option value="002- Divergência de DADOS">002- Divergência de DADOS </option>
 											<option value="003- Imagem em Anexo corrompida">003- Imagem em Anexo corrompida</option>
@@ -831,7 +810,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										</button>
 									</div>
 									<div class="modal-body">
-									<select class="form-control" placeholder="selecione" name="motivo1">
+									<select style='top: 0;' class="form-control" placeholder="selecione" name="motivo1">
 											<option value="001- Possui Codigo Ativo">001- Possui Codigo Ativo</option>
 											<option value="002- Possui Divida Ativa">002- Possui Divida Ativa</option>
 											<option value="003- Desistiu De Aderir ao Plano">003- Desistiu De Aderir ao Plano</option>
@@ -1054,7 +1033,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								</div>
 								</div>
 								
-								<div class="modal fade" id="exampleModal10?nome=outro&cpf=<?php echo $cpf ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 									<div class="modal-header">
@@ -1064,7 +1043,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										</button>
 									</div>
 									<div class="modal-body">
-									<form method="POST" action="alterarfotos" enctype="multipart/form-data" >
+									<form method="POST" action="alterarfotos?nome=outro&cpf=<?php echo $cpf ?>" enctype="multipart/form-data" >
 									<div class="drop-zone">
 										<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 										<input type="file" name="arquivo10[]" multiple="multiple"class="drop-zone__input">
@@ -1157,7 +1136,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									<?php 
 									
 									include('include/footer.php'); ?>
-								</div>
+								</div> <!--aqui-->
 							</div>
 							<?php include('include/script.php'); ?>
 							<script src="src/plugins/jquery-steps/build/jquery.steps.js"></script>

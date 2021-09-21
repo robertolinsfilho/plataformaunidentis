@@ -3,11 +3,10 @@ include_once "conexao.php";
 session_start();
 error_reporting(0);
 // Verifica se existe os dados da sessão de login
-if(!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"]))
-{
-// Usuário não logado! Redireciona para a página de login
-header("Location: login");
-exit;
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
+	// Usuário não logado! Redireciona para a página de login
+	header("Location: login");
+	exit;
 }
 
 
@@ -19,58 +18,61 @@ exit;
 
 //Verificar se encontrou resultado na tabela "usuarios"
 
-    ?>
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <style>
-        .row{
-            padding: 40px;
-            margin-top: 1%;
-        }
-        .col-md-5{
-            padding-top: 20px;
-        }
-        </style>
-    <meta charset="UTF-8">
+	<style>
+		.row {
+			padding: 40px;
+			margin-top: 1%;
+		}
+
+		.col-md-5 {
+			padding-top: 20px;
+		}
+	</style>
+	<meta charset="UTF-8">
 	<?php include('include/head.php'); ?>
 </head>
+
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
-	<div class="main-container" style="">
-        
-        <h2 style="margin-top: 7%;margin-left:5%;font-weight:bold">Cadastro de Corretora</h2>
-	<form method="POST" action="alteracaocorretora?num=2">
-        <div class="row">
-        <div class="col-md-7">
-        <label>Corretora:</label>
-        <input name="corretora" type="text" placeholder="Corretora" class="form-control" required>
-        </div>
-        
-        <div class="col-md-4">
-        <label>Responsável:</label>
-        <input name="responsavel"  type="text"placeholder="Responsável" class="form-control" required>
-        </div>
-        
-        <div class="col-md-5">
-        <label>Email:</label>
-        <input name="email"  type="email"placeholder="Email" class="form-control" required>
-        </div>
-        <div class="col-md-5">
-        <label>Senha :</label>
-        <input name="senha"  type="password" placeholder="senha" class="form-control" required>
-        </div>
-        
-    </div>
-    <button style="margin-left:82%"class="btn btn-primary" type="submit">Cadastrar</button>
-        </form>
-			
-		
+	<div class="main-container">
+
+		<h2 style="margin-top: 7%;margin-left:5%;font-weight:bold">Cadastro de Corretora</h2>
+		<form method="POST" action="alteracaocorretora?num=2">
+			<div class="row">
+				<div class="col-md-7">
+					<label>Corretora:</label>
+					<input name="corretora" type="text" placeholder="Corretora" class="form-control" required>
 				</div>
+
+				<div class="col-md-4">
+					<label>Responsável:</label>
+					<input name="responsavel" type="text" placeholder="Responsável" class="form-control" required>
+				</div>
+
+				<div class="col-md-5">
+					<label>Email:</label>
+					<input name="email" type="email" placeholder="Email" class="form-control" required>
+				</div>
+				<div class="col-md-5">
+					<label>Senha :</label>
+					<input name="senha" type="password" placeholder="senha" class="form-control" required>
+				</div>
+
 			</div>
-			<?php include('include/footer.php'); ?>
-		</div>
+			<button style="margin-left:82%" class="btn btn-primary" type="submit">Cadastrar</button>
+		</form>
+
+
+	</div>
+	</div>
+	<?php include('include/footer.php'); ?>
+	</div>
 	</div>
 	<?php include('include/script.php'); ?>
 	<script src="src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
@@ -108,8 +110,8 @@ exit;
 					to: 6.5,
 				}],
 				gridLineDashStyle: 'longdash',
-                gridLineWidth: 1,
-                crosshair: true
+				gridLineWidth: 1,
+				crosshair: true
 			},
 			yAxis: {
 				title: {
@@ -232,8 +234,7 @@ exit;
 				}, {
 					borderWidth: 0,
 					outerRadius: '107%'
-				}, {
-				}, {
+				}, {}, {
 					backgroundColor: '#fff',
 					borderWidth: 0,
 					outerRadius: '105%',
@@ -310,8 +311,7 @@ exit;
 				}, {
 					borderWidth: 0,
 					outerRadius: '107%'
-				}, {
-				}, {
+				}, {}, {
 					backgroundColor: '#fff',
 					borderWidth: 0,
 					outerRadius: '105%',
@@ -366,4 +366,5 @@ exit;
 		});
 	</script>
 </body>
+
 </html>

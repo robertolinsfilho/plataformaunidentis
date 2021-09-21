@@ -37,4 +37,3 @@ if($conexao->query($sql) === TRUE){
 }else{
     echo $conexao->$sql->Log::error('message');
 }
-?>

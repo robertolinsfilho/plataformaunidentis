@@ -117,4 +117,3 @@ header('Location: form-wizard2.php?cpf=' . $cpf . '');
       
         
       $conexao->close();
-    ?>

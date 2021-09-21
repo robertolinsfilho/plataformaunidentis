@@ -123,8 +123,8 @@ $plano = $_SESSION['plano'];
 		margin-left:-2%;
 	}
 	#plano{
-		
-		width:50%
+		width:100%;
+		max-width: 360px;
 	}
 	#h4{
 		font-size:18px
@@ -156,30 +156,28 @@ $plano = $_SESSION['plano'];
 <body>
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
-	<div class="main-container">
-		<div style="background-color: #ededed !important;"class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
-			<div class="min-height-200px">
+	<div class="main-container" style='background-color: #eeeeee; margin-top: 1.5rem;'>
+		<div class="pd-ltr-20 height-100-p xs-pd-20-10">
+			<div class="min-height-200px cadDependentes">
 				<div class="page-header">
 					<div class="row">
-					<?php echo '<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
+					<?php echo '<h5 style="font-family: '.'Work Sans'.', sans-serif; ;font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$'.$_SESSION['precototal'] .' | PLANO : ' .  $_SESSION['plano'] .' | DEPENDENTES :  '. $_SESSION['cont'] .  '</h5>'?> 
 					<br>
 					<div class="inline" style="display:-webkit-inline-box;margin-left:1%;margin-top:1%">
-					<h4 id="h4"style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem;">Escolha o Plano :</h4>
-					<input style="background-color:#b3b3b3;height: calc(2rem + 2px) !important;"  id ="plano" class="form-control" value="<?php echo $_SESSION['plano']?>" readonly>
+					<h4 id="h4"style="font-family: 'Work Sans', sans-serif; color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem;">Escolha o Plano: </h4>
+					<input style="background-color:#b3b3b3 !important;height: calc(2rem + 2px) !important;"  id ="plano" class="form-control" value="<?php echo $_SESSION['plano']?>" readonly>
 					<br>
-	</div>
-               
-					<div class="col-md-6 col-sm-12">
-							<div class="title">
-							
-							</div>
-							<br>
-						</div>
-						
+					</div>
 					</div>
 				</div>
 				<!-- Default Basic Forms Start -->
-				<div style="margin-top:1%"class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" style="
+				background-color: #f6f6f6 !important;
+				padding: 2rem;
+				padding-top: 1rem;
+				margin: .5rem auto;
+				box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+				position: relative;">
 				<div class="inline" style="display:inline">
 					<div class="flexLabel">
 			  			<label class="labelInput">Incluir Dependentes</label>
@@ -200,7 +198,7 @@ $plano = $_SESSION['plano'];
 					<div class="row">
 						<table  class="data-table stripe hover nowrap">
 							<thead>
-								<tr style="background-color:#4177d0 ">
+								<tr style="background-color:#4177d0; color: #ffffff;">
 									<th style="padding-left:5%" class="table-plus datatable-nosort">Nome</th>							
 									<th style="padding-left:5%">CPF</th>
 									<th style="padding-left:10%">Valor Unitário</U></th>
@@ -236,18 +234,7 @@ $plano = $_SESSION['plano'];
   Cadastrar Dependentes
 </button>
 <style>
-			#avanca{
-				margin-left: 80%;
-				width: 20% ; 
-				background-color:#3284f1;
-			}
 			 @media screen and (max-device-width:1000px) {
-				#avanca {
-				margin-left: 65%;
-			    width: 30% ;
-				background-color:#3284f1;
-				margin-top: 6%
-				}
 				#att{
 					margin-left: 11%;
 				}

@@ -53,7 +53,7 @@ $_SESSION['msg'] = 'Cadastre uma Nova Senha!';
                 </button>
             </div>
             <div class="modal-body">
-                <h5>UM EMAIL FOI ENVIADO PARA O E-MAIL DO DESTINATARIO</h5>
+                <h5>Um Email Foi Enviado Para O Endereço De Email Do Destinatário</h5>
             </div>
             <div class="modal-footer">
                <a href="login2"> <button type="button" class="btn btn-secondary" >Fechar</button></a>

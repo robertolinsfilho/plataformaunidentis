@@ -63,9 +63,8 @@ h2{
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="font-weight: bold;padding: 0 2.25rem;">
             <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%" alt="logo da unidentis" width="300">
-            <br>
             <br>
                 <?php echo $_SESSION['msg1'] ?>
             </div>

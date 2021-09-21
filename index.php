@@ -197,11 +197,10 @@ $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 								<p class="weight-400 font-18">Em Analise</p>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-5 box-shadow border-radius-5 margin-5 height-100-p">
+					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<div class="project-info clearfix">
 							<div class="project-info-left">
 							<a href="canceladas"><div class="icon box-shadow bg-light-purple text-white">
