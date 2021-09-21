@@ -54,6 +54,7 @@ function validar(){
 
 			
     </script>
+	
     <style>
 		@keyframes treme {
 			0% {margin-left: 0;}
@@ -480,7 +481,7 @@ function validar(){
                             </div>
                             </div>
 
-						<button  onclick="validar()">validar</button>
+						<button id ="valida" onclick="validar()">validar</button>
 							</section>
 						
 							<br>
@@ -547,6 +548,22 @@ function validar(){
 							</thead>						
 						</table>
 					</div>
+					<script>
+	$(document).ready(function() {
+		console.log('entrou')
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                text: 'My button',
+                action: function ( e, dt, node, config ) {
+                    alert( 'Button activated' );
+                }
+            }
+        ]
+    } );
+} );
+		</script>
                     <button type="button" style="background-color:#284ebf;padding:1% " class="btn btn-primary" id="att" data-toggle="modal" data-target="#exampleModal">
                         Cadastrar Dependentes
                     </button>
@@ -885,8 +902,9 @@ function validar(){
 									titleTemplate: '<span class="step">#index#</span> #title#',
 									labels: {
 										finish: "Proximo",
-										next: "Proximo",
-										previous: "Anterior",
+										next: '<button class="form-control" onclick="validar()" id="teste">Proximo</button>',
+										previous: '<button onclick="validar()" id="teste">Anterior</button>',
+										
 									},
 									onStepChanged: function (event, currentIndex, priorIndex) {
 										$('.steps .current').prevAll().addClass('disabled');
@@ -1008,7 +1026,7 @@ $('#myModal').on('shown.bs.modal', function () {
 					lengthMenu: "Mostrar _MENU_ registos",
 					paginate: {
         			first: "Primeiro",
-					previous: "Anterior",
+					previous: '<span id= "teste"></span>',
 					next: "Seguinte"
 					
 					},
