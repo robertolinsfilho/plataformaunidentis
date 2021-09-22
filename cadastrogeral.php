@@ -41,28 +41,93 @@ function validar(){
 	
 	var nome = document.getElementById('a');	
 	if(nome.value == ''){
-		document.getElementById("a").style.setProperty('border-color', 'red', 'important');
-		
-		
+		document.getElementById("a").style.setProperty('border-color', 'red', 'important');	
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
 	}
 	var cpf = document.getElementById('cpf');	
 	if(cpf.value == ''){
 		document.getElementById("cpf").style.setProperty('border-color', 'red', 'important');		
-		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
 	}
-}
-
-			
+	var email = document.getElementById('email');	
+	if(email.value == ''){
+		document.getElementById("email").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var telefone = document.getElementById('telefone');	
+	if(telefone.value == ''){
+		document.getElementById("telefone").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var sexo = document.getElementById('sexo');	
+	if(sexo.value == ''){
+		document.getElementById("sexo").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var rg = document.getElementById('rg');	
+	if(rg.value == ''){
+		document.getElementById("rg").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var fixo = document.getElementById('fixo');	
+	if(fixo.value == ''){
+		document.getElementById("fixo").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var emissor = document.getElementById('emissor');	
+	if(emissor.value == ''){
+		document.getElementById("emissor").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var data = document.getElementById('data');	
+	if(data.value == ''){
+		document.getElementById("data").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var mae = document.getElementById('mae');	
+	if(mae.value == ''){
+		document.getElementById("mae").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var estado = document.getElementById('estado');	
+	if(estado.value == ''){
+		document.getElementById("estado").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var sus = document.getElementById('sus');	
+	if(sus.value == ''){
+		document.getElementById("sus").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+}		
     </script>
 	
     <style>
-		@keyframes treme {
-			0% {margin-left: 0;}
-			25% {margin-left: 5px;}
-			50% {margin-left: 0;}
-			75% {margin-left: -5px;}
-			100% {margin-left: 0;}
-		}
+	
         label{
             color:  #0099ff;
         }
@@ -113,6 +178,9 @@ function validar(){
         
     </style>
 	<style>
+								.wizard-content .wizard>.content{
+								overflow:visible !important;
+								}
 								.drop-zone {
 								width: 300px;
 								height: 200px;
@@ -267,14 +335,15 @@ function validar(){
 								width:50%
 								}
 								}
-							</style>
+							</style>		
+								
 </head>
 <body>
 
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
-		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+		<div class="pd-ltr-20  height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 				
@@ -348,14 +417,14 @@ function validar(){
 							
 									
 									<div class="col-3">											
-									    <input type="text" placeholder="Telefone :"name ="fixo" id="telefone" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
+									    <input type="text" placeholder="Telefone :"name ="fixo" id="fixo" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
 									onchange="try{setCustomValidity('')}catch(e){}"> 
 									</div>
 									</div>
 									
 									<div class="row">
 									<div class="col-2">
-                                    <select style="margin-left:14%" name="sexo" onkeyup="document.getElementById('sexo-1').value = this.value;" class="custom-select form-control">
+                                    <select style="margin-left:14%" name="sexo" id="sexo" onkeyup="document.getElementById('sexo-1').value = this.value;" class="custom-select form-control" >
 											<option value="">Sexo*</option>
 											<option value="1">Masculino</option>
 											<option value="0">Feminino</option>										
@@ -481,7 +550,7 @@ function validar(){
                             </div>
                             </div>
 
-						<button id ="valida" onclick="validar()">validar</button>
+					
 							</section>
 						
 							<br>
@@ -548,22 +617,7 @@ function validar(){
 							</thead>						
 						</table>
 					</div>
-					<script>
-	$(document).ready(function() {
-		console.log('entrou')
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                text: 'My button',
-                action: function ( e, dt, node, config ) {
-                    alert( 'Button activated' );
-                }
-            }
-        ]
-    } );
-} );
-		</script>
+				
                     <button type="button" style="background-color:#284ebf;padding:1% " class="btn btn-primary" id="att" data-toggle="modal" data-target="#exampleModal">
                         Cadastrar Dependentes
                     </button>
@@ -902,8 +956,8 @@ function validar(){
 									titleTemplate: '<span class="step">#index#</span> #title#',
 									labels: {
 										finish: "Proximo",
-										next: '<button class="form-control" onclick="validar()" id="teste">Proximo</button>',
-										previous: '<button onclick="validar()" id="teste">Anterior</button>',
+										next: '<button class="form-control" onclick="validar()" id="proximo">Proximo</button>',
+										previous: '<button onclick="validar()" id="anterior">Anterior</button>',
 										
 									},
 									onStepChanged: function (event, currentIndex, priorIndex) {
