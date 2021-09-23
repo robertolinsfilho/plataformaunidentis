@@ -123,7 +123,79 @@ function validar(){
 		document.getElementById("anterior").click();
 	}, 100);
 	}
-}		
+	var cep = document.getElementById('cep');	
+	if(cep.value == ''){
+		document.getElementById("cep").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var cep = document.getElementById('cep');	
+	if(cep.value == ''){
+		document.getElementById("cep").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var rua = document.getElementById('rua');	
+	if(rua.value == ''){
+		document.getElementById("rua").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var numero = document.getElementById('numero');	
+	if(numero.value == ''){
+		document.getElementById("numero").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var uf = document.getElementById('uf');	
+	if(uf.value == ''){
+		document.getElementById("uf").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var cidade = document.getElementById('cidade');	
+	if(cidade.value == ''){
+		document.getElementById("cidade").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+	var bairro = document.getElementById('bairro');	
+	if(bairro.value == ''){
+		document.getElementById("bairro").style.setProperty('border-color', 'red', 'important');		
+		setInterval(function(){		
+		document.getElementById("anterior").click();
+	}, 100);
+	}
+}	
+
+function valor(){
+	element = document.getElementById('plano');
+	document.getElementById("qPlano").innerHTML = element.value;
+	console.log(element.value);
+
+	if(element.value === 'UNIDENTISVIPBOLETO'){
+		valor = '40.00';
+		document.getElementById("valorPlano").innerHTML = valor;
+	}
+	if(element.value === 'UNIDENTISVIPCARTAO'){
+		valor = '23.90';
+		document.getElementById("valorPlano").innerHTML = valor;
+	}
+	if(element.value === 'UNIDENTISVIPFAMILIACARTAO'){
+		valor = '60.00';
+		document.getElementById("valorPlano").innerHTML = valor;
+	}
+	if(element.value === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
+		valor = '21.90';
+		document.getElementById("valorPlano").innerHTML = valor;
+	}
+}
     </script>
 	
     <style>
@@ -342,11 +414,15 @@ function validar(){
 
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
+	<div>
+	
+	</div>
 	<div class="main-container">
+		
 		<div class="pd-ltr-20  height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
-				
+				<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;margin-top:2%"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>						
 
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				
@@ -364,7 +440,7 @@ function validar(){
 							if($_SESSION['cliente'] == 'servidorpublico'){
 							?>					
 					
-										<select style="background-color:#b3b3b3" name="plano" id="plano"class="custom-select form-control-md" >
+										<select style="background-color:#b3b3b3"   onclick="valor()" name="plano" id="plano"class="custom-select form-control-md" >
 										<option >Selecione</option>
 										<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>											
 										</select>										
@@ -372,7 +448,7 @@ function validar(){
 							<?php
 							    }elseif($_SESSION['escolha'] == 'PB'){
 							?>						
-										<select style="background-color:#b3b3b3"  name="plano" id="plano" class="custom-select form-control-md" >
+										<select style="background-color:#b3b3b3" onclick="valor()"  name="plano" id="plano" class="custom-select form-control-md" >
 										<option value="" >Selecione</option>
 											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
 											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
@@ -382,7 +458,7 @@ function validar(){
                             <?php
                             }elseif ($_SESSION['escolha'] == 'RN'){
                             ?>							                               
-                                        <select style="background-color:#b3b3b3" name="plano" id="plano" class="custom-select form-control-md" >
+                                        <select style="background-color:#b3b3b3" name="plano"  onclick="valor()" id="plano" class="custom-select form-control-md" >
                                             <option value="" >Selecione</option>
                                             <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
                                             <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
@@ -491,7 +567,7 @@ function validar(){
                                     <div class="col-3">													
                                         <input type="text" class="form-control"  onkeyup="document.getElementById('numero-1').value = this.value;" id="numero"name ="numero"placeholder="Numero*">										
 									</div>
-                                    <div class="col-3">													
+                                    <div class="col-2">													
                                         <input type="text" name="uf" id="uf" class="form-control"  onkeyup="document.getElementById('uf-1').value = this.value;" placeholder="Estado*" >									
 									</div>
                             </div>
