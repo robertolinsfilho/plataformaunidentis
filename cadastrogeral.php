@@ -175,6 +175,7 @@ function validar(){
 }	
 
 function valor(){
+	setInterval(function(){	
 	element = document.getElementById('plano');
 	document.getElementById("qPlano").innerHTML = element.value;
 	console.log(element.value);
@@ -182,19 +183,24 @@ function valor(){
 	if(element.value === 'UNIDENTISVIPBOLETO'){
 		valor = '40.00';
 		document.getElementById("valorPlano").innerHTML = valor;
+		
 	}
 	if(element.value === 'UNIDENTISVIPCARTAO'){
 		valor = '23.90';
 		document.getElementById("valorPlano").innerHTML = valor;
+		
 	}
 	if(element.value === 'UNIDENTISVIPFAMILIACARTAO'){
 		valor = '60.00';
 		document.getElementById("valorPlano").innerHTML = valor;
+		
 	}
 	if(element.value === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
 		valor = '21.90';
 		document.getElementById("valorPlano").innerHTML = valor;
+		
 	}
+}, 100);
 }
     </script>
 	
