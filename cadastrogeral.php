@@ -38,139 +38,201 @@ require __DIR__ . '/vendor/autoload.php';
             $("#data2").mask("00-00-0000", {reverse: true});
 
 function validar(){
-	
+	var x= 0;
 	var nome = document.getElementById('a');	
-	if(nome.value == ''){
+	if(nome.value === ''){
+		console.log('entrei');		
 		document.getElementById("a").style.setProperty('border-color', 'red', 'important');	
-		setInterval(function(){		
-		document.getElementById("anterior").click();
-	}, 100);
+		setInterval(function(){				
+		document.getElementById("anterior").click();				
+	}, 200);
+	
+	}else{
+		document.getElementById("a").style.setProperty('border-color', 'black', 'important');
+	}
+	var plano1 = document.getElementById('plano1');	
+	if(plano1.value === ''){
+				
+		document.getElementById("plano1").style.setProperty('border-color', 'red', 'important');	
+		setInterval(function(){				
+		document.getElementById("anterior").click();				
+	}, 200);	
+	}else{
+		document.getElementById("plano1").style.setProperty('border-color', 'black', 'important');
+	}
+	var plano2 = document.getElementById('plano2');	
+	if(plano2.value === ''){
+				
+		document.getElementById("plano2").style.setProperty('border-color', 'red', 'important');	
+		setInterval(function(){				
+		document.getElementById("anterior").click();				
+	}, 200);	
+	}else{
+		document.getElementById("plano2").style.setProperty('border-color', 'black', 'important');
+	}
+	var plano3 = document.getElementById('plano3');	
+	if(plano3.value === ''){
+				
+		document.getElementById("plano3").style.setProperty('border-color', 'red', 'important');	
+		setInterval(function(){				
+		document.getElementById("anterior").click();				
+	}, 200);	
+	}else{
+		document.getElementById("plano3").style.setProperty('border-color', 'black', 'important');
 	}
 	var cpf = document.getElementById('cpf');	
-	if(cpf.value == ''){
+	if(cpf.value === ''){
 		document.getElementById("cpf").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
-	}, 100);
+	}, 200);
+	}else{
+		document.getElementById("cpf").style.setProperty('border-color', 'black', 'important');
 	}
 	var email = document.getElementById('email');	
-	if(email.value == ''){
+	if(email.value === ''){
 		document.getElementById("email").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
-	}, 100);
+	}, 200);
+	}else{
+		document.getElementById("email").style.setProperty('border-color', 'black', 'important');
 	}
 	var telefone = document.getElementById('telefone');	
-	if(telefone.value == ''){
+	if(telefone.value === ''){
 		document.getElementById("telefone").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
-	}, 100);
+	}, 200);
+	}else{
+		document.getElementById("telefone").style.setProperty('border-color', 'black', 'important');
 	}
 	var sexo = document.getElementById('sexo');	
-	if(sexo.value == ''){
+	if(sexo.value === ''){
 		document.getElementById("sexo").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("sexo").style.setProperty('border-color', 'black', 'important');
 	}
 	var rg = document.getElementById('rg');	
-	if(rg.value == ''){
+	if(rg.value === ''){
 		document.getElementById("rg").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("rg").style.setProperty('border-color', 'black', 'important');
 	}
 	var fixo = document.getElementById('fixo');	
-	if(fixo.value == ''){
+	if(fixo.value === ''){
 		document.getElementById("fixo").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("fixo").style.setProperty('border-color', 'black', 'important');
 	}
 	var emissor = document.getElementById('emissor');	
-	if(emissor.value == ''){
+	if(emissor.value === ''){
 		document.getElementById("emissor").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("emissor").style.setProperty('border-color', 'black', 'important');
 	}
 	var data = document.getElementById('data');	
-	if(data.value == ''){
+	if(data.value === ''){
 		document.getElementById("data").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("data").style.setProperty('border-color', 'black', 'important');
 	}
 	var mae = document.getElementById('mae');	
-	if(mae.value == ''){
+	if(mae.value === ''){
 		document.getElementById("mae").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("mae").style.setProperty('border-color', 'black', 'important');
 	}
 	var estado = document.getElementById('estado');	
-	if(estado.value == ''){
+	if(estado.value === ''){
 		document.getElementById("estado").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("estado").style.setProperty('border-color', 'black', 'important');
 	}
 	var sus = document.getElementById('sus');	
-	if(sus.value == ''){
+	if(sus.value === ''){
 		document.getElementById("sus").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("sus").style.setProperty('border-color', 'black', 'important');
 	}
 	var cep = document.getElementById('cep');	
-	if(cep.value == ''){
+	if(cep.value === ''){
 		document.getElementById("cep").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("cep").style.setProperty('border-color', 'black', 'important');
 	}
-	var cep = document.getElementById('cep');	
-	if(cep.value == ''){
-		document.getElementById("cep").style.setProperty('border-color', 'red', 'important');		
-		setInterval(function(){		
-		document.getElementById("anterior").click();
-	}, 100);
-	}
+	
 	var rua = document.getElementById('rua');	
-	if(rua.value == ''){
+	if(rua.value === ''){
 		document.getElementById("rua").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("rua").style.setProperty('border-color', 'black', 'important');
 	}
 	var numero = document.getElementById('numero');	
-	if(numero.value == ''){
+	if(numero.value === ''){
 		document.getElementById("numero").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("numero").style.setProperty('border-color', 'black', 'important');
 	}
 	var uf = document.getElementById('uf');	
-	if(uf.value == ''){
+	if(uf.value === ''){
 		document.getElementById("uf").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("uf").style.setProperty('border-color', 'black', 'important');
 	}
 	var cidade = document.getElementById('cidade');	
-	if(cidade.value == ''){
+	if(cidade.value === ''){
 		document.getElementById("cidade").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("cidade").style.setProperty('border-color', 'black', 'important');
 	}
 	var bairro = document.getElementById('bairro');	
-	if(bairro.value == ''){
+	if(bairro.value === ''){
 		document.getElementById("bairro").style.setProperty('border-color', 'red', 'important');		
 		setInterval(function(){		
 		document.getElementById("anterior").click();
 	}, 100);
+	}else{
+		document.getElementById("bairro").style.setProperty('border-color', 'black', 'important');
 	}
 }	
 
@@ -202,6 +264,7 @@ function valor(){
 	}
 }, 100);
 }
+
     </script>
 	
     <style>
@@ -216,6 +279,7 @@ function valor(){
             width: 80%;
 			
 		}
+		
 		.col{
 			margin-left:0px;
 		}
@@ -240,15 +304,22 @@ function valor(){
 			background-color:#f6f6f6;
 		}
 		.wizard-content .wizard>.steps>ul{
-			position:absolute;
+			
+			width: 92% !important;
+    		margin-left: 15% !important;
+		}
+		.wizard > .steps{
+			width: 87% !important;
+			margin-left: 7%;
 		}
 		#steps-uid-0-p-0{
-			margin-top:10% !important
+			margin-top:2% !important
 		}
 		.wizard-content .wizard.wizard-circle>.steps .step{
 			width: 35px !important;
     		height: 35px !important;
     		line-height: 31px !important;
+			
 		}
 		#row4{
 			margin-top:10%
@@ -258,7 +329,14 @@ function valor(){
 	<style>
 								.wizard-content .wizard>.content{
 								overflow:visible !important;
+								width: 79% !important;
+    							margin-left: 20% !important;
 								}
+								.main-container {
+  								margin-left: -2% !important;
+								  padding:0px !important;
+							}
+
 								.drop-zone {
 								width: 300px;
 								height: 200px;
@@ -428,7 +506,7 @@ function valor(){
 		<div class="pd-ltr-20  height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
-				<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;margin-top:2%"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>						
+				<h5 style="font-size: .9rem;width:73vw;margin-left: 20%;margin-top:6%"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>						
 
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				
@@ -446,7 +524,7 @@ function valor(){
 							if($_SESSION['cliente'] == 'servidorpublico'){
 							?>					
 					
-										<select style="background-color:#b3b3b3"   onclick="valor()" name="plano" id="plano"class="custom-select form-control-md" >
+										<select style="background-color:#b3b3b3"   onclick="valor()" name="plano1" id="plano"class="custom-select form-control-md" >
 										<option >Selecione</option>
 										<option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>											
 										</select>										
@@ -454,7 +532,7 @@ function valor(){
 							<?php
 							    }elseif($_SESSION['escolha'] == 'PB'){
 							?>						
-										<select style="background-color:#b3b3b3" onclick="valor()"  name="plano" id="plano" class="custom-select form-control-md" >
+										<select style="background-color:#b3b3b3" onclick="valor()"  name="plano2" id="plano" class="custom-select form-control-md" >
 										<option value="" >Selecione</option>
 											<option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
 											<option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
@@ -464,7 +542,7 @@ function valor(){
                             <?php
                             }elseif ($_SESSION['escolha'] == 'RN'){
                             ?>							                               
-                                        <select style="background-color:#b3b3b3" name="plano"  onclick="valor()" id="plano" class="custom-select form-control-md" >
+                                        <select style="background-color:#b3b3b3" name="plano"  onclick="valor()" id="plano3" class="custom-select form-control-md" >
                                             <option value="" >Selecione</option>
                                             <option value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
                                             <option value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
@@ -480,6 +558,7 @@ function valor(){
 									<div class="col-4">																				
 									<input type="text"  id="a" name="nome" placeholder="Nome"class="form-control" onkeyup="document.getElementById('a-1').value = this.value;"  required oninvalid="this.setCustomValidity(' ')" 
 									onchange="try{setCustomValidity('')}catch(e){}">
+									
 									</div>							
 									<div class="col-3">									
 										<input type="text" name="cpf"  placeholder="CPF*" onkeyup="document.getElementById('cpf-1').value = this.value;" id="cpf" class="form-control" required oninvalid="this.setCustomValidity(' ')" 
@@ -528,6 +607,7 @@ function valor(){
 									<div class="row">
 									
                                     <div class="col-4">
+										
                                     <input type="text" name="mae" onkeyup="document.getElementById('email-1').value = this.value;" id="mae"placeholder="Mãe*" minlength="10" class="form-control">
 									</div>
                                     <div class="col-3">
@@ -1038,8 +1118,8 @@ function valor(){
 									titleTemplate: '<span class="step">#index#</span> #title#',
 									labels: {
 										finish: "Proximo",
-										next: '<button class="form-control" onclick="validar()" id="proximo">Proximo</button>',
-										previous: '<button onclick="validar()" id="anterior">Anterior</button>',
+										next: '<button id="proximo" onclick="validar()"class="form-control"  style="background-color:#009efb;border-color:#009efb;color:white" >Proximo</button>',
+										previous: '<button class="form-control" style="background-color: #fff;border-color:white" id="anterior">Anterior</button>',
 										
 									},
 									onStepChanged: function (event, currentIndex, priorIndex) {
