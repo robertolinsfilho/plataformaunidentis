@@ -403,12 +403,6 @@ ini_set('display_errors', 0);
 
             <!-- Form grid End -->
 
-            <!-- Input Validation Start -->
-
-
-
-            <!-- Input Validation End -->
-
           </div>
         </div>
       </div>

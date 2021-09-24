@@ -73,7 +73,7 @@ $conexao->query($sql);
                 </div>
                 <div class="modal-body">
                     <br>
-                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
+                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="240">
                     <h4> <?php echo $_SESSION['sms'] ?></h4>
                 </div>
                 <div class="modal-footer">

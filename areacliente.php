@@ -179,7 +179,7 @@ if (isset($resultado['mensagem'])) {
 
             th {
                 text-align: center;
-                align: center;
+                align-items: center;
             }
 
             #submit {
@@ -207,9 +207,9 @@ if (isset($resultado['mensagem'])) {
         label {
             font-size: 18px;
         }
-
+/* 
         input,
-        select {}
+        select {} */
     </style>
 </head>
 

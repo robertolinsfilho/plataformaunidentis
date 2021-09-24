@@ -47,50 +47,80 @@ $cpf = $_SESSION['cpf'];
   <script type="text/javascript">
     $("#data").mask("00/00/0000");
   </script>
-  <!-- =======================================================
-  * Template Name: BizLand - v1.1.0
-  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    #header {
+      top: 0;
+      padding: 15px;
+    }
+
+    .flexLabel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+      margin-top: 0rem;
+      margin-left: -.5rem;
+    }
+
+    .flexLabel .labelInput {
+      white-space: nowrap;
+      padding-right: 1rem;
+      font-weight: bold;
+      color: #606060;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      line-height: 1.875rem;
+    }
+
+    .flexLabel hr {
+      position: relative;
+      top: -0.15rem;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #606060;
+    }
+
+    label {
+      position: relative;
+      z-index: 999;
+      left: .5rem;
+      background-color: #f6f6f6;
+    }
+
+    input.form-control {
+      background-color: #f6f6f6 !important;
+      position: relative;
+      top: -1.1rem;
+    }
+
+    .alert-primary {
+      color: #f6f6f6;
+      background-color: #023bbf;
+      border-color: #023bbf;
+    }
+  </style>
 </head>
 
 <body>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-    <div class="container d-flex">
-      <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contato@unidentis.com.br">contato@unidentis.com.br</a>
-        <i class="icofont-phone"></i> 83 30443000
-
-      </div>
-      <div class="social-links">
-
-        <a href="https://pt-br.facebook.com/unidentisplanoodontologico" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="https://www.instagram.com/unidentisplanoodontologico/?hl=en" class="instagram"><i class="icofont-instagram"></i></a>
-
-        <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
-      </div>
-    </div>
-  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html"><img style="width: 38%; height: 25%;" src="http://unidentisdigital.com.br/assets/img/LOGO.png" /></a>
+      <a href="https://unidentis.com.br/" target="_blank"><img style="width: 38%; height: 25%;" src="http://unidentisdigital.com.br/assets/img/LOGO.png" /></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="redecredenciada.php">Rede Credenciada</a></li>
-          <li><a href="querosercliente.php">Quero Ser Cliente</a></li>
-          <li><a href="carteirinha.php">Carteira Digital</a></li>
-          <li><a href="segundavia.php">Boleto</a></li>
+          <li class="active"><a href="https://unidentis.com.br/" target="_blank">Home</a></li>
+          <li><a href="https://unidentis.com.br/redecredenciada" target="_blank">Rede Credenciada</a></li>
+          <li><a href="https://unidentis.com.br/querosercliente" target="_blank">Tornar-se Cliente</a></li>
+          <li><a href="https://unidentis.com.br/carteirinha" target="_blank">Carteira Digital</a></li>
+          <li><a href="https://unidentis.com.br/segundavia" target="_blank">Boleto</a></li>
 
 
 
@@ -99,60 +129,39 @@ $cpf = $_SESSION['cpf'];
 
     </div>
   </header><!-- End Header -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100" style="margin-top: -90px;">
-      <h1>Dados do titular<span> Titular</span></h1>
-
-
-
-
-    </div>
-  </section>
-
+  <div id="centro" class="row" style="margin-bottom: 0rem;"> </div>
   <section id="form3" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="200">
-      <div id="centro" style="font-size:26px;" class="alert alert-primary" role="alert">
-        Inclusão Dependente - <?php echo $_SESSION['nomeplano'] ?>
+      <div style="font-size:26px;" class="alert alert-primary" role="alert">
+        Incluir Dependente - <?php echo $_SESSION['nomeplano'] ?>
       </div>
-      <h1>Dados do<span> Titular</span></h1>
-
-      <br>
+      <div class="flexLabel">
+        <label class="labelInput">Dados do Titular</label>
+        <hr>
+      </div>
       <form action="incluirformendereco#centro" method="POST">
         <div class="row">
 
           <div class="col">
-            <label style="color: blue; font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
             <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['nomedependente'] ?>" placeholder="Nome Completo" readonly>
           </div>
 
         </div>
-        <br>
         <div class="row">
           <div class="col">
-            <label style="color: blue; font-family:'Poppins', sans-serif;  " for="LabelNome">Email</label>
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail</label>
             <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['emaildependente']; ?>" placeholder="Nome Completo" readonly>
           </div>
           <div class="col">
-            <label style="color: blue; font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone</label>
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone</label>
             <input type="text" name="celular" class="form-control" value="<?php echo $_SESSION['celulardependente']; ?>" placeholder="Nome Completo" readonly>
           </div>
 
           <br>
         </div>
         <br>
-        <div class="row">
-
-
-
-
-
-        </div>
-        <br>
-        <div class="row">
-
-
-        </div>
-        <button type="submit" style="margin-left: 80%;" class="btn-get-started scrollto">prosseguir</button>
+        <button type="submit" class="btn-get-started scrollto">prosseguir</button>
     </div>
 
 

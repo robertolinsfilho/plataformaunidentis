@@ -177,7 +177,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
             <span>Redefinir Senha</span>
         </div>     
         <div class="campoCentral">
-                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="300" >
+                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="240" >
                 <div class='divPassword'>
                     <label>SENHA</label>  
                     <input type="password" name="senha"  class="form-control">

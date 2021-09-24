@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="campoCentral">
-                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="300">
+                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="240">
 
                     <div class="divEmail">
                         <label>e-mail</label>

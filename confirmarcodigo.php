@@ -95,7 +95,7 @@ if (!empty($_POST['codigo'])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
+                    <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="240">
                     <h4>Por favor, digite o código que foi enviado para <?php echo $_SESSION['emaildependente'] ?></h4>
                     <form method="post" action="confirmarcodigo">
                         <?php if ($x != 1 && isset($_POST['codigo'])) { ?>

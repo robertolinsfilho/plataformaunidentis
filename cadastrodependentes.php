@@ -7,7 +7,7 @@ header("Location: login");
 exit;
 }
 error_reporting(0);
-ini_set(“display_errors”, 0 );
+ini_set('display_errors', 0 );
 include_once('conexao.php');
 $_SESSION['cpf'] = str_replace(".", "", $_SESSION['cpf']);
 $_SESSION['cpf'] = str_replace("-", "", $_SESSION['cpf']);

@@ -101,7 +101,7 @@ echo $cpf;
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin: 0 auto;" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="300">
+            <img style="margin: 0 auto;" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="240">
             <br>
                 <h5>Maior de 18 anos é obrigatorio CPF </h5>
             </div>

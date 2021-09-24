@@ -12,6 +12,36 @@ label {
   text-transform: lowercase;
   font-size: 0.9rem;
 }
+
+.flexLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  margin-top: 0rem;
+  margin-left: -.5rem;
+}
+
+.flexLabel .labelInput {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  padding-right: 1rem;
+  font-weight: bold;
+  color: #606060;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+}
+
+.flexLabel hr {
+  position: relative;
+  top: -0.15rem;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #606060;
+}
+
 h4.text-blue {
   color: #606060 !important;
   margin-bottom: 0.25rem;
@@ -33,6 +63,17 @@ h4.text-blue {
   padding: 0.75rem;
   padding-top: 1.25rem;
   height: 1.75rem;
+}
+
+textarea#observation.form-control{
+  position: relative;
+  top: -1.5rem;
+  background: #ffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  padding-top: .5rem;
+  background: #f6f6f6;
+  color: #606060;
 }
 
 select.form-control:not([size]):not([multiple]) {
@@ -89,11 +130,12 @@ h4 {
   justify-content: flex-end;
   gap: 0.5rem;
   padding: 1.5rem 0;
+  padding-bottom: 0;
 }
 
 .wizard-content .wizard > .actions {
   position: absolute;
-  top: 8.5rem;
+  top: 6.5rem;
   right: 2%;
   margin: 0;
 }

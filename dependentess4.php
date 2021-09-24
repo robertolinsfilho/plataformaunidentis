@@ -235,7 +235,7 @@ while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
                 </button>
             </div>
             <div class="modal-body">
-            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-top:-6%;margin-left:0%"alt="" width="220" height="120">
+            <img style="margin-left:0%" src=  "http://unidentisdigital.com.br/assets/img/LOGO.png" style="margin-left:0%"alt="" width="220" height="120">
             <br>
                 <h2>Dependente Incluído Com Sucesso</h2>
             </div>
