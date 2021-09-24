@@ -115,7 +115,7 @@ if ($x == 1 or isset($row_usuario4['cpf']) or isset($row_usuario5['email'])) {
 } else {
 
 
-    $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
+    $email = mysqli_real_escape_string($conexao, trim($_POST['email']));   
     $fixo = mysqli_real_escape_string($conexao, trim($_POST['fixo']));
     $telefone = mysqli_real_escape_string($conexao, trim($_POST['telefone']));
     $sexo = mysqli_real_escape_string($conexao, trim($_POST['sexo']));
@@ -244,16 +244,26 @@ if (isset($cpf)) {
    
 }
 
+$date = date('Ym');
+$sql = "INSERT INTO  dadospessoais (nome,email,cpf,vendedor,celular,estado,plano,status,tipocliente,admissao,matricula,sus,mae,nascimento,sexo, pessoa, local, cpf_titular,etapa,1pag,preco) 
+VALUES ('$nome', '$email', '$cpf','$usuario','$telefone','$_SESSION[escolha]','$plano','Nova', '$tipocliente','$admissao','$matricula','$sus','$mae','$nascimento','$_SESSION[nascimento]','$_SESSION[cliente]', '$_SESSION[escolha]','$cpftitular','6','$date','$_SESSION[precototal]')";
+$sql2 = "INSERT INTO  dadosprincipais (nome,email,cpf,celular,sexo,whats,rg,estadocivil,datas,expedidor,mae, fixo) 
+VALUES ('$nome', '$email', '$cpf','$telefone','$sexo','$fixo', '$rg','$estado','$nascimento','$emissor','$mae','$fixo')";
 
- 
+$sql3 = "INSERT INTO  endereco (cpf,cep,rua,numero,bairro,cidade,estado,complemento) 
+VALUES ( '$cpf','$cep','$rua','$numero', '$bairro','$cidade','$uf','$complemento')";
+
+$sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$_SESSION[senhaemail]')"; 
 
 
-$sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao, outro)
+$sql5 = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao, outro)
  VALUES ('$cpf','$nome9', '$nome2','$nome3', '$nome4','$nome5' ,'$nome6')";
-$sql2 = "UPDATE dadospessoais SET etapa = '4' where cpf = $cpf";
-if($conexao->query($sql) === TRUE and $conexao->query($sql2) === TRUE) {
+$sql6 = "UPDATE dadospessoais SET etapa = '4' where cpf = $cpf";
+if($conexao->query($sql) === TRUE and $conexao->query($sql1) === TRUE and $conexao->query($sql2) and $conexao->query($sql3) and $conexao->query($sql4) and $conexao->query($sql5) and $conexao->query($sql6)) {
 	$_SESSION['status_cadastro'] = true;
 	
+}else{
+    echo 'erro';
 }
 
 }
