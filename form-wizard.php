@@ -102,6 +102,85 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 <html>
 
 <head>
+<style type="text/css">
+    ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 32px; /*--Set height of tabs--*/
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    width: 100%;
+}
+ul.tabs li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+    line-height: 31px; /*--Vertically aligns the text within the tab--*/
+    border: 1px solid #999;
+    border-left: none;
+    margin-bottom: -1px; /*--Pull the list item down 1px--*/
+    overflow: hidden;
+    position: relative;
+    background: white;
+}
+ul.tabs li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    font-size: 1.2em;
+    padding: 0 20px;
+    border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+    outline: none;
+}
+ul.tabs li a:hover {
+    background: #ccc;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+    background: #fff;
+    border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+.tab_container {
+    border: 1px solid #999;
+    border-top: none;
+    overflow: hidden;
+    clear: both;
+    float: left; width: 100%;
+    background: #fff;
+}
+.tab_content {
+    padding: 20px;
+    font-size: 1.2em;
+}
+.tab_content div {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    //When page loads...
+    $("ul.tabs li:first-child a").addClass("active").show(); //Activate first tab
+    $(".tab_content #link1").css("display", "block"); //Show first tab content
+
+    //On Click Event
+    $("ul.tabs li a").click(function() {
+
+        $("ul.tabs li a").removeClass("active"); //Remove any "active" class
+        $(".tab_content div").css("display","none");
+
+        $(this).addClass("active"); //Add "active" class to selected tab
+
+
+        var activeTab = $(this).attr("href"); //Find the href attribute value to identify the active tab + content
+        $(activeTab).fadeIn(); //Fade in the active ID content
+        return false;
+    });
+
+});
+</script>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
@@ -132,6 +211,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 							<div class="clearfix">
 
 							</div>
+
 							<div class="wizard-content">
 								<form action="alteracao.php?cpf=<?php echo $row_usuario['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard">
 									<div class="btn-relative">
@@ -202,9 +282,18 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 									</div>
 
 
-									<h5>Proposta</h5>
-
-									<section>
+									<div id="tabs">
+  <ul class="tabs">
+    <li><a class="tab_content" href="#tabs-1">Proposta</a></li>
+    <li><a  class="tab_content"href="#tabs-2">Responsavel Financeiro</a></li>
+    <li><a  class="tab_content" href="#tabs-3">Beneficiarios</a></li>
+	<li><a  class="tab_content" href="#tabs-4">Imagens</a></li>
+  </ul>
+ 
+ 
+  
+  									
+  										<div id="tabs-1">
 										<div class="flexLabel">
 											<label class="labelInput">Plano Contrato</label>
 											<hr>
@@ -369,13 +458,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										<?php
 										}
 										?>
-									</section>
+									</div>
 
 
 
 									<!-- Step 2 -->
-									<h5>Responsavel Financeiro</h5>
-									<section id="resp">
+									
+									<div id="tabs-2">
 										<div class="flexLabel">
 											<label class="labelInput">Responsavel Financeiro</label>
 											<hr>
@@ -521,10 +610,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 
 										</div>
-									</section>
+									</div>
 									<!-- Step 3 -->
-									<h5>Beneficiarios</h5>
-									<section>
+									
+									<div id="tabs-3">
 										<div class="flexLabel">
 											<label class="labelInput">Titular</label>
 											<hr>
@@ -673,14 +762,14 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 
 
-									</section>
+									</div>
 									<!-- Step 4 -->
 									<?php
 									if ($row_usuario['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
 									?>
-										<h5>Imagens</h5>
 
-										<section>
+
+										 <div id="tabs-4">
 											<div class="flexLabel">
 												<label class="labelInput">Imagens</label>
 												<hr>
@@ -776,7 +865,8 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 
 											</div>
-										</section>
+												</div>
+										</div>
 									<?php
 									}
 									?>
@@ -1163,22 +1253,31 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 	</div>
 	<?php include('include/script.php'); ?>
 	<script src="src/plugins/jquery-steps/build/jquery.steps.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  
+  </script>
 	<script>
-		$(".tab-wizard").steps({
-			headerTag: "h5",
-			bodyTag: "section",
-			transitionEffect: "fade",
-			titleTemplate: '<span class="step">#index#</span> #title#',
-			labels: {
-				finish: "Proximo",
-				next: "Proximo",
-				previous: "Anterior",
-			},
+
+		//$(".tab-wizard").steps({
+		//	headerTag: "h5",
+		//	bodyTag: "section",
+		//	transitionEffect: "fade",
+		//	titleTemplate: '<span class="step">#index#</span> #title#',
+		//	labels: {
+			//	finish: "Proximo",
+		//		next: "Proximo",
+		//		previous: "Anterior",
+		//	},
 			// onStepChanged: function(event, currentIndex, priorIndex) {
 			// 	$('.steps .current').prevAll().addClass('disabled');
 			// },
 
-		});
+		//});
 	</script>
 </body>
 

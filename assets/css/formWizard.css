@@ -131,6 +131,22 @@ h4 {
   gap: 0.5rem;
   padding: 1.5rem 0;
   padding-bottom: 0;
+  margin-top:-3.5%
+}
+ul.tabs li a{
+  background-color: white;
+}
+ul.tabs li a:active{
+  background-color: #023bbf !important;
+  color :white
+}
+ul.tabs li a:focus{
+  background-color: #023bbf !important;
+  color :white
+}
+ul.tabs li{
+  padding-left: 2px !important;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .wizard-content .wizard > .actions {
