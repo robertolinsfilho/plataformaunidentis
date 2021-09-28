@@ -16,6 +16,9 @@ $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
 $result_usuario2 = "SELECT * from vendedor where email = '$row_usuario3[vendedor]'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
+$result_usuario4 = "SELECT COUNT(cpf) from dependentes where cpf_titular = '$row_usuario[cpf]'";
+$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
+$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 //Verificar se encontrou resultado na tabela "usuarios"
 
 ?>
@@ -41,6 +44,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 						<div class="col-md-6 col-sm-12">
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
+									
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Analise</li>
 								</ol>
@@ -55,44 +59,36 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 							<label class="labelInput">EM ANALISE</label>
 							<hr>
 						</div>
-
+<?php 
+$count = $row_usuario4['COUNT(cpf)'];
+$count = intval($count);
+$count = $count + 1;
+?>
 						<div class="row">
 							<table class="data-table stripe hover nowrap">
 								<thead>
 									<tr>
-										<th class="table-plus datatable-nosort">Nome</th>
-
-										<th>Titular</th>
-										<th>Vendedor</th>
-										<th>Plano</th>
-										<th>Status</th>
-										<th>Estado</th>
-
-
 										<th>Data</th>
-										<th>Repartição</th>
+										<th>Responsável Financeiro</th>
+										<th>CPF</th>
+										<th>Vidas</th>
+										<th>Plano</th>
+										<th>Valor</th>
+										<th>Status</th>																								
 									</tr>
 								</thead>
-
-
 								<tbody>
-
 									<?php
 									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
-
 									?>
 										<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
-											<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>
-
-											<td><?php echo $row_usuario['cpf']; ?></td>
-											<td><?php echo $row_usuario2['vendedor']; ?></td>
-											<td><?php echo $row_usuario['plano']; ?></td>
-											<td><?php echo $row_usuario['status']; ?></td>
-											<td><?php echo $row_usuario['estado']; ?></td>
-
-
 											<td><?php echo $row_usuario['data']; ?></td>
-											<td><?php echo $row_usuario['reparticao']; ?></td>
+											<td ><?php echo $row_usuario['nome']; ?></td>
+											<td><?php echo $row_usuario['cpf']; ?></td>
+											<td><?php echo $count; ?></td>											
+											<td><?php echo $row_usuario['plano']; ?></td>
+											<td><?php echo $row_usuario['preco']; ?></td>
+											<td><?php echo $row_usuario['status']; ?></td>																															
 										</tr>
 
 									<?php
