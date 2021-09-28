@@ -65,13 +65,31 @@ $row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 						<table class="data-table stripe hover nowrap">
 							<thead>
 								<tr>
-								<th>Data</th>
-										<th>Responsável Financeiro</th>
+								<?php
+										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
+										?>
+										<th>Data</th>
+										<th>Vendedor</th>
+										<th>Responsável Financeiro</th>										
+										<th>CPF</th>
+										<th>Vidas</th>
+										<th>Plano</th>
+										<th>Valor</th>
+										<th>Status</th>
+										<?php					
+										} else {
+										?>
+										<th>Data</th>
+										
+										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
 										<th>Vidas</th>
 										<th>Plano</th>
 										<th>Valor</th>
 										<th>Status</th>	
+										<?php
+										}
+										?>		
 								</tr>
 							</thead>
 							<?php 
@@ -87,13 +105,30 @@ $count = $count + 1;
         
         					?>
 								<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
-								<td><?php echo $row_usuario['data']; ?></td>
+								<?php
+										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
+										?>
+										<td><?php echo $row_usuario['data']; ?></td>
+										<td ><?php echo $row_usuario['vendedor']; ?></td>
 											<td ><?php echo $row_usuario['nome']; ?></td>
 											<td><?php echo $row_usuario['cpf']; ?></td>
 											<td><?php echo $count; ?></td>											
 											<td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $row_usuario['preco']; ?></td>
-											<td><?php echo $row_usuario['status']; ?></td>
+											<td><?php echo $row_usuario['status']; ?></td>		
+										<?php					
+										} else {
+										?>
+										<td><?php echo $row_usuario['data']; ?></td>
+											<td ><?php echo $row_usuario['nome']; ?></td>
+											<td><?php echo $row_usuario['cpf']; ?></td>
+											<td><?php echo $count; ?></td>											
+											<td><?php echo $row_usuario['plano']; ?></td>
+											<td><?php echo $row_usuario['preco']; ?></td>
+											<td><?php echo $row_usuario['status']; ?></td>	
+										<?php
+										}
+										?>	
 								</tr>
                                
 								<?php 
