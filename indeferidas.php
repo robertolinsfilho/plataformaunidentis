@@ -7,7 +7,13 @@ session_start();
 if($_SESSION['usuario'] === 'cadastro@s4e.com.br'){
 	$result_usuario = "SELECT * from dadospessoais where status = 'Indeferido' ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
-}else{
+
+} elseif(!empty($_SESSION['corretora'])) {
+	$result_usuario = "SELECT * from dadospessoais where status = 'Indeferido' and corretora = '$_SESSION[corretora]'   ";
+	$resultado_usuario = mysqli_query($conexao, $result_usuario);
+
+}
+else{
 	$result_usuario = "SELECT * from dadospessoais where status = 'Indeferido' and vendedor = '$_SESSION[usuario]'  ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }

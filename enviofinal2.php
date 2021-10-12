@@ -47,8 +47,8 @@ if (empty($_SESSION['cpftitular1'])) {
 }
 $date = date('Ym');
 
-$sql = "INSERT INTO  dadospessoais (nome,email,cpf,vendedor,celular,estado,plano,status,tipocliente,admissao,matricula,sus,mae,nascimento,sexo, pessoa, local, cpf_titular,etapa,1pag,preco) 
-VALUES ('$nome', '$email', '$cpf','$usuario','$telefone','$_SESSION[escolha]','$plano','Nova', '$tipocliente','$admissao','$matricula','$sus','$mae','$nascimento','$_SESSION[nascimento]','$_SESSION[cliente]', '$_SESSION[escolha]','$cpftitular','6','$date','$_SESSION[precototal]')";
+$sql = "INSERT INTO  dadospessoais (nome,email,cpf,vendedor,celular,estado,plano,status,tipocliente,admissao,matricula,sus,mae,nascimento,sexo, pessoa, local, cpf_titular,etapa,1pag,preco,corretora) 
+VALUES ('$nome', '$email', '$cpf','$usuario','$telefone','$_SESSION[escolha]','$plano','Nova', '$tipocliente','$admissao','$matricula','$sus','$mae','$nascimento','$_SESSION[nascimento]','$_SESSION[cliente]', '$_SESSION[escolha]','$cpftitular','6','$date','$_SESSION[precototal]','$_SESSION[corretora]')";
 $sql2 = "INSERT INTO  dadosprincipais (nome,email,cpf,celular,sexo,whats,rg,estadocivil,datas,expedidor,mae, fixo) 
 VALUES ('$nome', '$email', '$cpf','$telefone','$sexo','$fixo', '$rg','$estado','$nascimento','$emissor','$mae','$fixo')";
 

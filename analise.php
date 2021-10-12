@@ -3,8 +3,13 @@ include_once "conexao.php";
 session_start();
 error_reporting(0);
 if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
-	$result_usuario = "SELECT * from dadospessoais where status = 'Em Analise' and ativo = '1' ";
+    $result_usuario = "SELECT * from dadospessoais where status = 'Em Analise' and ativo = '1' ";
+    $resultado_usuario = mysqli_query($conexao, $result_usuario);
+
+}elseif(!empty($_SESSION['corretora'])) {
+	$result_usuario = "SELECT * from dadospessoais where status = 'Em Analise' and corretora = '$_SESSION[corretora]'   ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
+
 } else {
 	//consultar no banco de dados
 	$result_usuario = "SELECT * from dadospessoais where status = 'Em Analise' and ativo = '1' and vendedor = '$_SESSION[usuario]' or '$_SESSION[usuario]'= 'admin'";
