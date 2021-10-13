@@ -8,10 +8,15 @@ $admin = $_SESSION['usuario'];
 
 
 
-if($_SESSION['usuario'] === 'cadastro@s4e.com.br'){
-	$result_usuario = "SELECT * from dadospessoais where  status = 'Implantadas'";
+if($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
+    $result_usuario = "SELECT * from dadospessoais where  status = 'Implantadas'";
+    $resultado_usuario = mysqli_query($conexao, $result_usuario);
+}elseif(!empty($_SESSION['corretora'])) {
+	$result_usuario = "SELECT * from dadospessoais where status = 'Implantadas' and corretora = '$_SESSION[corretora]'   ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
-}else{
+
+}
+else{
 	$result_usuario = "SELECT * from dadospessoais where  status = 'Implantadas' and vendedor = '$admin'";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }

@@ -16,10 +16,13 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 	$result_usuario = "SELECT * from dadospessoais where ativo = '1'  ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 	
-} else {
-	$result_usuario = "SELECT * from dadospessoais where ativo = '1'  and vendedor = '$_SESSION[usuario]'   ";
+} elseif(!empty($_SESSION['corretora'])) {
+	$result_usuario = "SELECT * from dadospessoais where ativo = '1'  and corretora = '$_SESSION[corretora]'   ";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 	
+}else{
+    $result_usuario = "SELECT * from dadospessoais where ativo = '1'  and vendedor = '$_SESSION[usuario]'   ";
+	$resultado_usuario = mysqli_query($conexao, $result_usuario);
 }
 
 $result_usuario2 = "SELECT * from vendedor where email = '$row_usuario[vendedor]'";
