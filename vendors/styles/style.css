@@ -17982,7 +17982,7 @@ p {
 .dropdown-item {
   font-size: 15px;
   font-weight: 400;
-  padding: 0.55rem 1rem;
+  /* padding: 0.55rem 1rem; */
   color: #667f87;
   font-family: 'Work Sans', sans-serif;
   -webkit-transition: all 0.3s ease-in-out;
@@ -18561,7 +18561,7 @@ textarea.form-control {
   white-space: nowrap; }
 
 .brand-logo a img {
-  max-width: 200px;
+  max-width: 180px;
   display: block;
   margin: 0 auto; }
 
@@ -18860,6 +18860,7 @@ textarea.form-control {
   text-align: right; }
 
 .project-info-right p {
+  white-space: nowrap !important;
   margin-bottom: 0; }
 
 .device-manage-progress-chart ul li {

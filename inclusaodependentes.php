@@ -28,7 +28,6 @@
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <script type="text/javascript">
@@ -80,7 +79,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">LOCALIZAÇÃO DAS CLÍNICAS </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -93,7 +92,7 @@
                 <h5>Telefone: 84 4009-1000</h5>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
 
             </div>
         </div>
@@ -105,7 +104,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel1">Primeiro Acesso</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -116,7 +115,7 @@
 
             </div>
             <div class="modal-footer">
-                <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" >Acessar</button></a>
+                <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" style="font-weight: 500 !important;" >Acessar</button></a>
 
             </div>
         </div>

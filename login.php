@@ -15,7 +15,7 @@
             .barraTopo {
                 background-color: #FFF;
                 color: #BEBEBE;
-                font-family: Poppins;
+                font-family: 'Poppins', sans-serif;
                 font-size: 32px;
                 padding: 1.2rem;
                 text-align: initial;
@@ -43,7 +43,7 @@
 
             label {
                 color: #BEBEBE;
-                font-family: poppins;
+                font-family: 'Poppins', sans-serif;
                 text-transform: uppercase;
             }
 

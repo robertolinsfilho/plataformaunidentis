@@ -17,6 +17,12 @@ table.dataTable th.dataTables_empty {
 table.dataTable.nowrap th,
 table.dataTable.nowrap td {
 	white-space: nowrap;
+	padding: 8px 4px;
+}
+
+
+table.dataTable.nowrap td{
+	position: relative;
 }
 
 div.dataTables_wrapper div.dataTables_length label {
@@ -99,7 +105,7 @@ table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before,
 table.dataTable thead .sorting_desc_disabled:after {
 	position: absolute;
-	bottom: 0.9em;
+	bottom: 0.6em;
 	display: block;
 	opacity: 0.3;
 	font-size: 14px;

@@ -36,6 +36,7 @@ $data1 = $data_atual - $data;
         });
     </script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 
 
@@ -46,7 +47,7 @@ $data1 = $data_atual - $data;
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                 </button>
             </div>
             <div class="modal-body">

@@ -23,6 +23,10 @@ $cpf = $_SESSION['cpf'];
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <!-- Vendor CSS Files -->
@@ -32,7 +36,6 @@ $cpf = $_SESSION['cpf'];
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <script type="text/javascript">
@@ -100,9 +103,10 @@ $cpf = $_SESSION['cpf'];
       border-color: #023bbf;
     }
   </style>
+  <link rel="stylesheet" href="./assets/css/step-fake.css">
 </head>
 
-<body>
+<body style="background-color: #eee;">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -132,26 +136,33 @@ $cpf = $_SESSION['cpf'];
   <div id="centro" class="row" style="margin-bottom: 0rem;"> </div>
   <section id="form3" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="200">
-      <div style="font-size:26px;" class="alert alert-primary" role="alert">
-        Incluir Dependente - <?php echo $_SESSION['nomeplano'] ?>
+      <div class="d-flex justify-content-between fake-step">
+        <span class="fake-step-one here"><i class="far fa-circle"></i> Dados Pessoais</span>
+        <hr>
+        <span class="fake-step-two"><i class="far fa-circle"></i> Endereço</span>
+        <hr>
+        <span class="fake-step-three"><i class="far fa-circle"></i> Beneficiários</span>
       </div>
+      <!-- <div style="font-size:26px;" class="alert alert-primary" role="alert">
+        Incluir Dependente - <?php //echo $_SESSION['nomeplano'] ?>
+      </div> -->
       <div class="flexLabel">
         <label class="labelInput">Dados do Titular</label>
         <hr>
       </div>
       <form action="incluirformendereco#centro" method="POST">
         <div class="row">
-
           <div class="col">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['nomedependente'] ?>" placeholder="Nome Completo" readonly>
+            <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['nomeCpf'] ?>" placeholder="Nome Completo" readonly>
           </div>
 
         </div>
         <div class="row">
           <div class="col">
-            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail</label>
-            <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['emaildependente']; ?>" placeholder="Nome Completo" readonly>
+            <label style="font-family:'Poppins', sans-serif;" for="LabelNome">E-mail</label>
+            <input type="text" name="email" class="form-control" value="<?php echo isset($_SESSION['emaildependente']) ? $_SESSION['emaildependente'] : ''; ?>" required>
+
           </div>
           <div class="col">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone</label>
@@ -161,11 +172,8 @@ $cpf = $_SESSION['cpf'];
           <br>
         </div>
         <br>
-        <button type="submit" class="btn-get-started scrollto">prosseguir</button>
-    </div>
-
-
-    </form>
+        <button type="submit" class="btn-get-started scrollto">prosseguir</button>        
+      </form>
     </div>
 
 

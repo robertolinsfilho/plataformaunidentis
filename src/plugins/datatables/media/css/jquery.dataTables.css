@@ -20,7 +20,7 @@ table.dataTable tfoot th {
 }
 table.dataTable thead th,
 table.dataTable thead td {
-  padding: 12px 10px;
+  padding: 8px;
   border-bottom: 1px solid #ccc;
 }
 table.dataTable thead th:active,
@@ -66,7 +66,7 @@ table.dataTable tbody tr.selected {
 }
 table.dataTable tbody th,
 table.dataTable tbody td {
-  padding: 12px 10px;
+  padding: 0px;
 }
 table.dataTable th:focus,
 table.dataTable td:focus{

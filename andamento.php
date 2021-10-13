@@ -85,7 +85,6 @@ if ($row_usuario2['cpf'] == '') {
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="./assets/css/style.css" rel="stylesheet">
 
@@ -258,7 +257,7 @@ if ($row_usuario2['cpf'] == '') {
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">LOCALIZAÇÃO DAS CLÍNICAS </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -283,7 +282,7 @@ if ($row_usuario2['cpf'] == '') {
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Primeiro Acesso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">

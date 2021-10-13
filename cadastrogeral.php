@@ -21,6 +21,7 @@ require __DIR__ . '/vendor/autoload.php';
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	
     <script>
 	
@@ -789,7 +790,7 @@ function valor(){
                         <div  class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">UNIDENTIS</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">

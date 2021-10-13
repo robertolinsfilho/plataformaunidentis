@@ -7,7 +7,7 @@ include("conexao.php");
 
 session_start();
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo10 = $_FILES['arquivo10'];
     for ($cont = 0; $cont < count($arquivo10['name']); $cont++) {
@@ -27,7 +27,7 @@ if ($SendCadImg) {
     $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
     header("Location: index.php");
 }
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo2 = $_FILES['arquivo1'];
     for ($cont = 0; $cont < count($arquivo2['name']); $cont++) {
@@ -47,7 +47,7 @@ if ($SendCadImg) {
     header("Location: index.php");
 }
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo3 = $_FILES['arquivo2'];
     for ($cont = 0; $cont < count($arquivo3['name']); $cont++) {
@@ -68,7 +68,7 @@ if ($SendCadImg) {
 }
 
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo4 = $_FILES['arquivo3'];
  
@@ -92,7 +92,7 @@ if ($SendCadImg) {
 
 
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo5 = $_FILES['arquivo4'];
  
@@ -114,7 +114,7 @@ if ($SendCadImg) {
     header("Location: index.php");
 }
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
+$SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo6 = $_FILES['arquivo5'];
  

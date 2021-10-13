@@ -37,13 +37,16 @@ function generatePassword($qtyCaraceters = 8)
 $nome = $_SESSION['nome'];
 $telefone = $_SESSION['telefone'];
 $email = $_SESSION['email'];
-// $email = "franklinhpf@hotmail.com";
+// $email = "franklin.sobrenatural@gmail.com";
 // $email = "vendas2@unidentis.com.br";
 $senha = strip_tags(generatePassword(5));
 $plano = $_SESSION['plano'];
 $cpf = $_SESSION['cpf'];
 $link = 'https://unidentisdigital.com.br/login2';
 
+// print_r($_SESSION);
+
+echo $email, '<br>';
 
 
 $emailTemplate = '
@@ -226,7 +229,6 @@ try {
     	
 //Resultado aleatório com 8 caraceters
 echo "<script>window.location.assign('enviofinal2.php')</script>";
-exit;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     echo 'Erro no Envio do E-mail contate o administrador ';

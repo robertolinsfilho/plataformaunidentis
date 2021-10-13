@@ -25,6 +25,10 @@ if ($_SESSION['cpf'] === '') {
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -32,7 +36,10 @@ if ($_SESSION['cpf'] === '') {
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
+
+  <!-- step-fake -->
+  <link rel="stylesheet" href="./assets/css/step-fake.css">
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <script type="text/javascript">
@@ -103,7 +110,21 @@ if ($_SESSION['cpf'] === '') {
       background-color: #023bbf;
       border-color: #023bbf;
     }
+
+    /* div.fake-step hr {
+      height: .25px;
+      box-shadow: 0 .1px 1px rgba(0, 0, 0, 50%);
+      width: 10%;
+    }
+
+    @media (max-width: 758px) {
+      div.fake-step::after {
+        top: 11.5rem;
+      }
+
+    } */
   </style>
+
 </head>
 
 <body style="background-color: #eee;">
@@ -136,6 +157,13 @@ if ($_SESSION['cpf'] === '') {
 
   <section id="form3" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="200">
+      <div class="d-flex justify-content-between fake-step">
+        <span class="fake-step-one here"><i class="far fa-circle"></i> Responsável</span>
+        <hr>
+        <span class="fake-step-two"><i class="far fa-circle"></i> Dados Pessoais</span>
+        <hr>
+        <span class="fake-step-three"><i class="far fa-circle"></i> Arquivos</span>
+      </div>
       <?php
       $boleto40 = $_SESSION['boleto'];
 
@@ -162,25 +190,25 @@ if ($_SESSION['cpf'] === '') {
           <div class="col-md-3">
 
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF:</label>
-            <input type="text" id="cpf" minlenght="14" name="cpf" class="form-control" placeholder="CPF" required>
+            <input type="text" id="cpf" minlenght="14" name="cpf" class="form-control" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Email:</label>
-            <input type="email" class="form-control" name="email" placeholder="e-mail" required>
+            <input type="email" class="form-control" name="email" e-mail" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Plano:</label>
-            <input type="text" class="form-control" value="<?php echo $_SESSION['boleto'] ?>" name="plano" placeholder="senha" readonly>
+            <input type="text" class="form-control" value="<?php echo $_SESSION['boleto'] ?>" name="plano" readonly>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required>
+            <input type="text" name="nome" class="form-control" required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Celular:</label>
-            <input type="text" name="celular" id="celular" class="form-control" placeholder="celular" required>
+            <input type="text" name="celular" id="celular" class="form-control" required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado:</label>
@@ -218,41 +246,52 @@ if ($_SESSION['cpf'] === '') {
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Numero do Cartao SUS</label>
-            <input type="text" name="sus" class="form-control" placeholder="Numero">
+            <input type="text" name="sus" class="form-control" ">
           </div>
 
           <?php
           if ($_SESSION['boleto'] == 'UNIDENTISVIPEMPRESARIAL') {
           ?>
 
-            <div class="col-md-2">
-              <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Matricula</label>
-              <input type="text" name="matricula" class="form-control" placeholder="Matricula" required>
-            </div>
-            <div class="col-md-3">
-              <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data de Admissão</label>
-              <input type="date" name="admissao" class="form-control" placeholder="Numero" required>
-            </div>
-      <?php
+            <div class=" col-md-2">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Matricula</label>
+            <input type="text" name="matricula" class="form-control" required>
+          </div>
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data de Admissão</label>
+            <input type="date" name="admissao" class="form-control" required>
+          </div>
+        <?php
           }
-      ?>
-    </div>
-    <div class="d-flex flex-column">
-      <h6>O Contratante será o beneficiário do plano ? </h6>
-      <div class="d-flex">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+        ?>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Não</label>
+        <div class="d-flex flex-column">
+          <h6>O Contratante será o beneficiário do plano ? </h6>
+          <div class="d-flex">
+            <div class="form-check form-check-inline mr-3">
+              <input type="radio" checked="checked" value="sim" name="beneficiario" id="inlineCheckbox1">
+              <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+            </div>
+            <div class="form-check form-check-inline mr-3">
+              <input type="radio" value="não" name="beneficiario" id="inlineCheckbox2">
+              <label class="form-check-label" for="inlineCheckbox2">Não</label>
+            </div>
+              <!--  Female<br> -->
+          </div>
+          <!-- <div class="d-flex">
+            <div class="form-check form-check-inline mr-3">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">Não</label>
+            </div>
+          </div> -->
+          <button type="submit" class="btn-get-started scrollto">Prosseguir</button>
         </div>
-      </div>
-      <button type="submit" class="btn-get-started scrollto">Prosseguir</button>
-    </div>
 
-    </form>
+      </form>
     </div>
 
 

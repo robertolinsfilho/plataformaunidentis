@@ -9,6 +9,7 @@ label {
   left: 0.5rem;
   position: relative;
   z-index: 999;
+  line-height: 17.5px;
   text-transform: lowercase;
   font-size: 0.9rem;
 }
@@ -79,9 +80,14 @@ textarea#observation.form-control{
 select.form-control:not([size]):not([multiple]) {
   position: relative;
   top: -1rem;
+  font-size: .95rem;
   background: #f6f6f6;
+  color: #606060;
 }
 
+.main-container .form-control{
+  border: 1px solid #cccccc;
+}
 
 textarea.form-control {
     margin: .5rem 0;

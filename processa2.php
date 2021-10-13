@@ -11,7 +11,7 @@ include_once('conexao.php');
 
 
 $email = strip_tags($_POST['email']);
-$email = 'franklinhpf@hotmail.com';
+// $email = 'franklinhpf@hotmail.com';
 $sql = $conexao->query("SELECT * FROM `usuario` WHERE usuario = '{$email}'");
 foreach($sql as $value) {
   $senha = strip_tags($value['senha']);

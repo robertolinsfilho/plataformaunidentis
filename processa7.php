@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 
 <html>
+
 <body>
-<style>
-body{
-    background-color:black;
-}
-</style>
-<?php
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
-session_start();
-include_once('conexao.php');
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+  <?php
+  // Import PHPMailer classes into the global namespace
+  // These must be at the top of your script, not inside a function
+  session_start();
+  include_once('conexao.php');
 
-$nome = strip_tags($_GET['nome']);
-$email = strip_tags($_GET['email']);
-$cpf = strip_tags($_GET['cpf']);;
-$corretor = strip_tags($_GET['corretor']);
-$status = strip_tags($_GET['status']);
-$motivo = strip_tags($_GET['motivo']);
-$link = strip_tags('unidentisdigital.com.br/login2');
+  $nome = strip_tags($_GET['nome']);
+  $email = strip_tags($_GET['email']);
+  $cpf = strip_tags($_GET['cpf']);;
+  $corretor = strip_tags($_GET['corretor']);
+  $status = strip_tags($_GET['status']);
+  $motivo = strip_tags($_GET['motivo']);
+  $link = strip_tags('unidentisdigital.com.br/login2');
+  
+    echo '<br>';
+  switch ($status) {
+    case 'Cancelado':
+      $status_correto = 'cancelada';
+      break;
 
-// $cpf = '11159630402';
-// $corretor = 'franklin henrique';
-// $status = 'cancelado';
-// $motivo = strip_tags('Desistência');
-// $email = 'franklinhpf@hotmail.com';
-// $senha = '123456';
+    case 'Indeferido':
+      $status_correto = 'indeferida';
+      break;
+  }
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+  // $cpf = '11159630402';
+  // $corretor = 'franklin henrique';
+  // $status = 'cancelado';
+  // $motivo = strip_tags('Desistência');
+  // $email = 'franklinhpf@hotmail.com';
+  // $senha = '123456';
 
-// Load Composer's autoloader
-require 'vendor/autoload.php';
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
 
-// Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
+  // Load Composer's autoloader
+  require 'vendor/autoload.php';
 
-try {
+  // Instantiation and passing `true` enables exceptions
+  $mail = new PHPMailer(true);
+
+  try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
@@ -52,10 +64,15 @@ try {
 
     //Recipients
     $mail->setFrom('ti@unidentis.com.br', 'Plano Unidentis');
-    $mail->addAddress( $email  , 'Unidentis');     // Add a recipient
-             // Name is optional
 
- 
+    if ($status_correto == 'cancelada') :
+      $mail->addAddress($email);     // Add a recipient
+      $mail->addCC($_SESSION['usuario']);     // Add a recipient
+      $mail->addCC('cadastrodigital@unidentis.com.br');     // Add a recipient
+    elseif ($status_correto == 'indeferida') :
+      $mail->addAddress($_SESSION['usuario'], 'Unidentis');     // Add a recipient
+    endif;
+
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Plano Unidentis';
@@ -71,7 +88,7 @@ try {
   <td
   align="center"
   style="
-    background: url('.'https://www.unidentis.com.br/assets/img/fundoEmail.png'.');
+    background: url(' . 'https://www.unidentis.com.br/assets/img/fundoEmail.png' . ');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -85,7 +102,7 @@ try {
     <tr>
       <tr>
         <td>
-          <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: '.'Arial'.', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta '.$status.'</h2>
+          <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: ' . 'Arial' . ', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta ' . $status_correto . '</h2>
         </td>
       </tr>
       <td style="padding: .5rem 30px">
@@ -100,22 +117,22 @@ try {
 
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
-              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">nome:</span> '.$nome.'
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">nome:</span> ' . $nome . '
             </td>
           </tr>
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
-              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">cpf:</span> '.$cpf.'
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">cpf:</span> ' . $cpf . '
             </td>
           </tr>
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
-              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">vendedor:</span> '.$corretor.'
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">vendedor:</span> ' . $corretor . '
             </td>
           </tr>
           <tr style="height: 2rem; width: 100%; padding: 0 16px;">
             <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
-              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">Motivo do cancelamento: </span> '.$motivo.'
+              <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;">Motivo do cancelamento: </span> ' . $motivo . '
             </td>
           </tr>
 
@@ -125,7 +142,6 @@ try {
     </tr>
     <tr>
       <td>
-        <h3 style="text-align: center; font-size: .72rem; line-height: 1rem; text-transform: uppercase; color: #606060;font-family: '.'Arial Black'.', '.'Arial Bold'.', Arial, Helvetica, sans-serif; margin: 0 30px .25rem 30px;padding: .25rem 2rem;">Agradecemos a sua escolha!</h3>
       </td>
     </tr>
     <tr>
@@ -198,11 +214,11 @@ try {
     </tr>
   </table>
     ';
-    
+
     // '<body  style="background-color:white">
     //     <img style="width:100%"src="http://unidentisdigital.com.br/assets/img/PROPOSTACADASTRADA2.png">                      
     //     <h2 style="text-align:center;align-text:center;color:#404bb5">Proposta '.$status.'</h2>
-        
+
     //     <h3 style="text-align:center;align-text:center;color:black" >DADOS DA PROPOSTA<h3>
     //     <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
     //     <h4 style="padding-top:2%;color:black">NOME: '.$nome.'</h4>
@@ -211,20 +227,21 @@ try {
     //     <h4 style="padding-top:0%;color:black">CANCELAMENTO INFORMADO: '.$motivo.'</h4>
 
     //     </div>
-        
-        
+
+
     // </body>';
-   
+
 
     $mail->send();
-    	
-//Resultado aleatório com 8 caraceters
-echo "<script>window.location.assign('pendente.php')</script>";
-exit;
-} catch (Exception $e) {
+
+    //Resultado aleatório com 8 caraceters
+    echo "<script>window.location.assign('pendente.php')</script>";
+    exit;
+  } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     echo 'Erro no Envio do E-mail contate o administrador ';
-}
-?>
+  }
+  ?>
 </body>
+
 </html>

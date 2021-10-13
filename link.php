@@ -104,6 +104,7 @@
         margin-bottom: 1.5rem;
         padding-top: 1.5rem;
         border-radius: 10px; 
+        box-shadow: 0 0 8px rgba(0, 0, 0, 10%);
       }
       div.containerBG .flexIcon{
         display: flex;

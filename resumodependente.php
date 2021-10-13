@@ -370,7 +370,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="modal-header">
 													<h5 class="modal-title" id="exampleModalLabel">Motivo Indeferido</h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
+														<span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
 													</button>
 												</div>
 												<div class="modal-body">
@@ -398,8 +398,8 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<input type="submit" value="Indeferido" name="status" class="btn btn-danger">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
+													<input type="submit" value="Indeferido" name="status" class="btn btn-danger" style="font-weight: 500 !important;">
 												</div>
 											</div>
 										</div>
@@ -412,7 +412,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="modal-header">
 													<h5 class="modal-title" id="exampleModalLabel">Motivo Cancelamento</h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														<span aria-hidden="true">&times;</span>
+														<span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
 													</button>
 												</div>
 												<div class="modal-body">
@@ -432,8 +432,8 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<input type="submit" value="Cancelado" name="status" class="btn btn-danger">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
+													<input type="submit" value="Cancelado" name="status" style="font-weight: 500 !important;" class="btn btn-danger">
 												</div>
 											</div>
 										</div>

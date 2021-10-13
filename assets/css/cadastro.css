@@ -97,19 +97,18 @@ div#form-group .row div.form-group {
   position: absolute;
   top: -2.5rem;
   right: 3.5%;
-  margin-left: 80%;
   width: 15%;
   background-color: #3284f1 !important;
   border: none !important;
-  box-shadow: 0 0 .1rem #606060;
+  box-shadow: 0 0 0.1rem #606060;
 }
 /* 
   * CADASTROFOTOS
 */
 .drop-zone {
-  width: 280px;
-  height: 190px;
-  padding: 10px;
+  position: relative;
+  width: 272px;
+  height: 180px;
   text-align: center;
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
@@ -120,6 +119,13 @@ div#form-group .row div.form-group {
   border-radius: 10px;
   overflow: hidden;
   margin: 1rem;
+}
+
+.drop-zone i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .drop-zone--over {
@@ -133,7 +139,7 @@ div#form-group .row div.form-group {
 .drop-zone__thumb {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 0px;
   overflow: hidden;
   background-color: #cccccc;
   background-size: cover;
@@ -161,7 +167,10 @@ div#form-group .row div.form-group {
 
 .fundoazul {
   background-color: #4177d0;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 #submit {
@@ -173,6 +182,16 @@ div#form-group .row div.form-group {
   top: -2.5rem;
   right: 3.5%;
   line-height: 1.5rem;
+}
+
+.saveBtn {
+  color: #ffffff !important;
+  display: block;
+  margin-left: auto;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.3rem 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .footer-wrap {
@@ -218,7 +237,7 @@ div#form-group .row div.form-group {
     border-radius: 5px;
   }
 
-  #avanca{
+  #avanca {
     top: -3.75rem;
     left: 50%;
     transform: translateX(-50%);
@@ -234,7 +253,7 @@ div#form-group .row div.form-group {
   .mainResumo .page-header,
   .CadFotos .page-header,
   .personalData .page-header,
-  .cadDependentes .page-header{
+  .cadDependentes .page-header {
     padding: 0 1rem;
     margin-bottom: 3.5rem;
   }
@@ -279,8 +298,9 @@ div#form-group .row div.form-group {
 * Resumo
 ------------------------------------------*/
 .form-control {
-  height: 2rem !important;
+  height: 1.75rem !important;
   background-color: #f9f9f9 !important;
+  padding: 0;
 }
 .form-group {
   margin-bottom: 0.5rem !important;
@@ -288,17 +308,45 @@ div#form-group .row div.form-group {
 label {
   color: #606060;
 }
+
 input,
 select {
   border: 1px solid #606060 !important;
-
   background-color: #b3b3b3;
+  padding-left: 0.5rem !important;
+  color: #606060 !important;
 }
+
+
+
+input,
+select,
+input::placeholder {
+  font-size: 0.9rem;
+}
+
 #resumo {
   margin-left: 0%;
-  background-color: #4177d0;
-  padding: 20px;
+  width: 30%;
+  min-width: 20rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px rgb(0 0 0 / 10%);
+  background-color: #007bff;
+  color: #f6f6f6;
+  padding: 1rem;
 }
+#resumo h2 {
+  margin: 5px 0 30px 0;
+}
+
+#resumo h3 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
 #submit {
   top: -2.75rem;
   background-color: #3284f1;
@@ -313,7 +361,7 @@ select {
   align-items: center;
   justify-content: space-between;
   margin: 0.5rem 0;
-  margin-left: -.5rem;
+  margin-left: -0.5rem;
 }
 
 .flexLabel .labelInput {

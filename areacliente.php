@@ -44,19 +44,18 @@ if (isset($resultado['mensagem'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
     <title>Unidentis</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="assets/img/icon.ico" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
 
     <!-- Google Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -72,18 +71,17 @@ if (isset($resultado['mensagem'])) {
         $("#mes").mask("00");
     </script>
     <script type="text/javascript">
-        $("#data").mask("00/00");
+        $("#ano").mask("0000");
     </script>
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
     * Template Name: BizLand - v1.1.0
@@ -91,133 +89,16 @@ if (isset($resultado['mensagem'])) {
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    <link rel="stylesheet" href="./assets/css/areaclienteboleto.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-        body {
-            background: linear-gradient(to right, rgba(235, 224, 232, 1) 52%, rgba(254, 191, 1, 1) 53%, rgba(254, 191, 1, 1) 100%);
-            font-family: 'Roboto', sans-serif
-        }
 
-        .card {
-            border: none;
-            max-width: 450px;
-            border-radius: 15px;
-            margin: 20px 0 20px;
-            padding: 35px;
-            padding-bottom: 20px !important
-        }
 
-        .heading {
-            color: #C1C1C1;
-            font-size: 14px;
-            font-weight: 500
-        }
-
-        #visa {
-
-            transform: translate(160px, -10px)
-        }
-
-        #submit {
-            margin-left: 80%
-        }
-
-        .text-warning {
-            font-size: 12px;
-            font-weight: 500;
-            color: #edb537 !important
-        }
-
-        #cno {
-            transform: translateY(-10px)
-        }
-
-        input {
-            border-bottom: 1.5px solid #E8E5D2 !important;
-            font-weight: bold;
-            border-radius: 0;
-            border: 0
-        }
-
-        .form-group input:focus {
-            border: 0;
-            outline: 0
-        }
-
-        .col-sm-5 {
-            padding-left: 40%;
-        }
-    </style>
-    <style>
-        iframe {
-            margin-left: 50%;
-            position: absolute;
-        }
-
-        #form2 .container {
-
-            padding-top: 50px !important;
-        }
-
-        th,
-        tr {
-            width: 25%
-        }
-
-        #resumo {
-            margin-left: 0%;
-            background-color: #4177d0;
-            padding: 20px;
-            width: 40%
-        }
-
-        @media screen and (max-device-width: 480px) {
-            iframe {
-                visibility: hidden;
-            }
-
-            th {
-                text-align: center;
-                align-items: center;
-            }
-
-            #submit {
-                margin-left: 60%
-            }
-
-            #resumo {
-                margin-left: 0%;
-                background-color: #4177d0;
-                padding: 20px;
-                width: 80%
-            }
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        label,
-        a {
-            color: #606060
-        }
-
-        label {
-            font-size: 18px;
-        }
-/* 
-        input,
-        select {} */
     </style>
 </head>
 
 <body>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <!-- ======= Top Bar ======= -->
     <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
         <div class="container d-flex">
@@ -227,98 +108,56 @@ if (isset($resultado['mensagem'])) {
 
             </div>
             <div class="social-links">
-
                 <a href="https://pt-br.facebook.com/unidentisplanoodontologico" class="facebook"><i class="icofont-facebook"></i></a>
                 <a href="https://www.instagram.com/unidentisplanoodontologico/?hl=en" class="instagram"><i class="icofont-instagram"></i></a>
-
                 <a href="https://www.linkedin.com/company/unidentis-assitencia-odontologica-ltda/?originalSubdomain=br" class="linkedin"><i class="icofont-linkedin"></i></a>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">LOCALIZAÇÃO DAS CLÍNICAS </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4> Paraíba</h4>
-                    RUA DOUTOR OSÓRIO ABATH, N° 46, TORRE, JOÃO PESSOA-PB, CEP - 58040-750.<br>
-                    <h5>Contato Via WhatsApp:</h5>
-                    <a href="https://api.whatsapp.com/send/?phone=5583986176071&text&app_absent=0">Clique aqui</a><br><br><br>
-                    <h4>Rio Grande Do Norte </h4>
-                    HOSPITAL RIO GRANDE , N° 754, TIROL, NATAL- RN, CEP - 59020-100.<BR>
-                    <h5>Telefone: 84 4009-1000</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Primeiro Acesso</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5> ACESSE COM O NÚMERO DO CPF DO TITULAR DO PLANO E A SENHA INICIAL 1234 </h5>
-                    <br>
 
 
 
-                </div>
-                <div class="modal-footer">
-                    <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" id="prosseguir">Acessar</button></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ======= Header ======= -->
 
     <section id="form2" class="d-flex align-items-center">
         <div class="container" data-aos="zoom-out" data-aos-delay="200">
-
             <h1>Proposta</h1>
+
+
             <br>
-            <div style="background-color:#f6f6f6;padding:10px;border-radius:10px">
-                <h4>Titular<h4>
-                        <hr style="width: 90%;position: relative;margin-top: -2.0%;margin-left: 10%;font-weight:bold;height:1px;background-color:#606060;" size="50">
-                        <form action="contratocartao" method="POST">
+            <div class='box-areaBoleto' style="background-color:#f6f6f6;padding:10px;border-radius:10px">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail:</label>
-                                    <input type="text" class="form-control" name="email" value="<?php echo $row_usuario2['email'] ?>" readonly>
-                                </div>
+                <div class="flexLabel">
+                    <label class="labelInput">Titular</label>
+                    <hr>
+                </div>
+                <form action="contratocartao" method="POST">
 
-                                <div class="col-md-4">
-                                    <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">CPF:</label>
-                                    <input type="text" class="form-control" name="cpf" value="<?php echo $row_usuario2['cpf'] ?>" readonly>
-                                </div>
-                                <div class="col-md-4">
-                                    <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Plano:</label>
-                                    <input type="text" class="form-control" name="plano" value="<?php echo $row_usuario2['plano'] ?>" readonly>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">E-mail</label>
+                            <input type="text" class="form-control" name="email" value="<?php echo $row_usuario2['email'] ?>" readonly>
+                        </div>
 
-                                <br>
-                            </div>
+                        <div class="col-md-4">
+                            <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Cpf</label>
+                            <input type="text" class="form-control" name="cpf" value="<?php echo $row_usuario2['cpf'] ?>" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Plano</label>
+                            <input type="text" class="form-control" name="plano" value="<?php echo $row_usuario2['plano'] ?>" readonly>
+                        </div>
+
+                        <br>
+                    </div>
 
             </div>
             <br>
-            <div style="background-color:#f6f6f6;padding:10px;border-radius:10px">
-                <h4>Dependentes</h4>
-                <hr style="width: 80%;position: relative;margin-top: -2.0%;margin-left: 20%;font-weight:bold;height:1px;background-color:#606060;" size="50">
+            <div class='box-areaBoleto' style="background-color:#f6f6f6;padding:10px;border-radius:10px">
+                <div class="flexLabel">
+                    <label class="labelInput">Dependentes</label>
+                    <hr>
+                </div>
+
                 <?php
                 $cont2 = 0;
                 if ($row_usuario4['cpf_titular'] != $row_usuario4['cpf']) {
@@ -363,7 +202,7 @@ if (isset($resultado['mensagem'])) {
                         } ?>
                     </tbody>
                 </table>
-                <h4>Numero Dependentes: <?php echo $cont2 ?> </h4>
+                <h4>Numero Dependentes <?php echo $cont2 ?> </h4>
 
             </div>
 
@@ -372,49 +211,57 @@ if (isset($resultado['mensagem'])) {
 
             <br>
 
-            <h2>Contrato:</h2>
+            <section class="d-flex justify-content-center align-items-start flex-wrap">
+                <div class="infoPdf">
+                    <div class="flexLabel">
+                        <label class="labelInput">Contrato</label>
+                        <hr>
+                    </div>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
+                        <label class="form-check-label" for="inlineCheckbox1">Li e concordo com os termos do contrato</label>
+                    </div>
+                </div>
+                <!-- <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="500"></iframe> -->
+                <embed class="pdf_embed" src="./pdf/CONTRATO_IND_FAMILIAR.pdf" />
+            </section>
 
-            <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="500"></iframe>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
-                <label class="form-check-label" for="inlineCheckbox1">Li e concordo com os termos do contrato</label>
+            <!-- cartão de crédito -->
+            <div class="flexLabel">
+                <label class="labelInput">Dados do Cartão</label>
+                <hr>
             </div>
 
-
-
-
-            <br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br>
-
-            <h1>Dados do <span>Cartão</span> </h1><br><br>
-
-            <div class="container-fluid">
+            <div class="creditCard">
                 <div class="row d-flex justify-content-center">
                     <div class="col-sm-12">
-                        <div class="card mx-auto">
-                            <p class="heading">DETALHES DE PAGAMENTOS</p>
+                        <div class="bg-light">
+                            <p class="heading text-secondary">DETALHES DE PAGAMENTOS</p>
                             <form class="card-details ">
-                                <div class="form-group mb-0">
-                                    <p class="text-warning mb-0">Numero do Cartão</p> <input type="text" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19"> <img src="https://img.icons8.com/color/48/000000/visa.png" id="visa" width="64px" height="60px" />
+                                <div class="form-group">
+                                    <p class="mb-0">Número do Cartão</p>
+                                    <input type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19">
+                                    <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa">
                                 </div>
                                 <div class="form-group">
-                                    <p class="text-warning mb-0">Nome do Cartão</p> <input type="text" name="nomecartao" placeholder="(Como esta no Cartão)" required>
+                                    <p class="mb-0">Nome do Cartão</p>
+                                    <input type="text" class="mt-1" name="nomecartao" placeholder="(Como esta no Cartão)" required>
                                 </div>
-                                <div class="form-group pt-2">
+                                <div class="form-group pt-2 smallInput">
                                     <div class="row d-flex">
                                         <div class="col-sm-4">
-                                            <p class="text-warning mb-0">Data</p> <input type="text" name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
+                                            <p class="mb-0">Data</p>
+                                            <input type="text" class="mt-1" name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
 
                                         </div>
                                         <div class="col-sm-4">
-                                            <p class="text-warning mb-0">CVV</p> <input type="text" name="cvv" placeholder="000" size="3" minlength="3" maxlength="4">
-
+                                            <p class="mb-0">CVV</p>
+                                            <input type="text" class="mt-1" name="cvv" placeholder="000" size="3" minlength="3" maxlength="4">
                                         </div>
-
-
                                     </div>
                                 </div>
 
@@ -422,6 +269,8 @@ if (isset($resultado['mensagem'])) {
                     </div>
                 </div>
             </div>
+            <!-- cartão de crédito
+         -->
             <br>
             <?php
 
@@ -470,27 +319,21 @@ if (isset($resultado['mensagem'])) {
             }
             $preco = $preco * $cont;
             ?>
-            <div id="resumo">
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Plano Dental : R$:<?php echo $preco ?></h3>
-                <hr>
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Dependentes :<?php echo $cont2 ?></h3>
-                <hr>
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Total: R$:<?php echo $preco ?></h3>
+            <div class="d-flex justify-content-center align-items-end flex-wrap">
 
+                <div id="resumo" class="mr-auto">
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Plano Dental R$<?php echo $preco ?></h3>
+                    <hr style='background-color: #ffffff;'>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Dependentes <?php echo $cont2 ?></h3>
+                    <hr style='background-color: #ffffff;'>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco ?></h3>
+                </div>
+                <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
             </div>
-
-
-            <button id="submit" type="submit" class="btn-get-started scrollto">Prosseguir</button>
         </div>
 
         </form>
         </div>
-
-
-
-
-
-
     </section>
 
 
@@ -513,8 +356,7 @@ if (isset($resultado['mensagem'])) {
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
+<!-- change link -->
+<script src="assets/js/change-link.js"></script>
 
 </html>

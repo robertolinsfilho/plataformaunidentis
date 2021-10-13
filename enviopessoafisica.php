@@ -2,6 +2,8 @@
 session_start();
 include("conexao.php");
 
+print_r($_POST);
+
 $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
 $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
 
@@ -12,8 +14,8 @@ $celular = mysqli_real_escape_string($conexao, trim($_POST['celular']));
 $estado = mysqli_real_escape_string($conexao, trim($_POST['estado']));
 $plano = mysqli_real_escape_string($conexao, trim($_POST['plano']));
 $sus = mysqli_real_escape_string($conexao, trim($_POST['sus']));
-$matricula = mysqli_real_escape_string($conexao, trim($_POST['matricula']));
-$admissao = mysqli_real_escape_string($conexao, trim($_POST['admissao']));
+// $matricula = mysqli_real_escape_string($conexao, trim($_POST['matricula']));
+// $admissao = mysqli_real_escape_string($conexao, trim($_POST['admissao']));
 
 $_SESSION['nome']= $nome;
 $_SESSION['cpf']= $cpf;
@@ -32,7 +34,7 @@ $date = date('Ym');
 
 
 if($conexao->query($sql1) === TRUE ){
-    header('Location: formdadospessoais?#centro');
+    // header('Location: formdadospessoais?#centro');
 }else{
     echo $conexao->$sql1->Log::error('message');
 }

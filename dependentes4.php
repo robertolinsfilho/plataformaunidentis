@@ -97,7 +97,7 @@ echo $cpf;
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -106,7 +106,7 @@ echo $cpf;
                 <h5>Maior de 18 anos é obrigatorio CPF </h5>
             </div>
             <div class="modal-footer">
-               <a href="dependentes3"> <button type="button" class="btn btn-secondary" >Fechar</button></a>
+               <a href="dependentes3"> <button type="button" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</button></a>
 
             </div>
         </div>

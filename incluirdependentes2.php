@@ -26,7 +26,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <!-- Vendor CSS Files -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <!-- Vendor CSS Files -->
@@ -36,7 +35,6 @@
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
 
   <!-- Template Main CSS File -->
@@ -135,7 +133,7 @@
               <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">LOCALIZAÇÃO DAS CLÍNICAS </h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                      <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                   </button>
               </div>
               <div class="modal-body">
@@ -148,7 +146,7 @@
                   <h5>Telefone: 84 4009-1000</h5>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
 
               </div>
           </div>
@@ -160,7 +158,7 @@
               <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel1">Primeiro Acesso</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                      <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                   </button>
               </div>
               <div class="modal-body">
@@ -171,7 +169,7 @@
 
               </div>
               <div class="modal-footer">
-                  <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" >Acessar</button></a>
+                  <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary"  style="font-weight: 500 !important;" >Acessar</button></a>
 
               </div>
           </div>

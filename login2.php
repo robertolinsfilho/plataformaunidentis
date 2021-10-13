@@ -29,14 +29,14 @@ if(isset($_SESSION['sms'])){ ?>
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                     <?php echo $_SESSION['sms'] ?>
                     </div>
                     <div class="modal-footer">
-                        <a href="login2" type="button" class="btn btn-secondary" >Fechar</a>
+                        <a href="login2" type="button" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ if(isset($_SESSION['sms'])){ ?>
             .barraTopo {
                 background-color: #FFF;
                 color: #BEBEBE;
-                font-family: Poppins;
+                font-family: 'Poppins', sans-serif;
                 font-size: 32px;
                 padding: 1.2rem;
                 text-align: initial;
@@ -87,7 +87,7 @@ if(isset($_SESSION['sms'])){ ?>
 
             label {
                 color: #BEBEBE;
-                font-family: poppins;
+                font-family: 'Poppins', sans-serif;
                 text-transform: uppercase;
             }
 
@@ -189,7 +189,7 @@ if(isset($_SESSION['sms'])){ ?>
             <span>Área do Cliente</span>
         </div>
         <div class="campoCentral">
-                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width='300'>
+                <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width='240'>
                 <div class="divEmail">
                     <label>E-MAIL</label>   
                     <input type="text" name="usuario"   class="form-control">

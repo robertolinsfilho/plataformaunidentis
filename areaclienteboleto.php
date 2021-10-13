@@ -6,8 +6,6 @@ if (empty($_SESSION['emailplataforma'])) {
     header('Location: login2');
 }
 
-
-
 $result_usuario1 = "SELECT * from contratocartao where email = '{$_SESSION['emailplataforma']}'";
 $resultado_usuario1 = mysqli_query($conexao, $result_usuario1);
 $row_usuario1 = mysqli_fetch_assoc($resultado_usuario1);
@@ -127,16 +125,14 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
                             <input type="text" class="form-control" name="email" value="<?php echo $row_usuario2['email'] ?>" readonly>
                         </div>
                         <div class="col-md-4">
-                            <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Plano</label>
-                            <input type="text" class="form-control" name="plano" value="<?php echo $row_usuario2['plano']  ?>" readonly>
-                        </div>
-                        <div class="col-md-4">
                             <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Cpf</label>
                             <input type="text" class="form-control" name="cpf" value="<?php echo $row_usuario2['cpf'] ?>" readonly>
                         </div>
-                        <br>
+                        <div class="col-md-4">
+                            <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Plano</label>
+                            <input type="text" class="form-control" name="plano" value="<?php echo $row_usuario2['plano']  ?>" readonly>
+                        </div>
                     </div>
-                    <br>
             </div>
             <?php
 
@@ -181,7 +177,7 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
                         } ?>
                     </tbody>
                 </table>
-                <h4>Numero Dependentes: <?php echo $cont2 ?> </h4>
+                <h4>Numero Dependentes <?php echo $cont2 ?> </h4>
 
                 <?php
                 if ($row_usuario2['plano'] === 'UNIDENTISVIPBOLETO' && $cont === 0) {
@@ -194,8 +190,7 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 
                 $_SESSION['preco'] = $preco;
                 $cont = $cont + 1;
-                $preco = $preco * $cont;
-
+                $preco2 = $preco * $cont;
 
                 ?>
 
@@ -203,70 +198,68 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 
             </div>
             <br>
-
-            <h2>Contrato:</h2>
-            <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="500"></iframe>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
-            <i class="far fa-file-pdf" style="font-size:30px"></i> <a href="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
-                <label class="form-check-label" for="inlineCheckbox1">Li e concordo com os termos do contrato</label>
-            </div><br>
-            <?php
-            if ($row_usuario2['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
-            ?>
-                <h2>Dia do vencimento:</h2>
-
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="5" required>
-                    <label class="form-check-label" for="inlineRadio1">5</label>
+            <section class="d-flex justify-content-center align-items-start flex-wrap">
+                <div class="infoPdf">
+                    <div class="flexLabel">
+                        <label class="labelInput">Contrato</label>
+                        <hr>
+                    </div>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
+                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
+                        <label class="form-check-label" for="inlineCheckbox1">Li e concordo com os termos do contrato</label>
+                    </div>
+                    <br>
+                    <br>
+                    <?php
+                    if ($row_usuario2['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
+                    ?>
+                        <h2 class="mb-2">Dia do vencimento:</h2>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="5" required>
+                            <label class="form-check-label" for="inlineRadio1">5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="10" required>
+                            <label class="form-check-label" for="inlineRadio2">10</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="15" required>
+                            <label class="form-check-label" for="inlineRadio3">15</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="20" required>
+                            <label class="form-check-label" for="inlineRadio3">20</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="25" required>
+                            <label class="form-check-label" for="inlineRadio3">25</label>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="10" required>
-                    <label class="form-check-label" for="inlineRadio2">10</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="15" required>
-                    <label class="form-check-label" for="inlineRadio3">15</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="20" required>
-                    <label class="form-check-label" for="inlineRadio3">20</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="25" required>
-                    <label class="form-check-label" for="inlineRadio3">25</label>
-                </div>
-            <?php
-            }
-            ?>
-            <br><br><br><br>
+                <!-- <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="500"></iframe> -->
+                <embed class="pdf_embed" src="./pdf/CONTRATO_IND_FAMILIAR.pdf" />
 
-            <div id="resumo">
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Plano Dental : R$<?php echo $preco ?></h3>
-                <hr>
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Dependentes :<?php echo $cont2 ?></h3>
-                <hr>
-                <h3 style="font-family: 'Poppins', sans-serif;font-size:20px;color:white">Total: R$<?php echo $preco ?></h3>
+            </section>
 
+            <div class="d-flex justify-content-center align-items-end flex-wrap">
+                <div id="resumo" class="mr-auto">
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Plano Dental R$<?php echo $preco ?></h3>
+                    <hr style='background-color: #ffffff;'>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Dependentes <?php echo $cont2 ?></h3>
+                    <hr style='background-color: #ffffff;'>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco2 ?></h3>
+                </div>
+                <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
             </div>
-
-            <br>
-
-
-            <button id="submit" type="submit" class="btn-get-started scrollto">Prosseguir</button>
         </div>
 
         </form>
         </div>
-
-
-
-
-
 
     </section>
 
@@ -287,15 +280,11 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 <script src="assets/vendor/venobox/venobox.min.js"></script>
 <script src="assets/vendor/aos/aos.js"></script>
 
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
-<?php
 
-
-?>
+<!-- change link -->
+<script src="assets/js/change-link.js"></script>
 
 </html>

@@ -53,8 +53,61 @@ ini_set('display_errors', 0);
     .col-md-4,
     .col-md-2 {
       background-color: #f6f6f6;
-      padding: 8px;
+      padding: 4px;
       border-radius: 5px;
+    }
+
+    .proposta {
+      font-size: .9rem;
+      width: auto;
+      min-width: 40%;
+      margin-left: 1%;
+      margin-bottom: -.25rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: .75rem;
+    }
+
+    .proposta span {
+      color: #606060;
+      padding: 0 .5rem;
+      font-size: 1.75rem;
+      line-height: .5rem;
+      font-weight: 300;
+      position: relative;
+      top: 0;
+    }
+
+    div.selectCamp {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    select[name=plano] {
+      max-width: 340px;
+      padding-left: 0.25rem;
+    }
+
+    @media (max-width: 500px) {
+      .proposta {
+        font-size: .55rem;
+        flex-wrap: wrap;
+        margin-bottom: .15rem;
+        justify-content: start;
+      }
+
+      .proposta span {
+        font-size: 1rem;
+        line-height: .5rem;
+        padding: 0 .2rem;
+      }
+
+      div.selectCamp {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
   </style>
   <link rel="stylesheet" href="./assets/css/cadastro.css">
@@ -72,8 +125,9 @@ ini_set('display_errors', 0);
       <div class="min-height-200px personalData">
         <div class="page-header">
           <div class="row">
-            <h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : <span id='valorPlano'>00.00</span> | PLANO : <span id='qPlano'> Nenhum </span> | DEPENDENTES : 0</h5>
-            <br>
+            <h5 class="proposta">
+              <p style="color: #606060; font-weight: 600;">INCLUIR PROPOSTA</p> <span>|</span>VALOR TOTAL: <p id='valorPlano'>0</p> <span>|</span> PLANO: <p id='qPlano'> Nenhum </p> <span>|</span>BENEFICIÁRIOS: 0
+            </h5>
             <?php
             if (isset($_SESSION['menssagem'])) {
             ?>
@@ -86,17 +140,19 @@ ini_set('display_errors', 0);
             <?php
             }
             ?>
+          </div>
+          <div class="row">
             <form method="post" action="dadospessoaissession">
-              <div class="inline" style="display:-webkit-inline-box;margin-left:.7rem;margin-top:.75rem;">
-                <h4 id='inlineH4' style="color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem; ">Escolha o Plano: </h4>
-                <br>
+              <div class="selectCamp pl-2 pb-2">
+                <h4 id='inlineH4' style="color:#606060;white-space: nowrap;font-size: 1.65rem;">ESCOLHA O PLANO: </h4>
+                <!-- <br> -->
                 <?php
                 if ($_SESSION['cliente'] == 'servidorpublico') {
                 ?>
                   <div class="col-md-10">
-                    <div class="form-group">
+                    <div class="form-group" style="margin: 0 !important;">
 
-                      <select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important; max-width: 350px;" name="plano" id="plano" class="custom-select form-control-lg" required>
+                      <select name="plano" id="plano" class="form-control custom-select" required>
                         <option>Selecione</option>
                         <option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
 
@@ -108,14 +164,14 @@ ini_set('display_errors', 0);
                 } elseif ($_SESSION['escolha'] == 'PB') {
                 ?>
                   <div class="col-md-10">
-                    <div class="form-group">
+                    <div class="form-group" style="margin: 0 !important;">
 
-                      <select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important; max-width: 350px;" name="plano" id="plano" class="custom-select form-control-lg" required>
-                        <option valor="R$0.00" value="" selected>Selecione</option>
-                        <option valor="R$40.00" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
-                        <option valor="R$23.90" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
-                        <option valor="R$60.00" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
-                        <option valor="R$21.90" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
+                      <select name="plano" id="plano" class="form-control custom-select" required>
+                        <option valor="0" value="" selected>Selecione</option>
+                        <option valor="40" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
+                        <option valor="23.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
+                        <option valor="60.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
+                        <option valor="21.9" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
                       </select>
                       <span id="textinho0"></span>
                     </div>
@@ -126,14 +182,14 @@ ini_set('display_errors', 0);
                 ?>
 
                   <div class="col-md-10">
-                    <div class="form-group">
+                    <div class="form-group" style="margin: 0 !important;">
 
-                      <select style="background-color:#b3b3b3;height: calc(2rem + 2px) !important; max-width: 350px;" name="plano" id="plano" class="custom-select form-control-lg" required>
-                        <option valor="R$0.00" value="">Selecione</option>
-                        <option valor="R$40.00" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
-                        <option valor="R$25.90" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
-                        <option valor="R$66.00" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
-                        <option valor="R$25.00" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
+                      <select name="plano" id="plano" class="form-control custom-select" required>
+                        <option valor="0" value="">Selecione</option>
+                        <option valor="40" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
+                        <option valor="25.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
+                        <option valor="66.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
+                        <option valor="25.0" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
                       </select>
                       <span id="textinho0"></span>
                     </div>
@@ -147,12 +203,12 @@ ini_set('display_errors', 0);
                   const e = document.querySelector("#plano");
                   const plano = document.querySelector("#qPlano");
                   const valor = document.querySelector("#valorPlano");
-
                   function show() {
                     let strPlano = e.options[e.selectedIndex].value;
-                    let strValor = e.options[e.selectedIndex].getAttribute("valor");
+                    let strValor = parseFloat(e.options[e.selectedIndex].getAttribute("valor")).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'});
                     plano.innerHTML = strPlano;
                     valor.innerHTML = strValor;
+                    window.localStorage.valor = JSON.stringify(strValor);
                   }
                   e.onchange = show;
                   show();
@@ -173,25 +229,21 @@ ini_set('display_errors', 0);
                   <div class="col-md-6">
                     <div class="form-group">
                       <input type="text" name="nome" id="nome" placeholder="Nome Completo*" minlength="10" class="form-control" required />
-                      <span id="textinho"></span>
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <input type="text" name="cpf" placeholder="CPF*" id="cpf" class="form-control" required />
-                      <span id="textinho1"></span>
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <input type="text" class="form-control" name="rg" minlength="7" maxlength="7" id="rg" placeholder="RG*" required />
-                      <span id="textinho5"></span>
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <input type="text" class="form-control" minlength="4" id="emissor" name="emissor" placeholder="Orgão Emissor*" required />
-                      <span id="textinho6"></span>
                     </div>
                   </div>
                 </div>
@@ -209,7 +261,6 @@ ini_set('display_errors', 0);
                   <div class="col-md-2">
                     <div class="form-group">
                       <input type="text" class="form-control" id="data" name="nascimento" placeholder="Data de Nascimento*" required />
-                      <span id="textinho7"></span>
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -219,13 +270,11 @@ ini_set('display_errors', 0);
                         <option value="Solteiro">Solteiro</option>
                         <option value="Casado">Casado</option>
                       </select>
-                      <span id="textinho9"></span>
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
                       <input type="text" name="mae" id="mae" placeholder="Mãe*" minlength="10" class="form-control" required />
-                      <span id="textinho8"></span>
                     </div>
                   </div>
                   <div class="col-md-3">
@@ -240,7 +289,12 @@ ini_set('display_errors', 0);
                   <div class="col-md-6">
                     <div class="form-group">
                       <input type="email" placeholder="Email*" id="email" name="email" class="form-control" required />
-                      <span id="textinho2"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" name="telefone" placeholder="Telefone* " id="telefone" class="form-control" required />
                     </div>
                   </div>
 
@@ -249,12 +303,7 @@ ini_set('display_errors', 0);
                       <input type="text" placeholder="Telefone :" name="fixo" id="telefone" class="form-control" />
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <input type="text" name="telefone" placeholder="Telefone* " id="telefone" class="form-control" required />
-                      <span id="textinho3"></span>
-                    </div>
-                  </div>
+                  
 
                   <?php
                   if ($_SESSION['cliente'] == 'servidorpublico') {
@@ -287,7 +336,6 @@ ini_set('display_errors', 0);
                 <div class="col-md-3">
                   <div class="form-group">
                     <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP*" required />
-                    <span id="textinho10"></span>
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -398,7 +446,7 @@ ini_set('display_errors', 0);
             </div>
 
             <br>
-            <input onclick="validar()" class="btn btn-success" value="Avançar" type="submit" id="avanca">
+            <button onclick="validar()" class="btn btn-success" type="submit" id="avanca">Avançar</button>
             </form>
 
             <!-- Form grid End -->

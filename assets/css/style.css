@@ -2126,11 +2126,12 @@ section {
   font-size: 14px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 28px;
+  padding: 10px 20px;
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
   background: #106eea;
+  border: none;
 }
 
 #form2 .btn-get-started:hover {
@@ -2181,7 +2182,7 @@ background:#2d2d2d;}
 
 @media (max-width: 992px) {
   #form3 .container {
-    padding-top: 58px;
+    padding-top: 28px;
   }
 }
 
@@ -2216,7 +2217,7 @@ background:#2d2d2d;}
       padding: .3rem 1rem;
       border-radius: 0.25rem;
       transition: 0.5s;
-      color: #fff;
+      color: #ffffff !important;
       background-color: #3284f1 !important;
       box-shadow: 0 0 0.1rem #606060;
       border: none !important;
@@ -2686,7 +2687,7 @@ background:#2d2d2d;}
   font-size: 14px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 28px;
+  padding: 10px 20px;
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
@@ -2701,7 +2702,7 @@ background:#2d2d2d;}
   display: block;
   margin: 5% auto;
   padding: 0 1rem;
-  max-width: 28rem;
+  max-width: 36rem;
 }
 
 .pessoafisicaPlano .topoazul{

@@ -49,7 +49,7 @@ session_start();
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -58,7 +58,7 @@ session_start();
                 <h2><?php echo $_SESSION['msg2'] ?></h2>
             </div>
             <div class="modal-footer">
-               <a href="andamento"> <button type="button" class="btn btn-secondary" >Fechar</button></a>
+               <a href="andamento"> <button type="button" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</button></a>
 
             </div>
         </div>

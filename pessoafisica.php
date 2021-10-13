@@ -2,13 +2,13 @@
 session_start();
 
 error_reporting(0);
-ini_set(“display_errors”, 0 );
+ini_set("display_errors", 0 );
 $_SESSION['vendedor1'] = $_GET['vendedor'];
 $_SESSION['estado1'] = $_POST['produtos'];
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   
@@ -61,9 +61,6 @@ $_SESSION['estado1'] = $_POST['produtos'];
         <!-- Favicons -->
         <link href="assets/img/icon.ico" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
    
         <style>
@@ -244,7 +241,7 @@ $_SESSION['estado1'] = $_POST['produtos'];
 </div>
 
 <?php
-if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
+if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''):
 ?>
 <! -- ======= Pricing Section ======= -->
 <section id="pricing2" class="pricing2">
@@ -256,22 +253,21 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
       <p>Planos para pessoa Fisica na Paraiba      </p>
     </div>
 <form action="plano" method="POST">
-    <div class="row">
+    <div class="row justify-content-center">
 
-      <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
+      <!-- <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
         <div class="box">
           <h3 style="padding:20px">UNIDENTIS VIP BOLETO</h3>
           <h4><sup>R$</sup>40,00<span> / mês</span></h4>
           <ul>
             <li><h5>GR. MUNICÍPIOS PB </h5></li>
             <li>FAMILIAR</li>
-           
           </ul>
           <div class="btn-wrap">
             <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP BOLETO"/>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
         <div class="box ">
@@ -280,7 +276,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS PB </h5></li>
             <li>FAMILIAR</li>
-           
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
             
           </ul>
           <div class="btn-wrap">
@@ -296,7 +292,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS PB </h5></li>
             <li>FAMILIAR</li>
-            
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP FAMÍLIA CARTÃO"/>
@@ -312,6 +308,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS PB </h5></li>
             <li>FAMILIAR</li>
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP UNIVERSITÁRIO"/>
@@ -324,9 +321,8 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
   </div>
 </section><!-- End Pricing Section -->
 <?php
-}elseif($_SESSION['estado1'] == 'RN'){
-
-
+// ------***--------RN----------***----------------
+elseif($_SESSION['estado1'] == 'RN'):
 ?>
 <!-- ======= Pricing Section ======= -->
 <section id="pricing2" class="pricing2">
@@ -338,22 +334,22 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
       <p>Planos para pessoa Fisica em Rio Grande do Norte     </p>
     </div>
 <form action="plano" method="POST">
-    <div class="row">
+    <div class="row justify-content-center">
 
-      <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
+      <!-- <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100">
         <div class="box">
           <h3 style="padding:20px">UNIDENTIS VIP BOLETO</h3>
           <h4><sup>R$</sup>40,00<span> / mês</span></h4>
           <ul>
             <li><h5>GR. MUNICÍPIOS RN </h5></li>
             <li>FAMILIAR</li>
-           
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
             <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP BOLETO"/>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
         <div class="box ">
@@ -362,7 +358,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS RN </h5></li>
             <li>FAMILIAR</li>
-           
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
             
           </ul>
           <div class="btn-wrap">
@@ -378,7 +374,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS RN </h5></li>
             <li>FAMILIAR</li>
-            
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP FAMÍLIA CARTÃO"/>
@@ -394,6 +390,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS RN </h5></li>
             <li>FAMILIAR</li>
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP UNIVERSITÁRIO"/>
@@ -408,7 +405,8 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
 
 
 <?php
-}elseif($_SESSION['estado1'] != 'RN' or $_SESSION['estado1'] != 'PB' or $_SESSION['estado1'] != ' ' ){
+// ---------------------------------============RANDOM=============----------------------------------
+elseif($_SESSION['estado1'] != 'RN' or $_SESSION['estado1'] != 'PB' or $_SESSION['estado1'] != ' ' ):
 
 ?>
 <section id="pricing2" class="pricing2">
@@ -420,9 +418,10 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
       <p>Planos para pessoa Fisica na Paraiba      </p>
     </div>
 <form  action="plano" method="POST">
-    <div  class="row">
+    <div  class="row justify-content-center">
+      
 
-     <div style="margin: 0 auto;" data-aos="fade-up" data-aos-delay="400">
+     <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
         <div class="box">
        
           <h3 style="padding:18px">UNIDENTIS VIP EMPRESARIAL </h3>
@@ -430,6 +429,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
           <ul>
             <li><h5>GR. MUNICÍPIOS PB</h5></li>
             <li>FAMILIAR</li>
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP EMPRESARIAL"/>
@@ -444,7 +444,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''){
 
 
 <?php
-}
+endif;
 ?>
 </body>
 <div id="preloader"></div>
@@ -499,19 +499,10 @@ $('select[name=fabricante]').change(function(){
 
 
 });
-
-
-
-
-
-				
-					$(document).ready(function(){
-						$('#myModal').modal('show');
-					});
-			
-		
-			
-		
+  
+    $(document).ready(function(){
+      $('#myModal').modal('show');
+    });	
     
 	</script>
 

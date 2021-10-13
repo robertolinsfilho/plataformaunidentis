@@ -11,50 +11,112 @@ require __DIR__ . '/vendor/autoload.php';
   <?php include('include/head.php'); ?>
   <link rel="stylesheet" href="./assets/css/cadastro.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <style>
-    input,
-    select {
-      border: 1px solid #606060 !important;
-      background-color: #b3b3b3;
-      margin-left: 5%;
-      text-align: center;
+    #minhaDiv {
+      display: none;
+
+    }
+
+    .col-md-6,
+    .col-md-5,
+    .col-md-3,
+    .col-md-4,
+    .col-md-2 {
+      background-color: #f6f6f6;
+      padding: 4px;
+      border-radius: 5px;
+    }
+
+    h5.proposta {
+      font-size: .9rem;
+      width: auto;
+      min-width: 40%;
+      margin-left: 1%;
+      margin-bottom: -.25rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: .75rem;
+    }
+
+    h5.proposta>span {
+      color: #606060;
+      padding: 0 .5rem;
+      font-size: 1.75rem;
+      line-height: .5rem;
+      font-weight: 300;
+      position: relative;
+      top: 0;
+    }
+
+    div.selectCamp {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    select[name=plano] {
+      max-width: 340px;
+      padding-left: 0.25rem;
+    }
+
+    @media (max-width: 500px) {
+      .proposta {
+        font-size: .55rem !important;
+        flex-wrap: wrap !important;
+        margin-bottom: .15rem !important;
+        justify-content: start !important;
+      }
+
+      .proposta span {
+        font-size: 1rem !important;
+        line-height: .5rem !important;
+        padding: 0 .2rem !important;
+      }
+
+      div.selectCamp {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
     }
   </style>
+  <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+  <link rel="stylesheet" href="./assets/css/cadastro.css">
 </head>
 
 <body>
   <?php include('include/header.php'); ?>
   <?php include('include/sidebar.php'); ?>
+
   <div class="main-container" style='background-color: #eeeeee; margin-top: 1.5rem;'>
-    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
-      <div class="min-height-200px CadFotos">
+    <div class="
+          pd-ltr-20
+          height-100-p
+          xs-pd-20-10
+        ">
+      <div class="min-height-200px personalData">
         <div class="page-header">
           <div class="row">
-            <?php echo '<h5 style="font-size: .9rem;width:98vw;margin-left: 1%;"><span style="font-size:1rem;font-weight:bold;color:#606060;">INCLUIR PROPOSTA</span> | VALOR TOTAL : R$' . $_SESSION['precototal'] . ' | PLANO : ' .  $_SESSION['plano'] . ' | DEPENDENTES :  ' . $_SESSION['cont'] .  '</h5>' ?>
+            <h5 class="proposta">
+              <p style="color: #606060; font-weight: 600;">INCLUIR PROPOSTA</p> <span>|</span>VALOR TOTAL: <p id='valorPlano'> <?= $_SESSION['precototal'] ? $_SESSION['precototal'] : '0' ?></p> <span>|</span> PLANO: <p id='qPlano'> <?= $_SESSION['plano'] ?> </p> <span>|</span>BENEFICIÁRIOS: <?= $_SESSION['cont'] + 1 ?>
+            </h5>
             <br>
-            <div class="inline" style="
-                display:-webkit-inline-box;margin-left:1%;margin-top:1%;
-              ">
-              <h4 id="h4" style="
-                  color:#606060;padding-top:2px;font-size: 1rem;line-height: 1.5rem;
-                ">
-                Escolha o Plano:
-              </h4>
-              <input id="plano" class="form-control" style="
-                  background-color: #b3b3b3 !important;height: calc(2rem + 2px) !important;
-                " value="<?php echo $_SESSION['plano'] ?>" readonly />
-              <br />
+            <div class="selectCamp pl-2 pb-2">
+              <h4 id='inlineH4' style="color:#606060;white-space: nowrap;font-size: 1.65rem;">ESCOLHA O PLANO: </h4>
+              <div class="col-md-10">
+                <div class="form-group" style="margin: 0 !important;">
+                  <select name="plano" id="plano" class="form-control custom-select" disabled>
+                    <option value="<?php echo $_SESSION['plano'] ?>"> <?php echo $_SESSION['plano'] ? $_SESSION['plano'] : 'teste' ?></option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <!-- Default Basic Forms Start -->
-        <div style="background-color: #f6f6f6 !important;
-            padding: 2rem;
-            padding-top: 1rem;
-            margin: .5rem auto;
-            box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
-            position: relative;
-            ">
+        <div class="pd-20 bg-white border-radius-4 box-shadow mb-30 divPai" style="padding: 0px 2rem; padding-top: 20px; position:relative;">
           <div class="flexLabel">
             <label class="labelInput">Incluir Arquivos</label>
             <hr />
@@ -112,7 +174,7 @@ require __DIR__ . '/vendor/autoload.php';
                 </div>
               </div>
 
-              <input name="SendCadImg" type="submit" id="submit" class="btn btn-success" value="Avançar" />
+              <input name="SendCadImg" type="submit" id="avanca" class="btn btn-success saveBtn" style="top: -3rem; padding: 0.3rem 0.5rem;" value="Avançar"/>
             </div>
           </form>
         </div>
@@ -121,6 +183,17 @@ require __DIR__ . '/vendor/autoload.php';
     </div>
 
     <?php include('include/script.php'); ?>
+    <script>
+          const valuePlan = parseFloat(document.querySelector("#valorPlano").innerText).toLocaleString("pt-BR", {
+            style: 'currency',
+            currency: 'BRL'
+          });
+
+          function toBRL() {
+            document.querySelector("#valorPlano").innerHTML = valuePlan;
+          }
+          toBRL();
+        </script>
     <script>
       document
         .querySelectorAll(".drop-zone__input")

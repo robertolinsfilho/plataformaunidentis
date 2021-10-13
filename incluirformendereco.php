@@ -25,6 +25,9 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -32,7 +35,6 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <script type="text/javascript">
@@ -124,10 +126,11 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
             border-color: #023bbf;
         }
     </style>
+    <link rel="stylesheet" href="./assets/css/step-fake.css">
 
 </head>
 
-<body>
+<body style="background-color: #eee;">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -139,7 +142,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">LOCALIZAÇÃO DAS CLÍNICAS </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -152,7 +155,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                     <h5>Telefone: 84 4009-1000</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
 
                 </div>
             </div>
@@ -164,7 +167,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Primeiro Acesso</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -172,7 +175,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
                     <br>
                 </div>
                 <div class="modal-footer">
-                    <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary">Acessar</button></a>
+                    <a href="https://unidentis.s4e.com.br/SYS/?TipoUsuario=1"> <button type="button" class="btn btn-secondary" style="font-weight: 500 !important;">Acessar</button></a>
                 </div>
             </div>
         </div>
@@ -212,9 +215,17 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
     <section id="form3" class="d-flex align-items-center">
         <div id="centro" class="container" data-aos="zoom-out" data-aos-delay="200">
-            <div style="font-size:26px" class="alert alert-primary" role="alert">
-                Incluir Dependente - <?php echo $_SESSION['nomeplano'] ?>
+            <div class="d-flex justify-content-between fake-step">
+                <span class="fake-step-one done"><i class="fas fa-check-circle"></i> Dados Pessoais</span>
+                <hr>
+                <span class="fake-step-two here"><i class="far fa-circle"></i> Endereço</span>
+                <hr>
+                <span class="fake-step-three"><i class="far fa-circle"></i> Beneficiários</span>
             </div>
+            <!-- <div style="font-size:26px" class="alert alert-primary" role="alert">
+                Incluir Dependente - <?php //echo $_SESSION['nomeplano'] 
+                                        ?>
+            </div> -->
             <div class="flexLabel">
                 <label class="labelInput">Dados do Endereço</label>
                 <hr>
@@ -238,7 +249,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
                 <div class="col">
                     <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Numero:</label>
-                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['numerodependente'] ?>" class="form-control" placeholder="Nome Completo" readonly>
+                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['numerodependente'] ?>" class="form-control" placeholder="Nome Completo" required>
                 </div>
 
 

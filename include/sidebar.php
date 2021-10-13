@@ -1,6 +1,6 @@
 <style>
 	.brand-logo{
-	height:100px
+	height:92px
 		
 	}
 	</style>
