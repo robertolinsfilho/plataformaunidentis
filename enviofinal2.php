@@ -56,7 +56,7 @@ $sql3 = "INSERT INTO  endereco (cpf,cep,rua,numero,bairro,cidade,estado,compleme
 VALUES ( '$cpf','$cep','$rua','$numero', '$bairro','$cidade','$uf','$complemento')";
 
 $sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$_SESSION[senhaemail]')";
-$_SESSION['msg1'] = '<h4 style="font-size: 1.5rem; line-height: 2rem">Sua proposta foi cadastrada! <br> <span style="font-size:1rem; line-height: 1.5rem;">Enviamos um email ao Responsável Financeiro, com as instruções para pagamento. <br> Esta proposta permanecerá em "NOVAS" até que o cliente a conclua no e-mail recebido.</span></h4>';
+$_SESSION['msg1'] = '<h4 style="font-size: 1.5rem; line-height: 2rem">Sua proposta foi cadastrada! <br> <p style="margin-top: 1rem; margin-bottom: .75rem;font-size:1rem; line-height: 1.25rem;">Enviamos um email ao Responsável Financeiro, com as instruções para pagamento.</p><p style="margin-bottom: .25rem;font-size:1rem; line-height: 1.25rem;">Esta proposta permanecerá em "NOVAS" até que o cliente a conclua no e-mail recebido.</p></h4>';
 if ($conexao->query($sql) === TRUE and $conexao->query($sql2) === true and $conexao->query($sql3) === TRUE and $conexao->query($sql4) === TRUE) {
 
 

@@ -59,8 +59,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 						
 				</div>
 				<!-- Simple Datatable start -->
-				<div class="pd-20  border-radius-4 box-shadow mb-30" style='background-color: #f6f6f6;'>
-					
+				<div class="pd-20  border-radius-4 box-shadow mb-30" style='background-color: #f6f6f6;'>					
 					<div class="flexLabel">
 						<label class="labelInput">PAGAMENTO PENDENTE</label>
 						<hr>

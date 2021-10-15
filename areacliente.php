@@ -244,7 +244,7 @@ if (isset($resultado['mensagem'])) {
                             <form class="card-details ">
                                 <div class="form-group">
                                     <p class="mb-0">Número do Cartão</p>
-                                    <input type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19">
+                                    <input nCard type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19">
                                     <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa">
                                 </div>
                                 <div class="form-group">
@@ -255,7 +255,7 @@ if (isset($resultado['mensagem'])) {
                                     <div class="row d-flex">
                                         <div class="col-sm-4">
                                             <p class="mb-0">Data</p>
-                                            <input type="text" class="mt-1" name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
+                                            <input type="text" class="mt-1" data name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
 
                                         </div>
                                         <div class="col-sm-4">
@@ -322,9 +322,9 @@ if (isset($resultado['mensagem'])) {
             <div class="d-flex justify-content-center align-items-end flex-wrap">
 
                 <div id="resumo" class="mr-auto">
-                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Plano Dental R$<?php echo $preco ?></h3>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Valor individual R$<?php echo $preco ?></h3>
                     <hr style='background-color: #ffffff;'>
-                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Dependentes <?php echo $cont2 ?></h3>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Beneficiários <?php echo $cont2 + 1 ?></h3>
                     <hr style='background-color: #ffffff;'>
                     <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco ?></h3>
                 </div>
@@ -359,4 +359,10 @@ if (isset($resultado['mensagem'])) {
 <!-- change link -->
 <script src="assets/js/change-link.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script>
+    $("[nCard]").mask("0000 0000 0000 0000");
+    $("[data]").mask("00/00");
+</script>
 </html>

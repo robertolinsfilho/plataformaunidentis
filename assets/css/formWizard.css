@@ -24,13 +24,12 @@ label {
 }
 
 .flexLabel .labelInput {
-  font-size: 0.9rem;
   white-space: nowrap;
   padding-right: 1rem;
   font-weight: bold;
   color: #606060;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 24px;
   line-height: 1.875rem;
 }
 
@@ -59,7 +58,7 @@ h4.text-blue {
   background: #f6f6f6;
   color: #606060;
   font-family: "Poppins", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   line-height: 0rem;
   padding: 0.75rem;
   padding-top: 1.25rem;
@@ -71,7 +70,7 @@ textarea#observation.form-control{
   top: -1.5rem;
   background: #ffff;
   font-family: "Poppins", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   padding-top: .5rem;
   background: #f6f6f6;
   color: #606060;
@@ -80,7 +79,7 @@ textarea#observation.form-control{
 select.form-control:not([size]):not([multiple]) {
   position: relative;
   top: -1rem;
-  font-size: .95rem;
+  font-size: 15.2px;
   background: #f6f6f6;
   color: #606060;
 }
@@ -98,7 +97,7 @@ textarea.form-control {
 .form-group h3.imgS {
     position: relative;
     padding: .75rem;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     text-align: center;
     color: #eeeeee;
@@ -137,7 +136,8 @@ h4 {
   gap: 0.5rem;
   padding: 1.5rem 0;
   padding-bottom: 0;
-  margin-top:-3.5%
+  margin-top:-3.5%;
+  height: 4rem;
 }
 ul.tabs li a{
   background-color: white;
@@ -198,7 +198,7 @@ ul.tabs li{
   }
 
   .wizard-content .btn-relative .btn {
-    font-size: 0.9rem;
+    font-size: 14.4px;
     padding: 0.3rem;
   }
 }

@@ -16,20 +16,21 @@
 
   $nome = strip_tags($_GET['nome']);
   $email = strip_tags($_GET['email']);
+  // $emailVendedor = strip_tags($_GET['vendedor']);
   $cpf = strip_tags($_GET['cpf']);;
   $corretor = strip_tags($_GET['corretor']);
   $status = strip_tags($_GET['status']);
   $motivo = strip_tags($_GET['motivo']);
   $link = strip_tags('unidentisdigital.com.br/login2');
-  
-    echo '<br>';
+
+  echo '<br>';
   switch ($status) {
     case 'Cancelado':
-      $status_correto = 'cancelada';
+      $status_correto = strip_tags("cancelada");
       break;
 
     case 'Indeferido':
-      $status_correto = 'indeferida';
+      $status_correto = strip_tags("indeferida");
       break;
   }
 
@@ -54,24 +55,48 @@
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->CharSet    = 'UTF-8';                                // setting character encoding
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'ti@unidentis.com.br';                     // SMTP username
-    $mail->Password   = 'unid2019';                               // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->CharSet    = 'UTF-8';                         // setting character encoding
+    $mail->Host       = 'smtp.hostinger.com';                // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                            // Enable SMTP authentication
+    $mail->Username   = 'unidentis.mail@unidentis.com.br';           // SMTP username
+    $mail->Password   = 'xumUnid!!2021';                      // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                             // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('ti@unidentis.com.br', 'Plano Unidentis');
+    $mail->setFrom('unidentis.mail@unidentis.com.br', 'Plano Unidentis');
 
-    if ($status_correto == 'cancelada') :
-      $mail->addAddress($email);     // Add a recipient
-      $mail->addCC($_SESSION['usuario']);     // Add a recipient
-      $mail->addCC('cadastrodigital@unidentis.com.br');     // Add a recipient
-    elseif ($status_correto == 'indeferida') :
-      $mail->addAddress($_SESSION['usuario'], 'Unidentis');     // Add a recipient
-    endif;
+    switch ($dominio = explode(".", (string)explode("@", $email)[1])[0]) {
+      case "hotmail":
+        if ($status_correto == "cancelada") :
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+        elseif ($status_correto == "indeferida") :
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br", 'Unidentis');     // Add a recipient
+        endif;
+        break;
+      case "outlook":
+        if ($status_correto == "cancelada") :
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+        elseif ($status_correto == "indeferida") :
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+        endif;
+        break;
+      default:
+        if ($status_correto == "cancelada") :
+          $mail->addAddress($email);     // Add a recipient
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+        elseif ($status_correto == "indeferida") :
+          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+        endif;
+        break;
+    }
+
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
@@ -102,7 +127,7 @@
     <tr>
       <tr>
         <td>
-          <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: ' . 'Arial' . ', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta ' . $status_correto . '</h2>
+          <h2 style="font-weight: bold;text-align: center; font-size: 1.1rem; text-transform: uppercase; color: #023bbf;font-family: ' . 'Arial' . ', Arial, Helvetica, sans-serif; margin: .5rem 30px 0 30px;padding: .25rem 1rem;">Proposta ' . strip_tags($status_correto) . '</h2>
         </td>
       </tr>
       <td style="padding: .5rem 30px">
@@ -214,32 +239,16 @@
     </tr>
   </table>
     ';
-
-    // '<body  style="background-color:white">
-    //     <img style="width:100%"src="http://unidentisdigital.com.br/assets/img/PROPOSTACADASTRADA2.png">                      
-    //     <h2 style="text-align:center;align-text:center;color:#404bb5">Proposta '.$status.'</h2>
-
-    //     <h3 style="text-align:center;align-text:center;color:black" >DADOS DA PROPOSTA<h3>
-    //     <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
-    //     <h4 style="padding-top:2%;color:black">NOME: '.$nome.'</h4>
-    //     <h4 style="padding-top:0%;color:black">CPF: '.$cpf.'</h4>
-    //     <h4 style="padding-top:0%;color:black">VENDEDOR: '.$corretor.'</h4>
-    //     <h4 style="padding-top:0%;color:black">CANCELAMENTO INFORMADO: '.$motivo.'</h4>
-
-    //     </div>
-
-
-    // </body>';
-
-
     $mail->send();
 
     //Resultado aleatório com 8 caraceters
     echo "<script>window.location.assign('pendente.php')</script>";
     exit;
   } catch (Exception $e) {
+    echo "<p style='color: #ffffff;'>";
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     echo 'Erro no Envio do E-mail contate o administrador ';
+    echo "</p>";
   }
   ?>
 </body>

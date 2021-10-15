@@ -152,9 +152,9 @@ ini_set('display_errors', 0);
                   <div class="col-md-10">
                     <div class="form-group" style="margin: 0 !important;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" required>
-                        <option>Selecione</option>
-                        <option value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
+                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
+                        <option valor="0.0">Selecione</option>
+                        <option valor="18.0" value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
 
                       </select>
                       <span id="textinho0"></span>
@@ -166,9 +166,8 @@ ini_set('display_errors', 0);
                   <div class="col-md-10">
                     <div class="form-group" style="margin: 0 !important;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" required>
+                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
                         <option valor="0" value="" selected>Selecione</option>
-                        <option valor="40" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 40.00- ROL DA ANS</option>
                         <option valor="23.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
                         <option valor="60.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
                         <option valor="21.9" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
@@ -184,9 +183,8 @@ ini_set('display_errors', 0);
                   <div class="col-md-10">
                     <div class="form-group" style="margin: 0 !important;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" required>
+                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
                         <option valor="0" value="">Selecione</option>
-                        <option valor="40" value="UNIDENTISVIPBOLETO">UNIDENTIS VIP BOLETO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 40.00- ROL DA ANS</option>
                         <option valor="25.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
                         <option valor="66.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
                         <option valor="25.0" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
@@ -203,9 +201,13 @@ ini_set('display_errors', 0);
                   const e = document.querySelector("#plano");
                   const plano = document.querySelector("#qPlano");
                   const valor = document.querySelector("#valorPlano");
+
                   function show() {
                     let strPlano = e.options[e.selectedIndex].value;
-                    let strValor = parseFloat(e.options[e.selectedIndex].getAttribute("valor")).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'});
+                    let strValor = parseFloat(e.options[e.selectedIndex].getAttribute("valor")).toLocaleString("pt-BR", {
+                      style: 'currency',
+                      currency: 'BRL'
+                    });
                     plano.innerHTML = strPlano;
                     valor.innerHTML = strValor;
                     window.localStorage.valor = JSON.stringify(strValor);
@@ -303,7 +305,7 @@ ini_set('display_errors', 0);
                       <input type="text" placeholder="Telefone :" name="fixo" id="telefone" class="form-control" />
                     </div>
                   </div>
-                  
+
 
                   <?php
                   if ($_SESSION['cliente'] == 'servidorpublico') {
@@ -338,19 +340,19 @@ ini_set('display_errors', 0);
                     <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP*" required />
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-5">
                   <div class="form-group">
                     <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*" required />
                     <span id="textinho11"></span>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="form-group">
                     <input type="text" class="form-control" id="numero" name="numero" placeholder="Numero*" required />
                   </div>
                   <span id="textinho12"></span>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="form-group">
                     <input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required />
                     <span id="textinho13"></span>
@@ -359,7 +361,7 @@ ini_set('display_errors', 0);
               </div>
 
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-5">
                   <div class="form-group">
                     <input type="text" name="complemento" placeholder="Complemento" class="form-control" />
                   </div>

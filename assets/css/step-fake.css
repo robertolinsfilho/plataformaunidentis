@@ -45,7 +45,7 @@ div.fake-step span.fake-step-one i::after,
 div.fake-step span.fake-step-two i::after,
 div.fake-step span.fake-step-three i::after {
   position: absolute;
-  top: 55%;
+  top: 52.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.25rem;
@@ -53,6 +53,7 @@ div.fake-step span.fake-step-three i::after {
   font-family: "Poppins", sans-serif;
   color: #60606099;
 }
+
 div.fake-step span.here i,
 div.fake-step span.done i,
 div.fake-step span.here i::after {

@@ -107,7 +107,7 @@ require __DIR__ . '/vendor/autoload.php';
               <h4 id='inlineH4' style="color:#606060;white-space: nowrap;font-size: 1.65rem;">ESCOLHA O PLANO: </h4>
               <div class="col-md-10">
                 <div class="form-group" style="margin: 0 !important;">
-                  <select name="plano" id="plano" class="form-control custom-select" disabled>
+                  <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" disabled>
                     <option value="<?php echo $_SESSION['plano'] ?>"> <?php echo $_SESSION['plano'] ? $_SESSION['plano'] : 'teste' ?></option>
                   </select>
                 </div>
