@@ -73,23 +73,24 @@ $row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 								<?php
 										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 										?>
-										<th>Data</th>
+
 										<th>Vendedor</th>
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
+                                            <th>Plano</th>
 										<th>Vidas</th>
-										<th>Plano</th>
+
 										<th>Valor</th>
 										<th>Status</th>
 										<?php					
 										} else {
 										?>
-										<th>Data</th>
-										
+
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
+                                            <th>Plano</th>
 										<th>Vidas</th>
-										<th>Plano</th>
+
 										<th>Valor</th>
 										<th>Status</th>	
 										<?php
@@ -113,22 +114,24 @@ $count = $count + 1;
 								<?php
 										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 										?>
-										<td><?php echo $row_usuario['data']; ?></td>
-										<td ><?php echo $row_usuario['vendedor']; ?></td>
+
+										<td ><?php echo $row_usuario2['vendedor']; ?></td>
 											<td ><?php echo $row_usuario['nome']; ?></td>
 											<td><?php echo $row_usuario['cpf']; ?></td>
+                                            <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
-											<td><?php echo $row_usuario['plano']; ?></td>
+
 											<td><?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>		
 										<?php					
 										} else {
 										?>
-										<td><?php echo $row_usuario['data']; ?></td>
+
 											<td ><?php echo $row_usuario['nome']; ?></td>
 											<td><?php echo $row_usuario['cpf']; ?></td>
+                                            <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
-											<td><?php echo $row_usuario['plano']; ?></td>
+
 											<td><?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>	
 										<?php
@@ -177,6 +180,10 @@ $count = $count + 1;
 					targets: "datatable-nosort",
 					orderable: false,
 				}],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
 					info: "_START_-_END_ de _TOTAL_ linhas",
