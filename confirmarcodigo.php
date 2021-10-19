@@ -18,7 +18,7 @@ if (!empty($_POST['codigo'])) {
 
 
     if ($x == 1) {
-        $_SESSION['sms'] = 'Código Correto , Dependente enviado para análise!';
+        $_SESSION['sms'] = 'Código correto, dependente enviado para análise!';
         header('Location: confirmacao');
     }
 }

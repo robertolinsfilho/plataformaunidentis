@@ -282,6 +282,7 @@ if ($_SESSION['sexo'] = 1) {
             <label class="labelInput">Resumo</label>
             <hr>
           </div>
+      <a href=javascript:history.back()><button class="btn btn-secondary" id="voltar">Voltar</button></a>
           <form method="post" action="processa.php">
             <div class="row">
               <div class="col-md-6">

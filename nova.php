@@ -2,7 +2,7 @@
 include_once "conexao.php";
 session_start();
 error_reporting(0);
-ini_set(“display_errors”, 0 );
+ini_set('display_errors', 0 );
 //consultar no banco de dados
 $admin = $_SESSION['usuario'];
 
@@ -117,7 +117,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>		
 										<?php					
 										} else {
@@ -128,7 +128,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>	
 										<?php
 										}

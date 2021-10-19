@@ -121,7 +121,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>		
 										<?php					
 										} else {
@@ -132,7 +132,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>	
 										<?php
 										}

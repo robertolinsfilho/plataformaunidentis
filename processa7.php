@@ -16,7 +16,7 @@
 
   $nome = strip_tags($_GET['nome']);
   $email = strip_tags($_GET['email']);
-  // $emailVendedor = strip_tags($_GET['vendedor']);
+  $emailVendedor = strip_tags($_GET['vendedor']);
   $cpf = strip_tags($_GET['cpf']);;
   $corretor = strip_tags($_GET['corretor']);
   $status = strip_tags($_GET['status']);
@@ -53,7 +53,7 @@
 
   try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->CharSet    = 'UTF-8';                         // setting character encoding
     $mail->Host       = 'smtp.hostinger.com';                // Set the SMTP server to send through
@@ -68,31 +68,34 @@
 
     switch ($dominio = explode(".", (string)explode("@", $email)[1])[0]) {
       case "hotmail":
+        // não envia pro cliente
         if ($status_correto == "cancelada") :
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
           $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
         elseif ($status_correto == "indeferida") :
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
-          $mail->addAddress("cadastro2@unidentis.com.br", 'Unidentis');     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
+          $mail->addAddress("comercial@unidentis.com.br", 'Unidentis');     // Add a recipient
         endif;
         break;
       case "outlook":
+        // não envia pro cliente
         if ($status_correto == "cancelada") :
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
           $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
         elseif ($status_correto == "indeferida") :
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
-          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
+          $mail->addAddress("comercial@unidentis.com.br");     // Add a recipient
         endif;
         break;
       default:
+        // envia pro cliente
         if ($status_correto == "cancelada") :
           $mail->addAddress($email);     // Add a recipient
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
           $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
         elseif ($status_correto == "indeferida") :
-          $mail->addAddress($_SESSION['usuario']);     // Add a recipient
-          $mail->addAddress("cadastro2@unidentis.com.br");     // Add a recipient
+          $mail->addAddress($emailVendedor);     // Add a recipient
+          $mail->addAddress("comercial@unidentis.com.br");     // Add a recipient
         endif;
         break;
     }

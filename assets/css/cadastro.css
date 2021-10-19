@@ -97,8 +97,17 @@ div#form-group .row div.form-group {
   position: absolute;
   top: -2.5rem;
   right: 3.5%;
-  width: 15%;
+  width: 12%;
   background-color: #3284f1 !important;
+  border: none !important;
+  box-shadow: 0 0 0.1rem #606060;
+}
+
+#voltar {
+  position: absolute;
+  top: -2.5rem;
+  right: 17%;
+  width: 10%;
   border: none !important;
   box-shadow: 0 0 0.1rem #606060;
 }
@@ -316,8 +325,6 @@ select {
   padding-left: 0.5rem !important;
   color: #606060 !important;
 }
-
-
 
 input,
 select,

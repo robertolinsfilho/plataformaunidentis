@@ -12,6 +12,7 @@ if (!isset($_SESSION['emailplataforma'])) {
 $result_usuario1 = "SELECT * from contratocartao where email = '{$_SESSION['emailplataforma']}'";
 $resultado_usuario1 = mysqli_query($conexao, $result_usuario1);
 $row_usuario1 = mysqli_fetch_assoc($resultado_usuario1);
+
 $result_usuario2 = "SELECT * from dadospessoais where email = '{$_SESSION['emailplataforma']}' ";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
@@ -140,7 +141,7 @@ if (isset($resultado['mensagem'])) {
 
                         <div class="col-md-4">
                             <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Cpf</label>
-                            <input type="text" class="form-control" name="cpf" value="<?php echo $row_usuario2['cpf'] ?>" readonly>
+                            <input type="text" cpf class="form-control" name="cpf" value="<?php echo $row_usuario2['cpf'] ?>" readonly>
                         </div>
                         <div class="col-md-4">
                             <label style=" font-family:'Poppins', sans-serif;  " for="LabelNome">Plano</label>
@@ -186,9 +187,9 @@ if (isset($resultado['mensagem'])) {
                                                 $cont++;
                                                 $cont2++;
                                                 ?>
-                                                <th><label>CPF do Responsável Financeiro</label><input style=" border: 1px solid #606060 !important; " class="form-control" value="<?php echo $row_usuario['cpf_titular']; ?>" readonly></th>
+                                                <th><label>CPF do Responsável Financeiro</label><input style=" border: 1px solid #606060 !important; " cpf class="form-control" value="<?php echo $row_usuario['cpf_titular']; ?>" readonly></th>
                                                 <th><label>Nome</label><input style=" border: 1px solid #606060 !important; " class="form-control" value="<?php echo $row_usuario['nome']; ?>" readonly></th>
-                                                <th><label>CPF do Dependente</label><input style=" border: 1px solid #606060 !important; " class="form-control" value="<?php echo $row_usuario['cpf']; ?>" readonly></th>
+                                                <th><label>CPF do Dependente</label><input style=" border: 1px solid #606060 !important; " cpf class="form-control" value="<?php echo $row_usuario['cpf']; ?>" readonly></th>
 
 
 
@@ -217,9 +218,9 @@ if (isset($resultado['mensagem'])) {
                         <label class="labelInput">Contrato</label>
                         <hr>
                     </div>
-                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf" target="_blank">Clique aqui para baixar a minuta do contrato.</a> <br><br>
-                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" target="_blank">Clique aqui para baixar a manual de orientação.</a><br><br>
-                    <i class="far fa-file-pdf" style="font-size:30px"></i> <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" target="_blank">Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
+                    <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a minuta do contrato.</a> <br><br>
+                    <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a manual de orientação.</a><br><br>
+                    <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
                     <br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
@@ -274,7 +275,7 @@ if (isset($resultado['mensagem'])) {
             <br>
             <?php
 
-
+            $preco = $row_usuario2['preco'];
             if ($row_usuario2['plano'] === 'UNIDENTISVIPBOLETO' &&  $row_usuario2['local'] === 'PB') {
                 $preco = 40;
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont == '0') {
@@ -283,11 +284,11 @@ if (isset($resultado['mensagem'])) {
                 $preco = 20.90;
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $cont > '1' &&  $row_usuario2['local'] === 'PB') {
                 $preco = 19.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'PB' &&  $cont <= '1') {
+            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'PB' &&  $cont == 1) {
                 $preco = 60.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO'  &&  $row_usuario2['local'] === 'PB' &&  $cont == '2') {
-                $preco =  30.50;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $cont > 2 && $row_usuario2['local'] === 'PB') {
+            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO'  &&  $row_usuario2['local'] === 'PB' &&  $cont > 1) {
+                $preco =  30.00;
+            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $cont > 3 && $row_usuario2['local'] === 'PB') {
                 $preco =  20.00;
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont == '0') {
                 $preco = 23.90;
@@ -317,7 +318,9 @@ if (isset($resultado['mensagem'])) {
             if ($cont == '0') {
                 $cont = '1';
             }
-            $preco = $preco * $cont;
+
+            $preco2 = $preco * $cont;
+
             ?>
             <div class="d-flex justify-content-center align-items-end flex-wrap">
 
@@ -326,7 +329,7 @@ if (isset($resultado['mensagem'])) {
                     <hr style='background-color: #ffffff;'>
                     <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Beneficiários <?php echo $cont2 + 1 ?></h3>
                     <hr style='background-color: #ffffff;'>
-                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco ?></h3>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco2 ?></h3>
                 </div>
                 <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
             </div>
@@ -356,13 +359,15 @@ if (isset($resultado['mensagem'])) {
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 
-<!-- change link -->
-<script src="assets/js/change-link.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script>
     $("[nCard]").mask("0000 0000 0000 0000");
     $("[data]").mask("00/00");
+    $("[cpf]").mask("000.000.000-00");
 </script>
+
+<!-- change link -->
+<script src="assets/js/change-link.js"></script>
+
 </html>

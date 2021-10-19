@@ -173,10 +173,12 @@ require __DIR__ . '/vendor/autoload.php';
                   <input type="file" name="arquivo5[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
               </div>
-
+              
               <input name="SendCadImg" type="submit" id="avanca" class="btn btn-success saveBtn" style="top: -3rem; padding: 0.3rem 0.5rem;" value="Avançar"/>
             </div>
           </form>
+          <a href=javascript:history.back()><button class="btn btn-secondary" id="voltar">Voltar</button></a>
+
         </div>
         <?php include('include/footer.php'); ?>
       </div>

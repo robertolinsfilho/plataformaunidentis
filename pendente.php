@@ -76,7 +76,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 										<th>Vendedor</th>
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
-                                            <th>Plano</th>
+										<th>Plano</th>
 										<th>Vidas</th>
 
 										<th>Valor</th>
@@ -88,7 +88,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 										
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
-                                            <th>Plano</th>
+										<th>Plano</th>
 										<th>Vidas</th>
 
 										<th>Valor</th>
@@ -121,7 +121,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>		
 										<?php					
 										} else {
@@ -132,7 +132,7 @@ $count = $count + 1;
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
 
-											<td><?php echo $row_usuario['preco']; ?></td>
+											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>	
 										<?php
 										}

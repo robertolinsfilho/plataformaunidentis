@@ -2,6 +2,15 @@
 session_start();
 include_once("conexao.php");
 
+$email = $_POST['email'];
+
+// GET DADOS FROM DATABASE
+
+$dadosDoContrato = "SELECT * from dadospessoais where email = '$email'";
+$dadosDoContrato = mysqli_fetch_assoc(mysqli_query($conexao, $dadosDoContrato));
+
+/***************************|-------|***********************************/
+
 $cpf = $_GET['cpf'];
 $id = $_GET['id'];
 $x2 = $_POST['status'];
@@ -21,7 +30,7 @@ $numerocartao = $_POST['numerocartao'];
 $validadecartao = $_POST['validadecartao'];
 $sexo = $_POST['sexo'];
 $observacao = $_POST['observacao'];
-$email = $_POST['email'];
+$emailVendedor = $dadosDoContrato['vendedor'];
 $corretor = $_POST['corretor'];
 $nome = $_POST['nome'];
 
@@ -62,7 +71,7 @@ if ($x2 === 'Indeferido' or  $x2 === 'Cancelado') {
 
   if ($conexao->query($sql3) === TRUE) {
 
-    header('Location: processa7.php?cpf=' . $cpf . '&email=' . $email . '&nome=' . $nome . '&status=' . $x2 . '&corretor=' . $corretor . '&motivo=' . $motivo . '');
+    header('Location: processa7.php?cpf=' . $cpf . '&email=' . $email . '&nome=' . $nome . '&status=' . $x2 . '&corretor=' . $corretor . '&motivo=' . $motivo . '&vendedor='. $emailVendedor. '');
   } else {
     echo "Error updating record: " . $conexao->error;
   }

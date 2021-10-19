@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'conexao.php';
-if ($_SESSION['sms'] == 'Código Correto , Dependente enviado para análise!') {
+if ($_SESSION['sms'] == 'Código correto, dependente enviado para análise!') {
     $sql = "UPDATE dependentes set vizu = '1' where cpf_titular = $_SESSION[cpf]";
 } else {
     $sql = "DELETE FROM  dependentes  where cpf_titular = $_SESSION[cpf]";
