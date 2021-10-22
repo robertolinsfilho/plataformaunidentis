@@ -20,7 +20,7 @@ label {
   justify-content: space-between;
   margin: 0.5rem 0;
   margin-top: 0rem;
-  margin-left: -.5rem;
+  margin-left: -0.5rem;
 }
 
 .flexLabel .labelInput {
@@ -65,13 +65,13 @@ h4.text-blue {
   height: 1.75rem;
 }
 
-textarea#observation.form-control{
+textarea#observation.form-control {
   position: relative;
   top: -1.5rem;
   background: #ffff;
   font-family: "Poppins", sans-serif;
   font-size: 12.8px;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   background: #f6f6f6;
   color: #606060;
 }
@@ -84,36 +84,36 @@ select.form-control:not([size]):not([multiple]) {
   color: #606060;
 }
 
-.main-container .form-control{
+.main-container .form-control {
   border: 1px solid #cccccc;
 }
 
 textarea.form-control {
-    margin: .5rem 0;
-    margin-bottom: 1rem;
-    height: 90px;
+  margin: 0.5rem 0;
+  margin-bottom: 1rem;
+  height: 90px;
 }
 
 .form-group h3.imgS {
-    position: relative;
-    padding: .75rem;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    color: #eeeeee;
-    background: #023bbf;
-    text-transform: uppercase;
+  position: relative;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #eeeeee;
+  background: #023bbf;
+  text-transform: uppercase;
 }
 
-.form-group h3.imgSEnd{
-    margin-top: 1.5rem;
+.form-group h3.imgSEnd {
+  margin-top: 1.5rem;
 }
 
-.form-group .wBackImg{
-    margin-bottom: .5rem;
-    height: 10rem; 
-    background-position: center;
-    background-size: cover;
+.form-group .wBackImg {
+  margin-bottom: 0.5rem;
+  height: 10rem;
+  background-position: center;
+  background-size: cover;
 }
 
 h4 {
@@ -123,9 +123,12 @@ h4 {
 
 .main-box-wizard {
   width: 97%;
+  position: relative;
+  top: 1rem;
   margin: 2rem auto;
   margin-top: 0;
-  border-radius: 0.5rem;
+  border: 0.1rem solid #cccccc;
+  border-radius: 0.25rem;
 }
 
 .wizard-content .btn-relative {
@@ -136,23 +139,115 @@ h4 {
   gap: 0.5rem;
   padding: 1.5rem 0;
   padding-bottom: 0;
-  margin-top:-3.5%;
+  margin-top: -3.5%;
   height: 4rem;
 }
-ul.tabs li a{
-  background-color: white;
+
+ul.tabs {
+  position: relative;
+  top: -5rem;
+  left: 0rem;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  float: left;
+  height: 28px;
+  width: 100%;
 }
-ul.tabs li a:active{
-  background-color: #023bbf !important;
-  color :white
+
+ul.tabs li {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0 1rem;
+  height: 31px;
+  line-height: 31px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  border-left: 0.1rem solid #cccccc;
 }
-ul.tabs li a:focus{
-  background-color: #023bbf !important;
-  color :white
+
+ul.tabs li:first-of-type {
+  border-left: none;
 }
-ul.tabs li{
-  padding-left: 2px !important;
-  border-radius: 5px 5px 0px 0px;
+
+ul.tabs li a {
+  text-decoration: none;
+  color: #606060;
+  display: block;
+  font-size: 1.2em;
+  font-family: "Poppins", sans-serif;
+  padding: 0 0.25rem;
+  padding-bottom: 0.5rem;
+  /*--Gives the bevel look with a 1px white border inside the list item--*/
+  outline: none;
+}
+
+.tab_container {
+  border-top: none;
+  overflow: hidden;
+  clear: both;
+  float: left;
+  width: 100%;
+  background: #fff;
+  padding: 0 1rem;
+}
+
+ul.tabs li:active,
+ul.tabs li:focus,
+ul.tabs li.ui-tabs-active {
+  position: relative;
+  top: -0.125rem;
+  height: 2.125rem;
+  background-color: #f6f6f6;
+  border: 0.1rem solid #cccccc;
+  border-bottom: 0.1rem solid #f6f6f6;
+  box-shadow: 0 0.1rem 0px #f6f6f6;
+  border-radius: 2.5px 2.5px 0px 0px;
+}
+
+ul.tabs li.ui-tabs-active a {
+  color: #222222ee;
+  font-weight: 500;
+}
+
+@media (max-width: 1160px) {
+  ul.tabs {
+    top: -5.2rem;
+  }
+}
+
+@media (max-width: 770px) {
+  ul.tabs {
+    top: -5.75rem;
+  }
+  ul.tabs li a {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 574px) {
+  ul.tabs {
+    top: -6.2rem;
+  }
+  ul.tabs li {
+    padding: 0 0.25rem;
+    height: 24px;
+    line-height: 26px;
+  }
+
+  ul.tabs li:active,
+  ul.tabs li:focus,
+  ul.tabs li.ui-tabs-active {
+    position: relative;
+    top: -0.125rem;
+    height: 1.75rem;
+  }
+
+  ul.tabs li a {
+    font-size: 0.6em;
+    padding: 0 0.1rem;
+  }
 }
 
 .wizard-content .wizard > .actions {
@@ -168,7 +263,6 @@ ul.tabs li{
 }
 
 @media (max-width: 500px) {
-
   .main-box-wizard {
     margin-top: 2.5rem;
   }
