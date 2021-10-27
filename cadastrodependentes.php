@@ -24,22 +24,28 @@ $cont = $row_usuario2['total'];
 $_SESSION['cont'] = $cont;
 
 if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO') {
-	$preco = 40.00;
+	$preco1 = 40.00;
 }
 
+
 if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['uf'] === 'PB') {
-	$preco = 23.90;
+	$preco1 = 23.90;
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO'  && $_SESSION['uf'] === 'PB') {
-	$preco = 60.00;
+	$preco1 = 60.00;
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $_SESSION['uf'] == 'PB') {
-	$preco = 21.90;
+	$preco1 = 21.90;
 }
+
+if ($_SESSION['plano'] == 'PLANOVIPORTOCARTAO'){
+	$preco1 = 99.00;
+}
+
 if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['uf'] === 'RN') {
-	$preco = 25.90;
+	$preco1 = 25.90;
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['uf'] == 'RN') {
-	$preco = 66.00;
+	$preco1 = 66.00;
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 && $_SESSION['uf'] == 'RN') {
-	$preco = 25.00;
+	$preco1 = 25.00;
 }
 
 if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['uf'] == 'PB' && $cont == 0) {
@@ -92,9 +98,6 @@ if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['uf'] === 'RN' && $c
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont >= 2 && $_SESSION['uf'] == 'RN') {
 	$preco1 = 23;
 }
-
-
-
 
 $cont = $cont + 1;
 $_SESSION['precototal'] = $cont * $preco1;
@@ -276,6 +279,12 @@ $plano = $_SESSION['plano'];
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
+
+									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo" minlength="10" Completo" required>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
 									<input type="text" name="cpfdependente" id="cpf" formato="cpf" placeholder="CPF" class="form-control">
 								</div>
 							</div>
@@ -301,12 +310,6 @@ $plano = $_SESSION['plano'];
 										<option value="0">feminino</option>
 										<option selected disabled>Selecione</option>
 									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-
-									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo" minlength="10" Completo" required>
 								</div>
 							</div>
 
@@ -468,7 +471,7 @@ $plano = $_SESSION['plano'];
 		$('[formato=cnpj]').mask('99.999.999/9999-99');
 		// $('[formato=telefone]').mask('(99) 99999-9999');
 		$('[formato=cns]').mask('999 9999 9999 9999');
-		$('[formato=data]').mask("00-00-0000");
+		$('[formato=data]').mask("00/00/0000");
 	</script>
 	<?php include('include/script.php'); ?>
 

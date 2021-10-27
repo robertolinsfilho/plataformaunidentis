@@ -7,7 +7,7 @@ $preco = $_SESSION['preco'];
 $cpf = mysqli_real_escape_string($conexao, trim($_POST['cpf']));
 $nome = mysqli_real_escape_string($conexao, trim($_POST['nomecartao']));
 $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
-
+$cpfcartao = mysqli_real_escape_string($conexao, trim($_POST['cpfcartao']));
 $nomecartao = mysqli_real_escape_string($conexao, trim($_POST['nomecartao']));
 $cartao = mysqli_real_escape_string($conexao, trim($_POST['cartao']));
 $mes = mysqli_real_escape_string($conexao, trim($_POST['mes']));
@@ -18,8 +18,8 @@ $_SESSION['nomecartao'] = $nome;
 
 $cartao =  str_replace(' ', '', $cartao);
 
-$cpf = str_replace(".", "", $cpf);
-$cpf = str_replace("-", "", $cpf);
+$cpf = str_replace("-", "", str_replace(".", "", $cpf));
+$cpfcartao = str_replace("-", "", str_replace(".", "", $cpf));
 
 function luhnCheck($cartao)
 {
@@ -32,6 +32,13 @@ if (luhnCheck($cartao) != TRUE) {
     exit();
 }
 
+if($cpf != $cpfcartao){
+    $_SESSION['cpfDiferente'] = true;
+    echo "<body onload='window.history.back();'>";
+    exit;
+}else{
+    $_SESSION['cpfDiferente'] = false;
+}
 class CreditCard
 {
     const AMERICAN_EXPRESS = '38';
@@ -71,59 +78,28 @@ class CreditCard
         switch ($number) {
             case $this->getBrandPattern($this::AMERICAN_EXPRESS, $number):
                 return $this::AMERICAN_EXPRESS;
+                break;
             case $this->getBrandPattern($this::DINERS_CLUB, $number):
                 return $this::DINERS_CLUB;
+                break;
             case $this->getBrandPattern($this::ELO, $number):
                 return $this::ELO;
+                break;
             case $this->getBrandPattern($this::HIPERCARD, $number):
                 return $this::HIPERCARD;
+                break;
             case $this->getBrandPattern($this::MASTERCARD, $number):
                 return $this::MASTERCARD;
+                break;
             case $this->getBrandPattern($this::VISA, $number):
                 return $this::VISA;
+                break;
             default:
-?>
-                <html>
+                $_SESSION['cartaoInvalido'] = true;
+                echo "<body onload='window.history.back();'>";
+                exit;
+                break;
 
-                <head>
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-                    <script>
-                        $(document).ready(function() {
-                            $('#myModal').modal('show');
-                        });
-                    </script>
-                    <link rel="stylesheet" href="./assets/css/style.css">
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-                </head>
-
-                <body>
-
-                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="text-align: center">Número do Cartão Inválido</h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="areacliente" class="btn btn-secondary" type="button">fechar</a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </body>
-
-                </html>
-    <?php
         }
     }
 
@@ -180,6 +156,7 @@ if ($brand == 38 or $brand == 41) {
 
     </html>
 <?php
+    $_SESSION['cpfDiferente'] = false;
     exit;
 }
 $sql = "INSERT INTO  contratocartao (cpf,nome,email,nomecartao,cartao,mes,cvv,preco) 

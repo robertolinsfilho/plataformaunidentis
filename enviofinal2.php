@@ -33,29 +33,29 @@ $emissor = $_SESSION['emissor'];
 $admissao = $_SESSION['admissao'];
 $matricula = $_SESSION['matricula'];
 $responsavel = $_SESSION['cpftitular1'];
-echo $_SESSION['cpftitular1'];
-echo $cpf;
+$initpass = $_SESSION['initpass'];
+$corretora = $_SESSION['corretora'];
+$preco = $_SESSION['precototal'];
+
 if (empty($_SESSION['cpftitular1'])) {
     $cpftitular = $cpf;
-    echo 'entrou1';
 } elseif ($_SESSION['cpftitular1'] != $cpf && isset($_SESSION['cpftitular1'])) {
     $cpftitular = $_SESSION['cpftitular1'];
-    echo 'entrou2';
 } else {
-    echo 'entrou3';
     $cpftitular = $cpf;
 }
 $date = date('Ym');
 
 $sql = "INSERT INTO  dadospessoais (nome,email,cpf,vendedor,celular,estado,plano,status,tipocliente,admissao,matricula,sus,mae,nascimento,sexo, pessoa, local, cpf_titular,etapa,1pag,preco,corretora) 
-VALUES ('$nome', '$email', '$cpf','$usuario','$telefone','$_SESSION[escolha]','$plano','Nova', '$tipocliente','$admissao','$matricula','$sus','$mae','$nascimento','$_SESSION[nascimento]','$_SESSION[cliente]', '$_SESSION[escolha]','$cpftitular','6','$date','$_SESSION[precototal]','$_SESSION[corretora]')";
-$sql2 = "INSERT INTO  dadosprincipais (nome,email,cpf,celular,sexo,whats,rg,estadocivil,datas,expedidor,mae, fixo) 
-VALUES ('$nome', '$email', '$cpf','$telefone','$sexo','$fixo', '$rg','$estado','$nascimento','$emissor','$mae','$fixo')";
+VALUES ('$nome', '$email', '$cpf','$usuario','$telefone','$estado','$plano','Nova', '$tipocliente','$admissao','$matricula','$sus','$mae','$nascimento','$sexo','$tipocliente', '$_SESSION[escolha]','$cpftitular','6','$date','$preco','$corretora')";
+
+$sql2 = "INSERT INTO  dadosprincipais (nome,email,cpf,celular,sexo,whats,rg,estadocivil,datas,expedidor,mae, fixo, initpass) 
+VALUES ('$nome', '$email', '$cpf','$telefone','$sexo','$fixo', '$rg','$estado','$nascimento','$emissor','$mae','$fixo', '$initpass')";
 
 $sql3 = "INSERT INTO  endereco (cpf,cep,rua,numero,bairro,cidade,estado,complemento) 
 VALUES ( '$cpf','$cep','$rua','$numero', '$bairro','$cidade','$uf','$complemento')";
 
-$sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$_SESSION[senhaemail]')";
+$sql4 = "INSERT INTO  usuario (usuario, senha) VALUES ('$email', '$initpass')";
 $_SESSION['msg1'] = '<h4 style="font-size: 1.5rem; line-height: 2rem">Sua proposta foi cadastrada! <br> <p style="margin-top: 1rem; margin-bottom: .75rem;font-size:1rem; line-height: 1.25rem;">Enviamos um email ao Responsável Financeiro, com as instruções para pagamento.</p><p style="margin-bottom: .25rem;font-size:1rem; line-height: 1.25rem;">Esta proposta permanecerá em "NOVAS" até que o cliente a conclua no e-mail recebido.</p></h4>';
 if ($conexao->query($sql) === TRUE and $conexao->query($sql2) === true and $conexao->query($sql3) === TRUE and $conexao->query($sql4) === TRUE) {
 

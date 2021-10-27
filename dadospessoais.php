@@ -28,12 +28,12 @@ ini_set('display_errors', 0);
     }
 
 
-    $("#data").mask("00-00-0000", {
+    $("#data").mask("00/00/0000", {
       reverse: true
     });
     $("#cpf").mask("000.000.000-00");
     $("#cpf1").mask("000.000.000-00");
-    $("#data1").mask("00-00-0000", {
+    $("#data1").mask("00/00/0000", {
       reverse: true
     });
     $("#data2").mask("00-00-0000", {
@@ -168,9 +168,10 @@ ini_set('display_errors', 0);
 
                       <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
                         <option valor="0" value="" selected>Selecione</option>
-                        <option valor="23.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 23.90- ROL DA ANS</option>
-                        <option valor="60.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 60.00- ROL DA ANS</option>
-                        <option valor="21.9" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$: 21.90- ROL DA ANS</option>
+                        <option valor="23.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 23.90- ROL DA ANS</option>
+                        <option valor="60.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 60.00- ROL DA ANS</option>
+                        <option valor="21.9" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 21.90- ROL DA ANS</option>
+                        <option valor="99.0" value="PLANOVIPORTOCARTAO">UNIDENTIS VIP ORTO CARTÃO - Familiar -Gr. Municipios PB - 489.643/21-2- R$ 99.00- ROL DA ANS</option>
                       </select>
                       <span id="textinho0"></span>
                     </div>
@@ -185,9 +186,10 @@ ini_set('display_errors', 0);
 
                       <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
                         <option valor="0" value="">Selecione</option>
-                        <option valor="25.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.90- ROL DA ANS</option>
-                        <option valor="66.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 66.00- ROL DA ANS</option>
-                        <option valor="25.0" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$: 25.00- ROL DA ANS</option>
+                        <option valor="25.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 25.90- ROL DA ANS</option>
+                        <option valor="66.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 66.00- ROL DA ANS</option>
+                        <option valor="25.0" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 25.00- ROL DA ANS</option>
+                        <option valor="99.0" value="PLANOVIPORTOCARTAO">UNIDENTIS VIP ORTO CARTÃO - Familiar -Gr. Municipios PB - 489.643/21-2- R$ 99.00- ROL DA ANS</option>
                       </select>
                       <span id="textinho0"></span>
                     </div>

@@ -120,6 +120,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
               <option value="8">PAI/MÃE</option>
               <option value="6">ENTEADO(A)</option>
               <option value="10">OUTRO(A)</option>
+              <option selected disabled value="">Selecione</option>
             </select>
           </div>
           <div class="col-md-2">
@@ -127,6 +128,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
             <select name="sexo" class="form-control">
               <option value="1">masculino</option>
               <option value="0">feminino</option>
+              <option selected disabled value="">Selecione</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -150,6 +152,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
               <option>solteiro</option>
               <option>viuvo</option>
               <option>divorciado</option>
+              <option selected disabled value="">Selecione</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -480,6 +483,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
                   <option <?= $row_usuario['parentesco'] == 8 ? 'selected' : '' ?> value="8">PAI/MÃE</option>
                   <option <?= $row_usuario['parentesco'] == 6 ? 'selected' : '' ?> value="6">ENTEADO(A)</option>
                   <option <?= $row_usuario['parentesco'] == 10 ? 'selected' : '' ?> value="10">OUTRO(A)</option>
+                  <option selected disabled value="">Selecione</option>
                 </select>
               </div>
               <div class="col">
@@ -487,6 +491,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
                 <select name="sexo" class="form-control">
                   <option <?= $row_usuario['sexo'] == 1 ? 'selected' : '' ?> value="1">masculino</option>
                   <option <?= $row_usuario['sexo'] == 0 ? 'selected' : '' ?> value="0">feminino</option>
+                  <option selected disabled value="">Selecione</option>
                 </select>
               </div>
 
@@ -519,6 +524,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
               <option <?= $row_usuario['estadocivil'] == 'solteiro' ? 'selected' : '' ?>>solteiro</option>
               <option <?= $row_usuario['estadocivil'] == 'viuvo' ? 'selected' : '' ?>>viuvo</option>
               <option <?= $row_usuario['estadocivil'] == 'divorciado' ? 'selected' : '' ?>>divorciado</option>
+              <option selected disabled value="">Selecione</option>
               </select>
             </div>
             <div class="col">

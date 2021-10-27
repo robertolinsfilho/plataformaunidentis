@@ -6,96 +6,94 @@ error_reporting(0);
 
 
 $cpf = $_GET['cpf'];
+
 //consultar no banco de dados
 $_SESSION['cpfnova'] = $cpf;
 
+// LISTAR OS DADOS GERAIS DO ASSOCIADO
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+$dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
 
-
-$result_usuario = "SELECT * from dadospessoais where cpf ='$cpf'";
-$resultado_usuario = mysqli_query($conexao, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
-
-
-
-if ($row_usuario['cpf_titular'] != $row_usuario['cpf']) {
-	$result_usuario11 = "SELECT * from responsavel where cpf ='$row_usuario[cpf_titular]'";
-	$resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
-	$row_usuario11 = mysqli_fetch_assoc($resultado_usuario11);
+// VERIFICAR SE O ASSOCIADO É O TITULAR
+if ($dadosGeraisAssociado['cpf_titular'] != $dadosGeraisAssociado['cpf']) {
+	// LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from responsavel where cpf ='$dadosGeraisAssociado[cpf_titular]'");
+	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 } else {
-	$result_usuario11 = "SELECT * from dadospessoais where cpf ='$cpf'";
-	$resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
-	$row_usuario11 = mysqli_fetch_assoc($resultado_usuario11);
+	// ASSOCIADO TITULAR DO PLANO || LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 }
-$_SESSION['eemail'] = $row_usuario['email'];
-$result_usuario2 = "SELECT * from contratocartao  where cpf  = '$cpf'";
-$resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
-$row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
+// PEGA O CPF DO TITULAR DO PLANO
+$cpf_titular = $dadosTitular['cpf'];
 
-$result_usuario3 = "SELECT * from dadosprincipais  where cpf  = '$cpf'";
-$resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
-$row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
-$result_usuario4 = "SELECT * from endereco  where cpf  = '$cpf'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
-$result_usuario5 = "SELECT * from dependentes  where cpf_titular  = '$cpf'";
-$resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
-$row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
-//Verificar se encontrou resultado na tabela "usuarios"
+// GUARDA O EMAIL NA SESSAO
+$_SESSION['eemail'] = $dadosGeraisAssociado['email'];
 
-$result_usuario6 = "SELECT * from dependentes  where cpf_titular  = '$cpf' ";
-$resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
+// LISTA OS DADOS DO CONTRATO CARTAO DE CREDITO
+$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where cpf  = '$cpf'");
+$dadosCartao = mysqli_fetch_assoc($queryDadosCartao);
 
+// LISTA OS DADOS DO ANTIGO CONTRATO BOLETO, JÁ EM DESUSO
+$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where cpf  = '$cpf'");
+$dadosBoleto = mysqli_fetch_assoc($queryDadosBoleto);
 
-$result_usuario15 = "SELECT COUNT(*) AS total from dependentes  where cpf_titular  = '$cpf' ";
-$resultado_usuario15 = mysqli_query($conexao, $result_usuario15);
+// LISTA OS DADOS PRINCIPAIS DO ASSOCIADO
+$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where cpf  = '$cpf'");
+$dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+
+// LISTA OS DADOS DO ENDERECO QUE ESTA AMARRADO AO ASSOCIADO PELA CHAVE ESTRANGEIRA 'CPF'
+$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where cpf  = '$cpf'");
+$dadosEnderecoAssociado = mysqli_fetch_assoc($queryDadosEnderecoAssociado);
+
+// $result_usuario5 = "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'";
+// $resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
+// $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
+
+// REALIZA A CONEXAO COM A TABELA DEPENDENTES PARA SER LISTADA LÁ NA FRENTE COM 'WHILE' 
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'");
+
+// QUANTIDADE DE USUÁRIOS
+$resultado_usuario15 = mysqli_query($conexao, "SELECT COUNT(*) AS total from dependentes  where cpf_titular  = '$cpf' ");
 $row_usuario15 = mysqli_fetch_assoc($resultado_usuario15);
+// SEM UTILIZAÇÃO POR ORA 
 
+// LISTA AS FOTOS VINCULADAS AO ASSOCIADO
+$queryFotosAssociados = mysqli_query($conexao, "SELECT * from fotos  where cpf_titular  = '$cpf'");
+$fotosAssociados = mysqli_fetch_assoc($queryFotosAssociados);
 
-$result_usuario7 = "SELECT * from fotos  where cpf_titular  = '$cpf'";
-$resultado_usuario7 = mysqli_query($conexao, $result_usuario7);
-$row_usuario7 = mysqli_fetch_assoc($resultado_usuario7);
+// LISTA OS DADOS DO VENDEDOR
+$queryDadosVendedor = mysqli_query($conexao, "SELECT * from vendedor where email = '$dadosGeraisAssociado[vendedor]'");
+$dadosVendedor = mysqli_fetch_assoc($queryDadosVendedor);
 
-$result_usuario8 = "SELECT * from contrato where cpf  = '$cpf'";
-$resultado_usuario8 = mysqli_query($conexao, $result_usuario8);
-$row_usuario8 = mysqli_fetch_assoc($resultado_usuario8);
+// $result_usuario10 = "SELECT * from responsavel where cpf = '$cpf'";
+// $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
+// $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
 
+// if ($row_usuario10['cpf'] ===  $cpf) {
+// 	$result_usuario9 = "SELECT * from responsavel where cpf = '$cpf'";
+// 	$resultado_usuario9 = mysqli_query($conexao, $result_usuario9);
+// 	$row_usuario9 = mysqli_fetch_assoc($resultado_usuario9);
+// } else {
+// 	$result_usuario9 = "SELECT * from dadospessoais where cpf = '$cpf'";
+// 	$resultado_usuario9 = mysqli_query($conexao, $result_usuario9);
+// 	$row_usuario9 = mysqli_fetch_assoc($resultado_usuario9);
+// }
 
-$result_usuario10 = "SELECT * from responsavel where cpf = '$cpf'";
-$resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-$row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
+// $result_usuario12 = "SELECT * from vendedor where email = '$_SESSION[usuario]'";
+// $resultado_usuario12 = mysqli_query($conexao, $result_usuario12);
+// $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
+switch ($dadosPrincipaisAssociado['sexo']) {
+	case 1:
+		$sexo = 'Masculino';
+		break;
 
-$result_usuario13 = "SELECT * from vendedor where email = '$row_usuario[vendedor]'";
-$resultado_usuario13 = mysqli_query($conexao, $result_usuario13);
-$row_usuario13 = mysqli_fetch_assoc($resultado_usuario13);
-
-
-
-if ($row_usuario10['cpf'] ===  $cpf) {
-	$result_usuario9 = "SELECT * from responsavel where cpf = '$cpf'";
-	$resultado_usuario9 = mysqli_query($conexao, $result_usuario9);
-	$row_usuario9 = mysqli_fetch_assoc($resultado_usuario9);
-} else {
-	$result_usuario9 = "SELECT * from dadospessoais where cpf = '$cpf'";
-	$resultado_usuario9 = mysqli_query($conexao, $result_usuario9);
-	$row_usuario9 = mysqli_fetch_assoc($resultado_usuario9);
+	default:
+		$sexo = 'Feminino';
+		break;
 }
-if ($row_usuario3['sexo'] = 1) {
-	$sexo = 'Masculino';
-} else {
-	$sexo = 'Feminino';
-}
-if ($row_usuario6['sexo'] = 1) {
-	$sexo = 'Masculino';
-} else {
-	$sexo = 'Feminino';
-}
-$result_usuario12 = "SELECT * from vendedor where email = '$_SESSION[usuario]'";
-$resultado_usuario12 = mysqli_query($conexao, $result_usuario12);
-$row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
-
-
 
 ?>
 <!DOCTYPE html>
@@ -103,7 +101,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 <head>
 	<style type="text/css">
-		
+
 	</style>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -157,18 +155,18 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 main-box-wizard">
 
 							<div class="wizard-content">
-								<form action="alteracao.php?cpf=<?php echo $row_usuario['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard">
+								<form action="alteracao.php?cpf=<?php echo $dadosGeraisAssociado['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard">
 									<div class="btn-relative">
 
 										<?php
-										if ($row_usuario['status'] == 'Nova') {
+										if ($dadosGeraisAssociado['status'] == 'Nova') {
 										?>
 											<input type="submit" value="Apagar Proposta" name="status" class="btn btn-danger">
 											<input type="submit" value="Enviar Email" name="status" class="btn btn-success">
 
 										<?php
 										}
-										if ($row_usuario['pagamento'] == 0 and $row_usuario['ativo'] == 1 and $row_usuario['plano'] != 'UNIDENTISVIPEMPRESARIAL' and  $row_usuario['status'] != 'Cancelado') {
+										if ($dadosGeraisAssociado['pagamento'] == 0 and $dadosGeraisAssociado['ativo'] == 1 and $dadosGeraisAssociado['plano'] != 'UNIDENTISVIPEMPRESARIAL' and  $dadosGeraisAssociado['status'] != 'Cancelado') {
 										?>
 											<button type="button" class="btn btn-danger" onclick="desaparecer()" data-toggle="modal" data-target="#exampleModal2">
 												Cancelar
@@ -179,20 +177,15 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										}
 										?>
 										<?php
-										if ($row_usuario['status'] == 'Indeferido' or $row_usuario['status'] == 'Cancelado') {
+										if ($dadosGeraisAssociado['status'] == 'Indeferido' or $dadosGeraisAssociado['status'] == 'Cancelado') {
 										?>
 											<div style="text-align: left;" class="alert alert-danger" role="alert">
-												<?php echo $row_usuario['indeferida'] ?>
+												<?php echo $dadosGeraisAssociado['indeferida'] ?>
 											</div>
 										<?php
-										}
-										?>
+										};
 
-
-
-										<?php
-
-										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br'    && $row_usuario['pagamento'] != 0 && $row_usuario['status'] == 'Em Analise' or $row_usuario['status'] == 'Em Averbação') {
+										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br' && $dadosGeraisAssociado['pagamento'] != 0 && $dadosGeraisAssociado['status'] == 'Em Analise' or $dadosGeraisAssociado['status'] == 'Em Averbação') {
 										?>
 
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
@@ -206,7 +199,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											<input type="submit" value="Alterar" name="status" class="btn btn-dark">
 
 										<?php
-										} elseif ($row_usuario['status'] == 'Indeferido'  and $_SESSION['usuario']  === 'cadastro@s4e.com.br' and $row_usuario['pagamento'] != 0) {
+										} elseif ($dadosGeraisAssociado['status'] == 'Indeferido'  and $_SESSION['usuario']  === 'cadastro@s4e.com.br' and $dadosGeraisAssociado['pagamento'] != 0) {
 
 										?>
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
@@ -214,7 +207,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											</button>
 											<input type="submit" value="Implantadas" name="status" class="btn btn-success">
 										<?php
-										} elseif ($row_usuario['status'] == 'Indeferido'  and $_SESSION['usuario']  != 'cadastro@s4e.com.br' and $row_usuario['pagamento'] != 0) {
+										} elseif ($dadosGeraisAssociado['status'] == 'Indeferido'  and $_SESSION['usuario']  != 'cadastro@s4e.com.br' and $dadosGeraisAssociado['pagamento'] != 0) {
 										?>
 											<input type="submit" value="Alterar" name="status" class="btn btn-dark">
 											<input type="submit" value="Enviar para Analise" name="status" class="btn btn-success">
@@ -225,7 +218,6 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										?>
 									</div>
 
-
 									<div id="tabs">
 										<ul class="tabs">
 											<li><a class="tab_content" href="#tabs-1">Proposta</a></li>
@@ -233,10 +225,11 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											<li><a class="tab_content" href="#tabs-3">Beneficiarios</a></li>
 											<li><a class="tab_content" href="#tabs-4">Imagens</a></li>
 										</ul>
-
-
-
-
+										<?php 
+											if(isset($_SESSION['erroS4'])):
+										?>
+										<div class="alert alert-danger aviso-de-erro" role="alert"> <?= $_SESSION['erroS4']?> </div>
+										<?php endif?>
 										<div id="tabs-1">
 											<div class="flexLabel">
 												<label class="labelInput">Plano Contrato</label>
@@ -247,7 +240,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-6">
 													<div class="form-group">
 														<label>Plano</label>
-														<input type="text" name="plano" value="<?php echo $row_usuario['plano']; ?>" class="form-control" readonly>
+														<input type="text" name="plano" value="<?php echo $dadosGeraisAssociado['plano']; ?>" class="form-control" readonly>
 
 													</div>
 												</div>
@@ -255,16 +248,14 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Preço </label>
-														<input type="text" name="preco" value="R$: <?php echo $row_usuario['preco']; ?>" class="form-control" readonly>
+														<input type="text" name="preco" value="R$: <?php echo $dadosGeraisAssociado['preco']; ?>" class="form-control" readonly>
 													</div>
 												</div>
-
-
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Data </label>
-														<input type="text" value="<?php echo substr($row_usuario['data'], 0, 10) ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo substr($dadosGeraisAssociado['data'], 0, 10) ?>" class="form-control" readonly>
 													</div>
 												</div>
 											</div>
@@ -278,7 +269,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<label>Ano </label>
 															<select class="form-control" name="ano">
-																<option value="<?php echo substr($row_usuario['1pag'], 0, 4) ?>"> <?php echo substr($row_usuario['1pag'], 0, 4) ?></option>
+																<option value="<?php echo substr($dadosGeraisAssociado['1pag'], 0, 4) ?>"> <?php echo substr($dadosGeraisAssociado['1pag'], 0, 4) ?></option>
 																<option value="2022"></option>
 															</select>
 														</div>
@@ -288,7 +279,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<label>Mês </label>
 															<select class="form-control" name="mes">
-																<option value="<?php echo substr($row_usuario['1pag'], 4, 6) ?>"> <?php echo substr($row_usuario['1pag'], 4, 6) ?></option>
+																<option value="<?php echo substr($dadosGeraisAssociado['1pag'], 4, 6) ?>"> <?php echo substr($dadosGeraisAssociado['1pag'], 4, 6) ?></option>
 																<option value="01">01</option>
 																<option value="02">02</option>
 																<option value="03">03</option>
@@ -317,28 +308,26 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-5">
 													<div class="form-group">
 														<label>Corretor </label>
-														<input type="text" name="corretor" value="<?php echo $row_usuario13['vendedor'] ?>" class="form-control" readonly>
+														<input type="text" name="corretor" value="<?php echo $dadosVendedor['vendedor'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Nome da Corretora </label>
-														<input type="text" value="<?php echo $row_usuario13['corretora'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosVendedor['corretora'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Codigo Corretora </label>
-														<input type="text" value="<?php echo $row_usuario13['email'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosVendedor['email'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 											</div>
 
-
 											<?php
-											if ($row_usuario['plano'] === 'UNIDENTISVIPCARTAO' or $row_usuario['plano'] === 'UNIDENTISVIPFAMILIACARTAO') {
-
+											if ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' or $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' or $dadosGeraisAssociado['plano'] === 'PLANOVIPORTOCARTAO') {
 											?>
 												<div class="flexLabel">
 													<label class="labelInput">Informações de Pagamento</label>
@@ -348,13 +337,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-6">
 														<div class="form-group">
 															<label>Titular </label>
-															<input type="text" name="nomecartao" value="<?php echo $row_usuario2['nome'] ?>" class="form-control">
+															<input type="text" name="nomecartao" value="<?php echo $dadosCartao['nome'] ?>" class="form-control">
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="form-group">
 															<label>Número do Cartão </label>
-															<input type="text" name="numerocartao" value="<?php echo $row_usuario2['cartao'] ?>" class="form-control">
+															<input type="text" name="numerocartao" value="<?php echo $dadosCartao['cartao'] ?>" class="form-control">
 														</div>
 													</div>
 
@@ -363,7 +352,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Validade </label>
-															<input type="text" name="validadecartao" value="<?php echo $row_usuario2['mes'] ?>" class="form-control">
+															<input type="text" name="validadecartao" value="<?php echo $dadosCartao['mes'] ?>" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -374,7 +363,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-7">
 													<div class="form-group">
 														<label> Observação </label>
-														<textarea placeholder="Coloque aqui sua observação" id="observation" name="observacao" maxlength="220" class="form-control"><?php echo $row_usuario['observacao'] ?></textarea>
+														<textarea placeholder="Coloque aqui sua observação" id="observation" name="observacao" maxlength="220" class="form-control"><?php echo $dadosGeraisAssociado['observacao'] ?></textarea>
 													</div>
 												</div>
 											</div>
@@ -385,7 +374,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												}
 											</script>
 											<?php
-											if ($row_usuario['pagamento'] == 0 && $row_usuario['status'] != 'Nova') {
+											if ($dadosGeraisAssociado['pagamento'] == 0 && $dadosGeraisAssociado['status'] != 'Nova') {
 											?>
 
 												<h4 class="text-blue">Pagamento da Adesão</h4>
@@ -417,25 +406,25 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Nome </label>
-														<input type="text" name="nome" value="<?php echo $row_usuario['nome'] ?>" class="form-control" readonly>
+														<input type="text" name="nome" value="<?php echo $dadosGeraisAssociado['nome'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CPF</label>
-														<input type="text" value="<?php echo $row_usuario['cpf'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosGeraisAssociado['cpf'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>RG</label>
-														<input type="text" name="rg" value="<?php echo $row_usuario3['rg'] ?>" class="form-control">
+														<input type="text" name="rg" value="<?php echo $dadosPrincipaisAssociado['rg'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Órgão Emissor</label>
-														<input type="text" name="expedidor" value="<?php echo $row_usuario3['expedidor'] ?>" class="form-control">
+														<input type="text" name="expedidor" value="<?php echo $dadosPrincipaisAssociado['expedidor'] ?>" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -445,7 +434,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="form-group">
 														<label>Sexo</label>
 														<select class="form-control" name="sexo">
-															<option value="<?php $row_usuario3['sexo'] ?>"><?php echo $sexo ?></option>
+															<option value="<?php $dadosPrincipaisAssociado['sexo'] ?>"><?php echo $sexo ?></option>
 															<option value="1">Masculino</option>
 															<option value="0">Feminino</option>
 														</select>
@@ -455,21 +444,21 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Data de Nascimento</label>
-														<input type="text" value="<?php echo $row_usuario3['datas'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosPrincipaisAssociado['datas'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Estado Civil</label>
-														<input type="text" value="<?php echo $row_usuario3['estadocivil'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosPrincipaisAssociado['estadocivil'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Nome da Mãe</label>
-														<input type="text" value="<?php echo $row_usuario['mae'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosGeraisAssociado['mae'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
@@ -480,27 +469,27 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Cartão do SUS</label>
-														<input type="text" name="sus" value="<?php echo $row_usuario['sus'] ?>" class="form-control" readonly>
+														<input type="text" name="sus" value="<?php echo $dadosGeraisAssociado['sus'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>E-mail</label>
-														<input type="text" name="email" value="<?php echo $row_usuario['email'] ?>" class="form-control" readonly>
+														<input type="text" name="email" value="<?php echo $dadosGeraisAssociado['email'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Telefone 1</label>
-														<input type="text" value="<?php echo $row_usuario['celular'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosGeraisAssociado['celular'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Telefone 2</label>
-														<input type="text" value="<?php echo $row_usuario3['whats'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosPrincipaisAssociado['whats'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
@@ -509,45 +498,53 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-1">
 													<div class="form-group">
 														<label>Local</label>
-														<input type="text" value="<?php echo $row_usuario['local'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosGeraisAssociado['local'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>CEP</label>
-														<input type="text" name="cep" value="<?php echo $row_usuario4['cep'] ?>" class="form-control">
+														<input type="text" name="cep" value="<?php echo $dadosEnderecoAssociado['cep'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Rua</label>
-														<input type="text" name="rua" value="<?php echo $row_usuario4['rua'] ?>" class="form-control">
+														<input type="text" name="rua" value="<?php echo $dadosEnderecoAssociado['rua'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Número</label>
-														<input type="text" name="numero" value="<?php echo $row_usuario4['numero'] ?>" class="form-control">
+														<input type="text" name="numero" value="<?php echo $dadosEnderecoAssociado['numero'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Cidade</label>
-														<input type="text" name="cidade" value="<?php echo $row_usuario4['cidade'] ?>" class="form-control">
+														<input type="text" name="cidade" value="<?php echo $dadosEnderecoAssociado['cidade'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Estado</label>
-														<input type="text" name="estado" value="<?php echo $row_usuario4['estado'] ?>" class="form-control">
+														<input type="text" name="estado" value="<?php echo $dadosEnderecoAssociado['estado'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
 														<label> Complemento</label>
-														<input type="text" name="complemento" value="<?php echo $row_usuario4['complemento'] ?>" class="form-control">
+														<input type="text" name="complemento" value="<?php echo $dadosEnderecoAssociado['complemento'] ?>" class="form-control">
 													</div>
 												</div>
+												<?php if ($_SESSION['usuario'] == 'cadastro@s4e.com.br') : ?>
+													<div class="col-md-2">
+														<div class="form-group">
+															<label>Senha</label>
+															<input type="text" name="senha" value="<?php echo $dadosPrincipaisAssociado['initpass'] ?>" class="form-control">
+														</div>
+													</div>
+												<?php endif ?>
 											</div>
 											<div class="row">
 
@@ -566,25 +563,25 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Nome</label>
-														<input type="text" value="<?php echo $row_usuario11['nome'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['nome'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Mãe</label>
-														<input type="text" value="<?php echo $row_usuario11['mae'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['mae'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CPF</label>
-														<input type="text" value="<?php echo $row_usuario11['cpf'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['cpf'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Estado Civil</label>
-														<input type="text" value="<?php echo $row_usuario11['estado'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['estado'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 											</div>
@@ -598,14 +595,14 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Cartão do SUS</label>
-														<input type="text" value="<?php echo $row_usuario11['sus'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['sus'] ?>" class="form-control" readonly>
 													</div>
 
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Data de Nascimento</label>
-														<input type="text" value="<?php echo $row_usuario11['nascimento'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['nascimento'] ?>" class="form-control" readonly>
 													</div>
 
 												</div>
@@ -617,9 +614,16 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 											<?php
 
 
-											while ($row_usuario6 = mysqli_fetch_assoc($resultado_usuario6)) {
+											while ($dadosDependentes = mysqli_fetch_assoc($queryDadosDependentes)) {
+												switch ($dadosDependentes['sexo']) {
+													case 1:
+														$sexo = 'Masculino';
+														break;
 
-
+													default:
+														$sexo = 'Feminino';
+														break;
+												};
 											?>
 												<h4 class="text-blue">Beneficiarios</h4>
 												<div class="row">
@@ -628,7 +632,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label>nome</label>
-															<input type="text" value="<?php echo $row_usuario6['nome'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['nome'] ?>" class="form-control" readonly>
 														</div>
 													</div>
 
@@ -636,7 +640,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Cpf</label>
-															<input type="text" value="<?php echo $row_usuario6['cpf'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['cpf'] ?>" class="form-control" readonly>
 														</div>
 
 													</div>
@@ -645,7 +649,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Datas de nascimento</label>
-															<input type="text" value="<?php echo $row_usuario6['datas'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['datas'] ?>" class="form-control" readonly>
 														</div>
 
 													</div>
@@ -663,7 +667,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Mãe</label>
-															<input type="text" value="<?php echo $row_usuario6['mae'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['mae'] ?>" class="form-control" readonly>
 														</div>
 
 													</div>
@@ -672,21 +676,21 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Cns</label>
-															<input type="text" value="<?php echo $row_usuario6['cns'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['cns'] ?>" class="form-control" readonly>
 														</div>
 
 													</div>
 
 													<?php
-													if ($row_usuario6['parentesco'] == 3) {
+													if ($dadosDependentes['parentesco'] == 3) {
 														$parentesco = 'Cônjuge';
-													} elseif ($row_usuario6['parentesco'] == 4) {
+													} elseif ($dadosDependentes['parentesco'] == 4) {
 														$parentesco = 'Filho';
-													} elseif ($row_usuario6['parentesco'] == 6) {
+													} elseif ($dadosDependentes['parentesco'] == 6) {
 														$parentesco = 'Enteado';
-													} elseif ($row_usuario6['parentesco']  == 8) {
+													} elseif ($dadosDependentes['parentesco']  == 8) {
 														$parentesco = 'Pai/Mãe';
-													} elseif ($row_usuario6['parentesco'] == 10) {
+													} elseif ($dadosDependentes['parentesco'] == 10) {
 														$parentesco = 'Outros';
 													}
 													?>
@@ -709,7 +713,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 										</div>
 										<!-- Step 4 -->
 										<?php
-										if ($row_usuario['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
+										if ($dadosGeraisAssociado['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
 										?>
 
 
@@ -727,10 +731,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<h3 class='imgS imgSEnd'>RG Frente</h3>
 
-															<a href="fotos/<?php echo $row_usuario7['rgfrente'] ?>" target="_blank">
+															<a href="fotos/<?php echo $fotosAssociados['rgfrente'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
-																															$end = explode('.', $row_usuario7['rgfrente']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['rgfrente']; ?>")'></div>
+																															$end = explode('.', $fotosAssociados['rgfrente']);
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgfrente']; ?>")'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
 																Editar
@@ -743,10 +747,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<h3 class='imgS imgSEnd'>RG Verso</h3>
 
-															<a href="fotos/<?php echo $row_usuario7['rgverso'] ?>" target="_blank">
+															<a href="fotos/<?php echo $fotosAssociados['rgverso'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
-																															$end = explode('.', $row_usuario7['rgverso']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['rgverso']; ?>")'></div>
+																															$end = explode('.', $fotosAssociados['rgverso']);
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgverso']; ?>")'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
 																Editar
@@ -760,10 +764,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<h3 class='imgS imgSEnd'>CPF</h3>
 
-															<a href="fotos/<?php echo $row_usuario7['cpf'] ?>" target="_blank">
+															<a href="fotos/<?php echo $fotosAssociados['cpf'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
-																															$end = explode('.', $row_usuario7['cpf']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['cpf']; ?>");'></div>
+																															$end = explode('.', $fotosAssociados['cpf']);
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['cpf']; ?>");'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
 																Editar
@@ -777,10 +781,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<h3 class='imgS imgSEnd'>Comp Residência</h3>
 
-															<a href="fotos/<?php echo $row_usuario7['compresidencia'] ?>" target="_blank">
+															<a href="fotos/<?php echo $fotosAssociados['compresidencia'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
-																															$end = explode('.', $row_usuario7['compresidencia']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['compresidencia']; ?>");'></div>
+																															$end = explode('.', $fotosAssociados['compresidencia']);
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['compresidencia']; ?>");'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
 																Editar
@@ -789,17 +793,17 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 
 													</div>
 
-													<?php if ($row_usuario['plano'] != 'UNIDENTISVIPBOLETO') {
+													<?php if ($dadosGeraisAssociado['plano'] != 'UNIDENTISVIPBOLETO') {
 													?>
 
 														<div class="col-md-4">
 															<div class="form-group">
 																<h3 class='imgS imgSEnd'>Cartão</h3>
 
-																<a href="fotos/<?php echo $row_usuario7['cartao'] ?>" target="_blank">
+																<a href="fotos/<?php echo $fotosAssociados['cartao'] ?>" target="_blank">
 																	<div class='wBackImg' style='background-image: url("fotos/<?php
-																																$end = explode('.', $row_usuario7['cartao']);
-																																echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['cartao']; ?>")'></div>
+																																$end = explode('.', $fotosAssociados['cartao']);
+																																echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['cartao']; ?>")'></div>
 																</a>
 
 																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Editar</button>
@@ -811,10 +815,10 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<div class="form-group">
 															<h3 class='imgS imgSEnd'>Outro</h3>
 
-															<a href="fotos/<?php echo $row_usuario7['outro'] ?>" target="_blank">
+															<a href="fotos/<?php echo $fotosAssociados['outro'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
-																															$end = explode('.', $row_usuario7['outro']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $row_usuario7['outro']; ?>")'></div>
+																															$end = explode('.', $fotosAssociados['outro']);
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['outro']; ?>")'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">Editar</button>
 														</div>

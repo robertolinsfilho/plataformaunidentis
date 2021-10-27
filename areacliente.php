@@ -232,11 +232,20 @@ if (isset($resultado['mensagem'])) {
             </section>
 
             <!-- cartão de crédito -->
-            <div class="flexLabel">
+            <div class="flexLabel" id="dataCartao">
                 <label class="labelInput">Dados do Cartão</label>
                 <hr>
             </div>
-
+            <?php if($_SESSION['cpfDiferente']): ?>
+                <div class="alert alert-danger" role="alert">
+                    Responsável financeiro precisa ser dono do cartão
+                </div>
+            <?php endif;?>
+            <?php if($_SESSION['cartaoInvalido']): ?>
+                <div class="alert alert-danger" role="alert">
+                    Cartão informado não é válido 
+                </div>
+            <?php endif;?>
             <div class="creditCard">
                 <div class="row d-flex justify-content-center">
                     <div class="col-sm-12">
@@ -246,14 +255,18 @@ if (isset($resultado['mensagem'])) {
                                 <div class="form-group">
                                     <p class="mb-0">Número do Cartão</p>
                                     <input nCard type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19">
-                                    <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa">
+                                    <!-- <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa"> -->
                                 </div>
                                 <div class="form-group">
                                     <p class="mb-0">Nome do Cartão</p>
                                     <input type="text" class="mt-1" name="nomecartao" placeholder="(Como esta no Cartão)" required>
                                 </div>
+                                <div class="form-group">
+                                    <p class="mb-0">CPF (titular do plano)</p>
+                                    <input type="text" cpf class="mt-1" name="cpfcartao" placeholder="123-456-789-01" required>
+                                </div>
                                 <div class="form-group pt-2 smallInput">
-                                    <div class="row d-flex">
+                                    <div class="row d-flex justify-content-between">
                                         <div class="col-sm-4">
                                             <p class="mb-0">Data</p>
                                             <input type="text" class="mt-1" data name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
@@ -295,6 +308,10 @@ if (isset($resultado['mensagem'])) {
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont > '1') {
                 $preco = 22.90;
             }
+
+            if ($row_usuario2['plano'] == 'PLANOVIPORTOCARTAO'){
+                $preco = 99.00;
+              }
 
             if ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'RN') {
                 $preco = 25.00;

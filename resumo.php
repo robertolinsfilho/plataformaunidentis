@@ -14,11 +14,16 @@ $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
 $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
 $result_usuario6 = "SELECT * from dependentes  where cpf_titular  = '$_SESSION[cpf]' ";
 $resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
-if ($_SESSION['sexo'] = 1) {
-  $sexo = 'Masculino';
-} else {
-  $sexo = 'Feminino';
+
+switch ($_SESSION['sexo']) {
+  case 1:
+    $sexo = 'Masculino';
+    break;  
+  default:
+    $sexo = 'Feminino';
+    break;
 }
+
 ?>
 
 <?php
@@ -33,6 +38,11 @@ if ($_SESSION['sexo'] = 1) {
             ) {
               $preco = 18;
             }
+
+            if ($_SESSION['plano'] == 'PLANOVIPORTOCARTAO'){
+              $preco = 99.00;
+            }
+
             if (
               $_SESSION['plano'] ==
               'UNIDENTISVIPBOLETO' && $_SESSION['uf'] == 'RN' && $cont == 0
@@ -459,7 +469,7 @@ if ($_SESSION['sexo'] = 1) {
               <div class="col-md-3">
                 <div class="form-group">
                   <label class="rotulo">CEP</label>
-                  <input type="text" name="cep" id="cep" class="form-control" formato='cnpj' value="<?php echo $_SESSION['cep'] ?>" placeholder="CEP" readonly />
+                  <input type="text" name="cep" id="cep" class="form-control" value="<?php echo $_SESSION['cep'] ?>" placeholder="CEP" readonly />
                 </div>
               </div>
               <div class="col-md-3">

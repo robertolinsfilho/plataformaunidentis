@@ -2,10 +2,10 @@
 include_once('conexao.php');
 session_start();
 
- $usuario =  $_POST['usuario'];
- $senha =  $_POST['senha'];
+$usuario =  $_POST['usuario'];
+$senha =  $_POST['senha'];
 
- $_SESSION['emailplataforma'] = $usuario;
+$_SESSION['emailplataforma'] = $usuario;
 
 $result_usuario = "SELECT * from dadospessoais where email ='$_SESSION[emailplataforma]'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
@@ -40,10 +40,7 @@ if($row_usuario2['acesso'] === '0'){
 
     $row = mysqli_fetch_assoc($result);
  
-
-
     if(isset($row) ) {
-
         $_SESSION['usuario1'] = $usuario;
         $_SESSION['senha1'] = $senha;
         if($row_usuario['plano'] === 'UNIDENTISVIPBOLETO'  ){

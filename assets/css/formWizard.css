@@ -211,6 +211,29 @@ ul.tabs li.ui-tabs-active a {
   font-weight: 500;
 }
 
+div.aviso-de-erro{
+    position: fixed;
+    top: 92vh;
+    width: 70%;
+    z-index: 999999;
+    transform: translate(0%, -50%);
+    font-size: 1.25rem;
+    color: white;
+    background-color: #FF2200;
+    box-shadow: 0 0 4px #721c24;
+    border: none;
+    animation: showup 1.25s ease-in-out;
+}
+
+@keyframes showup{
+  from{
+    top: 200vh;
+  }
+  to{
+    top: 92vh;
+  }
+}
+
 @media (max-width: 1160px) {
   ul.tabs {
     top: -5.2rem;

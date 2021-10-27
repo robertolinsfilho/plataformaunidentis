@@ -1,70 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Digital</title>
+    <style>
+    #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: visible;
+    background: #fff;
+  }
+  
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: .5rem solid #023bbf;
+    border-top-color: #e2eefd;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+  }
+  
+  @-webkit-keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+    </style>
+</head>
+<body>
+    <div id="preloader" class="pre-loader"></div>
+</body>
+</html>
 <?php
 session_start();
 include_once('conexao.php');
 require('./vendor/autoload.php');
     
 use Encryption\Encryption;
-use Encryption\Exception\EncryptionException;
-
+use Encryption\Exceptions\EncryptionException as EncException;
 
 $cpf = $_GET['cpf'];
 
+// LISTAR OS DADOS GERAIS DO ASSOCIADO
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+$dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
 
-$result_usuario = "SELECT * from dadospessoais where cpf = '$cpf'";
-$resultado_usuario = mysqli_query($conexao, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
-
-if($row_usuario['cpf_titular'] != $row_usuario['cpf'] ){
-    $result_usuario6 = "SELECT * from responsavel where cpf = '$row_usuario[cpf_titular]'";
-    $resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
-    $row_usuario6 = mysqli_fetch_assoc($resultado_usuario6);
-
-
-}else{
-    $result_usuario6 = "SELECT * from dadospessoais where cpf = '$cpf'";
-    $resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
-    $row_usuario6 = mysqli_fetch_assoc($resultado_usuario6);
-
+// VERIFICAR SE O ASSOCIADO É O TITULAR
+if ($dadosGeraisAssociado['cpf_titular'] != $dadosGeraisAssociado['cpf']) {
+	// LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from responsavel where cpf ='$dadosGeraisAssociado[cpf_titular]'");
+	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
+} else {
+	// ASSOCIADO TITULAR DO PLANO || LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 }
 
+// PEGA O CPF DO TITULAR DO PLANO
+$cpf_titular = $dadosTitular['cpf'];
 
+// LISTA OS DADOS PRINCIPAIS DO ASSOCIADO
+$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where cpf  = '$cpf'");
+$dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
 
-$result_usuario2 = "SELECT * from dadosprincipais where cpf = '$cpf'";
-$resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
-$row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
+// LISTA OS DADOS DO ENDERECO QUE ESTA AMARRADO AO ASSOCIADO PELA CHAVE ESTRANGEIRA 'CPF'
+$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where cpf  = '$cpf'");
+$dadosEnderecoAssociado = mysqli_fetch_assoc($queryDadosEnderecoAssociado);
 
-$result_usuario3 = "SELECT * from endereco where cpf = '$cpf'";
-$resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
-$row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
+// LISTA OS DADOS DO ANTIGO CONTRATO BOLETO, JÁ EM DESUSO
+$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where cpf  = '$cpf'");
+$dadosBoleto = mysqli_fetch_assoc($queryDadosBoleto);
 
-$result_usuario4 = "SELECT * from contrato where cpf = '$cpf'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+// LISTA OS DADOS DO CONTRATO CARTAO DE CREDITO
+$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where cpf  = '$cpf'");
+$dadosCartao = mysqli_fetch_assoc($queryDadosCartao);
 
-$result_usuario5 = "SELECT * from contratocartao where cpf = '$cpf'";
-$resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
-$row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
+// REALIZA A CONEXAO COM A TABELA DEPENDENTES PARA SER LISTADA LÁ NA FRENTE COM 'WHILE' 
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'");
 
-$result_usuario7 = "SELECT * from dependentes where cpf_titular = '$cpf' and status != 'Implantadas'";
-$resultado_usuario7 = mysqli_query($conexao, $result_usuario7);
+// LISTA OS DADOS DO VENDEDOR
+$queryDadosVendedor = mysqli_query($conexao, "SELECT * from vendedor where email = '$dadosGeraisAssociado[vendedor]'");
+$dadosVendedor = mysqli_fetch_assoc($queryDadosVendedor);
 
+// REPETIÇÃO
+// if($dadosBoleto['cpf'] === $cpf){
+//     $result_usuario10 = "SELECT * from contrato where cpf = '$cpf'";
+//     $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
+//     $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
+// }else{
+//     $result_usuario10 = "SELECT * from contratocartao where cpf = '$cpf'";
+//     $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
+//     $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
+// }
+// REPETIÇÃO
 
-if($row_usuario4['cpf'] === $cpf){
-    $result_usuario10 = "SELECT * from contrato where cpf = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}else{
-    $result_usuario10 = "SELECT * from contratocartao where cpf = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}
+$vendedor = substr($dadosVendedor['vendedor'] , 0 ,5) ;
 
-$result_usuario11 = "SELECT * from vendedor where email = '$row_usuario[vendedor]'";
-$resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
-$row_usuario11 = mysqli_fetch_assoc($resultado_usuario11);
-$vendedor = substr($row_usuario11['vendedor'] , 0 ,5) ;
-
-$cep = $row_usuario3['cep'];
+$cep = $dadosEnderecoAssociado['cep'];
 
 $cep = str_replace("-", "", $cep);
 
@@ -90,27 +145,19 @@ $data = array(
     );
 
   // Submit the POST request
-  $result3 = curl_exec($ch);
+    $result3 = curl_exec($ch);
  
-  $result3 = utf8_encode($result3);
-  $result3= json_decode($result3, true);
-  $result3 = $result3['dados'];
+    $result3 = utf8_encode($result3);
+    $result3 = json_decode($result3, true);
+    $result3 = $result3['dados'];
 
- 
-  $bairro = $result3['IdBairro'];
-  $estado = $result3['IdUf'];
-  $municipio = $result3['IdMunicipio'];
-  $tipologradouro = $result3['IdTipoLogradouro'];
+    $bairro         = intval($result3['IdBairro']);
+    $estado         = intval($result3['IdUf']);
+    $municipio      = intval($result3['IdMunicipio']);
+    $tipologradouro = intval($result3['IdTipoLogradouro']);
 
-$bairro = intval($bairro);
- $estado = intval($estado) ;
- $municipio = intval($municipio);
- $tipologradouro = intval($tipologradouro);
-  curl_close($ch);
+    curl_close($ch);
   
-
-
-
 
 class CreditCard
 {
@@ -158,38 +205,27 @@ class CreditCard
         }
     }
 
-  
     private function getBrandPattern(string $pattern, int $number): bool
     {
         return preg_match($this->brands[$pattern], $number) > 0;
     }
 }
 
-
-if(isset($row_usuario5['cartao'])) {
-    $cardNumer = $row_usuario5['cartao'];
-    $brand = CreditCard::getBrandByCardNumber($cardNumer);
- 
-
-
-    $text = $row_usuario5['cartao'];
-   
-    $key = 'pxuelh2so839ljis';
-    
+if(isset($dadosCartao['cartao'])) {
+    $cardNumer = intval($dadosCartao['cartao']);
+    $brand     = CreditCard::getBrandByCardNumber($cardNumer);
+    $text      = $dadosCartao['cartao'];
+    $key       = 'pxuelh2so839ljis';
     try {
-    
-
         $encryption = Encryption::getEncryptionObject('AES-128-CBC');
         $iv = 'pxuelh2so839ljis';
         $encryptedText = $encryption->encrypt($text, $key, $iv);
         $decryptedText = $encryption->decrypt($encryptedText, $key, $iv);
-       
-
-    } catch (EncryptionException $e) {
+    } catch (EncException $e) {
         echo $e;
     }
 
-$admissao = $row_usuario['admissao'];
+$admissao = $dadosGeraisAssociado['admissao'];
     $admissao = '2000-10-10 10:10:10';
 
     if ($brand == 39) {
@@ -202,183 +238,168 @@ $admissao = $row_usuario['admissao'];
         $codigo = 4276;
     }
 
-
-
-
 }else{
- 
     $encryptedText = 'CoJM86MwX0U3SveT7bc1EYDlRJsw+iTw/Z/urjmcZQk=';
-    $row_usuario5['mes'] = '02/22';
-    $row_usuario5['cvv'] = '123';
+    $dadosCartao['mes'] = '02/22';
+    $dadosCartao['cvv'] = '123';
     $brand = '40';
-    $row_usuario5['nomecartao']= 'teste';
-    $admissao = $row_usuario['admissao'];
+    $dadosCartao['nomecartao']= 'teste';
+    $admissao = $dadosGeraisAssociado['admissao'];
     
     if($admissao === '0000-00-00 00:00:00' ){
         $admissao = '2000-10-10 10:10:10';
     }
-    if($row_usuario['local'] === 'GOVERNO DO ESTADO PB') {
+    if($dadosGeraisAssociado['local'] === 'GOVERNO DO ESTADO PB') {
         $codigo = 355;
-        }elseif ($row_usuario['local'] === 'PREFEITURA MUNICIPAL DE CABEDELO'){
+        }elseif ($dadosGeraisAssociado['local'] === 'PREFEITURA MUNICIPAL DE CABEDELO'){
             $codigo = 333;
-        }elseif($row_usuario['local'] === 'SEMOB'){
+        }elseif($dadosGeraisAssociado['local'] === 'SEMOB'){
             $codigo = 69;
-        }elseif ($row_usuario['local'] === 'EMLUR'){
+        }elseif ($dadosGeraisAssociado['local'] === 'EMLUR'){
             $codigo = 338;
-        }elseif ($row_usuario['local'] === 'SECRETARIA DE SAUDE DO MUNICIPIO'){
+        }elseif ($dadosGeraisAssociado['local'] === 'SECRETARIA DE SAUDE DO MUNICIPIO'){
             $codigo = 66;
-        }elseif ($row_usuario['local'] === 'FUNDAC'){
+        }elseif ($dadosGeraisAssociado['local'] === 'FUNDAC'){
             $codigo = 3766;
-        }elseif ($row_usuario['local'] === 'PREFEITURA MUNICIPAL DE SANTA RITA'){
+        }elseif ($dadosGeraisAssociado['local'] === 'PREFEITURA MUNICIPAL DE SANTA RITA'){
             $codigo = 342;
-        }elseif ($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario4['boleto']  == 5){
+        }elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosBoleto['boleto']  == 5){
             $codigo = 366;
-        }elseif ($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario4['boleto']  == 10){
+        }elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosBoleto['boleto']  == 10){
             $codigo = 367;
-        }elseif ($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario4['boleto']  == 15){
+        }elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosBoleto['boleto']  == 15){
             $codigo = 368;
-        }elseif($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario4['boleto']  == 20){
+        }elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosBoleto['boleto']  == 20){
             $codigo = 369;
-        }elseif ($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario4['boleto']  == 25){
+        }elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosBoleto['boleto']  == 25){
             $codigo = 370;
         }else{
             echo "erro 2";
             exit();
         }
-
 }
 
+// 13040
 
-if($row_usuario['plano'] === 'UNIDENTISVIPBOLETO' and $row_usuario['estado'] === 'PB'){
+if($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosGeraisAssociado['estado'] === 'PB'){
     $plano = 13032;
-    $preco = $row_usuario4['preco'];
-}elseif ($row_usuario['plano'] === 'UNIDENTISVIPCARTAO' and $row_usuario['estado'] === 'PB'){
+    $preco = $dadosBoleto['preco'];
+}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' and $dadosGeraisAssociado['estado'] === 'PB'){
     $plano = 13046;
-    $preco = $row_usuario5['preco'];
-}elseif ($row_usuario['plano'] === 'UNIDENTISVIPFAMILIACARTAO' and $row_usuario['estado'] === 'PB'){
+    $preco = $dadosCartao['preco'];
+}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' and $dadosGeraisAssociado['estado'] === 'PB'){
     $plano = 13050;
-    $preco = $row_usuario5['preco'];
-}elseif($row_usuario['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' and $row_usuario['estado'] === 'PB') {
+    $preco = $dadosCartao['preco'];
+}elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' and $dadosGeraisAssociado['estado'] === 'PB') {
     $plano = 13051;
-    $preco = $row_usuario5['preco'];
-}elseif($row_usuario['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
+    $preco = $dadosCartao['preco'];
+}elseif($dadosGeraisAssociado['plano'] === 'PLANOVIPORTOCARTAO'){
+    $plano = 13040;
+    $preco = $dadosCartao['preco'];
+}elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
     $plano = 13034;
-    $preco = $row_usuario4['preco'];
-}elseif($row_usuario['estado'] === 'RN' and $row_usuario['plano'] === 'UNIDENTISVIPBOLETO'){
+    $preco = $dadosBoleto['preco'];
+}elseif($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO'){
     $plano = 13058;
-    $preco = $row_usuario4['preco'];
+    $preco = $dadosBoleto['preco'];
 
-}elseif ($row_usuario['estado'] === 'RN' and $row_usuario['plano'] === 'UNIDENTISVIPCARTAO'){
+}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO'){
     $plano = 13053;
-    $preco = $row_usuario5['preco'];
+    $preco = $dadosCartao['preco'];
 
-}elseif ($row_usuario['estado'] === 'RN' and $row_usuario['plano'] === 'UNIDENTISVIPFAMILIACARTAO'){
+}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO'){
     $plano = 13055;
-    $preco = $row_usuario5['preco'];
+    $preco = $dadosCartao['preco'];
 
-}elseif ($row_usuario['estado'] === 'RN' and $row_usuario['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
+}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
     $plano = 13056;
-    $preco = $row_usuario5['preco'];
+    $preco = $dadosCartao['preco'];
 
 
-}elseif ($row_usuario['estado'] === ' RN' and $row_usuario['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
+}elseif ($dadosGeraisAssociado['estado'] === ' RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
     $plano = 13052;
-    $preco = $row_usuario4['preco'];
+    $preco = $dadosBoleto['preco'];
 
 }
 else{
     echo 'erro no plano';
- 
-
 }
-
-
-
 
 $data =   array(
     "token"=> "rHFxpzIE8Ny86TNhgGzoybf93bcIopkXxqKdfShdgUbdpoALw0",
-    "dados"=>
-            array( "incluirMensalidades"=> "0",
-            "parceiro"=>
-                array( "codigo"=> $vendedor,
-                    "tipoCobranca"=> 1
+    "dados"=> array(
+    "incluirMensalidades"=> "0",
+    "parceiro"=> array( 
+            "codigo"=> $vendedor,
+            "tipoCobranca"=> 1
+        ),
+        "responsavelFinanceiro"=> array(
+            "codigoContrato"           => $codigo,
+            "nome"                     => "$dadosGeraisAssociado[nome]",
+            "dataNascimento"           => "$dadosPrincipaisAssociado[datas]",
+            "cpf"                      => "$dadosGeraisAssociado[cpf]",
+            "matricula"                => "$dadosGeraisAssociado[matricula]",
+            "dataApresentacao"         => $admissao,
+            "identidadeNumero"         => "$dadosPrincipaisAssociado[rg]",
+            "identidadeOrgaoExpeditor" => "$dadosPrincipaisAssociado[expedidor]",
+            "sexo"                     => $dadosPrincipaisAssociado['sexo'],
+            "enderecoBoleto"           => "$dadosEnderecoAssociado[rua]",
+                "endereco"       => array(
+                    "cep"            => "$dadosEnderecoAssociado[cep]",
+                    "tipoLogradouro" => $tipologradouro,
+                    "logradouro"     => "$dadosEnderecoAssociado[rua]",
+                    "numero"         => $dadosEnderecoAssociado['numero'],
+                    "complemento"    => "$dadosEnderecoAssociado[complemento]",
+                    "bairro"         => $bairro,
+                    "municipio"      => $municipio,
+                    "uf"             => $estado,
                 ),
-    "responsavelFinanceiro"=> array(
-       "codigoContrato"=> $codigo,
-        "nome"=> "$row_usuario[nome]",
-        "dataNascimento"=> "$row_usuario2[datas]",
-        "cpf"=> "$row_usuario[cpf]",
-        "matricula"=> "$row_usuario[matricula]",
-        "dataApresentacao" => $admissao,
-        "identidadeNumero"=> "$row_usuario2[rg]",
-        "identidadeOrgaoExpeditor"=> "$row_usuario2[expedidor]",
-        "sexo"=> $row_usuario2['sexo'],
-        "enderecoBoleto"=> "$row_usuario3[rua]",
-
-
-        "endereco"=>array(
-        "cep"=> "$row_usuario3[cep]",
-        "tipoLogradouro"=> $tipologradouro,
-        "logradouro"=> "$row_usuario3[rua]",
-        "numero"=> $row_usuario3['numero'],
-        "complemento"=> "$row_usuario3[complemento]",
-        "bairro"=> $bairro,
-        "municipio"=> $municipio,
-        "uf"=> $estado,
-
-
-          ),
-            "contatoResponsavelFinanceiro"=> [ array(
-                 "tipo"=> 8,
-                 "dado"=> "$row_usuario[celular]"
-                 ),
-                array(
-                "tipo"=> 50,
-                 "dado"=> "$row_usuario[email]"
-                        
-                ) 
-            ],
-
-
+                    "contatoResponsavelFinanceiro"=> [ 
+                        array(
+                        "tipo"=> 8,
+                        "dado"=> "$dadosGeraisAssociado[celular]"
+                        ),
+                        array(
+                        "tipo"=> 50,
+                        "dado"=> "$dadosGeraisAssociado[email]"
+                                
+                        ) 
+                    ],
                              "cartao"=> array(
-                             "numero"=> "$encryptedText",
-                             "validade"=> "$row_usuario5[mes]",
-                             "codSeguranca"=> "$row_usuario5[cvv]",
-                             "bandeira"=> "$brand",
-                             "diaVencimentoCartao"=> "1",
-                             "nomeImpressoCartao"=> "$row_usuario5[nomecartao]"
+                             "numero"              => "$encryptedText",
+                             "validade"            => "$dadosCartao[mes]",
+                             "codSeguranca"        => "$dadosCartao[cvv]",
+                             "bandeira"            => "$brand",
+                             "diaVencimentoCartao" => "1",
+                             "nomeImpressoCartao"  => "$dadosCartao[nomecartao]"
                           )
-                            ),
+        ),
 
-                               "dependente"=> [
-
-                                   array(
-                                   "tipo"=> 1,
-                                   "nome"=> "$row_usuario6[nome]",
-                                   "dataNascimento"=> "$row_usuario6[nascimento]",
-                                   "cpf"=> "$row_usuario6[cpf]",
-                                   "sexo"=> $row_usuario6['sexo'],
-                                   "plano"=> $plano,
-                                   "planoValor"=> "$preco",
-                                   "nomeMae"=> "$row_usuario6[mae]",
-                                   "numeroCarteira"=> "",
-                                   "cns" => "$row_usuario6[sus]",
-                                   "MMYYYY1Pagamento" => $row_usuario['1pag'],
-                                  
-                               ),
-                             
-                            ],
+        "dependente"=> [
+            array(
+            "tipo"             => 1,
+            "nome"             => "$dadosTitular[nome]",
+            "dataNascimento"   => "$dadosTitular[nascimento]",
+            "cpf"              => "$dadosTitular[cpf]",
+            "sexo"             => $dadosTitular['sexo'],
+            "plano"            => $plano,
+            "planoValor"       => "$preco",
+            "nomeMae"          => "$dadosTitular[mae]",
+            "numeroCarteira"   => "",
+            "cns"              => "$dadosTitular[sus]",
+            "MMYYYY1Pagamento" => $dadosGeraisAssociado['1pag'],
+            
+            ),
+        
+        ],
                             
-                                          )
-                                          );
-                                         
-                                        
-                                         
-                                        
+    )
+);
+                                                                         
 $payload = json_encode($data);
 
 // Prepare new cURL resource
-$ch= curl_init('http://unidentis.s4e.com.br/SYS/services/vendedor.aspx/NovoUsuario');
+$ch = curl_init('http://unidentis.s4e.com.br/SYS/services/vendedor.aspx/NovoUsuario');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 curl_setopt($ch, CURLOPT_POST, true);
@@ -399,12 +420,13 @@ $result = utf8_encode($result);
 $result= json_decode($result, true);
 
 curl_close($ch);
-$result = $result['dados'];
+$dados = $result['dados'];
 
 
-while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
+/** FINALIZADO ENVIO DE ASSOCIADO **/
 
-
+// ENVIO DE DEPENDENTES
+while($dadosDependentes = mysqli_fetch_assoc($queryDadosDependentes)){
 
 $data1 =   array(
     "token"=> "rHFxpzIE8Ny86TNhgGzoybf93bcIopkXxqKdfShdgUbdpoALw0",
@@ -414,32 +436,27 @@ $data1 =   array(
             "codigo"=>  $vendedor
             ),
 		"responsavelFinanceiro"=> array(
-           "codigo"=> $result['codigo']
+           "codigo"=> $dados['codigo']
         ),
 		"dependente"=>[
 			array(
-                "tipo"=> $row_usuario7['parentesco'],
-				"nome"=> "$row_usuario7[nome]",
-				"dataNascimento"=> "$row_usuario7[datas]",
-				"cpf"=> "$row_usuario7[cpf]",
-				"sexo"=> $row_usuario7['sexo'],
-				"plano"=> $plano,
-				"planoValor"=> "$row_usuario10[preco]",
-				"nomeMae"=> "$row_usuario7[mae]",
-				"numeroProposta"=> "1",
-                "cns" => "$row_usuario7[cns]"
+                "tipo"           => $dadosDependentes['parentesco'],
+                "nome"           => "$dadosDependentes[nome]",
+                "dataNascimento" => "$dadosDependentes[datas]",
+                "cpf"            => "$dadosDependentes[cpf]",
+                "sexo"           => $dadosDependentes['sexo'],
+                "plano"          => $plano,
+                "planoValor"     => "$dadosCartao[preco]",
+                "nomeMae"        => "$dadosDependentes[mae]",
+                "numeroProposta" => $dados['codigo'] ,
+                "cns"            => "$dadosDependentes[cns]"
             )
 		],
 		"contatoDependente"=> [
 				
 			]
-
     )
 );
-
-
-
-
 
 $payload1 = json_encode($data1);
 
@@ -464,33 +481,25 @@ $num2 = $result1[10];
 $result1 = utf8_encode($result1);
 $result1= json_decode($result1, true);
 
-
 curl_close($ch1);
 
 }
 
-
-echo $cpf;
 if($num == '1') {
-    $sql1 = "UPDATE dadospessoais SET status='Implantadas' WHERE cpf='$cpf' ";
-    $conexao->query($sql1);
-    
+    //  $sql1 = "UPDATE dadospessoais SET status='Implantadas' WHERE cpf='$cpf' ";
+    //  $conexao->query($sql1);
     if ($num2 == '1') {
-       
-        $sql2 = "UPDATE dependentes SET status='Implantadas' WHERE cpf_titular='$cpf'";
-        $conexao->query($sql2);
-
-          header('Location: processa5.php?email='.$row_usuario['email']);
-
+        // $sql2 = "UPDATE dependentes SET status='Implantadas' WHERE cpf_titular='$cpf'";
+        // $conexao->query($sql2);
+        // header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }else{
-        header('Location: processa5.php?email='.$row_usuario['email']);
+        // header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }
-}else{
-    echo 'erro';
+}else {
+    $_SESSION['erroS4'] = $result['mensagem'];
+    echo "<body onload='window.history.back();'>";
+    exit;
 }
-
-
-
-
-
 ?>
+
+
