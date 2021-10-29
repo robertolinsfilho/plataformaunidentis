@@ -8,15 +8,20 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
 error_reporting(0);
 ini_set('display_errors', 0);
 include_once('conexao.php');
-$_SESSION['cpf'] = str_replace(".", "", $_SESSION['cpf']);
-$_SESSION['cpf'] = str_replace("-", "", $_SESSION['cpf']);
-$result_usuario = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]'";
+$cpf = str_replace("-", "", str_replace(".", "", $_SESSION['cpf']));
+
+$forekey = $_SESSION['forekey'];
+
+$result_usuario = "SELECT * from dependentes where forekey ='$forekey'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
-$result_usuario2 = "SELECT COUNT(*)  AS total from dependentes where cpf_titular ='$_SESSION[cpf]'";
+$result_usuario2 = "SELECT COUNT(*)  AS total from dependentes where forekey ='$forekey'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
+
 $url = "http://unidentis.s4e.com.br/SYS/services/vendedor.aspx/NovoUsuario?token=rHFxpzIE8Ny86TNhgGzoybf93bcIopkXxqKdfShdgUbdpoALw0&id=1&cpf=. '$cpf' .&tipo=0";
+
 $curl = curl_init($url);
+
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 $resultado = json_decode(curl_exec($curl), true);

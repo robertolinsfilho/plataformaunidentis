@@ -10,38 +10,36 @@ session_start();
 include_once('conexao.php');
 
 
-$cpf = $_SESSION['cpfnova'];
-$result_usuario = "SELECT * from dadospessoais where cpf ='$cpf'";
+$cpf = $_GET['key'];
+$result_usuario = "SELECT * from dadospessoais where forekey ='$cpf'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 // $cpf = '11159630402';
 
 if($row_usuario['etapa'] == 1){
-    $link = 'https://unidentisdigital.com.br/formpessoafisica?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formpessoafisica?key='.$cpf;
 }elseif($row_usuario['etapa'] == 2){
-    $link = 'https://unidentisdigital.com.br/formdadospessoais?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formdadospessoais?key='.$cpf;
 }elseif($row_usuario['etapa'] == 3 ){
-    $link = 'https://unidentisdigital.com.br/formenviofotos?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formenviofotos?key='.$cpf;
 }elseif($row_usuario['etapa'] == 4){
-    $link = 'https://unidentisdigital.com.br/formendereco?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formendereco?key='.$cpf;
 }elseif($row_usuario['etapa'] == 5 && $row_usuario['plano'] == 'UNIDENTISVIPBOLETO'){
-    $link = 'https://unidentisdigital.com.br/titular?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/titular?key='.$cpf;
 }elseif($row_usuario['etapa'] == 5){
-    $link = 'https://unidentisdigital.com.br/titularcartao?cpf='.$cpf;
+    $link = 'https://unidentisdigital.com.br/titularcartao?key='.$cpf;
 }elseif($row_usuario['etapa'] == 6){
     $link = 'https://unidentisdigital.com.br/login2';
 }
 
 $email = strip_tags($row_usuario['email']);
-$sql = $conexao->query("SELECT * FROM `usuario` WHERE usuario = '{$email}'");
+$sql = $conexao->query("SELECT * FROM `usuario` WHERE forekey = $cpf");
 foreach($sql as $value) {
+  $usuario = strip_tags($value['usuario']);
   $senha = strip_tags($value['senha']);
 } 
 
-// $link = 'https://unidentisdigital.com.br/formpessoafisica?cpf='.$cpf;
-// $email = 'franklinhpf@hotmail.com';
-// $senha = '123456';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -227,7 +225,6 @@ try {
 
     $mail->send();
     	
-//Resultado aleatório com 8 caraceters
     echo "<script>window.location.assign('index.php')</script>";
     exit;
 } catch (Exception $e) {

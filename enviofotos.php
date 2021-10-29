@@ -2,9 +2,6 @@
 session_start();
 include("conexao.php");
 
-
-
-
 session_start();
 
 $SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -141,15 +138,15 @@ if ($SendCadImg) {
 
 $result = mysqli_query($conexao, $sql);
 $row = mysqli_fetch_assoc($result);
+$forekey = $_SESSION['forekey'];
 
 
 
-$sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao,outro)
- VALUES ('$cpf','$nome', '$nome2','$nome3', '$nome4','$nome5','$nome6')";
+$sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao,outro, forekey)
+ VALUES ('$cpf','$nome', '$nome2','$nome3', '$nome4','$nome5','$nome6', '$forekey')";
 
 if($conexao->query($sql) === TRUE) {
 	$_SESSION['status_cadastro'] = true;
-	
 }
 
 $conexao->close();

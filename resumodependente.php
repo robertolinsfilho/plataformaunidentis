@@ -5,21 +5,25 @@ session_start();
 error_reporting(0);
 
 
-$cpf = $_GET['cpf'];
+$cpf = $_GET['key'];
 
 $id = $_GET['id'];
-//consultar no banco de dados
-$_SESSION['cpfnova'] = $cpf;
 
-
-$result_usuario = "SELECT * from dadospessoais where cpf ='$cpf'";
+$result_usuario = "SELECT * from dadospessoais where forekey ='$cpf'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
-$result_usuario2 = "SELECT * from dependentes where id ='$id'";
+
+$result_usuario2 = "SELECT * from dependentes where forekey ='$cpf'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
-$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfDependente=$cpf";
+$uCpf = $row_usuario['cpf'];
+
+//consultar no banco de dados
+$_SESSION['cpfnova'] = $uCpf;
+
+$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfDependente=$uCpf";
+
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -28,6 +32,7 @@ $resultado = $resultado['dados'];
 $x = 0;
 $y = 0;
 $z = 0;
+
 foreach ($resultado as $value) {
 
 	foreach ($value['dependentes'] as $value1) {
@@ -36,24 +41,24 @@ foreach ($resultado as $value) {
 
 			if ($value2 != 'CANCELADO') {
 				$x = 1;
-				$_SESSION['nomedependente'] = $value1['nomeDependente'];
-				$_SESSION['nometitular'] = $value['nome'];
-				$_SESSION['numerocpf'] = $value['cpf'];
+				$_SESSION['nomedependente']        = $value1['nomeDependente'];
+				$_SESSION['nometitular']           = $value['nome'];
+				$_SESSION['numerocpf']             = $value['cpf'];
 				$_SESSION['datanascimentotitular'] = $value['dataDeNascimento'];
-				$_SESSION['codresp'] = $value['codigo'];
-				$_SESSION['codigodependente'] = $value1['codigoDependente'];
-				$_SESSION['rgdependente'] = $value['rg'];
-				$_SESSION['cidade'] = $value['cidade'];
-				$_SESSION['sexotitular'] = $value['sexo'];
-				$_SESSION['sexodependente'] = $value1['sexo'];
-				$_SESSION['cepdependente'] = $value['cep'];
-				$_SESSION['ruadependente'] = $value['logradouro'];
-				$_SESSION['bairrodependente'] = $value['bairro'];
-				$_SESSION['cepdependente'] = $value['cep'];
-				$_SESSION['ufdependente'] = $value['ufSigla'];
-				$_SESSION['numerodependente'] = $value['numero'];
-				$_SESSION['nomedependente'] = $value1['nomeDependente'];
-				$_SESSION['nomeplano'] = $value1['nomePlano'];
+				$_SESSION['codresp']               = $value['codigo'];
+				$_SESSION['codigodependente']      = $value1['codigoDependente'];
+				$_SESSION['rgdependente']          = $value['rg'];
+				$_SESSION['cidade']                = $value['cidade'];
+				$_SESSION['sexotitular']           = $value['sexo'];
+				$_SESSION['sexodependente']        = $value1['sexo'];
+				$_SESSION['cepdependente']         = $value['cep'];
+				$_SESSION['ruadependente']         = $value['logradouro'];
+				$_SESSION['bairrodependente']      = $value['bairro'];
+				$_SESSION['cepdependente']         = $value['cep'];
+				$_SESSION['ufdependente']          = $value['ufSigla'];
+				$_SESSION['numerodependente']      = $value['numero'];
+				$_SESSION['nomedependente']        = $value1['nomeDependente'];
+				$_SESSION['nomeplano']             = $value1['nomePlano'];
 			}
 		}
 	}
@@ -80,7 +85,7 @@ foreach ($resultado as $value) {
 		}
 	}
 }
-$result_usuario3 = "SELECT * from dependentes where id ='$id'";
+$result_usuario3 = "SELECT * from dependentes where forekey ='$cpf'";
 $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
 $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
 

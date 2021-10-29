@@ -176,6 +176,8 @@ if ($_SESSION['cpf'] === '') {
         $dono = "(Dono do Cartão)";
       } elseif ($boleto40 === 'UNIDENTISVIPUNIVERSITARIOCARTAO') {
         $dono = "(Dono do Cartão)";
+      } elseif ($boleto40 === 'PLANOVIPORTOCARTAO') {
+        $dono = "(Dono do Cartão)";
       } elseif ($boleto40 === 'UNIDENTISVIPEMPRESARIAL') {
         $dono = " ";
       }
@@ -187,8 +189,12 @@ if ($_SESSION['cpf'] === '') {
       </div>
       <form action="enviopessoafisica" method="POST">
         <div class="row">
+          
+        <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
+            <input type="text" name="nome" class="form-control" required>
+          </div>
           <div class="col-md-3">
-
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF:</label>
             <input type="text" id="cpf" minlenght="14" name="cpf" class="form-control" required>
           </div>
@@ -200,11 +206,6 @@ if ($_SESSION['cpf'] === '') {
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Plano:</label>
             <input type="text" class="form-control" value="<?php echo $_SESSION['boleto'] ?>" name="plano" readonly>
-          </div>
-
-          <div class="col-md-3">
-            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Celular:</label>
@@ -227,7 +228,7 @@ if ($_SESSION['cpf'] === '') {
               <option>MS</option>
               <option>MG</option>
               <option>PA</option>
-              <option>PB</option>
+              <option selected >PB</option>
               <option>PR</option>
               <option>PE</option>
               <option>PI</option>
@@ -290,11 +291,8 @@ if ($_SESSION['cpf'] === '') {
           </div> -->
           <button type="submit" class="btn-get-started scrollto">Prosseguir</button>
         </div>
-
       </form>
     </div>
-
-
   </section>
 
 

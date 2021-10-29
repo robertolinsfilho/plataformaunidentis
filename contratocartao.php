@@ -2,24 +2,23 @@
 session_start();
 include_once("conexao.php");
 
-
-$preco = $_SESSION['preco'];
-$cpf = mysqli_real_escape_string($conexao, trim($_POST['cpf']));
-$nome = mysqli_real_escape_string($conexao, trim($_POST['nomecartao']));
-$email = mysqli_real_escape_string($conexao, trim($_POST['email']));
-$cpfcartao = mysqli_real_escape_string($conexao, trim($_POST['cpfcartao']));
+$forekey = $_GET['key'];
+$preco      = $_SESSION['preco'];
+$cpf        = mysqli_real_escape_string($conexao, trim($_POST['cpf']));
+$nome       = mysqli_real_escape_string($conexao, trim($_POST['nomecartao']));
+$email      = mysqli_real_escape_string($conexao, trim($_POST['email']));
+$cpfcartao  = mysqli_real_escape_string($conexao, trim($_POST['cpfcartao']));
 $nomecartao = mysqli_real_escape_string($conexao, trim($_POST['nomecartao']));
-$cartao = mysqli_real_escape_string($conexao, trim($_POST['cartao']));
-$mes = mysqli_real_escape_string($conexao, trim($_POST['mes']));
-$cvv = mysqli_real_escape_string($conexao, trim($_POST['cvv']));
-$_SESSION['mesano'] = $mes;
+$cartao     = mysqli_real_escape_string($conexao, trim($_POST['cartao']));
+$mes        = mysqli_real_escape_string($conexao, trim($_POST['mes']));
+$cvv        = mysqli_real_escape_string($conexao, trim($_POST['cvv']));
 
+$_SESSION['mesano']     = $mes;
 $_SESSION['nomecartao'] = $nome;
-
-$cartao =  str_replace(' ', '', $cartao);
+$cartao                 = str_replace(' ', '', $cartao);
 
 $cpf = str_replace("-", "", str_replace(".", "", $cpf));
-$cpfcartao = str_replace("-", "", str_replace(".", "", $cpf));
+$cpfcartao = str_replace("-", "", str_replace(".", "", $cpfcartao));
 
 function luhnCheck($cartao)
 {
@@ -154,17 +153,19 @@ if ($brand == 38 or $brand == 41) {
 
     </body>
 
-    </html>
+</html>
+
 <?php
     $_SESSION['cpfDiferente'] = false;
     exit;
 }
-$sql = "INSERT INTO  contratocartao (cpf,nome,email,nomecartao,cartao,mes,cvv,preco) 
-VALUES ('$cpf','$nome','$email','$nomecartao','$cartao','$mes','$cvv','$preco')";
-$sql2 = "UPDATE dadospessoais SET ativo = 1";
 
-$sql3 = "UPDATE dadospessoais SET status = 'Pag Pendente' WHERE cpf='$cpf' ";
+$sql = "INSERT INTO  contratocartao (cpf,nome,email,nomecartao,cartao,mes,cvv,preco,forekey) 
+VALUES ('$cpf','$nome','$email','$nomecartao','$cartao','$mes','$cvv','$preco', '$forekey')";
 
+$sql2 = "UPDATE dadospessoais SET ativo = 1 where forekey = '$forekey'";
+
+$sql3 = "UPDATE dadospessoais SET status = 'Pag Pendente' WHERE forekey = '$forekey'";
 
 if ($conexao->query($sql) === TRUE and $conexao->query($sql2) === TRUE and $conexao->query($sql3) === TRUE) {
     $_SESSION['status_cadastro'] = 'Plano';

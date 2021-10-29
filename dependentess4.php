@@ -2,9 +2,43 @@
 include_once('conexao.php');
 session_start();
 
-$cpf = $_GET['cpf'];
+
+$cpf = $_GET['key'];
 $id = $_GET['id'];
-$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&cpfAssociado=$cpf";
+
+$result_usuario = "SELECT * from dadospessoais where forekey = '$cpf'";
+$resultado_usuario = mysqli_query($conexao, $result_usuario);
+$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+
+$result_usuario4 = "SELECT * from contrato where forekey = '$cpf'";
+$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
+$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+
+$result_usuario5 = "SELECT * from contratocartao where forekey = '$cpf'";
+$resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
+$row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
+
+$result_usuario7 = "SELECT * from dependentes where forekey = '$cpf' and status != 'Implantado' and ativo = '1'";
+$resultado_usuario7 = mysqli_query($conexao, $result_usuario7);
+
+
+if($row_usuario4['cpf'] === $cpf){
+    $result_usuario10 = "SELECT * from contrato where forekey = '$cpf'";
+    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
+    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
+}else{
+    $result_usuario10 = "SELECT * from contratocartao where forekey = '$cpf'";
+    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
+    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
+}
+$result_usuario6 = "SELECT * from dependentes where forekey = '$cpf' and status != 'Implantado' and ativo = '1'";
+$resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
+$row_usuario6 = mysqli_fetch_assoc($resultado_usuario6);
+
+/* GET CPF FROM DATABASE */
+$uCpf = $row_usuario['cpf'];
+
+$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&cpfAssociado=$uCpf";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -17,51 +51,19 @@ foreach($resultado as $value){
     foreach($value['dependentes'] as $value1){
        
         foreach( (array)$value1['nomeSituacao'] as $value2){
-          
            
            if($value2 != 'CANCELADO'){
            $x = 1;
            $_SESSION['ufdependente'] = $value['ufSigla'];
            $_SESSION['nomeplano'] = $value1['nomePlano'];
            $codigo = $value['codigo'];
-           
+    
            }
         }
       
     }
   
 }
-
-
-
-$result_usuario = "SELECT * from dadospessoais where cpf = '$cpf'";
-$resultado_usuario = mysqli_query($conexao, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
-
-$result_usuario4 = "SELECT * from contrato where cpf = '$cpf'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
-
-$result_usuario5 = "SELECT * from contratocartao where cpf = '$cpf'";
-$resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
-$row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
-
-$result_usuario7 = "SELECT * from dependentes where cpf_titular = '$cpf' and status != 'Implantado' and ativo = '1'";
-$resultado_usuario7 = mysqli_query($conexao, $result_usuario7);
-
-
-if($row_usuario4['cpf'] === $cpf){
-    $result_usuario10 = "SELECT * from contrato where cpf = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}else{
-    $result_usuario10 = "SELECT * from contratocartao where cpf = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}
-$result_usuario6 = "SELECT * from dependentes where cpf_titular = '$cpf' and status != 'Implantado' and ativo = '1'";
-$resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
-$row_usuario6 = mysqli_fetch_assoc($resultado_usuario6);
 
 if($_SESSION['nomeplano'] === 'UNIDENTIS VIP' &&  $_SESSION['ufdependente'] === 'PB'){
     $preco = 35;
@@ -105,8 +107,6 @@ if($_SESSION['nomeplano'] === 'UNIDENTIS VIP' and $_SESSION['ufdependente'] === 
     $plano = 13056;
 }else{
     echo 'erro no plano';
- 
-
 }
 $result_usuario11 = "SELECT * from vendedor where email = '$row_usuario6[vendedor]'";
 $resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
@@ -114,9 +114,6 @@ $row_usuario11 = mysqli_fetch_assoc($resultado_usuario11);
 $vendedor = substr($row_usuario11['vendedor'] , 0 ,5);
 echo $vendedor;
 while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
-    
-
-
     $data1 =   array(
         "token"=> "rHFxpzIE8Ny86TNhgGzoybf93bcIopkXxqKdfShdgUbdpoALw0",
         "dados"=> array(

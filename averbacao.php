@@ -104,7 +104,7 @@ $count = $count + 1;
 									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
 
 									?>
-										<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
+										<tr onclick="location.href = 'form-wizard.php?key=<?= $row_usuario['forekey'] ?>';">
 										<?php
 										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 										?>

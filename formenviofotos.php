@@ -2,14 +2,32 @@
 session_start();
 error_reporting(0);
 include 'conexao.php';
-if (empty($_SESSION['cpf'])) {
-  $_SESSION['cpf'] = $_GET['cpf'];
+
+if (empty($_GET['key'])) {
+  $forekey = $_GET['key'];
+  $queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
+  $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+  $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais where forekey = '$forekey'");
+  $dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+
+  $_SESSION['nome']     = $dadosGeraisAssociado['nome'];
+  $_SESSION['cpf']      = $dadosGeraisAssociado['cpf'];
+  $_SESSION['email']    = $dadosGeraisAssociado['email'];
+  $_SESSION['celular']  = $dadosGeraisAssociado['celular'];
+  $_SESSION['estado']   = $dadosGeraisAssociado['estado'];
+  $_SESSION['plano']    = $dadosGeraisAssociado['plano'];
+  $_SESSION['sus']      = $dadosGeraisAssociado['sus'];
+  $_SESSION['vendedor1'] = $dadosGeraisAssociado['vendedor'];
+  $_SESSION['sexo']        = $dadosGeraisAssociado['sexo'];
+  $_SESSION['whats']       = $dadosGeraisAssociado['celular'];
+  $_SESSION['rg']          = $dadosPrincipaisAssociado['rg'];
+  $_SESSION['estadocivil'] = $dadosPrincipaisAssociado['estadocivil'];
+  $_SESSION['datas']       = $dadosPrincipaisAssociado['datas'];
+  $_SESSION['expedidor']   = $dadosPrincipaisAssociado['expedidor'];
+  $_SESSION['mae']         = $dadosPrincipaisAssociado['mae'];
+  $_SESSION['fixo']        = $dadosPrincipaisAssociado['fixo'];
 }
 
-
-$result_usuario2 = "SELECT * from dadospessoais where cpf = '$_SESSION[cpf]'";
-$resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
-$row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -190,7 +208,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
         <br> -->
             <?php
 
-            if ($row_usuario2['plano'] != 'UNIDENTISVIPBOLETO') {
+            if ($_SESSION['plano'] != 'UNIDENTISVIPBOLETO') {
 
             ?>
               <div class="drop-zone">

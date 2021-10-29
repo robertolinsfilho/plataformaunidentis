@@ -17,9 +17,11 @@ if($_SESSION['usuario'] == 'cadastro@s4e.com.br'){
 $result_usuario3 = "SELECT * from dadospessoais where status = 'Em Analise' and ativo = '1' ";
 $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
 $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
+
 $result_usuario2 = "SELECT * from vendedor where email = '$row_usuario3[vendedor]'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
+
 //Verificar se encontrou resultado na tabela "usuarios"
 $result_usuario4 = "SELECT COUNT(cpf) from dependentes where cpf_titular = '$row_usuario[cpf]'";
 $resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
@@ -72,21 +74,18 @@ $row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 										<th>Vendedor</th>
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
-                                            <th>Plano</th>
+                                        <th>Plano</th>
 										<th>Vidas</th>
-
 										<th>Valor</th>
+										<th>Estágio</th>
 										<th>Status</th>
 										<?php					
 										} else {
 										?>
-
-										
 										<th>Responsável Financeiro</th>										
 										<th>CPF</th>
-                                            <th>Plano</th>
+                                        <th>Plano</th>
 										<th>Vidas</th>
-
 										<th>Valor</th>
 										<th>Status</th>	
 										<?php
@@ -106,19 +105,19 @@ $count = $count + 1;
 									while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
         
         					?>
-								<tr onclick="location.href = 'form-wizard.php?cpf=<?php echo $row_usuario['cpf'] ?>';">
+								<tr onclick="location.href = 'form-wizard.php?key=<?= $row_usuario['forekey'] ?>';">
 								<?php
 										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 										?>
 
-										<td ><?php echo $row_usuario2['vendedor']; ?></td>
-											<td ><?php echo $row_usuario['nome']; ?></td>
-											<td><?php echo $row_usuario['cpf']; ?></td>
-                                            <td><?php echo $row_usuario['plano']; ?></td>
-											<td><?php echo $count; ?></td>											
-
-											<td>R$<?php echo $row_usuario['preco']; ?></td>
-											<td><?php echo $row_usuario['status']; ?></td>		
+											<td>  <?= $row_usuario['vendedor']; ?></td>
+											<td>  <?= $row_usuario['nome']; ?></td>
+											<td>  <?= $row_usuario['cpf']; ?></td>
+                                            <td>  <?= $row_usuario['plano']; ?></td>
+											<td>  <?= $count; ?></td>											
+											<td>R$<?= $row_usuario['preco']; ?></td>
+											<td>  <?= $row_usuario['etapa']; ?></td>
+											<td>  <?= $row_usuario['status']; ?></td>		
 										<?php					
 										} else {
 										?>
@@ -127,7 +126,6 @@ $count = $count + 1;
 											<td><?php echo $row_usuario['cpf']; ?></td>
                                             <td><?php echo $row_usuario['plano']; ?></td>
 											<td><?php echo $count; ?></td>											
-
 											<td>R$<?php echo $row_usuario['preco']; ?></td>
 											<td><?php echo $row_usuario['status']; ?></td>	
 										<?php

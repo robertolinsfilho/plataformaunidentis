@@ -62,10 +62,10 @@ require('./vendor/autoload.php');
 use Encryption\Encryption;
 use Encryption\Exceptions\EncryptionException as EncException;
 
-$cpf = $_GET['cpf'];
+$cpf = $_GET['key'];
 
 // LISTAR OS DADOS GERAIS DO ASSOCIADO
-$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$cpf'");
 $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
 
 // VERIFICAR SE O ASSOCIADO É O TITULAR
@@ -75,7 +75,7 @@ if ($dadosGeraisAssociado['cpf_titular'] != $dadosGeraisAssociado['cpf']) {
 	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 } else {
 	// ASSOCIADO TITULAR DO PLANO || LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
-	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$cpf'");
 	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 }
 
@@ -83,23 +83,23 @@ if ($dadosGeraisAssociado['cpf_titular'] != $dadosGeraisAssociado['cpf']) {
 $cpf_titular = $dadosTitular['cpf'];
 
 // LISTA OS DADOS PRINCIPAIS DO ASSOCIADO
-$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where cpf  = '$cpf'");
+$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where forekey  = '$cpf'");
 $dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
 
 // LISTA OS DADOS DO ENDERECO QUE ESTA AMARRADO AO ASSOCIADO PELA CHAVE ESTRANGEIRA 'CPF'
-$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where cpf  = '$cpf'");
+$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where forekey  = '$cpf'");
 $dadosEnderecoAssociado = mysqli_fetch_assoc($queryDadosEnderecoAssociado);
 
 // LISTA OS DADOS DO ANTIGO CONTRATO BOLETO, JÁ EM DESUSO
-$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where cpf  = '$cpf'");
+$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where forekey  = '$cpf'");
 $dadosBoleto = mysqli_fetch_assoc($queryDadosBoleto);
 
 // LISTA OS DADOS DO CONTRATO CARTAO DE CREDITO
-$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where cpf  = '$cpf'");
+$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where forekey  = '$cpf'");
 $dadosCartao = mysqli_fetch_assoc($queryDadosCartao);
 
 // REALIZA A CONEXAO COM A TABELA DEPENDENTES PARA SER LISTADA LÁ NA FRENTE COM 'WHILE' 
-$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'");
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where forekey  = '$cpf'");
 
 // LISTA OS DADOS DO VENDEDOR
 $queryDadosVendedor = mysqli_query($conexao, "SELECT * from vendedor where email = '$dadosGeraisAssociado[vendedor]'");
@@ -486,14 +486,14 @@ curl_close($ch1);
 }
 
 if($num == '1') {
-    //  $sql1 = "UPDATE dadospessoais SET status='Implantadas' WHERE cpf='$cpf' ";
-    //  $conexao->query($sql1);
+     $sql1 = "UPDATE dadospessoais SET status='Implantadas' WHERE forekey='$cpf' ";
+     $conexao->query($sql1);
     if ($num2 == '1') {
-        // $sql2 = "UPDATE dependentes SET status='Implantadas' WHERE cpf_titular='$cpf'";
-        // $conexao->query($sql2);
-        // header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
+        $sql2 = "UPDATE dependentes SET status='Implantadas' WHERE forekey='$cpf'";
+        $conexao->query($sql2);
+        header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }else{
-        // header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
+        header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }
 }else {
     $_SESSION['erroS4'] = $result['mensagem'];

@@ -1,12 +1,24 @@
 <?php
 include("conexao.php");
 session_start();
-if (empty($_SESSION['cpf'])) {
-  $_SESSION['cpf'] = $_GET['cpf'];
+if (isset($_GET['key'])) {
+  $forekey = $_GET['key'];
+  $queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
+  $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+
+  $_SESSION['nome']     = $dadosGeraisAssociado['nome'];
+  $_SESSION['cpf']      = $dadosGeraisAssociado['cpf'];
+  $_SESSION['email']    = $dadosGeraisAssociado['email'];
+  $_SESSION['celular']  = $dadosGeraisAssociado['celular'];
+  $_SESSION['estado']   = $dadosGeraisAssociado['estado'];
+  $_SESSION['plano']    = $dadosGeraisAssociado['plano'];
+  $_SESSION['sus']      = $dadosGeraisAssociado['sus'];
+  $_SESSION['vendedor1'] = $dadosGeraisAssociado['vendedor'];
+  $_SESSION['forekey']  = $forekey; 
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
@@ -172,6 +184,7 @@ if (empty($_SESSION['cpf'])) {
             <select name="sexo" placeholder="selecione" class="form-control">
               <option value="1">Masculino</option>
               <option value="0">Feminino</option>
+              <option value="" selected disabled>Selecione</option>
             </select>
           </div>
 
@@ -191,6 +204,7 @@ if (empty($_SESSION['cpf'])) {
               <option value="Solteiro(a)">Solteiro(a)</option>
               <option value="Viuvo(a)">Viuvo(a)</option>
               <option value="Divorciado(a)">Divorciado(a)</option>
+              <option value="" selected disabled>Selecione</option>
             </select>
           </div>
           <div class="col-md-3">
@@ -211,6 +225,7 @@ if (empty($_SESSION['cpf'])) {
             <input type="text" name="fixo" class="form-control" placeholder="Telefone Fixo">
           </div>
         </div>
+        <input type="hidden" name="forekey" value="<?= $_SESSION['forekey']; ?>">
         <button type="submit" class="btn-get-started scrollto">prosseguir</button>
     </div>
 

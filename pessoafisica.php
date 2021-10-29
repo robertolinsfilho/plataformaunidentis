@@ -303,7 +303,7 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''):
       <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="400">
         <div class="box">
        
-          <h3 style="padding:18px">UNIDENTIS UNIVERSITÁRIO</h3>
+          <h3 style="padding:18px 2px">UNIDENTIS VIP UNIVERSITÁRIO</h3>
           <h4><sup>R$</sup>21.90<span> / Mês</span></h4>
           <ul>
             <li><h5>GR. MUNICÍPIOS PB </h5></li>
@@ -312,6 +312,21 @@ if($_SESSION['estado1'] == 'PB' and $_SESSION['estado1'] != ''):
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP UNIVERSITÁRIO"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+        <div class="box">
+          <h3 style="padding:18px">UNIDENTIS VIP ORTO</h3>
+          <h4><sup>R$</sup>99,00<span> / Mês</span></h4>
+          <ul>
+            <li><h5>GR. MUNICÍPIOS PB </h5></li>
+            <li>FAMILIAR</li>
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
+          </ul>
+          <div class="btn-wrap">
+          <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP ORTO"/>
           </div>
         </div>
       </div>
@@ -351,7 +366,7 @@ elseif($_SESSION['estado1'] == 'RN'):
         </div>
       </div> -->
 
-      <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-3 col-md-3 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
         <div class="box ">
           <h3 style="padding:20px"> UNIDENTIS VIP CARTÃO</h3>
           <h4><sup>R$</sup>25,90<span> / Mês</span></h4>
@@ -367,7 +382,7 @@ elseif($_SESSION['estado1'] == 'RN'):
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+      <div class="col-lg-3 col-md-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
         <div class="box">
           <h3 style="padding:20px">UNIDENTIS VIP FAMÍLIA</h3>
           <h4><sup>R$</sup>66,00<span> / Mês</span></h4>
@@ -382,10 +397,10 @@ elseif($_SESSION['estado1'] == 'RN'):
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+      <div class="col-lg-3 col-md-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
         <div class="box">
        
-          <h3 style="padding:18px">UNIDENTIS UNIVERSITÁRIO</h3>
+          <h3 style="padding:18px 2px">UNIDENTIS VIP UNIVERSITÁRIO</h3>
           <h4><sup>R$</sup>25,00<span> / Mês</span></h4>
           <ul>
             <li><h5>GR. MUNICÍPIOS RN </h5></li>
@@ -394,6 +409,21 @@ elseif($_SESSION['estado1'] == 'RN'):
           </ul>
           <div class="btn-wrap">
           <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP UNIVERSITÁRIO"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+        <div class="box">
+          <h3 style="padding:18px">UNIDENTIS VIP ORTO</h3>
+          <h4><sup>R$</sup>99,00<span> / Mês</span></h4>
+          <ul>
+            <li><h5>GR. MUNICÍPIOS RN </h5></li>
+            <li>FAMILIAR</li>
+            <li><img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão"></li>
+          </ul>
+          <div class="btn-wrap">
+          <input type="submit" class="btn-buy" name="boleto40" value="UNIDENTIS VIP ORTO"/>
           </div>
         </div>
       </div>

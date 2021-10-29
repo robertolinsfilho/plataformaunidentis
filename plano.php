@@ -27,6 +27,10 @@ if($boleto40 ==='UNIDENTIS VIP BOLETO'){
     $_SESSION['boleto']= 'UNIDENTISVIPEMPRESARIAL';
     $_SESSION['tipocliente'] = 'servidorpublico';
     header('Location: formpessoafisica#centro');
+}elseif($boleto40 === 'UNIDENTIS VIP ORTO'){
+    $_SESSION['boleto']= 'PLANOVIPORTOCARTAO';
+    $_SESSION['tipocliente'] = 'pessoafisica';
+    header('Location: formpessoafisica#centro');
 }
 
 

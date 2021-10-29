@@ -7,25 +7,25 @@ if (!isset($_SESSION['emailplataforma'])) {
 }
 //consultar no banco de dados
 
+$forekey = $_GET['key'];
 
-
-$result_usuario1 = "SELECT * from contratocartao where email = '{$_SESSION['emailplataforma']}'";
+$result_usuario1 = "SELECT * from contratocartao where forekey = '{$forekey}'";
 $resultado_usuario1 = mysqli_query($conexao, $result_usuario1);
 $row_usuario1 = mysqli_fetch_assoc($resultado_usuario1);
 
-$result_usuario2 = "SELECT * from dadospessoais where email = '{$_SESSION['emailplataforma']}' ";
+$result_usuario2 = "SELECT * from dadospessoais where forekey = '{$forekey}' ";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
-$result_usuario3 = "SELECT * from dadospessoais where email = '{$_SESSION['emailplataforma']}' and ativo= 1";
+$result_usuario3 = "SELECT * from dadospessoais where forekey = '{$forekey}' and ativo= 1";
 $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
 $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
 
-$result_usuario4 = "SELECT * from dadospessoais where email = '{$_SESSION['emailplataforma']}' ";
+$result_usuario4 = "SELECT * from dadospessoais where forekey = '{$forekey}' ";
 $resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
 $row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 
-$result_usuario = "SELECT * from dependentes where cpf_titular ='$row_usuario2[cpf]'";
+$result_usuario = "SELECT * from dependentes where forekey ='$forekey'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 if (!isset($row_usuario2)) {
     //  header('Location: login2');
@@ -131,7 +131,7 @@ if (isset($resultado['mensagem'])) {
                     <label class="labelInput">Titular</label>
                     <hr>
                 </div>
-                <form action="contratocartao" method="POST">
+                <form action="contratocartao?key=<?= $forekey?>" method="POST">
 
                     <div class="row">
                         <div class="col-md-4">
@@ -254,27 +254,27 @@ if (isset($resultado['mensagem'])) {
                             <form class="card-details ">
                                 <div class="form-group">
                                     <p class="mb-0">Número do Cartão</p>
-                                    <input nCard type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457" size="17" id="cartao" minlength="19" maxlength="19">
+                                    <input nCard type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457*" size="17" id="cartao" minlength="19" maxlength="19">
                                     <!-- <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa"> -->
                                 </div>
                                 <div class="form-group">
                                     <p class="mb-0">Nome do Cartão</p>
-                                    <input type="text" class="mt-1" name="nomecartao" placeholder="(Como esta no Cartão)" required>
+                                    <input type="text" class="mt-1" name="nomecartao" placeholder="Como esta no Cartão*" required>
                                 </div>
                                 <div class="form-group">
                                     <p class="mb-0">CPF (titular do plano)</p>
-                                    <input type="text" cpf class="mt-1" name="cpfcartao" placeholder="123-456-789-01" required>
+                                    <input type="text" cpf class="mt-1" name="cpfcartao" placeholder="123-456-789-01*" required>
                                 </div>
                                 <div class="form-group pt-2 smallInput">
                                     <div class="row d-flex justify-content-between">
                                         <div class="col-sm-4">
                                             <p class="mb-0">Data</p>
-                                            <input type="text" class="mt-1" data name="mes" placeholder="MM/YY" size="5" id="data" minlength="5" maxlength="5">
+                                            <input type="text" class="mt-1" data name="mes" placeholder="MM/YY*" size="5" id="data" minlength="5" maxlength="5" required>
 
                                         </div>
                                         <div class="col-sm-4">
                                             <p class="mb-0">CVV</p>
-                                            <input type="text" class="mt-1" name="cvv" placeholder="000" size="3" minlength="3" maxlength="4">
+                                            <input type="text" class="mt-1" name="cvv" placeholder="000*" size="3" minlength="3" maxlength="4" required>
                                         </div>
                                     </div>
                                 </div>
@@ -348,7 +348,19 @@ if (isset($resultado['mensagem'])) {
                     <hr style='background-color: #ffffff;'>
                     <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco2 ?></h3>
                 </div>
-                <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
+                <?php if($_SESSION['cpfDiferente']):?>
+                    <button class="btn btn-secondary scrollto">Confirmar Proposta</button>
+                    <script>
+                        let btn = document.querySelector(".btn.btn-secondary.scrollto");
+                        btn.addEventListener("click", event => {
+                            event.preventDefault();
+                        })
+                    </script>
+                <?php else:?>
+                    <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
+
+                <?php endif;?>
+                    
             </div>
         </div>
 

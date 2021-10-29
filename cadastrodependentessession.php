@@ -20,6 +20,7 @@ $cpfdependente = str_replace(".", "", $cpfdependente);
 $cpfdependente = str_replace("-", "", $cpfdependente);
 $cpf = str_replace(".", "", $cpf);
 $cpf = str_replace("-", "", $cpf);
+$forekey = $_SESSION['forekey'];
 
 
 $data1 = $data_atual - $data;
@@ -68,15 +69,15 @@ $data1 = $data_atual - $data;
 
     <?php
  }else{
-$sql = "INSERT INTO  dependentes (cpf_titular,nome,cpf,datas,cns,estadocivil,sexo,mae,parentesco) 
-VALUES ('$cpf', '$nomedependente', '$cpfdependente','$datadependente','$cnsdependente','$estadodependente','$sexodependente', '$maedependente','$parentesco')";
+$sql = "INSERT INTO  dependentes (cpf_titular,nome,cpf,datas,cns,estadocivil,sexo,mae,parentesco,forekey) 
+VALUES ('$cpf', '$nomedependente', '$cpfdependente','$datadependente','$cnsdependente','$estadodependente','$sexodependente', '$maedependente','$parentesco', '$forekey')";
 
 if($conexao->query($sql) === TRUE) {
     $_SESSION['status_cadastro'] = true;
     header('Location: cadastrodependentes');
+    exit;
 }
 
-
 $conexao->close();
- }
+}
 ?>

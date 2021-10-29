@@ -5,23 +5,23 @@ session_start();
 error_reporting(0);
 
 
-$cpf = $_GET['cpf'];
+$cpf = $_GET['key'];
 
 //consultar no banco de dados
 $_SESSION['cpfnova'] = $cpf;
 
 // LISTAR OS DADOS GERAIS DO ASSOCIADO
-$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$cpf'");
 $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
 
 // VERIFICAR SE O ASSOCIADO É O TITULAR
 if ($dadosGeraisAssociado['cpf_titular'] != $dadosGeraisAssociado['cpf']) {
 	// LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
-	$queryDadosTitular = mysqli_query($conexao, "SELECT * from responsavel where cpf ='$dadosGeraisAssociado[cpf_titular]'");
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from responsavel where foreky ='$dadosGeraisAssociado[cpf_titular]'");
 	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 } else {
 	// ASSOCIADO TITULAR DO PLANO || LISTAR OS DADOS PRINCIPAIS DO TITULAR DESTE PLANO
-	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where cpf ='$cpf'");
+	$queryDadosTitular = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$cpf'");
 	$dadosTitular = mysqli_fetch_assoc($queryDadosTitular);
 }
 
@@ -32,19 +32,19 @@ $cpf_titular = $dadosTitular['cpf'];
 $_SESSION['eemail'] = $dadosGeraisAssociado['email'];
 
 // LISTA OS DADOS DO CONTRATO CARTAO DE CREDITO
-$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where cpf  = '$cpf'");
+$queryDadosCartao = mysqli_query($conexao, "SELECT * from contratocartao  where forekey  = '$cpf'");
 $dadosCartao = mysqli_fetch_assoc($queryDadosCartao);
 
 // LISTA OS DADOS DO ANTIGO CONTRATO BOLETO, JÁ EM DESUSO
-$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where cpf  = '$cpf'");
+$queryDadosBoleto = mysqli_query($conexao, "SELECT * from contrato where forekey  = '$cpf'");
 $dadosBoleto = mysqli_fetch_assoc($queryDadosBoleto);
 
 // LISTA OS DADOS PRINCIPAIS DO ASSOCIADO
-$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where cpf  = '$cpf'");
+$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais  where forekey  = '$cpf'");
 $dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
 
 // LISTA OS DADOS DO ENDERECO QUE ESTA AMARRADO AO ASSOCIADO PELA CHAVE ESTRANGEIRA 'CPF'
-$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where cpf  = '$cpf'");
+$queryDadosEnderecoAssociado = mysqli_query($conexao, "SELECT * from endereco  where forekey  = '$cpf'");
 $dadosEnderecoAssociado = mysqli_fetch_assoc($queryDadosEnderecoAssociado);
 
 // $result_usuario5 = "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'";
@@ -52,15 +52,15 @@ $dadosEnderecoAssociado = mysqli_fetch_assoc($queryDadosEnderecoAssociado);
 // $row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
 
 // REALIZA A CONEXAO COM A TABELA DEPENDENTES PARA SER LISTADA LÁ NA FRENTE COM 'WHILE' 
-$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where cpf_titular  = '$cpf_titular'");
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes  where forekey  = '$cpf'");
 
 // QUANTIDADE DE USUÁRIOS
-$resultado_usuario15 = mysqli_query($conexao, "SELECT COUNT(*) AS total from dependentes  where cpf_titular  = '$cpf' ");
+$resultado_usuario15 = mysqli_query($conexao, "SELECT COUNT(*) AS total from dependentes  where forekey  = '$cpf' ");
 $row_usuario15 = mysqli_fetch_assoc($resultado_usuario15);
 // SEM UTILIZAÇÃO POR ORA 
 
 // LISTA AS FOTOS VINCULADAS AO ASSOCIADO
-$queryFotosAssociados = mysqli_query($conexao, "SELECT * from fotos  where cpf_titular  = '$cpf'");
+$queryFotosAssociados = mysqli_query($conexao, "SELECT * from fotos  where forekey  = '$cpf'");
 $fotosAssociados = mysqli_fetch_assoc($queryFotosAssociados);
 
 // LISTA OS DADOS DO VENDEDOR
@@ -155,7 +155,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 main-box-wizard">
 
 							<div class="wizard-content">
-								<form action="alteracao.php?cpf=<?php echo $dadosGeraisAssociado['cpf'] ?>" method="POST" class="tab-wizard wizard-circle wizard">
+								<form action="alteracao.php?key=<?= $cpf ?>" method="POST" class="tab-wizard wizard-circle wizard">
 									<div class="btn-relative">
 
 										<?php
@@ -994,7 +994,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=rgfrente&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=rgfrente&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">
@@ -1019,7 +1019,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=rgverso&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=rgverso&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">
@@ -1044,7 +1044,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=cpf&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=cpf&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">
@@ -1069,7 +1069,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=compresidencia&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=compresidencia&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">
@@ -1094,7 +1094,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=cartao&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=cartao&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">
@@ -1119,7 +1119,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							</button>
 						</div>
 						<div class="modal-body">
-							<form method="POST" action="alterarfotos?nome=outro&cpf=<?php echo $cpf ?>" enctype="multipart/form-data">
+							<form method="POST" action="alterarfotos?nome=outro&key=<?= $cpf ?>" enctype="multipart/form-data">
 								<div class="drop-zone">
 									<span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
 									<input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input">

@@ -5,9 +5,11 @@ include_once('conexao.php');
 $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 $_SESSION['email']  = $post['email'];
+
 $nome               = mysqli_real_escape_string($conexao, trim($_POST['nome']));
 $cpf                = mysqli_real_escape_string($conexao, trim($_POST['cpf']));
 $cpf                = str_replace("-", "", str_replace(".", "", $cpf));
+
 $result_usuario     = "SELECT * from contratocartao where cpf = '$cpf'";
 $resultado_usuario  = mysqli_query($conexao, $result_usuario);
 $row_usuario        = mysqli_fetch_assoc($resultado_usuario);
@@ -160,6 +162,8 @@ $x = 0;
     $_SESSION['emissor']     = $_POST['emissor'];
     $_SESSION['admissao']    = $_POST['admissao'];
     $_SESSION['matricula']   = $_POST['matricula'];
+    
+    $_SESSION['forekey'] = md5(strtotime("last Sunday").strtotime("now"));
 
     header('Location: cadastrodependentes');
     exit;
