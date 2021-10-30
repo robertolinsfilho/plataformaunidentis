@@ -54,7 +54,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 						</div>
 						
 				</div>
-				<a href="cadastrovendedor"><button style="margin-left:81%;"class="btn btn-primary" >Cadastrar Vendedores</button></a>
+				<a href="cadastrovendedor"><button style="margin-left:80%;margin-top: -10%"class="btn btn-primary" >Cadastrar Vendedores</button></a>
 				<!-- Simple Datatable start -->
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 					<div class="clearfix mb-20">
@@ -64,7 +64,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 						</div>
 					</div>
 					<div class="row">
-						<table class="data-table stripe hover nowrap">
+						<table class="data-table stripe">
 							<thead>
 								<tr>
 									
