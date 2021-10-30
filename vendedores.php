@@ -147,6 +147,10 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 					targets: "datatable-nosort",
 					orderable: false,
 				}],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"language": {
 					"info": "_START_-_END_ of _TOTAL_ entries",
