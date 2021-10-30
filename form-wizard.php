@@ -185,7 +185,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 										<?php
 										};
 
-										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br' && $dadosGeraisAssociado['pagamento'] != 0 && $dadosGeraisAssociado['status'] == 'Em Analise' or $dadosGeraisAssociado['status'] == 'Em Averbação') {
+										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br' && $dadosGeraisAssociado['pagamento'] != 0 && $dadosGeraisAssociado['status'] == 'Em Analise' ) {
 										?>
 
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
