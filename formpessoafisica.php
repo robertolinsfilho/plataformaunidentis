@@ -267,7 +267,7 @@ if ($_SESSION['cpf'] === '') {
         ?>
         </div>
         <div class="d-flex flex-column">
-          <h6>O Contratante será o beneficiário do plano ? </h6>
+          <h6>O Contratante <?php echo $dono ?> será o beneficiário do plano ? </h6>
           <div class="d-flex">
             <div class="form-check form-check-inline mr-3">
               <input type="radio"  value="sim" name="beneficiario" id="inlineCheckbox1" required>
