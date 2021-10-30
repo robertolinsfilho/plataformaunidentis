@@ -192,15 +192,15 @@ if ($_SESSION['cpf'] === '') {
           
         <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" required>
+            <input type="text" name="nome" class="form-control" placeholder="*"  required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF:</label>
-            <input type="text" id="cpf" minlenght="14" name="cpf" class="form-control" required>
+            <input type="text" id="cpf" minlenght="14" name="cpf" placeholder="*" class="form-control" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Email:</label>
-            <input type="email" class="form-control" name="email" e-mail" required>
+            <input type="email" class="form-control" name="email" placeholder="*"   required>
           </div>
 
           <div class="col-md-3">
@@ -209,7 +209,7 @@ if ($_SESSION['cpf'] === '') {
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Celular:</label>
-            <input type="text" name="celular" id="celular" class="form-control" required>
+            <input type="text" name="celular" id="celular" class="form-control" placeholder="*"  required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado:</label>
@@ -256,11 +256,11 @@ if ($_SESSION['cpf'] === '') {
 
             <div class=" col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Matricula</label>
-            <input type="text" name="matricula" class="form-control" required>
+            <input type="text" name="matricula" class="form-control" placeholder="*"  required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data de Admissão</label>
-            <input type="date" name="admissao" class="form-control" required>
+            <input type="date" name="admissao" class="form-control" placeholder="*"  required>
           </div>
         <?php
           }

@@ -190,11 +190,11 @@ if (isset($_GET['key'])) {
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Whats's App:</label>
-            <input type="text" name="whats" minlenght="15" id="celular" class="form-control" placeholder="Whats's App:" required>
+            <input type="text" name="whats" minlenght="15" id="celular" class="form-control" placeholder="*"  required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">RG:</label>
-            <input type="text" name="rg" class="form-control" placeholder="RG" required>
+            <input type="text" name="rg" class="form-control"placeholder="*"  required>
           </div>
 
           <div class="col-md-3">
@@ -209,16 +209,16 @@ if (isset($_GET['key'])) {
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data Nascimento</label>
-            <input type="text" name="datas" id="data" class="form-control" placeholder="DD/MM/ANO" required>
+            <input type="text" name="datas" id="data" class="form-control" placeholder="DD/MM/ANO *" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Orgao Expedidor</label>
-            <input type="text" name="expedidor" class="form-control" placeholder="Orgao Expedidor" required>
+            <input type="text" name="expedidor" class="form-control"placeholder="*"  required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome da Mae</label>
-            <input type="text" name="mae" class="form-control" placeholder="Nome da Mae" required>
+            <input type="text" name="mae" class="form-control"placeholder="*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone fixo</label>
