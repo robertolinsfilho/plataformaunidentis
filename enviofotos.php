@@ -4,6 +4,12 @@ include("conexao.php");
 
 session_start();
 
+$forekey = $_SESSION['forekey'];
+
+// Apaga se existir
+$sql5 = "DELETE FROM fotos WHERE forekey='$forekey'";
+$conexao->query($sql5);
+
 $SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {
     $arquivo10 = $_FILES['arquivo10'];
@@ -138,7 +144,6 @@ if ($SendCadImg) {
 
 $result = mysqli_query($conexao, $sql);
 $row = mysqli_fetch_assoc($result);
-$forekey = $_SESSION['forekey'];
 
 
 

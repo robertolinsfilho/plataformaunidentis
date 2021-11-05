@@ -1,0 +1,121 @@
+/* SYTLE CHART */
+
+div.openChart {
+  cursor: pointer;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  line-height: 0rem;
+  background-color: #ffffff;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  border-radius: 50%;
+  z-index: -999;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 10%);
+}
+
+@keyframes showUp {
+  0% {
+    top: 0;
+    z-index: -999;
+  }
+  50% {
+    top: 110%;
+    z-index: 0;
+  }
+  100% {
+    top: 70%;
+    z-index: 0;
+  }
+}
+
+div#showBtnChart:hover div.openChart {
+  animation: showUp 1s ease-in-out;
+  top: 64%;
+  z-index: 0;
+}
+
+div.openChart i {
+  display: block;
+  padding: 0 !important;
+  margin: 0 auto;
+}
+
+div#chart {
+  margin-top: -2rem;
+  visibility: hidden;
+  position: relative;
+  bottom: -100vh;
+  transition: 1s ease-in-out;
+}
+
+div#chart.show {
+  visibility: visible;
+  bottom: 0;
+}
+
+div#chart select {
+  font-size: 0.9rem;
+  line-height: 1rem;
+  width: 6.5rem;
+  height: 2rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+div#chart canvas {
+  margin-top: 1rem;
+  width: 100%;
+  max-height: 200px;
+}
+
+/* loader */
+
+#loader {
+  position: absolute;
+  height: 84%;
+  top: 16%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  visibility: hidden;
+  background: #f6f6f6;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 0.25rem solid #023bbf;
+  border-top-color: #e2eefd;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

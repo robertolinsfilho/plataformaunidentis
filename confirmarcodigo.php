@@ -96,12 +96,13 @@ if (!empty($_POST['codigo'])) {
                 </div>
                 <div class="modal-body">
                     <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="240">
-                    <h4>Por favor, digite o código que foi enviado para <?php echo $_SESSION['emaildependente'] ?></h4>
+                    <h4 style="font-size: 1.25rem; line-height: 1.75rem">Por favor, digite o código que foi enviado para
+                    <?php echo $_SESSION['emaildependente'] ?></h4>
                     <form method="post" action="confirmarcodigo">
                         <?php if ($x != 1 && isset($_POST['codigo'])) { ?>
 
                             <div class="alert alert-warning" role="alert">
-                                <h4>Código incorreto tente novamente!!!</h4>
+                                <h4 style="font-size: 1rem; line-height: 1.5rem">Código incorreto tente novamente!!!</h4>
                             </div>
                         <?php } ?>
                         <br>

@@ -5,6 +5,8 @@ $cpf = $_SESSION['cpf'];
 $result_usuario = "SELECT * from endereco where cpf ='$cpf'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
+
+$_SESSION['emaildependente'] = $_POST['email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -13,125 +13,150 @@ $result_usuario = "SELECT * from dadospessoais where forekey ='$cpf'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
-$result_usuario2 = "SELECT * from dependentes where forekey ='$cpf'";
-$resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
-$row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes where forekey ='$cpf'");
+$dadosDependentes = mysqli_fetch_assoc($queryDadosDependentes);
 
-$uCpf = $row_usuario['cpf'];
+$uCpf = $dadosDependentes['cpf_titular'];
 
 //consultar no banco de dados
 $_SESSION['cpfnova'] = $uCpf;
 
 $url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfDependente=$uCpf";
-
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 $resultado = json_decode(curl_exec($curl), true);
-$resultado = $resultado['dados'];
-$x = 0;
+// Fecha a conexão
+curl_close($curl);
+
+$x = $resultado['dados'];
+$total = count($x);
+$total = $total - 1;
 $y = 0;
 $z = 0;
+$j = 0;
 
-foreach ($resultado as $value) {
-
-	foreach ($value['dependentes'] as $value1) {
-
-		foreach ((array)$value1['nomeSituacao'] as $value2) {
-
-			if ($value2 != 'CANCELADO') {
-				$x = 1;
-				$_SESSION['nomedependente']        = $value1['nomeDependente'];
-				$_SESSION['nometitular']           = $value['nome'];
-				$_SESSION['numerocpf']             = $value['cpf'];
-				$_SESSION['datanascimentotitular'] = $value['dataDeNascimento'];
-				$_SESSION['codresp']               = $value['codigo'];
-				$_SESSION['codigodependente']      = $value1['codigoDependente'];
-				$_SESSION['rgdependente']          = $value['rg'];
-				$_SESSION['cidade']                = $value['cidade'];
-				$_SESSION['sexotitular']           = $value['sexo'];
-				$_SESSION['sexodependente']        = $value1['sexo'];
-				$_SESSION['cepdependente']         = $value['cep'];
-				$_SESSION['ruadependente']         = $value['logradouro'];
-				$_SESSION['bairrodependente']      = $value['bairro'];
-				$_SESSION['cepdependente']         = $value['cep'];
-				$_SESSION['ufdependente']          = $value['ufSigla'];
-				$_SESSION['numerodependente']      = $value['numero'];
-				$_SESSION['nomedependente']        = $value1['nomeDependente'];
-				$_SESSION['nomeplano']             = $value1['nomePlano'];
-			}
-		}
+// Get data
+for ($i = 0; $i <= $total; $i++) {
+$y = $x[$i]['dependentes'];
+$plano =  $y[0]['nomePlano'];
+// echo $x["$i"]['dependentes'][0]['nomeSituacao'] . " $i ";
+	if ($x[$i]['dependentes'][0]['nomeSituacao'] == 'ATIVO') {
+		$nome = $x[$i]['nome'];
+		$contrato = $x[$i]['codigo'];
+		$nascimento = $x[$i]['dataDeNascimento'];
+		$sexo = $x[$i]['sexo'];
+		$uCpf = $x[$i]['cpf'];
+		$rg = $x[$i]['rg'];
+		$cep = $x[$i]['cep'];
+		foreach($x[$i]['contatos'] as $value):
+			if($value['tipo'] == "Fixo" || $value['tipo'] == "Celular") :
+				$telefone = $value['descricaoContato'];				
+			endif;
+			if($value['tipo'] == "E-mail") :
+				$email = $value['descricaoContato'];
+			endif;
+		endforeach;
+		$rua = $x[$i]['logradouro'];
+		$numero = $x[$i]['numero'];
+		$cidade = $x[$i]['cidade'];
+		$uf = $x[$i]['ufSigla'];
 	}
 }
 
-foreach ($resultado as $value) {
+// foreach ($resultado as $value) {
 
-	foreach ($value['dependentes'] as $value1) {
+// 	foreach ($value['dependentes'] as $value1) {
 
-		foreach ((array)$value['contatos'] as $value2) {
-
-
-			if ($value1['nomeSituacao'] != 'CANCELADO') {
-
-				if ($value2['tipo'] == 'Celular') {
-					$_SESSION['celulardependente'] = $value2['descricaoContato'];
-					$y = 1;
-				}
-				if ($value2['tipo'] == 'E-mail') {
-					$_SESSION['emaildependente'] = $value2['descricaoContato'];
-					$z = 1;
-				}
-			}
-		}
-	}
-}
-$result_usuario3 = "SELECT * from dependentes where forekey ='$cpf'";
-$resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
-$row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
-
-if ($row_usuario3['parenstesco'] = 3) {
-	$parentesco = 'Cônjuge';
-} elseif ($row_usuario2['parenstesco'] = 4) {
-	$parentesco = 'Filho';
-} elseif ($row_usuario2['parenstesco'] = 6) {
-	$parentesco = 'Enteado';
-} elseif ($row_usuario2['parentesco']  = 8) {
-	$parentesco = 'Pai/Mãe';
-} elseif ($row_usuario2['parentesco']  = 10) {
-	$parentesco = 'Outros';
-}
+// 		foreach ((array)$value['contatos'] as $value2) {
 
 
-if ($row_usuario3['sexo'] = 1) {
-	$sexo = 'Masculino';
-} else {
-	$sexo = 'Feminino';
-}
-if ($row_usuario6['sexo'] = 1) {
-	$sexo = 'Masculino';
-} else {
-	$sexo = 'Feminino';
-}
+// 			if ($value1['nomeSituacao'] != 'CANCELADO') {
+
+// 				if ($value2['tipo'] == 'Celular') {
+// 					$_SESSION['celulardependente'] = $value2['descricaoContato'];
+// 					$y = 1;
+// 				}
+// 				if ($value2['tipo'] == 'E-mail') {
+// 					$_SESSION['emaildependente'] = $value2['descricaoContato'];
+// 					$z = 1;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// $result_usuario3 = "SELECT * from dependentes where forekey ='$cpf'";
+// $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
+// $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
+
+/**  ?????   **/
 $result_usuario12 = "SELECT * from vendedor where email = '$_SESSION[usuario]'";
 $resultado_usuario12 = mysqli_query($conexao, $result_usuario12);
 $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			//When page loads...
+			$("ul.tabs li:first-child a").addClass("active").show(); //Activate first tab
+			$(".tab_content #link1").css("display", "block"); //Show first tab content
+
+			//On Click Event
+			$("ul.tabs li a").click(function() {
+
+				$("ul.tabs li a").removeClass("active"); //Remove any "active" class
+				$(".tab_content div").css("display", "none");
+
+				$(this).addClass("active"); //Add "active" class to selected tab
+
+
+				var activeTab = $(this).attr("href"); //Find the href attribute value to identify the active tab + content
+				$(activeTab).fadeIn(); //Fade in the active ID content
+				return false;
+			});
+
+		});
+	</script>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/build/jquery.steps.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/formWizard.css">
 	<style>
-		label {
-			color: #0099ff;
-		}
+		<?php
+			if ($_SESSION['usuario']  == 'cadastro@s4e.com.br'):
+		?>
+			div.ui-tabs.ui-corner-all.ui-widget.ui-widget-content{
+				position: relative;
+				top: -2rem;
+			}
+			ul.tabs{
+				top: -5rem;
+			}
 
-		.form-group {
-			background-color: aliceblue;
-			padding: 12px;
-			border-radius: 5px;
-
+			div.submitBtns{
+				position: relative;
+				top: -2rem;
+			}
+		<?php
+			else:
+		?>
+			div.ui-tabs.ui-corner-all.ui-widget.ui-widget-content{
+				position: relative;
+				top: -2rem;
+			}
+			ul.tabs{
+				top: -2.75rem;
+			}
+		<?php
+			endif;
+		?>
+		input[type=submit]{
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -140,232 +165,234 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 	<?php include('include/header.php'); ?>
 	<?php include('include/sidebar.php'); ?>
 	<div class="main-container">
-		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+		<div class="pd-ltr-20 height-100-p xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Resumo da Proposta</h4>
-							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Resumo da Proposta</li>
+									<li class="breadcrumb-item active" aria-current="page">Resumo Dependentes</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-
-						</div>
-
-						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-							<div class="clearfix">
-								<h4 class="text-blue">Detalhes</h4>
-
-							</div>
+						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 main-box-wizard">
 							<div class="wizard-content">
-								<form action="alteracao.php?cpf=<?php echo $row_usuario['cpf'] ?>&id=<?php echo $id ?>" method="POST" class="tab-wizard wizard-circle wizard"><br>
-									<div style="text-align:right;">
+								<form action="alteracao.php?key=<?= $cpf ?>&id=<?= $id ?>" method="POST" class="tab-wizard wizard-circle wizard"><br>
+									<div class="submitBtns" style="text-align:right;">
 
 										<?php
-
-										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br' &&  $row_usuario3['status'] === 'Em Analise') {
+										if ($_SESSION['usuario']  === 'cadastro@s4e.com.br' &&  $dadosDependentes['status'] === 'Em Analise') {
 										?>
 
-											<input type="submit" value="Implantar" name="status" class="btn btn-success">
-											<input type="submit" value="Cancelar" name="status" class="btn btn-danger">
 											<input type="submit" value="Indeferir" name="status" class="btn btn-primary">
+											<input type="submit" value="Cancelar" name="status" class="btn btn-danger">
+											<input type="submit" value="Implantar" name="status" class="btn btn-success">
 
 										<?php
-										} elseif ($_SESSION['usuario']  === 'cadastro@s4e.com.br' &&  $row_usuario3['status'] === 'Indeferido') {
+										} elseif ($_SESSION['usuario']  === 'cadastro@s4e.com.br' &&  $dadosDependentes['status'] === 'Indeferido') {
 										?>
-											<input type="submit" value="Implantar" name="status" class="btn btn-success">
 											<input type="submit" value="Cancelar" name="status" class="btn btn-danger">
-
+											<input type="submit" value="Implantar" name="status" class="btn btn-success">
 
 										<?php
 										} else {
 										}
 										?>
-									</div><br>
+									</div>
+									<div id="tabs">
+										<ul class="tabs">
+											<li><a class="tab_content" href="#tabs-1">Responsavel Financeiro</a></li>
+											<li><a class="tab_content" href="#tabs-2">Beneficiários</a></li>
+										</ul>
+										<div id="tabs-1">
+											<div class="flexLabel">
+												<label class="labelInput">Responsavel Financeiro</label>
+												<hr>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label>Nome :</label>
+														<input type="text" value="<?= $nome?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Contrato :</label>
+														<input type="text" value="<?= $contrato ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Data Nascimento:</label>
+														<input type="text" value="<?= substr($nascimento, 0, 10) ?>" class="form-control" readonly>
+													</div>
+												</div>
 
+											</div>
+											<div class="row">
 
-									<br>
+												<div class="col-md-2">
+													<div class="form-group">
+														<label>Sexo:</label>
+														<input type="text" value="<?= $sexo ?>" class="form-control" readonly>
+													</div>
+												</div>
 
-									<!-- Step 2 -->
-									<h5>Responsavel Financeiro</h5>
-									<section>
-										<div class="row">
-											<div class="col-md-5">
-												<div class="form-group">
-													<label>Nome :</label>
-													<input type="text" value="<?php echo $_SESSION['nometitular'] ?>" class="form-control" readonly>
+												<div class="col-md-4">
+													<div class="form-group">
+														<label>CPF:</label>
+														<input type="text" value="<?= $uCpf ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>RG:</label>
+														<input type="text" value="<?= $rg ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Telefone:</label>
+														<input type="text" value="<?= $telefone ?>" class="form-control" readonly>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Contrato :</label>
-													<input type="text" value="<?php echo $_SESSION['codresp'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Data Nascimento:</label>
-													<input type="text" value="<?php echo substr($_SESSION['datanascimentotitular'], 0, 10) ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-										</div>
-										<div class="row">
-
-											<div class="col-md-2">
-												<div class="form-group">
-													<label>Sexo:</label>
-													<input type="text" value="<?php echo $_SESSION['sexotitular'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>CPF:</label>
-													<input type="text" value="<?php echo $_SESSION['numerocpf'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>RG:</label>
-													<input type="text" value="<?php echo $_SESSION['rgdependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Telefone:</label>
-													<input type="text" value="<?php echo $_SESSION['celulardependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>E-mail:</label>
-													<input type="text" value="<?php echo $_SESSION['emaildependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-
-
-											<div class="col-md-2">
-												<div class="form-group">
-													<label>CEP:</label>
-													<input type="text" name="cep" value="<?php echo $_SESSION['cepdependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label> Rua:</label>
-													<input type="text" name="rua" value="<?php echo $_SESSION['ruadependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Numero:</label>
-													<input type="text" name="numero" value="<?php echo $_SESSION['numerodependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Cidade:</label>
-													<input type="text" name="cidade" value="<?php echo  $_SESSION['cidade'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Estado:</label>
-													<input type="text" name="estado" value="<?php echo $_SESSION['ufdependente'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-
-										</div>
-									</section>
-									<!-- Step 3 -->
-									<h5>Beneficiarios</h5>
-									<section>
-										<h4 class="text-blue"> Dependente: </h4>
-										<br>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Codigo Resp Financeiro:</label>
-													<input type="text" value="<?php echo $_SESSION['codresp'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>CPF:</label>
-													<input type="text" value="<?php echo $row_usuario3['cpf'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label> Nome:</label>
-													<input type="text" value="<?php echo $row_usuario3['nome'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label> Data Nascimento:</label>
-													<input type="text" value="<?php echo $row_usuario3['datas'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Sexo:</label>
-													<input type="text" value="<?php echo $sexo ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Estado Civil:</label>
-													<input type="text" value="<?php echo $row_usuario3['estadocivil'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-
-
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>CNS :</label>
-													<input type="text" value="<?php echo $row_usuario3['cns'] ?>" class="form-control" readonly>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label> Mãe:</label>
-													<input type="text" value="<?php echo $row_usuario3['mae'] ?>" class="form-control" readonly>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="form-group">
+														<label>E-mail:</label>
+														<input type="text" value="<?= $email ?>" class="form-control" readonly>
+													</div>
 												</div>
 
 
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label> Parenstesco:</label>
-													<input type="text" value="<?php echo $parentesco ?>" class="form-control" readonly>
+
+												<div class="col-md-2">
+													<div class="form-group">
+														<label>CEP:</label>
+														<input type="text" name="cep" value="<?= $cep ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group">
+														<label> Rua:</label>
+														<input type="text" name="rua" value="<?= $rua ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<div class="form-group">
+														<label>Numero:</label>
+														<input type="text" name="numero" value="<?= $numero ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Cidade:</label>
+														<input type="text" name="cidade" value="<?= $cidade ?>" class="form-control" readonly>
+													</div>
+												</div>
+
+
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Estado:</label>
+														<input type="text" name="estado" value="<?= $uf ?>" class="form-control" readonly>
+													</div>
 												</div>
 
 
 											</div>
 										</div>
-										<br><br>
+										<div id="tabs-2">
+											<div class="flexLabel">
+												<label class="labelInput">Beneficiarios</label>
+												<hr>
+											</div>
+											<div class="row">
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Codigo Resp Financeiro:</label>
+														<input type="text" value="<?= $contrato ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>CPF:</label>
+														<input type="text" value="<?= $dadosDependentes['cpf'] ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label> Nome:</label>
+														<input type="text" value="<?= $dadosDependentes['nome'] ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label> Data Nascimento:</label>
+														<input type="text" value="<?= $dadosDependentes['datas'] ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Sexo:</label>
+														<input type="text" value="<?= $dadosDependentes['sexo'] == 1 ? "Masculino" : "Feminino" ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>Estado Civil:</label>
+														<input type="text" value="<?= $dadosDependentes['estadocivil'] ?>" class="form-control" readonly>
+													</div>
+												</div>
 
 
+												<div class="col-md-3">
+													<div class="form-group">
+														<label>CNS :</label>
+														<input type="text" value="<?= $dadosDependentes['cns'] ?>" class="form-control" readonly>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label> Mãe:</label>
+														<input type="text" value="<?= $dadosDependentes['mae'] ?>" class="form-control" readonly>
+													</div>
 
 
-
-
-									</section>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label> Parenstesco:</label>
+														<?php 
+														$parentsc;
+														switch ($dadosDependentes['parentesco']) {
+														  case '4':
+															$parentsc = 'Filho';
+															break;
+														  case '3':
+															$parentsc = 'Conjuge';
+															break;
+														  case '6':
+															$parentsc = 'Enteado';
+															break;
+														  case '8':
+															$parentsc = 'Pai/mãe';
+															break;
+														  case '10':
+															$parentsc = 'Outro(a)';
+															break;
+														};
+														?>
+														<input type="text" value="<?= $parentsc ?>" class="form-control" readonly>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 									<!-- Step 4 -->
 
 
@@ -462,21 +489,11 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 	</div>
 	<?php include('include/script.php'); ?>
 	<script src="src/plugins/jquery-steps/build/jquery.steps.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
-		$(".tab-wizard").steps({
-			headerTag: "h5",
-			bodyTag: "section",
-			transitionEffect: "fade",
-			titleTemplate: '<span class="step">#index#</span> #title#',
-			labels: {
-				finish: "Proximo",
-				next: "Proximo",
-				previous: "Anterior",
-			},
-			onStepChanged: function(event, currentIndex, priorIndex) {
-				$('.steps .current').prevAll().addClass('disabled');
-			},
-
+		$(function() {
+			$("#tabs").tabs();
 		});
 	</script>
 </body>

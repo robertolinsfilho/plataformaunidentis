@@ -3,18 +3,18 @@ include "conexao.php";
 session_start();
 function generatePassword($qtyCaraceters = 8)
 {
-    //Letras minúsculas embaralhadas
-    $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
+    // //Letras minúsculas embaralhadas
+    // $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
  
-    //Letras maiúsculas embaralhadas
-    $capitalLetters = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    // //Letras maiúsculas embaralhadas
+    // $capitalLetters = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
  
     //Números aleatórios
     $numbers = (((date('Ymd') / 12) * 24) + mt_rand(800, 9999));
     $numbers .= 1234567890;
  
-    //Caracteres Especiais
-    $specialCharacters = str_shuffle('!@#$%*-');
+    // //Caracteres Especiais
+    // $specialCharacters = str_shuffle('!@#$%*-');
  
     //Junta tudo
     $characters = $numbers.$numbers.$numbers.$numbers;
@@ -25,29 +25,27 @@ function generatePassword($qtyCaraceters = 8)
     //Retorna a senha
     return $password;
 }
-$_SESSION['senhadependente'] = generatePassword(5);
+$_SESSION['senhadependente'] = generatePassword(6);
 
-$cpf =$_POST['cpf'];
+$cpf = str_replace("-", "", str_replace(".", "", $_POST['cpf']));
+$nome        = $_POST['nome'];
+$parentesco  = $_POST['parentesco'];
+$sexo        = $_POST['sexo'];
+$cpf_titular = $_POST['cpf_titular'];
+$cns         = $_POST['cns'];
+$estadocivil = $_POST['estadocivil'];
+$datas       = $_POST['datas'];
+$mae         = $_POST['mae'];
+$forekey     = $_SESSION['forekey'];
 
-$cpf = str_replace(".", "", $cpf);
-$cpf = str_replace("-", "", $cpf);
-$nome =$_POST['nome'];
-$parentesco =$_POST['parentesco'];
-$sexo =$_POST['sexo'];
-$cpf_titular =$_POST['cpf_titular'];
-$cns =$_POST['cns'];
-$estadocivil =$_POST['estadocivil'];
-$datas =$_POST['datas'];
-$mae =$_POST['mae'];
+print_r($forekey);
+
 if(empty($_SESSION['vendedor1'])){
     $_SESSION['vendedor1'] = 'sac2@unidentis.com.br';
-
 }
 $data_atual = date("Y");
 $data = substr($datas, 6);
 $data1 = $data_atual - $data;
-echo $data1;
-echo $cpf;
 
  if($data1 > 17 && empty($_POST['cpf'])){
 
@@ -137,15 +135,13 @@ echo $cpf;
 </script>
 <?php
 exit();
- }
+}
 
+$sql = "INSERT INTO dependentes (nome, cpf, sexo, estadocivil, datas, mae, cpf_titular, cns,parentesco,ativo,vendedor,vizu,senha, forekey) 
+VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular','$cns','$parentesco','1','{$_SESSION['vendedor1']}', '0','{$_SESSION['senhadependente']}', '$forekey')";
 
-$sql = "INSERT INTO dependentes (nome, cpf, sexo, estadocivil, datas, mae, cpf_titular, cns,parentesco,ativo,vendedor,vizu,senha) 
-VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular','$cns','$parentesco','1','$_SESSION[vendedor1]', '0','$_SESSION[senhadependente]')";
-
-if($conexao->query($sql) ===TRUE){
+if($conexao->query($sql) === TRUE){
     header('Location: dependentes3');
-
 }else{
    $conexao->$sql1->Log::error('message');
    echo "entrou";

@@ -60,6 +60,9 @@ div#form-group .row div.form-group {
 }
 
 @media (max-width: 768px) {
+  #voltar{
+    display: none;
+  }
   #tarjaH4 {
     height: auto;
     font-size: 1rem;

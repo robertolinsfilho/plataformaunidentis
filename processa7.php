@@ -4,9 +4,6 @@
 
 <body>
   <style>
-    body {
-      background-color: black;
-    }
   </style>
   <?php
   // Import PHPMailer classes into the global namespace
@@ -50,16 +47,18 @@
 
   // Instantiation and passing `true` enables exceptions
   $mail = new PHPMailer(true);
+  print_r($emailVendedor);
+  echo '<br>';
 
   try {
     //Server settings
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->CharSet    = 'UTF-8';                         // setting character encoding
     $mail->Host       = 'smtp.gmail.com';                // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                            // Enable SMTP authentication
     $mail->Username   = 'unidentis.mail@unidentis.com.br';           // SMTP username
-    $mail->Password   = 'xufmywracayppchy';                      // SMTP password
+    $mail->Password   = 'hiuqxpsyltfpxaep';                      // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                             // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
@@ -248,7 +247,7 @@
     echo "<script>window.location.assign('pendente.php')</script>";
     exit;
   } catch (Exception $e) {
-    echo "<p style='color: #ffffff;'>";
+    echo "<p>";
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     echo 'Erro no Envio do E-mail contate o administrador ';
     echo "</p>";

@@ -157,6 +157,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 							<div class="wizard-content">
 								<form action="alteracao.php?key=<?= $cpf ?>" method="POST" class="tab-wizard wizard-circle wizard">
 									<div class="btn-relative">
+										<input type="submit" value="Alterar" name="status" class="btn btn-outline-secondary">
 
 										<?php
 										if ($dadosGeraisAssociado['status'] == 'Nova') {
@@ -196,7 +197,6 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 											</button>
 
 											<input type="submit" value="Implantadas" name="status" class="btn btn-success">
-											<input type="submit" value="Alterar" name="status" class="btn btn-dark">
 
 										<?php
 										} elseif ($dadosGeraisAssociado['status'] == 'Indeferido'  and $_SESSION['usuario']  === 'cadastro@s4e.com.br' and $dadosGeraisAssociado['pagamento'] != 0) {
@@ -209,7 +209,6 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 										<?php
 										} elseif ($dadosGeraisAssociado['status'] == 'Indeferido'  and $_SESSION['usuario']  != 'cadastro@s4e.com.br' and $dadosGeraisAssociado['pagamento'] != 0) {
 										?>
-											<input type="submit" value="Alterar" name="status" class="btn btn-dark">
 											<input type="submit" value="Enviar para Analise" name="status" class="btn btn-success">
 
 										<?php
@@ -321,7 +320,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Codigo Corretora </label>
-														<input type="text" value="<?php echo $dadosVendedor['email'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosVendedor['email'] ?>" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -406,13 +405,13 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Nome </label>
-														<input type="text" name="nome" value="<?php echo $dadosGeraisAssociado['nome'] ?>" class="form-control" readonly>
+														<input type="text" name="nome" value="<?php echo $dadosGeraisAssociado['nome'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CPF</label>
-														<input type="text" value="<?php echo $dadosGeraisAssociado['cpf'] ?>" class="form-control" readonly>
+														<input type="text" name="cpf" value="<?php echo $dadosGeraisAssociado['cpf'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
@@ -444,7 +443,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Data de Nascimento</label>
-														<input type="text" value="<?php echo $dadosPrincipaisAssociado['datas'] ?>" class="form-control" readonly>
+														<input type="text" name="nascimento" value="<?php echo $dadosPrincipaisAssociado['datas'] ?>" class="form-control">
 													</div>
 												</div>
 
@@ -458,7 +457,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Nome da Mãe</label>
-														<input type="text" value="<?php echo $dadosGeraisAssociado['mae'] ?>" class="form-control" readonly>
+														<input type="text" name="mae" value="<?php echo $dadosGeraisAssociado['mae'] ?>" class="form-control">
 													</div>
 												</div>
 
@@ -469,27 +468,27 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Cartão do SUS</label>
-														<input type="text" name="sus" value="<?php echo $dadosGeraisAssociado['sus'] ?>" class="form-control" readonly>
+														<input type="text" name="sus" value="<?php echo $dadosGeraisAssociado['sus'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>E-mail</label>
-														<input type="text" name="email" value="<?php echo $dadosGeraisAssociado['email'] ?>" class="form-control" readonly>
+														<input type="text" name="email" value="<?php echo $dadosGeraisAssociado['email'] ?>" class="form-control">
 													</div>
 												</div>
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Telefone 1</label>
-														<input type="text" value="<?php echo $dadosGeraisAssociado['celular'] ?>" class="form-control" readonly>
+														<input type="text" name="celular" value="<?php echo $dadosGeraisAssociado['celular'] ?>" class="form-control">
 													</div>
 												</div>
 
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Telefone 2</label>
-														<input type="text" value="<?php echo $dadosPrincipaisAssociado['whats'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosPrincipaisAssociado['whats'] ?>" class="form-control">
 													</div>
 												</div>
 
@@ -498,19 +497,19 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-1">
 													<div class="form-group">
 														<label>Local</label>
-														<input type="text" value="<?php echo $dadosGeraisAssociado['local'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosGeraisAssociado['local'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>CEP</label>
-														<input type="text" name="cep" value="<?php echo $dadosEnderecoAssociado['cep'] ?>" class="form-control">
+														<input type="text" name="cep" value="<?php echo $dadosEnderecoAssociado['cep'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Rua</label>
-														<input type="text" name="rua" value="<?php echo $dadosEnderecoAssociado['rua'] ?>" class="form-control">
+														<input type="text" name="rua" value="<?php echo $dadosEnderecoAssociado['rua'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-2">
@@ -522,13 +521,13 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Cidade</label>
-														<input type="text" name="cidade" value="<?php echo $dadosEnderecoAssociado['cidade'] ?>" class="form-control">
+														<input type="text" name="cidade" value="<?php echo $dadosEnderecoAssociado['cidade'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-2">
 													<div class="form-group">
 														<label>Estado</label>
-														<input type="text" name="estado" value="<?php echo $dadosEnderecoAssociado['estado'] ?>" class="form-control">
+														<input type="text" name="estado" value="<?php echo $dadosEnderecoAssociado['estado'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-4">
@@ -541,7 +540,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-2">
 														<div class="form-group">
 															<label>Senha</label>
-															<input type="text" name="senha" value="<?php echo $dadosPrincipaisAssociado['initpass'] ?>" class="form-control">
+															<input type="text" name="senha" value="<?php echo $dadosPrincipaisAssociado['initpass'] ?>" class="form-control" readonly>
 														</div>
 													</div>
 												<?php endif ?>
@@ -563,25 +562,25 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Nome</label>
-														<input type="text" value="<?php echo $dadosTitular['nome'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['nome'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Mãe</label>
-														<input type="text" value="<?php echo $dadosTitular['mae'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['mae'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CPF</label>
-														<input type="text" value="<?php echo $dadosTitular['cpf'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['cpf'] ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Estado Civil</label>
-														<input type="text" value="<?php echo $dadosTitular['estado'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['estado'] ?>" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -589,20 +588,20 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Sexo </label>
-														<input type="text" value="<?php echo $sexo ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $sexo ?>" class="form-control">
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Cartão do SUS</label>
-														<input type="text" value="<?php echo $dadosTitular['sus'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['sus'] ?>" class="form-control">
 													</div>
 
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Data de Nascimento</label>
-														<input type="text" value="<?php echo $dadosTitular['nascimento'] ?>" class="form-control" readonly>
+														<input type="text" value="<?php echo $dadosTitular['nascimento'] ?>" class="form-control">
 													</div>
 
 												</div>
@@ -640,7 +639,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Cpf</label>
-															<input type="text" value="<?php echo $dadosDependentes['cpf'] ?>" class="form-control" readonly>
+															<input type="text" name="cpf_dependente" value="<?php echo $dadosDependentes['cpf'] ?>" class="form-control">
 														</div>
 
 													</div>
@@ -649,7 +648,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Datas de nascimento</label>
-															<input type="text" value="<?php echo $dadosDependentes['datas'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['datas'] ?>" class="form-control">
 														</div>
 
 													</div>
@@ -658,7 +657,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Sexo</label>
-															<input type="text" value="<?php echo $sexo ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $sexo ?>" class="form-control">
 														</div>
 
 													</div>
@@ -667,7 +666,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Mãe</label>
-															<input type="text" value="<?php echo $dadosDependentes['mae'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['mae'] ?>" class="form-control">
 														</div>
 
 													</div>
@@ -676,7 +675,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Cns</label>
-															<input type="text" value="<?php echo $dadosDependentes['cns'] ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $dadosDependentes['cns'] ?>" class="form-control">
 														</div>
 
 													</div>
@@ -697,7 +696,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<div class="col-md-3">
 														<div class="form-group">
 															<label> Parentesco</label>
-															<input type="text" value="<?php echo $parentesco ?>" class="form-control" readonly>
+															<input type="text" value="<?php echo $parentesco ?>" class="form-control">
 														</div>
 
 													</div>
@@ -722,10 +721,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<label class="labelInput">Imagens</label>
 													<hr>
 												</div>
+												<div class="alert alert-success rotate-success" role="alert" style="position:absolute;visibility: hidden;">
+													Rotação realizada com sucesso! Clique na imagem para ver a alteração!
+												</div>
 												<div class="row">
-													<?php
-
-													?>
 
 													<div class="col-md-4">
 														<div class="form-group">
@@ -734,11 +733,15 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<a href="fotos/<?php echo $fotosAssociados['rgfrente'] ?>" target="_blank">
 																<div class='wBackImg' style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['rgfrente']);
-																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgfrente']; ?>")'></div>
+																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgfrente']; ?>");'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
 																Editar
 															</button>
+															<?php if($end[count($end) - 1] != 'pdf'):?>
+															<button type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<?php endif?>
 														</div>
 													</div>
 
@@ -755,6 +758,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
 																Editar
 															</button>
+															<?php if($end[count($end) - 1] != 'pdf'):?>
+															<button type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<?php endif?>
 														</div>
 
 													</div>
@@ -772,6 +779,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7">
 																Editar
 															</button>
+															<?php if($end[count($end) - 1] != 'pdf'):?>
+															<button type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<?php endif?>
 														</div>
 
 													</div>
@@ -789,6 +800,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8">
 																Editar
 															</button>
+															<?php if($end[count($end) - 1] != 'pdf'):?>
+															<button type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<?php endif?>
 														</div>
 
 													</div>
@@ -807,6 +822,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																</a>
 
 																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Editar</button>
+																<?php if($end[count($end) - 1] != 'pdf'):?>
+																<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+																<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+																<?php endif?>
 															</div>
 
 														</div>
@@ -821,6 +840,10 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['outro']; ?>")'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">Editar</button>
+															<?php if($end[count($end) - 1] != 'pdf'):?>
+															<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<?php endif?>
 														</div>
 
 													</div>
@@ -1133,6 +1156,12 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 					</div>
 				</div>
 			</div>
+
+			<!-- ROTATE IMAGE SECTION -->
+			<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+			<script src="./assets/js/rotate-img.js"></script>
+			<!-- END ROTATE IMAGE SECTION -->
+
 			<script>
 				document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 					const dropZoneElement = inputElement.closest(".drop-zone");

@@ -74,7 +74,7 @@ $conexao->query($sql);
                 <div class="modal-body">
                     <br>
                     <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" alt="" width="240">
-                    <h4> <?php echo $_SESSION['sms'] ?></h4>
+                    <h4 style="font-size: 1.25rem; line-height: 1.75rem"> <?php echo $_SESSION['sms'] ?></h4>
                 </div>
                 <div class="modal-footer">
                     <a href="incluirdependentes"> <button type="button" class="btn btn-secondary">Fechar</button></a>

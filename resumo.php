@@ -3,16 +3,21 @@ session_start();
 include_once('conexao.php');
 error_reporting(0);
 
-$result_usuario = "SELECT * from dadospessoais where cpf ='$cpf'";
+$forekey = $_SESSION['forekey'];
+
+$result_usuario = "SELECT * from dadospessoais where forekey ='$forekey'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
-$result_usuario2 = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]'";
+
+$result_usuario2 = "SELECT * from dependentes where forekey ='$forekey'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
-$result_usuario3 = "SELECT * from dadosprincipais where cpf ='$cpf'";
+
+$result_usuario3 = "SELECT * from dadosprincipais where forekey ='$forekey'";
 $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
 $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
-$result_usuario6 = "SELECT * from dependentes  where cpf_titular  = '$_SESSION[cpf]' ";
+
+$result_usuario6 = "SELECT * from dependentes  where forekey ='$forekey'";
 $resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
 
 switch ($_SESSION['sexo']) {
@@ -146,7 +151,9 @@ switch ($_SESSION['sexo']) {
               $preco = 23;
             }
             $cont += 1;
-            $preco2 = $cont * $preco; ?>
+            $preco2 = $cont * $preco;
+            $_SESSION['precoPlano'] = $preco;
+            $_SESSION['precoTotal'] = $preco2; ?>
 
 <!DOCTYPE html>
 <html>
@@ -512,9 +519,7 @@ switch ($_SESSION['sexo']) {
                   <input type="text" name="bairro" id="bairro" class="form-control" value="<?php echo $_SESSION['bairro'] ?>" placeholder="Bairro" readonly />
                 </div>
               </div>
-            </div>
-
-            
+            </div>       
             <br>
             <div class="d-flex justify-content-center align-items-end flex-wrap" style="margin-left: -.5rem;">
 
@@ -525,6 +530,7 @@ switch ($_SESSION['sexo']) {
                 <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Total <span id="resuPreco"><?php echo $preco2 ?></span></h3>
 
               </div>
+              <a href="./pdf/pdfmaker.php" target="_blank" class="btn btn-secondary" style="margin-bottom: 1rem;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
               <!-- <input class="btn btn-success" id="submit" type="submit" style='margin-left: 0;' /> -->
               <input type="submit" id="avanca" class="btn btn-success saveBtn" style="top: -3rem; padding: 0.3rem 0.5rem;" 
               value="Enviar"/>

@@ -27,7 +27,8 @@ function luhnCheck($cartao)
     return array_sum(str_split($str)) % 10 == 0;
 }
 if (luhnCheck($cartao) != TRUE) {
-    echo 'cartao invalido';
+    $_SESSION['cartaoInvalido'] = true;
+    echo "<body onload='window.history.back();'>";
     exit();
 }
 

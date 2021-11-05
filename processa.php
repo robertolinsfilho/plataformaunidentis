@@ -34,12 +34,10 @@ function generatePassword($qtyCaraceters = 8)
     return $password;
 }
 
-$nome = $_SESSION['nome'];
+$nome     = $_SESSION['nome'];
 $telefone = $_SESSION['telefone'];
-$email = $_SESSION['email'];
-// $email = "franklin.sobrenatural@gmail.com";
-// $email = "vendas2@unidentis.com.br";
-$senha = strip_tags(generatePassword(6));
+$email    = $_SESSION['email'];
+$senha    = strip_tags(generatePassword(6));
 $_SESSION['initpass'] = $senha;
 $plano = $_SESSION['plano'];
 $cpf = $_SESSION['cpf'];
@@ -206,7 +204,7 @@ try {
     $mail->Host       = 'smtp.gmail.com';                // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                            // Enable SMTP authentication
     $mail->Username   = 'unidentis.mail@unidentis.com.br';           // SMTP username
-    $mail->Password   = 'xufmywracayppchy';                      // SMTP password
+    $mail->Password   = 'hiuqxpsyltfpxaep';                      // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                             // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 

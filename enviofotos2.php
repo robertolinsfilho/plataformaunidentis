@@ -2,157 +2,67 @@
 session_start();
 include("conexao.php");
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo10 = $_FILES['arquivo10'];
-    for ($cont = 0; $cont < count($arquivo10['name']); $cont++) {
-        $nome = strtolower(str_replace(" ","",uniqid().$arquivo10['name'][$cont]));
-        $destino10 = "./fotos/$nome";
+$forekey = $_SESSION['forekey'];
 
-        if (move_uploaded_file($arquivo10['tmp_name'][$cont], $destino10)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: index3.php");
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-         
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
+$dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+
+$cpf = $dadosGeraisAssociado['cpf'];
+
+// Apaga se existir
+$sql5 = "DELETE FROM fotos WHERE forekey='$forekey'";
+$conexao->query($sql5);
+
+if ($_FILES['arquivo0']){
+    $file = $_FILES['arquivo0'];
+    $formatoArquivo = explode('.', $file['name']);
+    $rgfrente = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $rgfrente);
 }
 
-// WHAT
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo2 = $_FILES['arquivo1'];
-    for ($cont = 0; $cont < count($arquivo2['name']); $cont++) {
-        $nome2 = strtolower(str_replace(" ","",uniqid().$arquivo2['name'][$cont]));
-        $destino2 = "./fotos/$nome2";
-
-        if (move_uploaded_file($arquivo2['tmp_name'][$cont], $destino2)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: index3.php");
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+if ($_FILES['arquivo1']){
+    $file = $_FILES['arquivo1'];
+    $formatoArquivo = explode('.', $file['name']);
+    $rgverso = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $rgverso);
 }
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo3 = $_FILES['arquivo2'];
-    for ($cont = 0; $cont < count($arquivo3['name']); $cont++) {
-        $nome3 = strtolower(str_replace(" ","",uniqid().$arquivo3['name'][$cont]));
-
-        $destino3 = "./fotos/$nome3";
-
-        if (move_uploaded_file($arquivo3['tmp_name'][$cont], $destino3)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: index3.php");
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+if ($_FILES['arquivo2']){
+    $file = $_FILES['arquivo2'];
+    $formatoArquivo = explode('.', $file['name']);
+    $cpf = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $cpf);
 }
 
-
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo4 = $_FILES['arquivo3'];
- 
-    for ($cont = 0; $cont < count($arquivo4['name']); $cont++) {
-        $nome4 = strtolower(str_replace(" ","",uniqid().$arquivo4['name'][$cont]));
-
-        $destino4 = "./fotos/$nome4";
-
-        if (move_uploaded_file($arquivo4['tmp_name'][$cont], $destino4)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: index3.php");
-            
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+if ($_FILES['arquivo3']){
+    $file = $_FILES['arquivo3'];
+    $formatoArquivo = explode('.', $file['name']);
+    $compresidencia = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $compresidencia);
 }
 
-
-
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo5 = $_FILES['arquivo4'];
- 
-    for ($cont = 0; $cont < count($arquivo5['name']); $cont++) {
-        $nome5 = strtolower(str_replace(" ","",uniqid().$arquivo5['name'][$cont]));
-
-        $destino5 = "./fotos/$nome5";
-
-        if (move_uploaded_file($arquivo5['tmp_name'][$cont], $destino5)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: resumo");
-            
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+if ($_FILES['arquivo4']){
+    $file = $_FILES['arquivo4'];
+    $formatoArquivo = explode('.', $file['name']);
+    $cartao = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $cartao);
 }
 
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
-    $arquivo6 = $_FILES['arquivo5'];
- 
-    for ($cont = 0; $cont < count($arquivo6['name']); $cont++) {
-        $nome6 = strtolower(str_replace(" ","",uniqid().$arquivo6['name'][$cont]));
-
-        $destino6 = "./fotos/$nome6";
-
-        if (move_uploaded_file($arquivo6['tmp_name'][$cont], $destino6)) {
-            $_SESSION['msg'] = "<p style='color:green;'>Upload realizado com sucesso</p>";
-            header("Location: formendereco?#centro");
-            
-        } else {
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-            echo $destino;
-        }
-    }
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'>Erro ao realizar upload</p>";
-    header("Location: index.php");
+if ($_FILES['arquivo5']){
+    $file = $_FILES['arquivo5'];
+    $formatoArquivo = explode('.', $file['name']);
+    $outro = uniqid() . '.' . $formatoArquivo[count($formatoArquivo) - 1];
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $outro);
 }
 
+$sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao, outro, forekey)
+ VALUES ('$cpf','$rgfrente', '$rgverso','$cpf', '$compresidencia','$cartao' ,'$outro', '$forekey')";
 
-$cpf = $_SESSION['cpf'];
-
-$result = mysqli_query($conexao, $sql);
-$row = mysqli_fetch_assoc($result);
-
-$cpf_titular = str_replace(".", "", $cpf_titular);
-$cpf_titular = str_replace("-", "", $cpf_titular);
-
-$sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao, outro)
- VALUES ('$_SESSION[cpf]','$nome', '$nome2','$nome3', '$nome4','$nome5' ,'$nome6')";
-
-$sql2 = "UPDATE dadospessoais SET etapa = '4' where cpf = $cpf";
+$sql2 = "UPDATE dadospessoais SET etapa = '4' where forekey = '{$forekey}'";
 if($conexao->query($sql) === TRUE and $conexao->query($sql2) === TRUE) {
 	$_SESSION['status_cadastro'] = true;
-	
+    echo "<script>window.location.assign('prcessa6')</script>";
+    exit;
 }
 
 $conexao->close();

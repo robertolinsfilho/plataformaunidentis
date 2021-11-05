@@ -10,6 +10,9 @@ $cpf = $_GET['key'];
 $id = $_GET['id'];
 $x2 = $_POST['status'];
 $x = $_POST['status'];
+$emailAssociado = $_POST['email'];
+$uCpf = $_POST['cpf'];
+$celular = $_POST['celular'];
 $rg = $_POST['rg'];
 $expedidor = $_POST['expedidor'];
 $cep = $_POST['cep'];
@@ -25,7 +28,6 @@ $numerocartao = $_POST['numerocartao'];
 $validadecartao = $_POST['validadecartao'];
 $sexo = $_POST['sexo'];
 $observacao = $_POST['observacao'];
-$emailVendedor = $dadosDoContrato['vendedor'];
 $corretor = $_POST['corretor'];
 $nome = $_POST['nome'];
 $mes = $_POST['mes'];
@@ -38,6 +40,9 @@ $date .= "$mes";
 $dadosDoContrato = "SELECT * from dadospessoais where forekey = '$cpf'";
 $dadosDoContrato = mysqli_fetch_assoc(mysqli_query($conexao, $dadosDoContrato));
 
+// GET EMAIL VENDEDOR
+$emailVendedor = $dadosDoContrato['vendedor'];
+
 if ($x2 === 'Indeferido') {
   $motivo;
 } elseif ($x2 === 'Cancelado') {
@@ -45,11 +50,12 @@ if ($x2 === 'Indeferido') {
 }
 
 if ($x2 === 'Alterar') {
-  $sql  = "UPDATE dadospessoais SET observacao='$observacao' ,1pag = '$date' WHERE forekey='$cpf'";
-  $sql1 = "UPDATE dadosprincipais SET rg='$rg', expedidor='$expedidor'  WHERE forekey='$cpf'";
+  $sql  = "UPDATE dadospessoais SET email= '$emailAssociado', nome= '$nome', cpf= '$uCpf', cpf_titular= '$uCpf', celular = '$celular', observacao='$observacao' ,1pag = '$date' WHERE forekey='$cpf'";
+  $sql1 = "UPDATE dadosprincipais SET email= '$emailAssociado', nome= '$nome', cpf= '$uCpf', celular = '$celular', rg='$rg', expedidor='$expedidor'  WHERE forekey='$cpf'";
   $sql2 = "UPDATE endereco SET cep='$cep', rua='$rua' ,numero='$numero', cidade='$cidade' ,estado='$estado', complemento='$complemento' WHERE forekey='$cpf' ";
   $sql3 = "UPDATE contratocartao SET nomecartao='$nomecartao', cartao='$numerocartao' ,mes='$validadecartao' WHERE forekey='$cpf' ";
   if ($conexao->query($sql) === TRUE and $conexao->query($sql1) === TRUE and $conexao->query($sql2) === TRUE  and $conexao->query($sql3) === TRUE) {
+    print_r($_POST);
     header('Location: form-wizard.php?key=' . $cpf . '');
     exit;
   } else {
@@ -95,7 +101,7 @@ if ($x2 === 'Apagar Proposta') {
   $sql8 = "DELETE FROM usuario WHERE forekey = '$cpf'";
 
   if ($conexao->query($sql1) === TRUE && $conexao->query($sql2) === TRUE && $conexao->query($sql3) === TRUE && $conexao->query($sql4) === TRUE && $conexao->query($sql5) === TRUE && $conexao->query($sql7) === TRUE && $conexao->query($sql8) === TRUE) {
-    header('Location: form-wizard.php?key=' . $cpf . '');
+    header('Location: nova');
     exit;
   }
 }
@@ -120,7 +126,8 @@ if ($x2 === 'Implantar') {
 
 
 if ($x2 === 'Indeferir') {
-  $sql4 = "UPDATE dependentes SET  status = 'Indeferido' WHERE forekey = '$cpf' '";
+  echo $cpf;
+  $sql4 = "UPDATE dependentes SET status = 'Indeferido' WHERE forekey = '{$cpf}'";
   if ($conexao->query($sql4) === TRUE) {
     header('Location: resumodependente.php?key=' . $cpf . '&id=' . $id);
     exit;

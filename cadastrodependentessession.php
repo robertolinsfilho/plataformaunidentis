@@ -69,8 +69,8 @@ $data1 = $data_atual - $data;
 
     <?php
  }else{
-$sql = "INSERT INTO  dependentes (cpf_titular,nome,cpf,datas,cns,estadocivil,sexo,mae,parentesco,forekey) 
-VALUES ('$cpf', '$nomedependente', '$cpfdependente','$datadependente','$cnsdependente','$estadodependente','$sexodependente', '$maedependente','$parentesco', '$forekey')";
+$sql = "INSERT INTO  dependentes (cpf_titular,nome,cpf,datas,cns,estadocivil,sexo,mae,parentesco, vizu, forekey) 
+VALUES ('$cpf', '$nomedependente', '$cpfdependente','$datadependente','$cnsdependente','$estadodependente','$sexodependente', '$maedependente','$parentesco', '0', '$forekey')";
 
 if($conexao->query($sql) === TRUE) {
     $_SESSION['status_cadastro'] = true;

@@ -1,17 +1,6 @@
 <?php
 include_once "conexao.php";
 error_reporting(0);
-//consultar no banco de dados
-
-if($_SESSION['usuario'] = 'cadastro@s4e.com.br'){
-	$result_usuario = "SELECT * from dependentes  where vizu = '1'";
-	$resultado_usuario = mysqli_query($conexao, $result_usuario);
-	
-}else{
-	$result_usuario = "SELECT * from dependentes  where vizu = '1'  and vendedor='$_SESSION[usuario]' ";
-	$resultado_usuario = mysqli_query($conexao, $result_usuario);
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,31 +47,41 @@ if($_SESSION['usuario'] = 'cadastro@s4e.com.br'){
                                   
 									<th>Vendendor</th>
                                     <th>Plano</th>
-                                    <th>Status</th>
-								
-                                    
-								
                                     <th>Data</th>	
+                                    <th>Status</th>
 									
 								</tr>
 							</thead>
 
 
 							<tbody>
-
 							<?php
-							
-									while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
-        
+								//consultar no banco de dados
+
+								$usuario = $_SESSION['usuario']; 
+
+								if($usuario == 'cadastro@s4e.com.br'):
+									$result_usuario = "SELECT * from dependentes  where vizu = '1'";
+									$resultado_usuario = mysqli_query($conexao, $result_usuario);
+									
+								else:
+									$result_usuario = "SELECT * from dependentes where vizu = '1' and vendedor = '$usuario'";
+									$resultado_usuario = mysqli_query($conexao, $result_usuario);
+								endif;
+
+								while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
+									// Tratamento de data!!
+									$data = date('d/m/Y', strtotime($row_usuario['data']));
+									
         					?>
-								<tr onclick="location.href = 'resumodependente.php?cpf=<?php echo $row_usuario['cpf_titular'] ?>&id=<?php echo $row_usuario['id'] ?>';"> 
+								<tr onclick="location.href = 'resumodependente.php?key=<?= $row_usuario['forekey'] ?>&id=<?= $row_usuario['id'] ?>';"> 
 								<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>	
                                		
-									<td><?php echo $row_usuario['cpf_titular']; ?> </td>
-									<td><?php echo $row_usuario['vendedor']; ?></td>
-									<td><?php echo $row_usuario['plano']; ?></td>
-                                    <td><?php echo $row_usuario['status']; ?></td>                
-									<td><?php echo $row_usuario['data']; ?></td>	
+									<td><?= $row_usuario['cpf_titular']; ?> </td>
+									<td><?= $row_usuario['vendedor']; ?></td>
+									<td><?= $row_usuario['plano']; ?></td>
+									<td><?= $data; ?></td>	
+                                    <td><?= $row_usuario['status']; ?></td>                
 									
 								</tr>
 								<?php 

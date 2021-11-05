@@ -1,15 +1,15 @@
 <?php
 session_start();
-$_SESSION['ruadependente'] = null;
-$_SESSION['bairrodependente'] = null;
-$_SESSION['cepdependente'] = null;
-$_SESSION['ufdependente'] = null;
-$_SESSION['numerodependente'] = null;
-$_SESSION['nomedependente'] = null;
-$_SESSION['nomeCpf'] = null;
-$_SESSION['nomeplano'] = null;
+$_SESSION['ruadependente']     = null;
+$_SESSION['bairrodependente']  = null;
+$_SESSION['cepdependente']     = null;
+$_SESSION['ufdependente']      = null;
+$_SESSION['numerodependente']  = null;
+$_SESSION['nomedependente']    = null;
+$_SESSION['nomeCpf']           = null;
+$_SESSION['nomeplano']         = null;
 $_SESSION['celulardependente'] = null;
-$_SESSION['emaildependente'] = null;
+$_SESSION['emaildependente']   = null;
 
 //Criar a conexao
 
@@ -47,10 +47,10 @@ foreach ((array)$resultado as $value) {
         }
       }
 
-      $_SESSION['ruadependente'] = $value['logradouro'];
+      $_SESSION['ruadependente']    = $value['logradouro'];
       $_SESSION['bairrodependente'] = $value['bairro'];
-      $_SESSION['cepdependente'] = $value['cep'];
-      $_SESSION['ufdependente'] = $value['ufSigla'];
+      $_SESSION['cepdependente']    = $value['cep'];
+      $_SESSION['ufdependente']     = $value['ufSigla'];
       
       if(isset($value['numero'])) $_SESSION['numerodependente'] = $value['numero'];
 
@@ -65,6 +65,8 @@ foreach ((array)$resultado as $value) {
     }
   }
 }
+
+$_SESSION['forekey'] = md5(strtotime("last Sunday").strtotime("now"));
 
 // foreach ($resultado as $value) {
 //   foreach ($value['dependentes'] as $value1) {

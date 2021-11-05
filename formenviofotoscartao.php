@@ -1,8 +1,33 @@
 <?php
 session_start();
-// if (empty($_SESSION['cpf'])) {
-//   $_SESSION['cpf'] = $_GET['cpf'];
-// }
+if (isset($_GET['key'])) {
+  
+  $forekey = $_GET['key'];
+
+  $queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
+  $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+
+  $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$forekey'");
+  $dadosPrincipaisAssocidado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+
+  $_SESSION['nome']     = $dadosGeraisAssociado['nome'];
+  $_SESSION['cpf']      = $dadosGeraisAssociado['cpf'];
+  $_SESSION['email']    = $dadosGeraisAssociado['email'];
+  $_SESSION['celular']  = $dadosGeraisAssociado['celular'];
+  $_SESSION['estado']   = $dadosGeraisAssociado['estado'];
+  $_SESSION['plano']    = $dadosGeraisAssociado['plano'];
+  $_SESSION['sus']      = $dadosGeraisAssociado['sus'];
+  $_SESSION['vendedor1'] = $dadosGeraisAssociado['vendedor'];
+  $_SESSION['sexo']        = $dadosPrincipaisAssocidado['sexo'];
+  $_SESSION['whats']       = $dadosPrincipaisAssocidado['whats'];
+  $_SESSION['rg']          = $dadosPrincipaisAssocidado['rg'];
+  $_SESSION['estadocivil'] = $dadosPrincipaisAssocidado['estadocivil'];
+  $_SESSION['datas']       = $dadosPrincipaisAssocidado['datas'];
+  $_SESSION['expedidor']   = $dadosPrincipaisAssocidado['expedidor'];
+  $_SESSION['mae']         = $dadosPrincipaisAssocidado['mae'];
+  $_SESSION['fixo']        = $dadosPrincipaisAssocidado['fixo'];
+  $_SESSION['forekey']     = $dadosPrincipaisAssocidado['forekey'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -134,8 +159,6 @@ session_start();
           <li><a href="https://unidentis.com.br/carteirinha" target="_blank">Carteira Digital</a></li>
           <li><a href="https://unidentis.com.br/segundavia" target="_blank">Boleto</a></li>
 
-
-
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -164,7 +187,7 @@ session_start();
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">RG FRENTE</div>
               </span>
-              <input type="file" name="arquivo0[]" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo0" multiple="multiple" class="drop-zone__input" required />
             </div>
             <!-- <h4 class="text-blue1">RG Frente :</h4>
         <div class="drop-zone">
@@ -175,7 +198,7 @@ session_start();
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">RG VERSO</div>
               </span>
-              <input type="file" name="arquivo1[]" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo1" multiple="multiple" class="drop-zone__input" required />
             </div>
             <!-- <h4 class="text-blue1">RG Verso :</h4>
         <div class="drop-zone">
@@ -186,7 +209,7 @@ session_start();
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">CPF</div>
               </span>
-              <input type="file" name="arquivo2[]" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo2" multiple="multiple" class="drop-zone__input" required />
             </div>
             <!-- <h4 class="text-blue1">CPF Frente :</h4>
             <div class="drop-zone">
@@ -199,28 +222,34 @@ session_start();
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">COMPROVANTE DE RESIDÊNCIA</div>
               </span>
-              <input type="file" name="arquivo3[]" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo3" multiple="multiple" class="drop-zone__input" required />
             </div>
             <!-- <h4 class="text-blue1">Comprovante de Residência :</h4>
             <div class="drop-zone">
               <span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
-              <input type="file" name="arquivo3[]" multiple="multiple" class="drop-zone__input" required>
+              <input type="file" name="arquivo3" multiple="multiple" class="drop-zone__input" required>
             </div> -->
             <div class="drop-zone">
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">CARTÃO</div>
               </span>
-              <input type="file" name="arquivo4[]" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo4" multiple="multiple" class="drop-zone__input" required />
             </div>
             <!-- <h4 class="text-blue1">Cartão :</h4>
             <div class="drop-zone">
               <span class="drop-zone__prompt">Clique para Selecionar uma Imagem</span>
               <input type="file" name="arquivo4[]" multiple="multiple" class="drop-zone__input" required>
             </div> -->
+              <div class="drop-zone">
+                  <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
+                    <div class="fundoazul">OUTRO</div>
+                  </span>
+                  <input type="file" name="arquivo5" multiple="multiple" class="drop-zone__input" required />
+              </div>
+            </div>
           </div>
+          <input name="SendCadImg" type="submit" class="btn-get-started scrollto" value="Prosseguir">
         </div>
-
-        <input name="SendCadImg" type="submit" class="btn-get-started scrollto" value="Prosseguir">
 
       </form>
   </section>

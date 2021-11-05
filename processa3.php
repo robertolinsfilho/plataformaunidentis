@@ -11,35 +11,35 @@ include_once('conexao.php');
 
 
 $cpf = $_GET['key'];
-$result_usuario = "SELECT * from dadospessoais where forekey ='$cpf'";
-$resultado_usuario = mysqli_query($conexao, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+ 
+$queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$cpf'");
+$dadosGeraisAssocidado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+
+$queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais where forekey ='$cpf'");
+$dadosPrincipaisAssocidado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
 
 // $cpf = '11159630402';
 
-if($row_usuario['etapa'] == 1){
+if($dadosGeraisAssocidado['etapa'] == 1){
     $link = 'https://unidentisdigital.com.br/formpessoafisica?key='.$cpf;
-}elseif($row_usuario['etapa'] == 2){
+}elseif($dadosGeraisAssocidado['etapa'] == 2){
     $link = 'https://unidentisdigital.com.br/formdadospessoais?key='.$cpf;
-}elseif($row_usuario['etapa'] == 3 ){
+}elseif($dadosGeraisAssocidado['etapa'] == 3 ){
     $link = 'https://unidentisdigital.com.br/formenviofotos?key='.$cpf;
-}elseif($row_usuario['etapa'] == 4){
+}elseif($dadosGeraisAssocidado['etapa'] == 4){
     $link = 'https://unidentisdigital.com.br/formendereco?key='.$cpf;
-}elseif($row_usuario['etapa'] == 5 && $row_usuario['plano'] == 'UNIDENTISVIPBOLETO'){
+}elseif($dadosGeraisAssocidado['etapa'] == 5 && $dadosGeraisAssocidado['plano'] == 'UNIDENTISVIPBOLETO'){
     $link = 'https://unidentisdigital.com.br/titular?key='.$cpf;
-}elseif($row_usuario['etapa'] == 5){
+}elseif($dadosGeraisAssocidado['etapa'] == 5){
     $link = 'https://unidentisdigital.com.br/titularcartao?key='.$cpf;
-}elseif($row_usuario['etapa'] == 6){
+}elseif($dadosGeraisAssocidado['etapa'] == 6){
     $link = 'https://unidentisdigital.com.br/login2';
 }
 
-$email = strip_tags($row_usuario['email']);
-$sql = $conexao->query("SELECT * FROM `usuario` WHERE forekey = $cpf");
-foreach($sql as $value) {
-  $usuario = strip_tags($value['usuario']);
-  $senha = strip_tags($value['senha']);
-} 
+$email = strip_tags($dadosPrincipaisAssocidado['email']);
+$senha = strip_tags($dadosPrincipaisAssocidado['initpass']);
 
+echo $senha;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -59,7 +59,7 @@ try {
     $mail->Host       = 'smtp.gmail.com';                // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                            // Enable SMTP authentication
     $mail->Username   = 'unidentis.mail@unidentis.com.br';           // SMTP username
-    $mail->Password   = 'xufmywracayppchy';                      // SMTP password
+    $mail->Password   = 'hiuqxpsyltfpxaep';                      // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                             // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 

@@ -3,10 +3,10 @@ include("conexao.php");
 session_start();
 
 
-$result_usuario = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]' and ativo = '1'";
+$result_usuario = "SELECT * from dependentes where forekey ='{$_SESSION['forekey']}' and ativo = '1'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 
-$result_usuario2 = "SELECT * from dadospessoais where cpf = '$_SESSION[cpf]' ";
+$result_usuario2 = "SELECT * from dadospessoais where forekey ='{$_SESSION['forekey']}' ";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 ?>
@@ -52,7 +52,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
     $("#rg").mask("0.000.000");
   </script>
   <script type="text/javascript">
-    $("#data").mask("00-00-0000", {
+    $("#data").mask("00/00/0000", {
       reverse: true
     });
     $('#myModal').on('shown.bs.modal', function() {
@@ -107,7 +107,12 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
         <hr>
       </div>
       <form action="dependentes4" method="POST">
+        
         <div class="row">
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
+            <input type="text" name="nome" class="form-control" minlength="10" Completo" required>
+          </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF</label>
             <input type="text" name="cpf" id="cpf" class="form-control">
@@ -131,10 +136,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
               <option selected disabled value="">Selecione</option>
             </select>
           </div>
-          <div class="col-md-3">
-            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" minlength="10" Completo" required>
-          </div>
+          
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF Titular</label>
             <input type="text" name="cpf_titular" value="<?php echo $_SESSION['cpf'] ?>" class="form-control" Completo" readonly>
@@ -450,7 +452,8 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 <?php
-$result_usuario = "SELECT * from dependentes where cpf_titular ='$_SESSION[cpf]' and ativo = '1'";
+
+$result_usuario = "SELECT * from dependentes where forekey ='{$_SESSION['forekey']}' and ativo = '1'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $cont = 0;
 while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
@@ -483,7 +486,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
                   <option <?= $row_usuario['parentesco'] == 8 ? 'selected' : '' ?> value="8">PAI/MÃE</option>
                   <option <?= $row_usuario['parentesco'] == 6 ? 'selected' : '' ?> value="6">ENTEADO(A)</option>
                   <option <?= $row_usuario['parentesco'] == 10 ? 'selected' : '' ?> value="10">OUTRO(A)</option>
-                  <option selected disabled value="">Selecione</option>
+                  <option disabled value="">Selecione</option>
                 </select>
               </div>
               <div class="col">
@@ -491,7 +494,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
                 <select name="sexo" class="form-control">
                   <option <?= $row_usuario['sexo'] == 1 ? 'selected' : '' ?> value="1">masculino</option>
                   <option <?= $row_usuario['sexo'] == 0 ? 'selected' : '' ?> value="0">feminino</option>
-                  <option selected disabled value="">Selecione</option>
+                  <option disabled value="">Selecione</option>
                 </select>
               </div>
 
@@ -524,7 +527,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
               <option <?= $row_usuario['estadocivil'] == 'solteiro' ? 'selected' : '' ?>>solteiro</option>
               <option <?= $row_usuario['estadocivil'] == 'viuvo' ? 'selected' : '' ?>>viuvo</option>
               <option <?= $row_usuario['estadocivil'] == 'divorciado' ? 'selected' : '' ?>>divorciado</option>
-              <option selected disabled value="">Selecione</option>
+              <option disabled value="">Selecione</option>
               </select>
             </div>
             <div class="col">

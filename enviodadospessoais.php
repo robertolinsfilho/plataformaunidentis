@@ -14,7 +14,6 @@ $_SESSION['mae']         = mysqli_real_escape_string($conexao, trim($_POST['mae'
 $_SESSION['fixo']        = mysqli_real_escape_string($conexao, trim($_POST['fixo']));
 $_SESSION['forekey']     = mysqli_real_escape_string($conexao, trim($_POST['forekey']));
 
-
 $forekey = $_SESSION['forekey'];
 $cpf = $_SESSION['cpf'];
 $mae = $_SESSION['mae'];
@@ -27,8 +26,7 @@ $civil = $_SESSION['estadocivil'];
 $sql ="UPDATE dadospessoais SET mae = '{$mae}', estado = '{$civil}', nascimento = '{$data}', sexo = '{$sexo}' , local = '{$_SESSION['estado1']}', etapa = '3' WHERE  forekey ='{$forekey}'";
 
 // ADICIONA OS DADOS PRINCIPAIS DO ASSOCIADO A TABELA COM MESMO NOME
-$sql2 = "INSERT INTO dadosprincipais (cpf,celular,sexo,whats,rg,estadocivil,expedidor,mae,forekey)
-VALUES ( '$cpf','$_SESSION[whats]','$sexo','$_SESSION[whats]','$_SESSION[rg]','$civil','$_SESSION[expedidor]','$mae', '$forekey')";
+$sql2 = "UPDATE dadosprincipais SET sexo='{$sexo}', whats= '{$_SESSION['whats']}' , rg= '{$_SESSION['rg']}', estadocivil= '{$civil}', datas= '{$data}', expedidor= '{$_SESSION['expedidor']}', mae= '{$mae}'";
 
 if($conexao->query($sql) && $conexao->query($sql2)){
     
