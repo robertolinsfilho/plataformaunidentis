@@ -1,9 +1,9 @@
-let dia = document.querySelector("#dia");
-let btn = document.querySelector("#btn");
+let dia       = document.querySelector("#dia");
+let btn       = document.querySelector("#btn");
 let openChart = document.querySelector(".openChart");
-let chart = document.querySelector("#chart");
-let loader = document.querySelector("div#loader");
-let verify = false;
+let chart     = document.querySelector("#chart");
+let loader    = document.querySelector("div#loader");
+let verify    = false;
 var doGarfico;
 var datas;
 var vendas;
@@ -28,9 +28,9 @@ openChart.addEventListener('click', e => {
     .then((res) => {
       if (res.status == 200) {
         loader.style.visibility = "hidden";
-        doGarfico = res.data;
-        datas = Object.keys(doGarfico);
-        vendas = Object.values(doGarfico);
+        doGarfico               = res.data;
+        datas                   = Object.keys(doGarfico);
+        vendas                  = Object.values(doGarfico);
         if (verify == true) myChart.destroy();
         ctx = document.getElementById("myLineChart");
         myChart = new Chart(ctx, {
