@@ -3,11 +3,12 @@ document.addEventListener('click', e => {
 et = e.target;
 if(et.classList.contains('minus-rotate')){
     let fname = et.getAttribute('fname');
-    axios.post('http://localhost:8080/AmbienteTeste/uniDigital/functions/rotate-image.php', {
+    axios.post("http://"+window.location.host+"/AmbienteTeste/uniDigital/functions/rotate-image.php", {
         degress: 90,
         fname: fname
     }).then(res => {
         if(res.status == 200){
+            console.log(res.data);
             rotateAlert.style.position =  'relative'
             rotateAlert.style.visibility =  'visible'
             setTimeout(() => {
@@ -22,7 +23,7 @@ if(et.classList.contains('minus-rotate')){
 }
 if(et.classList.contains('plus-rotate')){
     let fname = et.getAttribute('fname');
-    axios.post('http://localhost:8080/AmbienteTeste/uniDigital/functions/rotate-image.php', {
+    axios.post("http://"+window.location.host+"/AmbienteTeste/uniDigital/functions/rotate-image.php", {
         degress: -90,
         fname: fname
     }).then(res => {

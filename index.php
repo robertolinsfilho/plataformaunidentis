@@ -11,6 +11,7 @@
 include_once "conexao.php";
 session_start();
 
+$_SESSION['URL_ATUAL']= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // Verifica se existe os dados da sessão de login
 if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
 	// Usuário não logado! Redireciona para a página de login
@@ -91,7 +92,7 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 		<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 			<div class="row clearfix progress-box py-3">
 
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-50-p">
 						<a href="nova">
 							<div class="project-info clearfix">
@@ -103,10 +104,15 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								<div class="project-info-right">
 									<span class="no text-blue weight-500 font-24"><?php echo $row_usuario7['total'] ?></span>
 									<p class="weight-400 font-18">Novas</p>
+									
 								</div>
 							</div>
 						</a>
-
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status= 'Novas' class="openChart novas">
+								<i class="fa fa-area-chart text-blue" aria-hidden="true"></i>
+						</div>
+						<?php endif;?>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
@@ -129,7 +135,7 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<a href="implantadas">
 							<div class="project-info clearfix">
@@ -146,10 +152,14 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								</div>
 							</div>
 						</a>
-
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status= 'Implantadas' class="openChart implantadas">
+								<i class="fa fa-area-chart text-green" aria-hidden="true"></i>
+						</div>
+						<?php endif;?>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<a href="indeferidas">
 							<div class="project-info clearfix">
@@ -158,7 +168,6 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 									<div class="icon box-shadow bg-danger text-white">
 										<i class="fa fa-exclamation"></i>
 									</div>
-
 								</div>
 								<div class="project-info-right">
 									<span class="no text-danger weight-500 font-24"><?php echo $row_usuario['total'] ?></span>
@@ -166,10 +175,14 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								</div>
 							</div>
 						</a>
-
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status= 'Indeferido' class="openChart indeferido">
+								<i class="fa fa-area-chart text-danger" aria-hidden="true"></i>
+						</div>
+						<?php endif;?>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30" id="showBtnChart">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<a href="pendente">
 
@@ -186,9 +199,11 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								</div>
 							</div>
 						</a>
-						<div class="openChart">
-									<i class="fa fa-area-chart text-warning" aria-hidden="true"></i>
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status= 'PagPendente' class="openChart pag-pendente">
+								<i class="fa fa-area-chart text-orange" aria-hidden="true"></i>
 						</div>
+						<?php endif;?>
 					</div>
 				</div>
 				<!--  -->
@@ -213,7 +228,7 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<a href="analise">
 							<div class="project-info clearfix">
@@ -230,9 +245,14 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								</div>
 							</div>
 						</a>
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status='EmAnalise' class="openChart em-analise">
+								<i class="fa fa-area-chart text-light-orange" aria-hidden="true"></i>
+						</div>
+						<?php endif;?>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="col-lg-3 col-md-6 col-sm-12 mb-30 showBtnChart">
 					<div class="bg-white pd-5 box-shadow border-radius-5 height-100-p">
 						<a href="canceladas">
 							<div class="project-info clearfix">
@@ -249,7 +269,11 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 								</div>
 							</div>
 						</a>
-
+						<?php if($_SESSION['usuario'] != 'cadastro@s4e.com.br') :?>
+						<div status= 'Canceladas' class="openChart canceladas">
+								<i class="fa fa-area-chart text-light-purple" aria-hidden="true"></i>
+						</div>
+						<?php endif;?>
 					</div>
 				</div>
 			</div>
@@ -281,6 +305,8 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="assets/js/graficoIndex.js"></script>
+
+	
 </body>
 
 </html>

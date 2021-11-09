@@ -21,10 +21,6 @@ $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
 $result_usuario2 = "SELECT * from vendedor where email = '$row_usuario3[vendedor]'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
-$result_usuario4 = "SELECT COUNT(cpf) from dependentes where cpf_titular = '$row_usuario[cpf]'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
-//Verificar se encontrou resultado na tabela "usuarios"
 
 ?>
 <!DOCTYPE html>
@@ -64,11 +60,6 @@ $row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
 							<label class="labelInput">EM ANALISE</label>
 							<hr>
 						</div>
-<?php 
-$count = $row_usuario4['COUNT(cpf)'];
-$count = intval($count);
-$count = $count + 1;
-?>
 						<div class="row">
 							<table class="data-table stripe hover nowrap">
 								<thead>
@@ -106,6 +97,9 @@ $count = $count + 1;
 								<tbody>
 									<?php
 									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
+										$resultado_usuario4 = mysqli_query($conexao, "SELECT COUNT(forekey) as forekey from dependentes where forekey = '{$row_usuario['forekey']}'");
+										$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+										$count = (int)$row_usuario4['forekey'] + 1;
 									?>
 										<tr onclick="location.href = 'form-wizard.php?key=<?= $row_usuario['forekey'] ?>';">
 										<?php

@@ -32,7 +32,7 @@ div.openChart {
   }
 }
 
-div#showBtnChart:hover div.openChart {
+div.showBtnChart:hover div.openChart {
   animation: showUp 1s ease-in-out;
   top: 64%;
   z-index: 0;
@@ -43,6 +43,7 @@ div.openChart i {
   padding: 0 !important;
   margin: 0 auto;
 }
+
 
 div#chart {
   margin-top: -2rem;

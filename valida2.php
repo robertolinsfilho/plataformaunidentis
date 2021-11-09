@@ -5,14 +5,14 @@ session_start();
 $usuario =  $_POST['usuario'];
 $senha =  $_POST['senha'];
 
-$query = "select * from usuario where usuario = '$usuario' and senha = '$senha'";
+$query = "SELECT * FROM usuario WHERE usuario = '$usuario' AND senha = '$senha'";
 $result = mysqli_query($conexao, $query);
 $row = mysqli_fetch_assoc($result);
 
 $_SESSION['emailplataforma'] = $usuario;
 $forekey = $row['forekey'];
 
-$result_usuario = "SELECT * from dadospessoais where forekey = '$forekey'";
+$result_usuario = "SELECT * from dadospessoais where ativo = '1' AND forekey = '$forekey'";
 $resultado_usuario = mysqli_query($conexao, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
@@ -25,7 +25,7 @@ if(isset($row_usuario)){
 }
 
 if($row['acesso'] === '0'){
-    header('Location: novasenha');
+    header('Location: novasenha?key='.$forekey);
     $_SESSION['usuario1'] = $usuario;
 
 }else{

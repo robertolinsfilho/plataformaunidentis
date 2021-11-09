@@ -147,25 +147,47 @@ $_SESSION['emailsenha'] = $_GET['email'];
 </head>
 
 <body class="text-center">
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 500 !important;">Unidentis</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="font-family: 'Poppins', sans-serif;font-weight: 500 !important;">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4 style="font-size: 1.15rem;">DIGITE A NOVA SENHA</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</button>
+    <?php if ($_SESSION['senhaInvalida'] == false) : ?>
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 500 !important;">Unidentis</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="font-family: 'Poppins', sans-serif;font-weight: 500 !important;">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 style="font-size: 1.15rem;">DIGITE A NOVA SENHA</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</button>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php elseif ($_SESSION['senhaInvalida'] == true) : ?>
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 500 !important;">Unidentis</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="font-family: 'Poppins', sans-serif;font-weight: 500 !important;">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 style="font-size: 1.15rem;">SENHA INVÁLIDA!</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary" style="font-weight: 500 !important;">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
     <!-- <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
         <div class="contact-info mr-auto">
@@ -192,6 +214,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
                 <img src="http://unidentisdigital.com.br/assets/img/LOGO.png" width="240">
                 <div class='divPassword'>
                     <label>SENHA</label>
+                    <input type="hidden" name="forekey" value="<?= $_GET['key']?>">
                     <input type="password" name="senha" class="form-control">
                 </div>
                 <div class="divEsqueciSenhaeEntrar">
@@ -199,6 +222,7 @@ $_SESSION['emailsenha'] = $_GET['email'];
                 </div>
             </div>
         </form>
+        <?php $_SESSION['senhaInvalida'] = false;?>
     </div>
 </body>
 <!-- Modal -->

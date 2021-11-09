@@ -28,9 +28,8 @@ if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 $result_usuario2 = "SELECT * from vendedor where email = '$row_usuario[vendedor]'";
 $resultado_usuario2 = mysqli_query($conexao, $result_usuario2);
 $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
-$result_usuario4 = "SELECT COUNT(cpf) from dependentes where cpf_titular = '$row_usuario[cpf]'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+
+
 
 //Verificar se encontrou resultado na tabela "usuarios"
 header('Content-type: text/html; charset=utf-8', TRUE);
@@ -106,16 +105,17 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 										?>		
 									</tr>
 								</thead>
-								<?php 
-$count = $row_usuario4['COUNT(cpf)'];
-$count = intval($count);
-$count = $count + 1;
-?>
 
 								<tbody>
 
 									<?php
 									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
+										
+										//Verificar se encontrou resultado na tabela "usuarios"
+										$resultado_usuario4 = mysqli_query($conexao, "SELECT COUNT(*) as forekey from dependentes where forekey = '{$row_usuario['forekey']}'");
+										$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+										$count = (int)$row_usuario4['forekey'] + 1;
+
 										if ($row_usuario['cpf_titular'] != $row_usuario['cpf']) {
 											$result_usuario11 = "SELECT * from responsavel where cpf ='$row_usuario[cpf_titular]'";
 											$resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
@@ -127,7 +127,7 @@ $count = $count + 1;
 										}
 									?>
 
-										<tr onclick="location.href = 'form-wizard.php?key=<?= $row_usuario['forekey'] ?>';">
+										<tr onclick="location.href = 'form-wizard.php?key=<?= $row_usuario['forekey'] ?>;'">
 										<?php
 										if ($_SESSION['usuario'] === 'cadastro@s4e.com.br') {
 										?>

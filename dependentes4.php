@@ -25,10 +25,11 @@ function generatePassword($qtyCaraceters = 8)
     //Retorna a senha
     return $password;
 }
-$_SESSION['senhadependente'] = generatePassword(6);
+$_SESSION['senhadependente'] = 'u'.generatePassword(5);
 
 $cpf = str_replace("-", "", str_replace(".", "", $_POST['cpf']));
 $nome        = $_POST['nome'];
+$nome_titular = $_SESSION['nomeCpf'];
 $parentesco  = $_POST['parentesco'];
 $sexo        = $_POST['sexo'];
 $cpf_titular = $_POST['cpf_titular'];
@@ -137,8 +138,8 @@ $data1 = $data_atual - $data;
 exit();
 }
 
-$sql = "INSERT INTO dependentes (nome, cpf, sexo, estadocivil, datas, mae, cpf_titular, cns,parentesco,ativo,vendedor,vizu,senha, forekey) 
-VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular','$cns','$parentesco','1','{$_SESSION['vendedor1']}', '0','{$_SESSION['senhadependente']}', '$forekey')";
+$sql = "INSERT INTO dependentes (nome, cpf, sexo, estadocivil, datas, mae, cpf_titular, nome_titular, cns,parentesco,ativo,vendedor,vizu,senha, forekey) 
+VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular', '$nome_titular','$cns','$parentesco','1','{$_SESSION['vendedor1']}', '0','{$_SESSION['senhadependente']}', '$forekey')";
 
 if($conexao->query($sql) === TRUE){
     header('Location: dependentes3');

@@ -7,8 +7,22 @@ session_start();
 $forekey = $_SESSION['forekey'];
 
 // Apaga se existir
-$sql5 = "DELETE FROM fotos WHERE forekey='$forekey'";
-$conexao->query($sql5);
+$queryFotosAssociado = mysqli_query($conexao, "SELECT * from fotos where forekey = '$forekey'");
+
+if($fotosAssociado = mysqli_fetch_assoc($queryFotosAssociado)):
+    foreach($fotosAssociado as $key => $value):
+        if($key == 'forekey' || $key == 'id' || $key == 'cpf_titular'):
+            continue;
+        endif;
+        $path = __DIR__.'/fotos/'.$value;
+        if (file_exists($path)):
+            @unlink($path);
+        endif;
+    endforeach;
+    // Apaga se existir
+    $sql5 = "DELETE FROM fotos WHERE forekey='$forekey'";
+    $conexao->query($sql5);
+endif;
 
 $SendCadImg = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if ($SendCadImg) {

@@ -41,7 +41,7 @@ $_SESSION['celular'] = $celular;
 $_SESSION['estado']  = $estado;
 $_SESSION['plano']   = $plano;
 $_SESSION['sus']     = $sus;
-$_SESSION['initpass'] = strip_tags(generatePassword(6));
+$_SESSION['initpass'] = 'u'.strip_tags(generatePassword(5));
 $_SESSION['forekey'] = md5(strtotime("last Sunday").strtotime("now"));
 
 $forekey = $_SESSION['forekey'];
@@ -59,8 +59,7 @@ if ($_SESSION['plano'] == 'PLANOVIPORTOCARTAO'){
   ) {
     $preco = 40;
   } elseif (
-    $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-    $_SESSION['estado'] == 'RN'
+    $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL'
   ) {
     $preco = 18;
   }
@@ -106,7 +105,7 @@ $date = date('Ym');
     VALUES ('$nome', '$email', '$cpf', '$cpf','$_SESSION[vendedor1]','$celular','$_SESSION[tipocliente]','$admissao','$matricula','$plano','$sus','$_SESSION[tipocliente]','$_SESSION[estado1]','2','$date', '{$preco}', '$forekey')";
 
     $sql2 = "INSERT INTO dadosprincipais ( nome, email, cpf, celular, initpass, forekey)
-    VALUES ( '$nome', '$email','$cpf','$celular', '$initpass', '$forekey')";
+    VALUES ('$nome', '$email','$cpf','$celular', '$initpass', '$forekey')";
 
     $sql4 = "INSERT INTO  usuario (usuario, senha, forekey) VALUES ('$email', '$initpass', '$forekey')";
     

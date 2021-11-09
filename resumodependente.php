@@ -311,6 +311,11 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<label class="labelInput">Beneficiarios</label>
 												<hr>
 											</div>
+											<?php
+												$result_usuario = "SELECT * from dependentes  where forekey = '$cpf' and vizu = '1'";
+												$resultado_usuario = mysqli_query($conexao, $result_usuario);
+												while($dependentes = mysqli_fetch_assoc($resultado_usuario)){
+											?>
 											<div class="row">
 												<div class="col-md-3">
 													<div class="form-group">
@@ -321,31 +326,31 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CPF:</label>
-														<input type="text" value="<?= $dadosDependentes['cpf'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['cpf'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Nome:</label>
-														<input type="text" value="<?= $dadosDependentes['nome'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['nome'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Data Nascimento:</label>
-														<input type="text" value="<?= $dadosDependentes['datas'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['datas'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Sexo:</label>
-														<input type="text" value="<?= $dadosDependentes['sexo'] == 1 ? "Masculino" : "Feminino" ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['sexo'] == 1 ? "Masculino" : "Feminino" ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Estado Civil:</label>
-														<input type="text" value="<?= $dadosDependentes['estadocivil'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['estadocivil'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 
@@ -353,13 +358,13 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>CNS :</label>
-														<input type="text" value="<?= $dadosDependentes['cns'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['cns'] ?>" class="form-control" readonly>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="form-group">
 														<label> Mãe:</label>
-														<input type="text" value="<?= $dadosDependentes['mae'] ?>" class="form-control" readonly>
+														<input type="text" value="<?= $dependentes['mae'] ?>" class="form-control" readonly>
 													</div>
 
 
@@ -369,7 +374,7 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														<label> Parenstesco:</label>
 														<?php 
 														$parentsc;
-														switch ($dadosDependentes['parentesco']) {
+														switch ($dependentes['parentesco']) {
 														  case '4':
 															$parentsc = 'Filho';
 															break;
@@ -389,8 +394,12 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 														?>
 														<input type="text" value="<?= $parentsc ?>" class="form-control" readonly>
 													</div>
+
 												</div>
 											</div>
+											<hr>
+
+											<?php }; ?>
 										</div>
 									</div>
 									<!-- Step 4 -->

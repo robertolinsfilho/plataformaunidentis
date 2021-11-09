@@ -146,9 +146,6 @@ if ($_SESSION['cpf'] === '') {
           <li><a href="https://unidentis.com.br/querosercliente" target="_blank">Tornar-se Cliente</a></li>
           <li><a href="https://unidentis.com.br/carteirinha" target="_blank">Carteira Digital</a></li>
           <li><a href="https://unidentis.com.br/segundavia" target="_blank">Boleto</a></li>
-
-
-
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -260,7 +257,7 @@ if ($_SESSION['cpf'] === '') {
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data de Admissão</label>
-            <input type="date" name="admissao" class="form-control" placeholder="*"  required>
+            <input type="text" id='data' name="admissao" class="form-control" placeholder="*"  required>
           </div>
         <?php
           }

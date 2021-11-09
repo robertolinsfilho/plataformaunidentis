@@ -164,7 +164,7 @@ function generatePassword($qtyCaraceters = 8)
     return $password;
 }
 
-$_SESSION['senhaemail'] = generatePassword(5);
+$_SESSION['senhaemail'] = 'u'.generatePassword(5);
 if ($_SESSION['vendedor1'] === '') {
     $_SESSION['vendedor1'] = 'site';
 }

@@ -1,14 +1,19 @@
 <?php
 session_start();
-if (isset($_GET['key'])) {
-  
-  $forekey = $_GET['key'];
+error_reporting(0);
+include 'conexao.php';
 
+if (!empty($_GET['key'])) {
+  $forekey = $_GET['key'];
+  
   $queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
   $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
-
-  $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey ='$forekey'");
-  $dadosPrincipaisAssocidado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+  
+  $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais where forekey = '$forekey'");
+  $dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+  
+  $queryDadosEndereco = mysqli_query($conexao, "SELECT * FROM endereco WHERE forekey = '$forekey'");
+  $dadosEndereco = mysqli_fetch_assoc($queryDadosEndereco);
 
   $_SESSION['nome']     = $dadosGeraisAssociado['nome'];
   $_SESSION['cpf']      = $dadosGeraisAssociado['cpf'];
@@ -16,18 +21,34 @@ if (isset($_GET['key'])) {
   $_SESSION['celular']  = $dadosGeraisAssociado['celular'];
   $_SESSION['estado']   = $dadosGeraisAssociado['estado'];
   $_SESSION['plano']    = $dadosGeraisAssociado['plano'];
+
+  /** :p **/
+  $_SESSION['boleto']    = $dadosGeraisAssociado['plano'];
+  /** :p **/
+
   $_SESSION['sus']      = $dadosGeraisAssociado['sus'];
   $_SESSION['vendedor1'] = $dadosGeraisAssociado['vendedor'];
-  $_SESSION['sexo']        = $dadosPrincipaisAssocidado['sexo'];
-  $_SESSION['whats']       = $dadosPrincipaisAssocidado['whats'];
-  $_SESSION['rg']          = $dadosPrincipaisAssocidado['rg'];
-  $_SESSION['estadocivil'] = $dadosPrincipaisAssocidado['estadocivil'];
-  $_SESSION['datas']       = $dadosPrincipaisAssocidado['datas'];
-  $_SESSION['expedidor']   = $dadosPrincipaisAssocidado['expedidor'];
-  $_SESSION['mae']         = $dadosPrincipaisAssocidado['mae'];
-  $_SESSION['fixo']        = $dadosPrincipaisAssocidado['fixo'];
-  $_SESSION['forekey']     = $dadosPrincipaisAssocidado['forekey'];
+  $_SESSION['sexo']        = $dadosGeraisAssociado['sexo'];
+  $_SESSION['whats']       = $dadosGeraisAssociado['celular'];
+  $_SESSION['rg']          = $dadosPrincipaisAssociado['rg'];
+  $_SESSION['estadocivil'] = $dadosPrincipaisAssociado['estadocivil'];
+  $_SESSION['datas']       = $dadosPrincipaisAssociado['datas'];
+  $_SESSION['expedidor']   = $dadosPrincipaisAssociado['expedidor'];
+  $_SESSION['mae']         = $dadosPrincipaisAssociado['mae'];
+  $_SESSION['fixo']        = $dadosPrincipaisAssociado['fixo'];
+
+  // Dados endereco
+  $_SESSION['cep']         = $dadosEndereco['cep'];
+  $_SESSION['rua']         = $dadosEndereco['rua'];
+  $_SESSION['numero']      = $dadosEndereco['numero'];
+  $_SESSION['bairro']      = $dadosEndereco['bairro'];
+  $_SESSION['cidade']      = $dadosEndereco['cidade'];
+  $_SESSION['estado']      = $dadosEndereco['estado'];
+  $_SESSION['complemento'] = $dadosEndereco['complemento'];
+} else {
+  $forekey = $_SESSION['forekey'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -178,8 +199,7 @@ if (isset($_GET['key'])) {
         <label class="labelInput">Envio de Arquivos</label>
         <hr>
       </div>
-
-      <form method="POST" action="enviofotos2" enctype="multipart/form-data">
+      <form method="POST" action="enviofotos2?key=<?=$forekey?>" enctype="multipart/form-data">
         <div class="row justify-content-center">
           <div class="d-flex">
 
@@ -187,7 +207,7 @@ if (isset($_GET['key'])) {
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">RG FRENTE</div>
               </span>
-              <input type="file" name="arquivo0" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo0" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?> />
             </div>
             <!-- <h4 class="text-blue1">RG Frente :</h4>
         <div class="drop-zone">
@@ -198,7 +218,7 @@ if (isset($_GET['key'])) {
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">RG VERSO</div>
               </span>
-              <input type="file" name="arquivo1" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo1" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?> />
             </div>
             <!-- <h4 class="text-blue1">RG Verso :</h4>
         <div class="drop-zone">
@@ -209,7 +229,7 @@ if (isset($_GET['key'])) {
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">CPF</div>
               </span>
-              <input type="file" name="arquivo2" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo2" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?> />
             </div>
             <!-- <h4 class="text-blue1">CPF Frente :</h4>
             <div class="drop-zone">
@@ -222,7 +242,7 @@ if (isset($_GET['key'])) {
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">COMPROVANTE DE RESIDÊNCIA</div>
               </span>
-              <input type="file" name="arquivo3" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo3" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?> />
             </div>
             <!-- <h4 class="text-blue1">Comprovante de Residência :</h4>
             <div class="drop-zone">
@@ -233,7 +253,7 @@ if (isset($_GET['key'])) {
               <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                 <div class="fundoazul">CARTÃO</div>
               </span>
-              <input type="file" name="arquivo4" multiple="multiple" class="drop-zone__input" required />
+              <input type="file" name="arquivo4" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?> />
             </div>
             <!-- <h4 class="text-blue1">Cartão :</h4>
             <div class="drop-zone">
@@ -244,7 +264,7 @@ if (isset($_GET['key'])) {
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">OUTRO</div>
                   </span>
-                  <input type="file" name="arquivo5" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" name="arquivo5" multiple="multiple" class="drop-zone__input" <?php if($_SESSION['boleto'] != 'UNIDENTISVIPEMPRESARIAL'):?> required <?php endif?>/>
               </div>
             </div>
           </div>

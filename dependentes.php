@@ -44,10 +44,9 @@ error_reporting(0);
 								<th class="table-plus datatable-nosort">Nome Titular</th>		
                                   					
 									<th>CPF Titular</th>
-                                  
 									<th>Vendendor</th>
-                                    <th>Plano</th>
-                                    <th>Data</th>	
+									<th>Vidas</th>	
+									<th>Data</th>
                                     <th>Status</th>
 									
 								</tr>
@@ -59,6 +58,8 @@ error_reporting(0);
 								//consultar no banco de dados
 
 								$usuario = $_SESSION['usuario']; 
+								$forekey = [];
+								$count = 0;
 
 								if($usuario == 'cadastro@s4e.com.br'):
 									$result_usuario = "SELECT * from dependentes  where vizu = '1'";
@@ -72,14 +73,23 @@ error_reporting(0);
 								while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
 									// Tratamento de data!!
 									$data = date('d/m/Y', strtotime($row_usuario['data']));
-									
+									$forekey += array($row_usuario['forekey']);
+									$count++;
+									if($forekey[$count] == $forekey[$count - 1]){
+										continue;
+									};
         					?>
 								<tr onclick="location.href = 'resumodependente.php?key=<?= $row_usuario['forekey'] ?>&id=<?= $row_usuario['id'] ?>';"> 
-								<td class="table-plus"><?php echo $row_usuario['nome']; ?></td>	
+								<td class="table-plus"><?php echo $row_usuario['nome_titular']; ?></td>	
                                		
 									<td><?= $row_usuario['cpf_titular']; ?> </td>
 									<td><?= $row_usuario['vendedor']; ?></td>
-									<td><?= $row_usuario['plano']; ?></td>
+									<td><?php
+									$contadorDependentes = mysqli_query($conexao, "SELECT COUNT(*) as contador from dependentes where forekey = '{$row_usuario['forekey']}'");
+									$contadorDependentes = mysqli_fetch_assoc($contadorDependentes);
+									$contadorDependentes = (int)$contadorDependentes['contador'];
+									echo $contadorDependentes;
+									?></td>
 									<td><?= $data; ?></td>	
                                     <td><?= $row_usuario['status']; ?></td>                
 									

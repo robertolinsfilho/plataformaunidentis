@@ -38,7 +38,7 @@ function generatePassword($qtyCaraceters = 8)
     return $password;
 }
 
-$_SESSION['senhaemail'] = generatePassword(5);
+$_SESSION['senhaemail'] = 'u'.generatePassword(5);
 $sql = "INSERT INTO  contrato (cpf,nome,email,boleto,preco) 
 VALUES ('$_SESSION[cpf]','$nome','$email','$boleto','$_SESSION[preco]')";
 if($row_usuario['plano'] != 'UNIDENTISVIPEMPRESARIAL'){

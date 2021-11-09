@@ -14,7 +14,7 @@ if (isset($_GET['key'])) {
   $_SESSION['plano']    = $dadosGeraisAssociado['plano'];
   $_SESSION['sus']      = $dadosGeraisAssociado['sus'];
   $_SESSION['vendedor1'] = $dadosGeraisAssociado['vendedor'];
-  $_SESSION['forekey']  = $forekey; 
+  $_SESSION['forekey']  = $forekey;
 }
 ?>
 <!DOCTYPE html>
@@ -132,7 +132,6 @@ if (isset($_GET['key'])) {
         top: 11.5rem;
       }
     } */
-
   </style>
 
 </head>
@@ -190,11 +189,11 @@ if (isset($_GET['key'])) {
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Whats's App:</label>
-            <input type="text" name="whats" minlenght="15" id="celular" class="form-control" placeholder="*"  required>
+            <input type="text" name="whats" minlenght="15" id="celular" class="form-control" placeholder="*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">RG:</label>
-            <input type="text" name="rg" class="form-control"placeholder="*"  required>
+            <input type="text" name="rg" class="form-control" placeholder="*" required>
           </div>
 
           <div class="col-md-3">
@@ -213,29 +212,59 @@ if (isset($_GET['key'])) {
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Orgao Expedidor</label>
-            <input type="text" name="expedidor" class="form-control"placeholder="*"  required>
+            <input type="text" name="expedidor" class="form-control" placeholder="*" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome da Mae</label>
-            <input type="text" name="mae" class="form-control"placeholder="*" required>
+            <input type="text" name="mae" class="form-control" placeholder="*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone fixo</label>
             <input type="text" name="fixo" class="form-control" placeholder="Telefone Fixo">
           </div>
         </div>
+        <div class="flexLabel">
+          <label class="labelInput">Endereco</label>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CEP:</label>
+            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP*" required>
+          </div>
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Rua:</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*" required>
+          </div>
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Numero:</label>
+            <input type="text" class="form-control" name="numero" placeholder="Numero*" required>
+          </div>
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Bairro</label>
+            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairo*" required>
+          </div>
+
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Cidade:</label>
+            <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>
+          </div>
+
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado</label>
+            <input type="text" name="estado" id="uf" class="form-control" placeholder="estado*" required>
+          </div>
+          <div class="col-md-3">
+            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Complemento</label>
+            <input type="text" name="complemento" class="form-control" placeholder="complemento">
+          </div>
+        </div>
         <input type="hidden" name="forekey" value="<?= $_SESSION['forekey']; ?>">
         <button type="submit" class="btn-get-started scrollto">prosseguir</button>
+      </form>
     </div>
-
-
-    </form>
-    </div>
-
-
   </section>
-
 
 </body>
 <div id="preloader"></div>
@@ -255,5 +284,70 @@ if (isset($_GET['key'])) {
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script>
+  $(document).ready(function() {
+
+    function limpa_formulário_cep() {
+      // Limpa valores do formulário de cep.
+      $("#rua").val("");
+      $("#bairro").val("");
+      $("#cidade").val("");
+      $("#uf").val("");
+      $("#ibge").val("");
+    }
+
+    //Quando o campo cep perde o foco.
+    $("#cep").blur(function() {
+
+      //Nova variável "cep" somente com dígitos.
+      var cep = $(this).val().replace(/\D/g, '');
+
+      //Verifica se campo cep possui valor informado.
+      if (cep != "") {
+
+        //Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        //Valida o formato do CEP.
+        if (validacep.test(cep)) {
+
+          //Preenche os campos com "..." enquanto consulta webservice.
+          $("#rua").val("...");
+          $("#bairro").val("...");
+          $("#cidade").val("...");
+          $("#uf").val("...");
+          $("#ibge").val("...");
+
+          //Consulta o webservice viacep.com.br/
+          $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
+
+            if (!("erro" in dados)) {
+              //Atualiza os campos com os valores da consulta.
+              $("#rua").val(dados.logradouro);
+              $("#bairro").val(dados.bairro);
+              $("#cidade").val(dados.localidade);
+              $("#uf").val(dados.uf);
+              $("#ibge").val(dados.ibge);
+            } //end if.
+            else {
+              //CEP pesquisado não foi encontrado.
+              limpa_formulário_cep();
+
+            }
+          });
+        } //end if.
+        else {
+          //cep é inválido.
+          limpa_formulário_cep();
+          alert("Formato de CEP inválido.");
+        }
+      } //end if.
+      else {
+        //cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+      }
+    });
+  });
+</script>
 
 </html>

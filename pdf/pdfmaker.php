@@ -240,7 +240,7 @@ $part2 = '
 </div>
 <table>
   <tr>
-    <td><p>TX Plano Dental:</p></td>
+    <td><p>Valor por Beneficiário:</p></td>
     <td><span style="text-align: right;">R$ '.$precoPlano.'</span></td>
   </tr>
   <tr>

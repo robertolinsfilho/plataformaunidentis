@@ -100,9 +100,6 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 <html>
 
 <head>
-	<style type="text/css">
-
-	</style>
 	<script type="text/javascript">
 		$(document).ready(function() {
 
@@ -333,7 +330,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 													<hr>
 												</div>
 												<div class="row">
-													<div class="col-md-6">
+													<div class="col-md-5">
 														<div class="form-group">
 															<label>Titular </label>
 															<input type="text" name="nomecartao" value="<?php echo $dadosCartao['nome'] ?>" class="form-control">
@@ -346,12 +343,16 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 														</div>
 													</div>
 
-
-
-													<div class="col-md-3">
+													<div class="col-md-2">
 														<div class="form-group">
 															<label> Validade </label>
 															<input type="text" name="validadecartao" value="<?php echo $dadosCartao['mes'] ?>" class="form-control">
+														</div>
+													</div>
+													<div class="col-md-2">
+														<div class="form-group">
+															<label> cvv </label>
+															<input type="text" name="cvvcartao" value="<?php echo $dadosCartao['cvv'] ?>" class="form-control">
 														</div>
 													</div>
 												</div>

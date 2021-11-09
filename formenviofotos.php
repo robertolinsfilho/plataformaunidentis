@@ -3,12 +3,17 @@ session_start();
 error_reporting(0);
 include 'conexao.php';
 
-if (empty($_GET['key'])) {
+if (!empty($_GET['key'])) {
   $forekey = $_GET['key'];
+  
   $queryDadosGeraisAssociado = mysqli_query($conexao, "SELECT * from dadospessoais where forekey = '$forekey'");
   $dadosGeraisAssociado = mysqli_fetch_assoc($queryDadosGeraisAssociado);
+  
   $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais where forekey = '$forekey'");
   $dadosPrincipaisAssociado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
+  
+  $queryDadosEndereco = mysqli_query($conexao, "SELECT * FROM endereco WHERE forekey = '$forekey'");
+  $dadosEndereco = mysqli_fetch_assoc($queryDadosEndereco);
 
   $_SESSION['nome']     = $dadosGeraisAssociado['nome'];
   $_SESSION['cpf']      = $dadosGeraisAssociado['cpf'];
@@ -26,6 +31,17 @@ if (empty($_GET['key'])) {
   $_SESSION['expedidor']   = $dadosPrincipaisAssociado['expedidor'];
   $_SESSION['mae']         = $dadosPrincipaisAssociado['mae'];
   $_SESSION['fixo']        = $dadosPrincipaisAssociado['fixo'];
+
+  // Dados endereco
+  $_SESSION['cep']         = $dadosEndereco['cep'];
+  $_SESSION['rua']         = $dadosEndereco['rua'];
+  $_SESSION['numero']      = $dadosEndereco['numero'];
+  $_SESSION['bairro']      = $dadosEndereco['bairro'];
+  $_SESSION['cidade']      = $dadosEndereco['cidade'];
+  $_SESSION['estado']      = $dadosEndereco['estado'];
+  $_SESSION['complemento'] = $dadosEndereco['complemento'];
+} else {
+  $forekey = $_SESSION['forekey'];
 }
 
 ?>
@@ -150,7 +166,7 @@ if (empty($_GET['key'])) {
         <label class="labelInput">Envio de Arquivos</label>
         <hr>
       </div>
-      <form method="POST" action="enviofotos2" enctype="multipart/form-data">
+      <form method="POST" action="enviofotos2?key=<?=$forekey?>" enctype="multipart/form-data">
         <div class="row justify-content-center">
           <div class="d-flex">
             <div class="drop-zone">

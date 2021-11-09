@@ -408,10 +408,12 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
           }
           break;
       }
+      $preco4 = $preco;
       if ($cont > 0) {
         $preco3 = $preco2 * $cont;
         $preco = $preco + $preco3;
       }
+      
       $_SESSION['preco'] = $preco;
 
       ?>
@@ -421,7 +423,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
           <h2 style="font-family: 'Poppins', sans-serif;font-size:1rem; color: #ffffff;text-transform: uppercase;">Resumo da Proposta </h2>
           <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Valor Por Dependente R$<?php echo $preco2 ?></h3>
           <hr style='background-color: #ffffff;'>
-          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Total R$<?php echo $preco ?></h3>
+          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Total R$<?php echo $preco - $preco4 ?></h3>
 
         </div>
         <!-- <button type="button" style="margin-right: 1rem;height:40px" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Cadastrar Dependentes</button> -->

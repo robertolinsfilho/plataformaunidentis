@@ -25,9 +25,9 @@ if($dadosGeraisAssocidado['etapa'] == 1){
 }elseif($dadosGeraisAssocidado['etapa'] == 2){
     $link = 'https://unidentisdigital.com.br/formdadospessoais?key='.$cpf;
 }elseif($dadosGeraisAssocidado['etapa'] == 3 ){
-    $link = 'https://unidentisdigital.com.br/formenviofotos?key='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formenviofotoscartao?key='.$cpf;
 }elseif($dadosGeraisAssocidado['etapa'] == 4){
-    $link = 'https://unidentisdigital.com.br/formendereco?key='.$cpf;
+    $link = 'https://unidentisdigital.com.br/formdadospessoais?key='.$cpf;
 }elseif($dadosGeraisAssocidado['etapa'] == 5 && $dadosGeraisAssocidado['plano'] == 'UNIDENTISVIPBOLETO'){
     $link = 'https://unidentisdigital.com.br/titular?key='.$cpf;
 }elseif($dadosGeraisAssocidado['etapa'] == 5){
@@ -36,10 +36,8 @@ if($dadosGeraisAssocidado['etapa'] == 1){
     $link = 'https://unidentisdigital.com.br/login2';
 }
 
-$email = strip_tags($dadosPrincipaisAssocidado['email']);
-$senha = strip_tags($dadosPrincipaisAssocidado['initpass']);
-
-echo $senha;
+$email = strip_tags((string)$dadosPrincipaisAssocidado['email']);
+$senha = strip_tags((string)$dadosPrincipaisAssocidado['initpass']);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -63,11 +61,10 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                             // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-
     //Recipients
     $mail->setFrom('unidentis.mail@unidentis.com.br', 'Plano Unidentis');
     $mail->addAddress( $email  , 'Unidentis');     // Add a recipient
-             // Name is optional
+    // Name is optional
  
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
@@ -216,16 +213,13 @@ try {
     // <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
     // <h2 style="text-align:center;align-text:center;color:#404bb5" >FINALIZAR PROPOSTA</h2>
     // <h3 style="text-align:center;align-text:center;color:#404bb5">ACESSE NOSSO SISTEMA  CLICANDO NO BOTAO A SEGUIR  PARA CONCLUIR O CADASTRO DA PROPOSTA</h3>
-   
-   
-    
+  
     // </div>
     // <a href="'.$link.'"><button style="margin-left:18%;width:65%;border-color:blue;border-radius:7px;height:8%;font-size:18px;text-color:#f5f5f5">Clique aqui </button></a> <br><br></body>';
-   
 
     $mail->send();
     	
-    echo "<script>window.location.assign('index.php')</script>";
+    echo "<script>window.location.assign('form-wizard?key=".$cpf."')</script>";
     exit;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

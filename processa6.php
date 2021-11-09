@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 session_start();
 include_once('conexao.php');
 
-$forekey = $_SESSION['forekey'];
+$forekey = $_GET['key'];
 
 $queryDadosPrincipaisAssociado = mysqli_query($conexao, "SELECT * from dadosprincipais where forekey ='$forekey'");
 $dadosPrincipaisAssocidado = mysqli_fetch_assoc($queryDadosPrincipaisAssociado);
@@ -76,7 +76,7 @@ style="border: 0px solid black; text-align: center; margin: 0 auto; border-radiu
       </tr>
       <tr style="height: 2rem; width: 100%; padding: 0 16px;">
         <td style="line-height: 1rem; font-size: .84rem; text-align: center;color: #606060; margin-left: 8px;">
-          <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;"> senha:</span> '.$senha.'
+          <span style="font-size: .79rem; text-transform: uppercase; font-weight: bold; color: #023bbf;font-family: Arial, Helvetica, sans-serif;"> senha:</span> '.strip_tags($senha).'
         </td>
       </tr>
       <tr style="height: 2rem; align-items: center; width: 100%;">

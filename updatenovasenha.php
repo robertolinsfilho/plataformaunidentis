@@ -1,29 +1,37 @@
 <?php
 include_once('conexao.php');
 session_start();
-if(isset($_SESSION['emailsenha'])){
-    $usuario= $_SESSION['emailsenha'];
-}else{
-$usuario= $_SESSION['usuario1'];
-}
-$senha = $_POST['senha'];
 
-$query = "UPDATE usuario SET senha  = '{$senha}' where usuario = '{$usuario}' ";
+$post = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
+$usuario = $_SESSION['emailplataforma'];
+$senha   = $post['senha'];
+$forekey = $post['forekey'];
 
+$query = "SELECT * FROM usuario WHERE usuario = '$usuario' AND senha = '$senha'";
+$result = mysqli_query($conexao, $query);
+$row = mysqli_fetch_assoc($result);
 
-$query1 = "UPDATE usuario SET senha  = '{$senha}', acesso = 1 where usuario = '{$usuario}' ";
-
-
-if($conexao->query($query) === TRUE && $conexao->query($query1)) {
-
-    unset($_SESSION['emailsenha']);
-   header('Location: login2');
+if(isset($row)):
+    $_SESSION['senhaInvalida'] = true;
+    echo "<body onload='window.history.back();'>";
     exit();
+else:
+    $query = "UPDATE usuario SET senha  = '{$senha}' where forekey = '{$forekey}' ";
 
-}else{
-    $_SESSION['nao_autenticado'] = true;
-  header('Location: login2');
-    exit();
-}
+    $query1 = "UPDATE usuario SET senha  = '{$senha}', acesso = 1 where forekey = '{$forekey}' ";
+    
+    if($conexao->query($query) === TRUE && $conexao->query($query1)) {
+    
+       header('Location: login2');
+        exit();
+    
+    }else{
+        $_SESSION['nao_autenticado'] = true;
+      header('Location: login2');
+        exit();
+    }
+endif;
+
+
 ?>
