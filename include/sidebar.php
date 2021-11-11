@@ -187,6 +187,17 @@ if($_SESSION['usuario'] === 'vendedor'){
 	
 							</ul>
 						</li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="fa fa-table"></span><span class="mtext">Cadastrar</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="vendedores">Vendedores</a></li>
+                                <li><a href="corretoras">Corretoras</a></li>
+
+
+                            </ul>
+                        </li>
 
 	
 	

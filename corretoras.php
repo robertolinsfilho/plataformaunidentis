@@ -43,13 +43,11 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
-							<div class="title">
-								<h4>Geral</h4>
-							</div>
+
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Geral</li>
+									<li class="breadcrumb-item active" aria-current="page">Corretoras</li>
 								</ol>
 							</nav>
 						</div>
@@ -60,7 +58,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 					<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 						<div class="clearfix mb-20">
 							<div class="pull-left">
-								<h5 class="text-blue">Todos Clientes</h5>
+								<h5 class="text-blue">Corretoras</h5>
 
 							</div>
 						</div>
@@ -86,7 +84,7 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 									while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
 
 									?>
-										<tr>
+										<tr style="font-size: 14px">
 
 
 											<td><?php echo $row_usuario['corretora']; ?></td>

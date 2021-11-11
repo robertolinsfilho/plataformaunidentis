@@ -55,7 +55,7 @@ $sql4 = "DELETE * FROM endereco WHERE forekey ='{$forekey}'";
 // Adiciona esse endereco
 $sql4 = "INSERT INTO endereco ( cpf, cep, rua, numero, bairro, cidade, estado, complemento, forekey ) VALUES ('$cpf', '$cep', '$rua', '$numero', '$bairro', '$cidade', '$estado', '$complemento', '$forekey')";
 
-if($conexao->query($sql) && $conexao->query($sql2) && $conexao->query($sql3)){
+if($conexao->query($sql) && $conexao->query($sql2) && $conexao->query($sql4)){
     
    if($_SESSION['plano'] =='UNIDENTISVIPBOLETO'){
        header('Location: formenviofotos#form1');
