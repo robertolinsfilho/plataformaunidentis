@@ -28,6 +28,14 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 ?>
 <!DOCTYPE html>
 <html>
+<style>
+    @media screen and (max-width: 767px){
+        div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+
+            margin: 5%;
+        }
+    }
+</style>
 <head>
 	<?php include('include/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">

@@ -29,6 +29,14 @@ header('Content-type: text/html; charset=utf-8', TRUE);
 ?>
 <!DOCTYPE html>
 <html>
+<style>
+    @media screen and (max-width: 767px){
+        div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+
+            margin: 5%;
+        }
+    }
+</style>
 <head>
     <meta charset="UTF-8">
 	<?php include('include/head.php'); ?>
