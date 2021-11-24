@@ -43,7 +43,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
 	<div class="main-container">
 
 		<h2 style="margin-top: 7%;margin-left:5%;font-weight:bold">Cadastro de Corretora</h2>
-		<form method="POST" action="alteracaocorretora?num=2">
+		<form style="width: 98%" method="POST" action="alteracaocorretora?num=2">
 			<div class="row">
 				<div class="col-md-7">
 					<label>Corretora:</label>
@@ -65,7 +65,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["senha"])) {
 				</div>
 
 			</div>
-			<button style="margin-left:82%" class="btn btn-primary" type="submit">Cadastrar</button>
+			<button style="margin-left:87%;margin-top: -5%" class="btn btn-primary" type="submit">Salvar</button>
 		</form>
 
 

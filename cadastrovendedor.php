@@ -31,14 +31,10 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 			margin-top: 4%;
 			padding-left: 20px;
 		}
+        label{
+            padding-top: 10px;
+        }
 
-		.col-md-5 {
-			padding-top: 20px;
-		}
-
-		.col-md-6 {
-			padding-top: 20px;
-		}
 	</style>
 	<meta charset="UTF-8">
 	<?php include('include/head.php'); ?>
@@ -50,18 +46,14 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 	<div class="main-container">
 
 		<h2 style="margin-top: 4%;margin-left:2%;font-weight:bold">Informações do Vendedor</h2>
-		<form method="POST" action="alteracaovendedor?num=2">
+		<form style="width: 98%" method="POST" action="alteracaovendedor?num=2">
 			<div class="row">
 				<div class="col-md-4">
 					<label>CPF:</label>
 					<input name="cpf" minlength="11" maxlength="11" palceholder="CPF" class="form-control" required>
 				</div>
 
-			</div>
-
-			<div class="row">
-
-				<div class="col-md-7">
+				<div class="col-md-5">
 					<label>Corretora:</label>
 					<input name="corretora" placeholder="corretora" class="form-control" required>
 				</div>
@@ -70,20 +62,20 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 					<label>Email:</label>
 					<input name="email" placeholder="Email" class="form-control" required>
 				</div>
+                <div class="col-md-5">
+                    <label>Nome Vendedor:</label>
+                    <input name="vendedor" class="form-control" placeholder="Vendedor" required>
+                </div>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 					<label>Link:</label>
 					<input value="unidentisdigital.com.br/pessoafisica?vendedor=<?PHP echo $_SESSION['usuario'] ?>" class="form-control" readonly>
-				</div>
-				<div class="col-md-5">
-					<label>Nome Vendedor:</label>
-					<input name="vendedor" class="form-control" placeholder="Vendedor" required>
 				</div>
 
 
 			</div>
 			<br>
-			<button style="margin-left:80%" class="btn btn-primary" type="submit">Salvar</button>
+			<button style="margin-left:80%;margin-top: -10%;" class="btn btn-primary" type="submit">Salvar</button>
 		</form>
 
 	</div>

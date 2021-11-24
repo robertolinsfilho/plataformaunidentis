@@ -170,23 +170,8 @@ if($_SESSION['usuario'] === 'vendedor'){
 	
 						</li>
 						
-						
 	
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle">
-								<span class="fa fa-table"></span><span class="mtext">Propostas</span>
-							</a>
-							<ul class="submenu">
-								<li><a href="datatable">Geral</a></li>
-								<li><a href="indeferidas">Indeferidas</a></li>
-								
-								<li><a href="analise">Em Analise</a></li>
-								<li><a href="canceladas">Canceladas</a></li>
-								<li><a href="implantadas">Implantadas</a></li>
-								
-	
-							</ul>
-						</li>
+
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle">
                                 <span class="fa fa-table"></span><span class="mtext">Cadastrar</span>
