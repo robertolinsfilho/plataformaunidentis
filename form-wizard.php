@@ -732,7 +732,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<h3 class='imgS imgSEnd'>RG Frente</h3>
 
 															<a href="fotos/<?php echo $fotosAssociados['rgfrente'] ?>" target="_blank">
-																<div class='wBackImg' style='background-image: url("fotos/<?php
+																<div id="rgfrenteimg" class='wBackImg' style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['rgfrente']);
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgfrente']; ?>");'></div>
 															</a>
@@ -740,8 +740,8 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																Editar
 															</button>
 															<?php if($end[count($end) - 1] != 'pdf'):?>
-															<button type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-          													<button type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<button id="rgfrente1" type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button id="rgfrente2" type="button" fname = "<?= $fotosAssociados['rgfrente']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 															<?php endif?>
 														</div>
 													</div>
@@ -752,7 +752,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<h3 class='imgS imgSEnd'>RG Verso</h3>
 
 															<a href="fotos/<?php echo $fotosAssociados['rgverso'] ?>" target="_blank">
-																<div class='wBackImg' style='background-image: url("fotos/<?php
+																<div id="rgversoimg"class='wBackImg' style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['rgverso']);
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['rgverso']; ?>")'></div>
 															</a>
@@ -760,8 +760,8 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																Editar
 															</button>
 															<?php if($end[count($end) - 1] != 'pdf'):?>
-															<button type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-          													<button type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<button id="rgverso1" type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button id="rgverso2" type="button" fname = "<?= $fotosAssociados['rgverso']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 															<?php endif?>
 														</div>
 
@@ -773,7 +773,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<h3 class='imgS imgSEnd'>CPF</h3>
 
 															<a href="fotos/<?php echo $fotosAssociados['cpf'] ?>" target="_blank">
-																<div class='wBackImg' style='background-image: url("fotos/<?php
+																<div id ="cpfimg"class='wBackImg' style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['cpf']);
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['cpf']; ?>");'></div>
 															</a>
@@ -781,8 +781,8 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																Editar
 															</button>
 															<?php if($end[count($end) - 1] != 'pdf'):?>
-															<button type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-          													<button type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<button id="cpf1"type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button id="cpf2"type="button" fname = "<?= $fotosAssociados['cpf']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 															<?php endif?>
 														</div>
 
@@ -794,7 +794,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<h3 class='imgS imgSEnd'>Comp Residência</h3>
 
 															<a href="fotos/<?php echo $fotosAssociados['compresidencia'] ?>" target="_blank">
-																<div class='wBackImg' style='background-image: url("fotos/<?php
+																<div id="compimg" class='wBackImg' style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['compresidencia']);
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['compresidencia']; ?>");'></div>
 															</a>
@@ -802,8 +802,8 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																Editar
 															</button>
 															<?php if($end[count($end) - 1] != 'pdf'):?>
-															<button type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-          													<button type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<button id="comp1"type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button id ="comp2"type="button" fname = "<?= $fotosAssociados['compresidencia']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 															<?php endif?>
 														</div>
 
@@ -817,15 +817,15 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 																<h3 class='imgS imgSEnd'>Cartão</h3>
 
 																<a href="fotos/<?php echo $fotosAssociados['cartao'] ?>" target="_blank">
-																	<div class='wBackImg' style='background-image: url("fotos/<?php
+																	<div id="cartaoimg"class='wBackImg' style='background-image: url("fotos/<?php
 																																$end = explode('.', $fotosAssociados['cartao']);
 																																echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['cartao']; ?>")'></div>
 																</a>
 
 																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Editar</button>
 																<?php if($end[count($end) - 1] != 'pdf'):?>
-																<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-																<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+																<button id="cartao1" type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+																<button id="cartao2" type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 																<?php endif?>
 															</div>
 
@@ -836,14 +836,14 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<h3 class='imgS imgSEnd'>Outro</h3>
 
 															<a href="fotos/<?php echo $fotosAssociados['outro'] ?>" target="_blank">
-																<div class='wBackImg' style='background-image: url("fotos/<?php
+																<div class='wBackImg' id ="outroimg" style='background-image: url("fotos/<?php
 																															$end = explode('.', $fotosAssociados['outro']);
 																															echo $end[count($end) - 1] == 'pdf' ? '../assets/img/icon_pdf.png' : $fotosAssociados['outro']; ?>")'></div>
 															</a>
 															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal10">Editar</button>
 															<?php if($end[count($end) - 1] != 'pdf'):?>
-															<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
-          													<button type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+															<button id="outro1" type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary minus-rotate"><i  class="fa fa-undo" aria-hidden="true"></i></button>
+          													<button id="outro2"type="button" fname = "<?= $fotosAssociados['cartao']?>" class="btn btn-secondary plus-rotate"><i class="fa fa-repeat" aria-hidden="true"></i></button>
 															<?php endif?>
 														</div>
 
@@ -1273,6 +1273,96 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 		// },
 
 		//});
+        var outro = 0;
+        $( "#outro1" ).click(function() {
+            parseInt(outro);
+            outro = outro + 90;
+            $('#outroimg').css( "transform", "rotate("+outro+"deg)");
+            $('#outroimg').css( "width", "50%");
+            $('#outroimg').css( "margin-left", "25%");
+        });
+        $( "#outro2" ).click(function() {
+            parseInt(outro);
+            outro = outro - 90;
+            $('#outroimg').css( "transform", "rotate("+outro+"deg)");
+            $('#outroimg').css( "width", "50%");
+            $('#outroimg').css( "margin-left", "25%");
+        });
+        var cartao = 0;
+        $( "#cartao1" ).click(function() {
+            parseInt(cartao);
+            cartao = cartao + 90;
+            $('#cartaoimg').css( "transform", "rotate("+cartao+"deg)");
+            $('#cartaoimg').css( "width", "50%");
+            $('#cartaoimg').css( "margin-left", "25%");
+        });
+        $( "#cartao2" ).click(function() {
+            parseInt(cartao);
+            cartao = cartao - 90;
+            $('#cartaoimg').css( "transform", "rotate("+cartao+"deg)");
+            $('#cartaoimg').css( "width", "50%");
+            $('#cartaoimg').css( "margin-left", "25%");
+        });
+        var comp = 0;
+        $( "#comp1" ).click(function() {
+            parseInt(comp);
+            comp = comp + 90;
+            $('#compimg').css( "transform", "rotate("+comp+"deg)");
+            $('#compimg').css( "width", "50%");
+            $('#compimg').css( "margin-left", "25%");
+        });
+        $( "#comp2" ).click(function() {
+            parseInt(comp);
+            comp = comp - 90;
+            $('#compimg').css( "transform", "rotate("+comp+"deg)");
+            $('#compimg').css( "width", "50%");
+            $('#compimg').css( "margin-left", "25%");
+        });
+        var cpf = 0;
+        $( "#cpf1" ).click(function() {
+            parseInt(cpf);
+            cpf = cpf + 90;
+            $('#cpfimg').css( "transform", "rotate("+cpf+"deg)");
+            $('#cpfimg').css( "width", "50%");
+            $('#cpfimg').css( "margin-left", "25%");
+        });
+        $( "#cpf2" ).click(function() {
+            parseInt(cpf);
+            cpf = cpf - 90;
+            $('#cpfimg').css( "transform", "rotate("+cpf+"deg)");
+            $('#cpfimg').css( "width", "50%");
+            $('#cpfimg').css( "margin-left", "25%");
+        });
+        var rgverso = 0;
+        $( "#rgverso1" ).click(function() {
+            parseInt(rgverso);
+            rgverso = rgverso + 90;
+            $('#rgversoimg').css( "transform", "rotate("+rgverso+"deg)");
+            $('#rgversoimg').css( "width", "50%");
+            $('#rgversoimg').css( "margin-left", "25%");
+        });
+        $( "#rgverso2" ).click(function() {
+            parseInt(rgverso);
+            rgverso = rgverso - 90;
+            $('#rgversoimg').css( "transform", "rotate("+rgverso+"deg)");
+            $('#rgversoimg').css( "width", "50%");
+            $('#rgversoimg').css( "margin-left", "25%");
+        });
+        var rgfrente = 0;
+        $( "#rgfrente1" ).click(function() {
+            parseInt(rgverso);
+            rgfrente = rgfrente + 90;
+            $('#rgfrenteimg').css( "transform", "rotate("+rgfrente+"deg)");
+            $('#rgfrenteimg').css( "width", "50%");
+            $('#rgfrenteimg').css( "margin-left", "25%");
+        });
+        $( "#rgfrente2" ).click(function() {
+            parseInt(rgfrente);
+            rgfrente = rgfrente - 90;
+            $('#rgfrenteimg').css( "transform", "rotate("+rgfrente+"deg)");
+            $('#rgfrenteimg').css( "width", "50%");
+            $('#rgfrenteimg').css( "margin-left", "25%");
+        });
 	</script>
 </body>
 
