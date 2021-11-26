@@ -1,9 +1,10 @@
+
 const rotateAlert = document.querySelector('.rotate-success');
 document.addEventListener('click', e => {
 et = e.target;
 if(et.classList.contains('minus-rotate')){
     let fname = et.getAttribute('fname');
-    axios.post("http://"+window.location.host+"/AmbienteTeste/uniDigital/functions/rotate-image.php", {
+    axios.post("http://"+window.location.host+"/functions/rotate-image.php", {
         degress: 90,
         fname: fname
     }).then(res => {
@@ -23,7 +24,7 @@ if(et.classList.contains('minus-rotate')){
 }
 if(et.classList.contains('plus-rotate')){
     let fname = et.getAttribute('fname');
-    axios.post("http://"+window.location.host+"/AmbienteTeste/uniDigital/functions/rotate-image.php", {
+    axios.post("http://"+window.location.host+"/functions/rotate-image.php", {
         degress: -90,
         fname: fname
     }).then(res => {
