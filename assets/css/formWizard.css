@@ -25,6 +25,7 @@ label {
 
 .flexLabel .labelInput {
   white-space: nowrap;
+  position: absolute;
   padding-right: 1rem;
   font-weight: bold;
   color: #606060;

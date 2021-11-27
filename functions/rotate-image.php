@@ -11,7 +11,7 @@ $imgType = explode('.', $fname);
 $imgType = end($imgType);
 
 // Assign image file to variable 
-$image_name = 'http://localhost:8080/fotos/'.$fname;
+$image_name = __DIR__.'/../fotos/'.$fname;
 
 // degreess 
 $degress = $_POST['degress'];

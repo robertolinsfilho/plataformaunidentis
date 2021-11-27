@@ -10,21 +10,23 @@ var vendas;
 var ctx;
 var myChart;
 var estatus;
+
+// Production
+const pathTograficoIndex = window.location.protocol+"//"+window.location.host+"/functions/graficoIndex.php";
+
+// Ambiente de teste mudar para algo semelhante a: pathTograficoIndex = window.location.protocol+"//"+window.location.host+"/unidentisdigital/functions/graficoIndex.php"
+
 document.addEventListener("click", (e) => {
   et = e.target;
   if (et.classList.contains("pag-pendente")) {
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    });
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -86,18 +88,14 @@ document.addEventListener("click", (e) => {
         console.log(error);
       });
   } else if(et.classList.contains("novas")){
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    })
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -159,18 +157,14 @@ document.addEventListener("click", (e) => {
         console.log(error);
       });
   } else if(et.classList.contains("em-analise")){
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    })
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -232,18 +226,14 @@ document.addEventListener("click", (e) => {
         console.log(error);
       });
   } else if(et.classList.contains("canceladas")){
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    })
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -305,18 +295,14 @@ document.addEventListener("click", (e) => {
         console.log(error);
       });
   } else if(et.classList.contains("implantadas")){
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    })
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -378,18 +364,14 @@ document.addEventListener("click", (e) => {
         console.log(error);
       });
   } else if(et.classList.contains("indeferido")){
-    window.scroll({
-      top: 1000000,
-      behavior: "smooth",
-    })
     dia.value = '7';
     estatus = et.getAttribute("status");
-    chart.classList.toggle("show");
+    if(!chart.classList.contains("show")){
+      chart.classList.toggle("show");
+    }
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: "7",
@@ -459,9 +441,7 @@ dia.addEventListener("change", (e) => {
   if (estatus == "PagPendente") {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
@@ -526,9 +506,7 @@ dia.addEventListener("change", (e) => {
   } else if(estatus == 'Novas') {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
@@ -593,9 +571,7 @@ dia.addEventListener("change", (e) => {
   } else if(estatus == 'EmAnalise') {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
@@ -661,9 +637,7 @@ dia.addEventListener("change", (e) => {
   else if(estatus == 'Canceladas') {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
@@ -729,9 +703,7 @@ dia.addEventListener("change", (e) => {
   else if(estatus == 'Implantadas') {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
@@ -797,9 +769,7 @@ dia.addEventListener("change", (e) => {
   else if(estatus == 'Indeferido') {
     axios
       .post(
-        "http://" +
-          window.location.host +
-          "/AmbienteTeste/uniDigital/functions/graficoIndex.php?status=" +
+        pathTograficoIndex+"?status=" +
           estatus,
         {
           dia: dia,
