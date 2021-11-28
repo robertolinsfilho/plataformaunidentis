@@ -713,7 +713,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 										</div>
 										<!-- Step 4 -->
 										<?php
-										if ($dadosGeraisAssociado['plano'] != 'UNIDENTISVIPEMPRESARIAL') {
+										if ($dadosGeraisAssociado['plano'] = 'UNIDENTISVIPEMPRESARIAL') {
 										?>
 
 

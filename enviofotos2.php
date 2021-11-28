@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/preloader.css">
+    <title>Carregando Fotos</title>
+</head>
+<body>
+    <div id="preloader"></div>
+</body>
+</html>
 <?php
 session_start();
 include("conexao.php");
@@ -27,46 +40,46 @@ if($fotosAssociado = mysqli_fetch_assoc($queryFotosAssociado)):
     $conexao->query($sql5);
 endif;
 
-if ($_FILES['arquivo10']){
-    $file = $_FILES['arquivo10'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $rgfrente = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $rgfrente);
+if ($_FILES['arquivo0']){
+    $file = $_FILES['arquivo0'];
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $rgfrente = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $rgfrente);
 }
 
 if ($_FILES['arquivo1']){
     $file = $_FILES['arquivo1'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $rgverso = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $rgverso);
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $rgverso = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $rgverso);
 }
 
 if ($_FILES['arquivo2']){
     $file = $_FILES['arquivo2'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $cpf = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $cpf);
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $cpf = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $cpf);
 }
 
 if ($_FILES['arquivo3']){
     $file = $_FILES['arquivo3'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $compresidencia = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $compresidencia);
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $compresidencia = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $compresidencia);
 }
 
 if ($_FILES['arquivo4']){
     $file = $_FILES['arquivo4'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $cartao = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $cartao);
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $cartao = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $cartao);
 }
 
 if ($_FILES['arquivo5']){
     $file = $_FILES['arquivo5'];
-    $formatoArquivo = explode('.', $file['name'][0]);
-    $outro = uniqid() . '.' . end($formatoArquivo);
-    move_uploaded_file($file['tmp_name'][0], __DIR__ . '/fotos/' . $outro);
+    $formatoArquivo = explode('.', $file['name'])[1];
+    $outro = uniqid() . '.' . $formatoArquivo;
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/fotos/' . $outro);
 }
 
 $sql = "INSERT INTO fotos (cpf_titular,rgfrente,rgverso,cpf,compresidencia,cartao, outro, forekey)
@@ -81,3 +94,4 @@ if($conexao->query($sql) === TRUE and $conexao->query($sql2) === TRUE) {
 
 $conexao->close();
 ?>
+

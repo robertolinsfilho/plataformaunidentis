@@ -21,73 +21,90 @@ $uCpf = $dadosDependentes['cpf_titular'];
 //consultar no banco de dados
 $_SESSION['cpfnova'] = $uCpf;
 
-$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfDependente=$uCpf";
+// $url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfAssociado=$uCpf";
+// $curl = curl_init($url);
+// curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
+// curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+// $resultado = json_decode(curl_exec($curl), true);
+// // Fecha a conexão
+// curl_close($curl);
+
+// $x = $resultado['dados'];
+// $total = count($x);
+// $total = $total - 1;
+// $y = 0;
+// $z = 0;
+// $j = 0;
+
+// // Get data
+// for ($i = 0; $i <= $total; $i++) {
+// $y = $x[$i]['dependentes'];
+// $plano =  $y[0]['nomePlano'];
+// // echo $x["$i"]['dependentes'][0]['nomeSituacao'] . " $i ";
+// 	if ($x[$i]['dependentes'][0]['nomeSituacao'] == 'ATIVO') {
+// 		$nome = $x[$i]['dependentes'][0]['nomeDependente'];
+// 		$contrato = $x[$i]['dependentes'][0]['codigoDependente'];
+// 		$nascimento = $x[$i]['dependentes'][0]['dataDeNascimento'];
+// 		$sexo = $x[$i]['dependentes'][0]['sexo'];
+// 		$uCpf = $x[$i]['dependentes'][0]['numeroCpfDependente'];
+// 		$rg = $x[$i]['dependentes'][0]['numeroCarteira'];
+// 		$cep = $x[$i]['cep'];
+// 		foreach($x[$i]['dependentes'][0]['contatos'] as $value):
+// 			if($value['tipo'] == "Fixo" || $value['tipo'] == "Celular") :
+// 				$telefone = $value['descricaoContato'];				
+// 			endif;
+// 			if($value['tipo'] == "E-mail") :
+// 				$email = $value['descricaoContato'];
+// 			endif;
+// 		endforeach;
+// 		$rua = $x[$i]['logradouro'];
+// 		$numero = $x[$i]['numero'];
+// 		$cidade = $x[$i]['cidade'];
+// 		$uf = $x[$i]['ufSigla'];
+// 	}
+// }
+
+$url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&limite=50&cpfAssociado=$uCpf";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, True);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 $resultado = json_decode(curl_exec($curl), true);
-// Fecha a conexão
-curl_close($curl);
+$resultado = $resultado['dados'];
 
-$x = $resultado['dados'];
-$total = count($x);
-$total = $total - 1;
-$y = 0;
-$z = 0;
-$j = 0;
-
-// Get data
-for ($i = 0; $i <= $total; $i++) {
-$y = $x[$i]['dependentes'];
-$plano =  $y[0]['nomePlano'];
-// echo $x["$i"]['dependentes'][0]['nomeSituacao'] . " $i ";
-	if ($x[$i]['dependentes'][0]['nomeSituacao'] == 'ATIVO') {
-		$nome = $x[$i]['nome'];
-		$contrato = $x[$i]['codigo'];
-		$nascimento = $x[$i]['dataDeNascimento'];
-		$sexo = $x[$i]['sexo'];
-		$uCpf = $x[$i]['cpf'];
-		$rg = $x[$i]['rg'];
-		$cep = $x[$i]['cep'];
-		foreach($x[$i]['contatos'] as $value):
-			if($value['tipo'] == "Fixo" || $value['tipo'] == "Celular") :
-				$telefone = $value['descricaoContato'];				
-			endif;
-			if($value['tipo'] == "E-mail") :
-				$email = $value['descricaoContato'];
-			endif;
-		endforeach;
-		$rua = $x[$i]['logradouro'];
-		$numero = $x[$i]['numero'];
-		$cidade = $x[$i]['cidade'];
-		$uf = $x[$i]['ufSigla'];
+foreach ((array)$resultado as $value) {
+	foreach ((array)$value['dependentes'] as $value1) {
+  
+	  if ((int)$value1['codigoSituacao'] == 1 && (string)$value1['grauParentescoNome'] == "TITULAR") {
+  
+		$contatos = array_values((array)$value['contatos']);
+  
+		foreach ($contatos as $contato) {
+		  if ((string)$contato["tipo"] == "Fixo" or (string)$contato["tipo"] == "Celular") {
+			if (strlen((string)$contato['descricaoContato']) == 11) {
+			  $telefone = $contato['descricaoContato'];
+			}
+		  }
+  
+		  $_SESSION['emaildependente'] = null;
+		  if ((string)$contato["tipo"] == "E-mail") {
+			$email = (string)$contato['descricaoContato'];
+		  }
+		}
+  
+		$rua    = $value['logradouro'];
+		$numero = $value['numero'];
+		$cidade = $value['cidade'];
+		$uf     = $value['ufSigla'];
+		$cep    = $value['cep'];
+		$uCpf 	= $value['cpf'];
+		$rg 	= $value['rg'];
+		$sexo = $value['sexo'];
+		$nascimento = date('d/m/Y', strtotime($value['dataDeNascimento']));
+		$contrato = $value['codigo'];
+		$nome = $value['nome'];
+	  }
 	}
-}
-
-// foreach ($resultado as $value) {
-
-// 	foreach ($value['dependentes'] as $value1) {
-
-// 		foreach ((array)$value['contatos'] as $value2) {
-
-
-// 			if ($value1['nomeSituacao'] != 'CANCELADO') {
-
-// 				if ($value2['tipo'] == 'Celular') {
-// 					$_SESSION['celulardependente'] = $value2['descricaoContato'];
-// 					$y = 1;
-// 				}
-// 				if ($value2['tipo'] == 'E-mail') {
-// 					$_SESSION['emaildependente'] = $value2['descricaoContato'];
-// 					$z = 1;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// $result_usuario3 = "SELECT * from dependentes where forekey ='$cpf'";
-// $resultado_usuario3 = mysqli_query($conexao, $result_usuario3);
-// $row_usuario3 = mysqli_fetch_assoc($resultado_usuario3);
+  }
 
 /**  ?????   **/
 $result_usuario12 = "SELECT * from vendedor where email = '$_SESSION[usuario]'";
