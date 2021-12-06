@@ -13,7 +13,7 @@ var estatus;
 
 // Production
 const pathTograficoIndex = window.location.protocol+"//"+window.location.host+"/functions/graficoIndex.php";
-
+// const pathTograficoIndex = "https://localhost/unidentisdigital/functions/graficoIndex.php"
 // Ambiente de teste mudar para algo semelhante a: pathTograficoIndex = window.location.protocol+"//"+window.location.host+"/unidentisdigital/functions/graficoIndex.php"
 
 document.addEventListener("click", (e) => {
