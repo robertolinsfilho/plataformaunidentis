@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -53,7 +53,7 @@
 <body>
     <div id="preloader" class="pre-loader"></div>
 </body>
-</html> -->
+</html>
 
 <?php
 session_start();
@@ -498,11 +498,7 @@ if($num == '1') {
         header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }
 }else {
-    // $_SESSION['erroS4'] = $result['mensagem'];
-    echo "<pre>";
-    print_r($result);
-    echo "</pre>";
-    die();
+    $_SESSION['erroS4'] = $result['mensagem'];
     echo "<body onload='window.history.back();'>";
     exit;
 }
