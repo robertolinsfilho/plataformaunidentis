@@ -17,6 +17,7 @@ ini_set('display_errors', 0);
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <script type="text/javascript">
     $("#telefone, #celular").mask("(00) 00000-0000");
+    $("#cep").mask("00000-000");
   </script>
   <script type="text/javascript">
     function Mudarestado(el) {

@@ -33,13 +33,13 @@ switch ($_SESSION['sexo']) {
 
 <?php
             $cont = $_SESSION['cont'];
-            if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['uf'] == 'PB' && $cont == 0) {
+            if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'PB' && $cont == 0) {
               $preco = 40;
-            } elseif ( $_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $cont >= 1 && $_SESSION['uf'] == 'PB') {
+            } elseif ( $_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $cont >= 1 && $_SESSION['escolha'] == 'PB') {
               $preco = 35;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-              $_SESSION['uf'] == 'PB'
+              $_SESSION['escolha'] == 'PB'
             ) {
               $preco = 18;
             }
@@ -50,103 +50,103 @@ switch ($_SESSION['sexo']) {
 
             if (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPBOLETO' && $_SESSION['uf'] == 'RN' && $cont == 0
+              'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'RN' && $cont == 0
             ) {
               $preco = 40;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPBOLETO'
-              && $cont >= 1 && $_SESSION['uf'] == 'RN'
+              && $cont >= 1 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 35;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-              $_SESSION['uf'] == 'RN'
+              $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 18;
             }
             if (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPCARTAO' && $_SESSION['uf'] === 'PB' && $cont == 0
+              'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB' && $cont == 0
             ) {
               $preco = 23.90;
             } elseif (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPCARTAO' && $_SESSION['uf'] == 'PB' && $cont >= 1
+              'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] == 'PB' && $cont >= 1
             ) {
               $preco = 22.90;
             } elseif (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['uf'] ===
+              'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] ===
               'PB'
             ) {
               $preco = 60;
             } elseif (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont == 1 && $_SESSION['uf'] ==
+              'UNIDENTISVIPFAMILIACARTAO' && $cont == 1 && $_SESSION['escolha'] ==
               'PB'
             ) {
               $preco = 30;
             } elseif (
               $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont >= 2 && $_SESSION['uf'] ==
+              'UNIDENTISVIPFAMILIACARTAO' && $cont >= 2 && $_SESSION['escolha'] ==
               'PB'
             ) {
               $preco = 20;
             } elseif (
               $_SESSION['plano'] ==
               'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 &&
-              $_SESSION['uf'] == 'PB'
+              $_SESSION['escolha'] == 'PB'
             ) {
               $preco = 21.90;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 1 && $_SESSION['uf'] == 'PB'
+              && $cont == 1 && $_SESSION['escolha'] == 'PB'
             ) {
               $preco = 20.90;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont >= 2 && $_SESSION['uf'] == 'PB'
+              && $cont >= 2 && $_SESSION['escolha'] == 'PB'
             ) {
               $preco = 19.90;
             }
             if (
-              $_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['uf']
+              $_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha']
               === 'RN' && $cont == 0
             ) {
               $preco = 25.90;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPCARTAO' &&
-              $_SESSION['uf'] == 'RN' && $cont >= 1
+              $_SESSION['escolha'] == 'RN' && $cont >= 1
             ) {
               $preco = 24.90;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont == 0 && $_SESSION['uf'] == 'RN'
+              $cont == 0 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 66;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont == 1 && $_SESSION['uf'] == 'RN'
+              $cont == 1 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 33;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont >= 2 && $_SESSION['uf'] == 'RN'
+              $cont >= 2 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 22;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 0 && $_SESSION['uf'] == 'RN'
+              && $cont == 0 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 25;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 1 && $_SESSION['uf'] == 'RN'
+              && $cont == 1 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 24;
             } elseif (
               $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont >= 2 && $_SESSION['uf'] == 'RN'
+              && $cont >= 2 && $_SESSION['escolha'] == 'RN'
             ) {
               $preco = 23;
             }
@@ -494,7 +494,7 @@ switch ($_SESSION['sexo']) {
               <div class="col-md-3">
                 <div class="form-group">
                   <label class="rotulo">UF</label>
-                  <input type="text" name="uf" id="uf" class="form-control" value="<?php echo $_SESSION['uf'] ?>" placeholder="estado" readonly />
+                  <input type="text" name="uf" id="uf" class="form-control" value="<?php echo $_SESSION['escolha'] ?>" placeholder="estado" readonly />
                 </div>
               </div>
             </div>

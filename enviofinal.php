@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -53,7 +53,8 @@
 <body>
     <div id="preloader" class="pre-loader"></div>
 </body>
-</html>
+</html> -->
+
 <?php
 session_start();
 include_once('conexao.php');
@@ -225,8 +226,10 @@ if(isset($dadosCartao['cartao'])) {
         echo $e;
     }
 
-$admissao = $dadosGeraisAssociado['admissao'];
-    $admissao = '2000-10-10 10:10:10';
+    $admissao = isset($dadosGeraisAssociado['admissao']) ? $dadosGeraisAssociado['admissao'] : '2000-10-10 10:10:10';
+    if($admissao === '0000-00-00 00:00:00' ){
+        $admissao = '2000-10-10 10:10:10';
+    }
 
     if ($brand == 39) {
         $codigo = 4269;
@@ -280,17 +283,16 @@ $admissao = $dadosGeraisAssociado['admissao'];
 }
 
 // 13040
-
-if($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosGeraisAssociado['estado'] === 'PB'){
+if($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosGeraisAssociado['local'] === 'PB'){
     $plano = 13032;
     $preco = $dadosBoleto['preco'];
-}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' and $dadosGeraisAssociado['estado'] === 'PB'){
+}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' and $dadosGeraisAssociado['local'] === 'PB'){
     $plano = 13046;
     $preco = $dadosCartao['preco'];
-}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' and $dadosGeraisAssociado['estado'] === 'PB'){
+}elseif ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' and $dadosGeraisAssociado['local'] === 'PB'){
     $plano = 13050;
     $preco = $dadosCartao['preco'];
-}elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' and $dadosGeraisAssociado['estado'] === 'PB') {
+}elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' and $dadosGeraisAssociado['local'] === 'PB') {
     $plano = 13051;
     $preco = $dadosCartao['preco'];
 }elseif($dadosGeraisAssociado['plano'] === 'PLANOVIPORTOCARTAO'){
@@ -299,24 +301,24 @@ if($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO' and $dadosGeraisAssoc
 }elseif($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
     $plano = 13034;
     $preco = $dadosBoleto['preco'];
-}elseif($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO'){
+}elseif($dadosGeraisAssociado['local'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPBOLETO'){
     $plano = 13058;
     $preco = $dadosBoleto['preco'];
 
-}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO'){
+}elseif ($dadosGeraisAssociado['local'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO'){
     $plano = 13053;
     $preco = $dadosCartao['preco'];
 
-}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO'){
+}elseif ($dadosGeraisAssociado['local'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO'){
     $plano = 13055;
     $preco = $dadosCartao['preco'];
 
-}elseif ($dadosGeraisAssociado['estado'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
+}elseif ($dadosGeraisAssociado['local'] === 'RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO'){
     $plano = 13056;
     $preco = $dadosCartao['preco'];
 
 
-}elseif ($dadosGeraisAssociado['estado'] === ' RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
+}elseif ($dadosGeraisAssociado['local'] === ' RN' and $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPEMPRESARIAL'){
     $plano = 13052;
     $preco = $dadosBoleto['preco'];
 
@@ -338,7 +340,7 @@ $data =   array(
             "nome"                     => "$dadosGeraisAssociado[nome]",
             "dataNascimento"           => "$dadosPrincipaisAssociado[datas]",
             "cpf"                      => "$dadosGeraisAssociado[cpf]",
-            "matricula"                => "$dadosGeraisAssociado[matricula]",
+            "matricula"                => "$dadosGeraisAssociado[id]",
             "dataApresentacao"         => $admissao,
             "identidadeNumero"         => "$dadosPrincipaisAssociado[rg]",
             "identidadeOrgaoExpeditor" => "$dadosPrincipaisAssociado[expedidor]",
@@ -496,7 +498,11 @@ if($num == '1') {
         header('Location: processa5.php?email='.$dadosGeraisAssociado['email']);
     }
 }else {
-    $_SESSION['erroS4'] = $result['mensagem'];
+    // $_SESSION['erroS4'] = $result['mensagem'];
+    echo "<pre>";
+    print_r($result);
+    echo "</pre>";
+    die();
     echo "<body onload='window.history.back();'>";
     exit;
 }
