@@ -54,18 +54,16 @@ if (isset($_GET['key'])) {
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script type="text/javascript">
-    $("#telefone, #celular").mask("(00) 00000-0000");
-  </script>
-  <script type="text/javascript">
-    $("#cpf").mask("000.000.000-00");
-  </script>
+
   <script type="text/javascript">
     $("#rg").mask("0.000.000");
-  </script>
-  <script type="text/javascript">
+    $("#telefone, #celular").mask("(00) 00000-0000");
     $("#data").mask("00/00/0000");
+
+    $("#cpf").mask("000.000.000-00");
+    $("#cep").mask("00000-000");
   </script>
+  
   <style>
     #header {
       top: 0;
@@ -271,6 +269,7 @@ if (isset($_GET['key'])) {
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 <!-- Vendor JS Files -->
+
 <script src="assets/vendor/jquery/jquery.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>

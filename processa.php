@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 <body>
     <div id="preloader"></div>
 </body>
-</html> -->
+</html>
 
 <?php
 // Import PHPMailer classes into the global namespace

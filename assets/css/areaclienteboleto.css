@@ -51,8 +51,8 @@ label,
 a {
   color: #606060;
 }
-input,
-select {
+.row input,
+.row select {
   border: 1px solid #606060 !important;
 }
 
@@ -127,41 +127,9 @@ select.form-control {
   margin-bottom: .5rem;
 }
 
-.creditCard {
-  max-width: 400px;
-  margin: 0;
-  margin-left: auto;
-}
+/*  */
 
-.creditCard .col-sm-12 p {
-  font-weight: 600;
-  color: #606060;
-}
-
-.creditCard .col-sm-12 .bg-light {
-  background-color: #f6f6f6 !important;
-  height: 100%;
-  padding: 1.5rem;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  box-shadow: 0 0 4px rgb(0, 0, 0, 10%);
-  position: relative;
-}
-
-.creditCard .col-sm-12 .bg-light .card-flag {
-  position: absolute;
-  right: 10%;
-  margin-top: -1rem;
-  max-width: 160px;
-}
-
-.creditCard .col-sm-12 .bg-light input.mt-1 {
-  border: none !important;
-  border-bottom: 1px solid #4177d0 !important;
-  background-color: #f6f6f6;
-  width: 100%;
-}
-
+/*  */
 .table thead th{
   border: none;
 }

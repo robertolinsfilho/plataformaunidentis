@@ -244,7 +244,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 												<div class="col-md-3">
 													<div class="form-group">
 														<label>Preço </label>
-														<input type="text" name="preco" value="R$: <?php echo $dadosGeraisAssociado['preco']; ?>" class="form-control" readonly>
+														<input type="text" name="preco" value="R$ <?php echo $dadosGeraisAssociado['preco']; ?>" class="form-control" readonly>
 													</div>
 												</div>
 
@@ -323,7 +323,7 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 											</div>
 
 											<?php
-											if ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' or $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' or $dadosGeraisAssociado['plano'] === 'PLANOVIPORTOCARTAO') {
+											if ($dadosGeraisAssociado['plano'] === 'UNIDENTISVIPCARTAO' or $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPFAMILIACARTAO' or $dadosGeraisAssociado['plano'] === 'PLANOVIPORTOCARTAO' or $dadosGeraisAssociado['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO') {
 											?>
 												<div class="flexLabel">
 													<label class="labelInput">Informações de Pagamento</label>

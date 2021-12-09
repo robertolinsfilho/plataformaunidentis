@@ -1,0 +1,483 @@
+div.payment_section {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    min-height: 60vh;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.payment-title {
+    width: 100%;
+    text-align: center;
+}
+
+.form-card-container .field-card-container:first-of-type {
+    grid-area: name;
+}
+
+.form-card-container .field-card-container:nth-of-type(2) {
+    grid-area: cpf;
+}
+
+.form-card-container .field-card-container:nth-of-type(3) {
+    grid-area: number;
+}
+
+.form-card-container .field-card-container:nth-of-type(4) {
+    grid-area: expiration;
+}
+
+.form-card-container .field-card-container:nth-of-type(5) {
+    grid-area: security;
+}
+
+.form-card-container .field-card-container:nth-of-type(6) {
+    grid-area: btn;
+}
+
+.field-card-container input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.field-card-container {
+    position: relative;
+}
+
+.form-card-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 90px 90px 90px 90px;
+    grid-template-areas: "name name""cpf cpf""number number""expiration security""btn btn";
+    max-width: 400px;
+    padding: 20px;
+    color: #707070;
+    position: relative;
+}
+
+.form-card-container label {
+    padding-bottom: 5px;
+    font-size: 14px;
+    position: relative;
+    left: .25rem;
+    z-index: 999;
+    background-color: #eeeeee;
+    line-height: .5rem;
+}
+
+.form-card-container input {
+    margin-top: 0px;
+    position: relative;
+    top: -.25rem;
+    padding: 15px;
+    font-size: 16px;
+    height: 2.5rem;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #606060;
+}
+
+.form-card-container .field-card-container a#verify_card{
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    width: 30%;
+    background: #247cf0;
+    color: #fff;
+    margin-right: 0%;
+    text-align: center;
+    transition: .25s ease-in-out;
+}
+
+.ccicon {
+    height: 34px;
+    position: absolute;
+    right: 6px;
+    top: calc(50% - 17px);
+    width: 60px;
+}
+
+/* CREDIT CARD IMAGE STYLING */
+/* .preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+} */
+
+.container-credit_card {
+    width: 100%;
+    max-width: 400px;
+    max-height: 251px;
+    height: 54vw;
+    padding: 20px;
+}
+
+#ccsingle {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+
+#ccsingle svg {
+    width: 100px;
+    max-height: 60px;
+}
+
+.creditcard svg#cardfront,
+.creditcard svg#cardback {
+    width: 100%;
+    -webkit-box-shadow: 1px 5px 6px 0px black;
+    box-shadow: 1px 5px 6px 0px black;
+    border-radius: 22px;
+}
+
+#generatecard{
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    color: #fff;
+    padding: 2px 4px;
+    background-color: #909090;
+    border-radius: 4px;
+    cursor: pointer;
+    float:right;
+}
+
+/* CHANGEABLE CARD ELEMENTS */
+.creditcard .lightcolor,
+.creditcard .darkcolor {
+    -webkit-transition: fill .5s;
+    transition: fill .5s;
+}
+
+.creditcard .lightblue {
+    fill: #03A9F4;
+}
+
+.creditcard .lightbluedark {
+    fill: #0288D1;
+}
+
+.creditcard .red {
+    fill: #ef5350;
+}
+
+.creditcard .reddark {
+    fill: #d32f2f;
+}
+
+.creditcard .purple {
+    fill: #ab47bc;
+}
+
+.creditcard .purpledark {
+    fill: #7b1fa2;
+}
+
+.creditcard .cyan {
+    fill: #26c6da;
+}
+
+.creditcard .cyandark {
+    fill: #0097a7;
+}
+
+.creditcard .green {
+    fill: #66bb6a;
+}
+
+.creditcard .greendark {
+    fill: #388e3c;
+}
+
+.creditcard .lime {
+    fill: #d4e157;
+}
+
+.creditcard .limedark {
+    fill: #afb42b;
+}
+
+.creditcard .yellow {
+    fill: #ffeb3b;
+}
+
+.creditcard .yellowdark {
+    fill: #f9a825;
+}
+
+.creditcard .orange {
+    fill: #ff9800;
+}
+
+.creditcard .orangedark {
+    fill: #ef6c00;
+}
+
+.creditcard .grey {
+    fill: #bdbdbd;
+}
+
+.creditcard .greydark {
+    fill: #616161;
+}
+
+/* FRONT OF CARD */
+#svgname {
+    text-transform: uppercase;
+}
+
+#cardfront .st2 {
+    fill: #FFFFFF;
+}
+
+#cardfront .st3 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+}
+
+#cardfront .st4 {
+    font-size: 54.7817px;
+}
+
+#cardfront .st5 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+#cardfront .st6 {
+    font-size: 33.1112px;
+}
+
+#cardfront .st7 {
+    opacity: 0.6;
+    fill: #FFFFFF;
+}
+
+#cardfront .st8 {
+    font-size: 24px;
+}
+
+#cardfront .st9 {
+    font-size: 36.5498px;
+}
+
+#cardfront .st10 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+}
+
+#cardfront .st11 {
+    font-size: 16.1716px;
+}
+
+#cardfront .st12 {
+    fill: #4C4C4C;
+}
+
+/* BACK OF CARD */
+#cardback .st0 {
+    fill: none;
+    stroke: #0F0F0F;
+    stroke-miterlimit: 10;
+}
+
+#cardback .st2 {
+    fill: #111111;
+}
+
+#cardback .st3 {
+    fill: #F2F2F2;
+}
+
+#cardback .st4 {
+    fill: #D8D2DB;
+}
+
+#cardback .st5 {
+    fill: #C4C4C4;
+}
+
+#cardback .st6 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+#cardback .st7 {
+    font-size: 27px;
+}
+
+#cardback .st8 {
+    opacity: 0.6;
+}
+
+#cardback .st9 {
+    fill: #FFFFFF;
+}
+
+#cardback .st10 {
+    font-size: 24px;
+}
+
+#cardback .st11 {
+    fill: #EAEAEA;
+}
+
+#cardback .st12 {
+    font-family: 'Rock Salt', cursive;
+}
+
+#cardback .st13 {
+    font-size: 37.769px;
+}
+
+/* FLIP ANIMATION */
+.container-credit_card {
+    perspective: 1000px;
+}
+
+.creditcard {
+    width: 100%;
+    max-width: 400px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: -webkit-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    transition: transform 0.6s, -webkit-transform 0.6s;
+    cursor: pointer;
+}
+
+.creditcard .front,
+.creditcard .back {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    color: #47525d;
+}
+
+.creditcard .back {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.creditcard.flipped {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+#loader-credit_card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: .25s ease-in-out;
+    background: #eeeeeeAA;
+  }
+  
+  #loader-credit_card:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: .5rem solid #023bbf;
+    border-top-color: #e2eefd;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+  }
+  
+  @-webkit-keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .return_message{
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    right: -100vw;
+    bottom: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #ffffff;
+    transition: .25s ease-in-out;
+    padding: .25rem 1rem .25rem 1.75rem ;
+    border-radius: 1rem;  
+  }
+  .return_message.success{
+    background-color: green;
+  }
+  .return_message.success::before{
+      content: 'L';
+      font-family: Arial;
+      font-weight: bold;
+      font-size: 1.15rem;
+      width: 8px;
+      height: 1rem;
+      position: relative;
+      display: inline-block;
+      top: 0;
+      left: -.5rem;
+      transform: rotateY(180deg) rotateZ(315deg);
+      transition: .5s ease-in-out;
+    }
+  .return_message.error{
+    background-color: red;
+  }
+  .return_message.error::before{
+    content: 'X';
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 8px;
+    height: 1rem;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    left: -.75rem;
+    transition: .5s ease-in-out;
+
+  }
+  

@@ -243,7 +243,7 @@ ini_set('display_errors', 0);
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="rg" minlength="7" maxlength="7" id="rg" placeholder="RG*" required />
+                      <input type="text" class="form-control" name="rg" minlength="7" maxlength="11" id="rg" placeholder="RG*" required />
                     </div>
                   </div>
                   <div class="col-md-2">

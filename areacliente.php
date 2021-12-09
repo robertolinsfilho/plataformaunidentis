@@ -50,13 +50,11 @@ if (isset($resultado['mensagem'])) {
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="src/plugins/datatables/media/css/responsive.dataTables.css">
     <title>Unidentis</title>
-
-
-
 
     <!-- Google Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -91,11 +89,7 @@ if (isset($resultado['mensagem'])) {
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
     <link rel="stylesheet" href="./assets/css/areaclienteboleto.css">
-    <style>
-
-
-
-    </style>
+    <link rel="stylesheet" href="./assets/creditCard/style.css">
 </head>
 
 <body>
@@ -131,7 +125,7 @@ if (isset($resultado['mensagem'])) {
                     <label class="labelInput">Titular</label>
                     <hr>
                 </div>
-                <form action="contratocartao?key=<?= $forekey?>" method="POST">
+                <form id="myForm" action="contratocartao?key=<?= $forekey?>" method="POST">
 
                     <div class="row">
                         <div class="col-md-4">
@@ -246,90 +240,245 @@ if (isset($resultado['mensagem'])) {
                     Cartão informado não é válido 
                 </div>
             <?php endif;?>
-            <div class="creditCard">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-sm-12">
-                        <div class="bg-light">
-                            <p class="heading text-secondary">DETALHES DE PAGAMENTOS</p>
-                            <form class="card-details ">
-                                <div class="form-group">
-                                    <p class="mb-0">Número do Cartão</p>
-                                    <input nCard type="text" class="mt-1" name="cartao" placeholder="1234 5678 9012 3457*" size="17" id="cartao" minlength="19" maxlength="19">
-                                    <!-- <img src="./assets/img/BANDEIRAS.png" alt="bandeiras de cartão" class="card-flag" id="visa"> -->
-                                </div>
-                                <div class="form-group">
-                                    <p class="mb-0">Nome do Cartão</p>
-                                    <input type="text" class="mt-1" name="nomecartao" placeholder="Como esta no Cartão*" required>
-                                </div>
-                                <div class="form-group">
-                                    <p class="mb-0">CPF (titular do plano)</p>
-                                    <input type="text" cpf class="mt-1" name="cpfcartao" placeholder="123-456-789-01*" required>
-                                </div>
-                                <div class="form-group pt-2 smallInput">
-                                    <div class="row d-flex justify-content-between">
-                                        <div class="col-sm-4">
-                                            <p class="mb-0">Data</p>
-                                            <input type="text" class="mt-1" data name="mes" placeholder="MM/YY*" size="5" id="data" minlength="5" maxlength="5" required>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <p class="mb-0">CVV</p>
-                                            <input type="text" class="mt-1" name="cvv" placeholder="000*" size="3" minlength="3" maxlength="4" required>
-                                        </div>
-                                    </div>
-                                </div>
-
+            
+            <!-- Area cartao -->
+            <div class="payment_section">
+                <div class="container-credit_card preload">
+                    <div class="creditcard">
+                        <div class="front">
+                            <div id="ccsingle"></div>
+                            <svg version="1.1" id="cardfront" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
+                                <g id="Front">
+                                    <g id="CardBackground">
+                                        <g id="Page-1_1_">
+                                            <g id="amex_1_">
+                                                <path id="Rectangle-1_1_" class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+                                        C0,17.9,17.9,0,40,0z" />
+                                            </g>
+                                        </g>
+                                        <path class="darkcolor greydark" d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
+                                    </g>
+                                    <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber" class="st2 st3 st4">0123 4567 8910 1112</text>
+                                    <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">João P L Nascimento</text>
+                                    <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">Dono do Cartão</text>
+                                    <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8">Expiração</text>
+                                    <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8">Número do Cartão</text>
+                                    <g>
+                                        <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">01/23</text>
+                                        <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
+                                        <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
+                                        <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9    " />
+                                    </g>
+                                    <g id="cchip">
+                                        <g>
+                                            <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
+                                    c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z" />
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <rect x="82" y="70" class="st12" width="1.5" height="60" />
+                                            </g>
+                                            <g>
+                                                <rect x="167.4" y="70" class="st12" width="1.5" height="60" />
+                                            </g>
+                                            <g>
+                                                <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
+                                        c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3
+                                        C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5
+                                        c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5
+                                        c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z" />
+                                            </g>
+                                            <g>
+                                                <rect x="82.8" y="82.1" class="st12" width="25.8" height="1.5" />
+                                            </g>
+                                            <g>
+                                                <rect x="82.8" y="117.9" class="st12" width="26.1" height="1.5" />
+                                            </g>
+                                            <g>
+                                                <rect x="142.4" y="82.1" class="st12" width="25.8" height="1.5" />
+                                            </g>
+                                            <g>
+                                                <rect x="142" y="117.9" class="st12" width="26.2" height="1.5" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                                <g id="Back">
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="back">
+                            <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
+                                <g id="Front">
+                                    <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
+                                </g>
+                                <g id="Back">
+                                    <g id="Page-1_2_">
+                                        <g id="amex_2_">
+                                            <path id="Rectangle-1_2_" class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+                                    C0,17.9,17.9,0,40,0z" />
+                                        </g>
+                                    </g>
+                                    <rect y="61.6" class="st2" width="750" height="78" />
+                                    <g>
+                                        <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
+                                C707.1,246.4,704.4,249.1,701.1,249.1z" />
+                                        <rect x="42.9" y="198.6" class="st4" width="664.1" height="10.5" />
+                                        <rect x="42.9" y="224.5" class="st4" width="664.1" height="10.5" />
+                                        <path class="st5" d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
+                                    </g>
+                                    <text transform="matrix(1 0 0 1 621.999 227.2734)" id="svgsecurity" class="st6 st7">985</text>
+                                    <g class="st8">
+                                        <text transform="matrix(1 0 0 1 518.083 280.0879)" class="st9 st6 st10">security code</text>
+                                    </g>
+                                    <rect x="58.1" y="378.6" class="st11" width="375.5" height="13.5" />
+                                    <rect x="58.1" y="405.6" class="st11" width="421.7" height="13.5" />
+                                    <text transform="matrix(1 0 0 1 59.5073 228.6099)" id="svgnameback" class="st12 st13">John Doe</text>
+                                </g>
+                            </svg>
                         </div>
                     </div>
                 </div>
+                <div class="form-card-container">
+                    <div class="field-card-container">
+                        <label for="name">Nome</label>
+                        <input id="name_card" name="nomecartao" value="Franklin H P Franca" placeholder="Ex.: João P L Nascimento*" maxlength="20" type="text">
+                    </div>
+                    <div class="field-card-container">
+                        <label for="cpf">CPF</label>
+                        <input name="cpfcartao" id="cpf_card" value="111.596.304-02" cpf placeholder="Ex.: 000.000.000-00*" maxlength="14" type="text">
+                    </div>
+                    <div class="field-card-container">
+                        <label for="cardnumber">Número do Cartão</label>
+                        <input id="cardnumber" name="cartao" value="2227 6375 3325 4027" placeholder="Ex.: 0123 4567 8910 1112*" type="text">
+                        <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                        </svg>
+                    </div>
+                    <div class="field-card-container">
+                        <label for="expirationdate">Data de Expiração</label>
+                        <input name="mes" id="expirationdate" value="07/29" type="text" placeholder="Ex.: 01/23*" inputmode="numeric">
+                    </div>
+                    <div class="field-card-container">
+                        <label for="securitycode">CVV</label>
+                        <input name="cvv" id="securitycode" value="700" type="text" placeholder="Ex.: 123*" pattern="[0-9]*" inputmode="numeric">
+                    </div>
+                    
+                    <!-- <div class="field-card-container">
+                        <a id="verify_card" class="btn">Verificar</a>
+                    </div> -->
+                    <span class="return_message">Cartão Inválido</span>
+                    <div id="loader-credit_card"></div>
+                </div>
             </div>
-            <!-- cartão de crédito
-         -->
+            <!-- cartão de crédito-->
             <br>
             <?php
-
             $preco = $row_usuario2['preco'];
             if ($row_usuario2['plano'] === 'UNIDENTISVIPBOLETO' &&  $row_usuario2['local'] === 'PB') {
                 $preco = 40;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont == '0') {
-                $preco = 21.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == '1' && $row_usuario2['local'] === 'PB') {
-                $preco = 20.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $cont > '1' &&  $row_usuario2['local'] === 'PB') {
-                $preco = 19.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'PB' &&  $cont == 1) {
-                $preco = 60.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO'  &&  $row_usuario2['local'] === 'PB' &&  $cont > 1) {
-                $preco =  30.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $cont > 3 && $row_usuario2['local'] === 'PB') {
-                $preco =  20.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont == '0') {
-                $preco = 23.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont > '1') {
-                $preco = 22.90;
-            }
+            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'PB') {
+                switch ($cont) {
+                    case '1':
+                        $preco = 21.90;
+                        break;
+                    
+                    case '2':
+                        $preco = 20.90;
+                        break;
+
+                    default:
+                        if($cont > 2){
+                            $preco = 19.90;                            
+                        }
+                        break;
+                }
+            }  elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'PB') {
+                
+                switch ($cont) {
+                    case '1':
+                        $preco = 60.00;
+                        break;
+                    
+                    case '2':
+                        $preco = 30.00;
+                        break;
+
+                    default:
+                    if($cont > 2){
+                            $preco =  20.00;                            
+                        }
+                        break;
+                }
+            }  elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'PB' && $cont == '1') {
+                
+                switch ($cont) {
+                    case '1':
+                        $preco = 23.90;
+                        break;
+                    default:
+                        if($cont > 1){
+                            $preco = 22.90;                          
+                        }
+                        break;
+                }
+            } 
 
             if ($row_usuario2['plano'] == 'PLANOVIPORTOCARTAO'){
                 $preco = 99.00;
               }
 
             if ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'RN') {
-                $preco = 25.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'RN' &&  $cont >= 1) {
-                $preco = 24.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $row_usuario2['local'] === 'RN' &&  $cont > 2) {
-                $preco = 23.00;
+                
+                switch ($cont) {
+                    case '1':
+                        $preco = 25.00;
+                        break;
+                    
+                    case '2':
+                        $preco = 24.00;
+                        break;
+
+                    default:
+                        if($cont > 2){
+                            $preco = 23.00;                            
+                        }
+                        break;
+                }
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'RN') {
-                $preco = 66.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' && $row_usuario2['local'] === 'RN' &&  $cont >= 2) {
-                $preco = 33.00;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPFAMILIACARTAO' &&  $row_usuario2['local'] === 'RN' &&  $cont >= 3) {
-                $preco = 22.00;
+                
+                switch ($cont) {
+                    case '1':
+                        $preco = 66.00;
+                        break;
+                    
+                    case '2':
+                        $preco = 33.00;
+                        break;
+
+                    default:
+                        if($cont > 2){
+                            $preco = 22.00;                            
+                        }
+                        break;
+                }
             } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'RN') {
                 $preco = 25.90;
-            } elseif ($row_usuario2['plano'] === 'UNIDENTISVIPCARTAO' &&  $row_usuario2['local'] === 'RN' && $cont >= 1) {
-                $preco = 24.90;
+                switch ($cont) {
+                    case '1':
+                        $preco = 25.90;
+                        break;
+                    default:
+                        if($cont > 1){
+                            $preco = 24.90;                          
+                        }
+                        break;
+                }
             }
+
             $_SESSION['preco'] = $preco;
 
             if ($cont == '0') {
@@ -344,21 +493,21 @@ if (isset($resultado['mensagem'])) {
                 <div id="resumo" class="mr-auto">
                     <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Valor individual R$<?php echo $preco ?></h3>
                     <hr style='background-color: #ffffff;'>
-                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Beneficiários <?php echo $cont2 + 1 ?></h3>
+                    <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Beneficiários <?php echo $cont?></h3>
                     <hr style='background-color: #ffffff;'>
                     <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem; color: #ffffff;">Total R$<?php echo $preco2 ?></h3>
                 </div>
                 <?php if($_SESSION['cpfDiferente']):?>
                     <button class="btn btn-secondary scrollto">Confirmar Proposta</button>
-                    <script>
+                    <script>                        
                         let btn = document.querySelector(".btn.btn-secondary.scrollto");
+                        btn.style.cursor = 'not-allowed';
                         btn.addEventListener("click", event => {
                             event.preventDefault();
                         })
                     </script>
                 <?php else:?>
-                    <button id="submit" type="submit" class="btn-get-started scrollto">Confirmar Proposta</button>
-
+                    <button id="submit" type="submit" class="btn-get-started scrollto check">Confirmar Proposta</button>
                 <?php endif;?>
                     
             </div>
@@ -398,5 +547,9 @@ if (isset($resultado['mensagem'])) {
 
 <!-- change link -->
 <script src="assets/js/change-link.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+<script src="./assets/creditCard/script.js"></script>
 
 </html>

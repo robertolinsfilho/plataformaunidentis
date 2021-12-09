@@ -13,12 +13,15 @@ $cartao     = mysqli_real_escape_string($conexao, trim($_POST['cartao']));
 $mes        = mysqli_real_escape_string($conexao, trim($_POST['mes']));
 $cvv        = mysqli_real_escape_string($conexao, trim($_POST['cvv']));
 
+
 $_SESSION['mesano']     = $mes;
 $_SESSION['nomecartao'] = $nome;
 $cartao                 = str_replace(' ', '', $cartao);
 
 $cpf = str_replace("-", "", str_replace(".", "", $cpf));
 $cpfcartao = str_replace("-", "", str_replace(".", "", $cpfcartao));
+
+
 
 function luhnCheck($cartao)
 {
@@ -113,7 +116,9 @@ class CreditCard
         return preg_match($this->brands[$pattern], $number) > 0;
     }
 }
+
 $brand = CreditCard::getBrandByCardNumber($cartao);
+
 if ($brand == 38 or $brand == 41) {
     ?>
     <html>
@@ -157,9 +162,9 @@ if ($brand == 38 or $brand == 41) {
 </html>
 
 <?php
-    $_SESSION['cpfDiferente'] = false;
-    exit;
 }
+
+$_SESSION['cpfDiferente'] = false;
 
 $sql = "INSERT INTO  contratocartao (cpf,nome,email,nomecartao,cartao,mes,cvv,preco,forekey) 
 VALUES ('$cpf','$nome','$email','$nomecartao','$cartao','$mes','$cvv','$preco', '$forekey')";

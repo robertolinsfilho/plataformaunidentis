@@ -19,6 +19,7 @@ if ($_SESSION['cpf'] === '') {
 
   <!-- Favicons -->
   <link href="assets/img/icon.ico" rel="icon">
+  <link rel="shortcut icon" href="./assets/img/favicon.ico">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
