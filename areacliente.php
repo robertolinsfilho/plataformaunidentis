@@ -344,15 +344,15 @@ if (isset($resultado['mensagem'])) {
                 <div class="form-card-container">
                     <div class="field-card-container">
                         <label for="name">Nome</label>
-                        <input id="name_card" name="nomecartao" value="Franklin H P Franca" placeholder="Ex.: João P L Nascimento*" maxlength="20" type="text">
+                        <input id="name_card" name="nomecartao" placeholder="Ex.: João P L Nascimento*" maxlength="20" type="text">
                     </div>
                     <div class="field-card-container">
                         <label for="cpf">CPF</label>
-                        <input name="cpfcartao" id="cpf_card" value="111.596.304-02" cpf placeholder="Ex.: 000.000.000-00*" maxlength="14" type="text">
+                        <input name="cpfcartao" id="cpf_card" cpf placeholder="Ex.: 000.000.000-00*" maxlength="14" type="text">
                     </div>
                     <div class="field-card-container">
                         <label for="cardnumber">Número do Cartão</label>
-                        <input id="cardnumber" name="cartao" value="2227 6375 3325 4027" placeholder="Ex.: 0123 4567 8910 1112*" type="text">
+                        <input id="cardnumber" name="cartao" placeholder="Ex.: 0123 4567 8910 1112*" type="text">
                         <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -360,11 +360,11 @@ if (isset($resultado['mensagem'])) {
                     </div>
                     <div class="field-card-container">
                         <label for="expirationdate">Data de Expiração</label>
-                        <input name="mes" id="expirationdate" value="07/29" type="text" placeholder="Ex.: 01/23*" inputmode="numeric">
+                        <input name="mes" id="expirationdate" type="text" placeholder="Ex.: 01/23*" inputmode="numeric">
                     </div>
                     <div class="field-card-container">
                         <label for="securitycode">CVV</label>
-                        <input name="cvv" id="securitycode" value="700" type="text" placeholder="Ex.: 123*" pattern="[0-9]*" inputmode="numeric">
+                        <input name="cvv" id="securitycode" type="text" placeholder="Ex.: 123*" pattern="[0-9]*" inputmode="numeric">
                     </div>
                     
                     <!-- <div class="field-card-container">
