@@ -348,7 +348,7 @@ if (isset($resultado['mensagem'])) {
                     </div>
                     <div class="field-card-container">
                         <label for="cpf">CPF</label>
-                        <input name="cpfcartao" id="cpf_card" cpf placeholder="Ex.: 000.000.000-00*" maxlength="14" type="text">
+                        <input name="cpfcartao" id="cpf_card" required cpf placeholder="Ex.: 000.000.000-00*" maxlength="14" type="text">
                     </div>
                     <div class="field-card-container">
                         <label for="cardnumber">Número do Cartão</label>

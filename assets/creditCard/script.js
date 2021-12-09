@@ -259,6 +259,7 @@ window.onload = function () {
     const btn = document.querySelector("#submit.btn-get-started.scrollto");
     let check_input = document.querySelector(".form-check-input");
     let check_label = document.querySelector(".form-check-label")
+    let cpf_card = document.querySelector("#cpf_card");
 
     btn.addEventListener("click", (e) => {
         
@@ -272,10 +273,10 @@ window.onload = function () {
         let isEmptyNumber = verificaCampos(cardnumber);
         let isEmptyExpiration = verificaCampos(expirationdate);
         let isEmptyCode = verificaCampos(securitycode);
-        
-        console.log(!isEmptyName)
+        let isEmptyCPF = verificaCampos(cpf_card);
 
-        if(!isEmptyName && !isEmptyNumber && !isEmptyExpiration && !isEmptyCode){
+
+        if(!isEmptyName && !isEmptyNumber && !isEmptyExpiration && !isEmptyCode && !isEmptyCPF){
             let token = getToken();
             token.then(
                 function(token) {
@@ -299,7 +300,6 @@ window.onload = function () {
                         } 
                     }).then((res) => {
                         if(res.status == 200){
-                            console.log(res.data.valido);
                             document.querySelector(".return_message").overflow = "auto";
                             document.querySelector(".return_message").style.visibility = "visible";
                             document.querySelector(".return_message").style.right = '0';
