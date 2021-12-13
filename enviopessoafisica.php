@@ -2,8 +2,6 @@
 session_start();
 include("conexao.php");
 
-
-
 function generatePassword($qtyCaraceters = 8)
 {
     //Letras minúsculas embaralhadas
@@ -34,6 +32,10 @@ $matricula = mysqli_real_escape_string($conexao, trim($_POST['matricula']));
 $admissao = mysqli_real_escape_string($conexao, trim($_POST['admissao']));
 $date = date('Ym');
 
+$admissao = explode('/', $admissao);
+$admissao = $admissao[2].'-'.$admissao[1].'-'.$admissao[0];
+$admissao = date_format(date_create($admissao), "Y-m-d H:i:s");
+
 $cpf     = str_replace("-", "", str_replace(".", "", $cpf));
 
 $_SESSION['nome']    = $nome;
@@ -45,6 +47,10 @@ $_SESSION['plano']   = $plano;
 $_SESSION['sus']     = $sus;
 $_SESSION['initpass'] = 'u'.strip_tags(generatePassword(5));
 $_SESSION['forekey'] = md5(strtotime("last Sunday").strtotime("now"));
+
+// Dados Servidor Público
+$_SESSIONS['admissao']   = $admissao;
+$_SESSION['matricula']   = $matricula;
 
 $forekey = $_SESSION['forekey'];
 $initpass = $_SESSION['initpass'];
@@ -68,11 +74,6 @@ if (
   && $cont >= 1 && $_SESSION['estado1'] == 'RN'
 ) {
   $preco = 35;
-} elseif (
-  $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-  $_SESSION['estado1'] == 'RN'
-) {
-  $preco = 18;
 }
 if (
   $_SESSION['plano'] ==
@@ -158,6 +159,10 @@ if (
   && $cont >= 2 && $_SESSION['estado1'] == 'RN'
 ) {
   $preco = 23;
+}if (
+  $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL'
+) {
+  $preco = 18;
 }
 
 
@@ -166,7 +171,6 @@ if($_SESSION['vendedor1'] === ''){
     $_SESSION['vendedor1'] = 'sac2@unidentis.com.br';
 
 }
-
 
 $sql1 = "INSERT INTO dadospessoais ( nome, email, cpf, cpf_titular, vendedor, celular, tipocliente, admissao, matricula, plano, sus, pessoa,local, etapa, 1pag, preco, forekey)
 VALUES ('$nome', '$email', '$cpf', '$cpf','$_SESSION[vendedor1]','$celular','$_SESSION[tipocliente]','$admissao','$matricula','$plano','$sus','$_SESSION[tipocliente]','$_SESSION[estado1]','2','$date', '$preco', '$forekey')";

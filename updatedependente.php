@@ -3,7 +3,6 @@ include_once('conexao.php');
 session_start();
 
 $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-print_r($post);
 $id = $post['id'];
 
 

@@ -479,6 +479,12 @@ if (isset($resultado['mensagem'])) {
                 }
             }
 
+            if (
+                $row_usuario2['plano'] == 'UNIDENTISVIPEMPRESARIAL'
+              ) {
+                $preco = 18;
+              }
+
             $_SESSION['preco'] = $preco;
 
             if ($cont == '0') {

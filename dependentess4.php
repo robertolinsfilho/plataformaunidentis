@@ -6,37 +6,19 @@ session_start();
 $cpf = $_GET['key'];
 $id = $_GET['id'];
 
-$result_usuario = "SELECT * from dadospessoais where forekey = '$cpf'";
-$resultado_usuario = mysqli_query($conexao, $result_usuario);
-$row_usuario = mysqli_fetch_assoc($resultado_usuario);
+// $result_usuario = "SELECT * from dadospessoais where forekey ='$cpf'";
+// $resultado_usuario = mysqli_query($conexao, $result_usuario);
+// $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
-$result_usuario4 = "SELECT * from contrato where forekey = '$cpf'";
-$resultado_usuario4 = mysqli_query($conexao, $result_usuario4);
-$row_usuario4 = mysqli_fetch_assoc($resultado_usuario4);
+$queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes where forekey ='$cpf'");
+$dadosDependentes = mysqli_fetch_assoc($queryDadosDependentes);
 
-$result_usuario5 = "SELECT * from contratocartao where forekey = '$cpf'";
-$resultado_usuario5 = mysqli_query($conexao, $result_usuario5);
-$row_usuario5 = mysqli_fetch_assoc($resultado_usuario5);
-
-$result_usuario7 = "SELECT * from dependentes where forekey = '$cpf' and status != 'Implantado' and ativo = '1'";
+$result_usuario7 = "SELECT * from dependentes where forekey ='$cpf' and status != 'Implantado' and ativo = '1'";
 $resultado_usuario7 = mysqli_query($conexao, $result_usuario7);
 
 
-if($row_usuario4['cpf'] === $cpf){
-    $result_usuario10 = "SELECT * from contrato where forekey = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}else{
-    $result_usuario10 = "SELECT * from contratocartao where forekey = '$cpf'";
-    $resultado_usuario10 = mysqli_query($conexao, $result_usuario10);
-    $row_usuario10 = mysqli_fetch_assoc($resultado_usuario10);
-}
-$result_usuario6 = "SELECT * from dependentes where forekey = '$cpf' and status != 'Implantado' and ativo = '1'";
-$resultado_usuario6 = mysqli_query($conexao, $result_usuario6);
-$row_usuario6 = mysqli_fetch_assoc($resultado_usuario6);
-
 /* GET CPF FROM DATABASE */
-$uCpf = $row_usuario['cpf'];
+$uCpf = str_replace('-','',str_replace('.','',$dadosDependentes['cpf_titular']));
 
 $url = "http://unidentis.s4e.com.br/v2/api/associados?token=RWNTF7PUC87KRYRTVNFGP8XNYWJ4DQC4XWCGSHPW2F9FCURP82&cpfAssociado=$uCpf";
 $curl = curl_init($url);
@@ -51,69 +33,151 @@ foreach($resultado as $value){
     foreach($value['dependentes'] as $value1){
        
         foreach( (array)$value1['nomeSituacao'] as $value2){
-           
            if($value2 != 'CANCELADO'){
+            
            $x = 1;
            $_SESSION['ufdependente'] = $value['ufSigla'];
-           $_SESSION['nomeplano'] = $value1['nomePlano'];
+           $_SESSION['valorplano'] = (float)str_replace(',', '.', explode(' ',$value1['valorPlano'])[1]);
+           $_SESSION['nomeplano'] = str_replace(' ', '',$value1['nomePlano']);
            $codigo = $value['codigo'];
     
            }
         }
       
-    }
+    } 
+}
+
+if($codigo == ''){
+    echo "<body onload='window.history.back();'>";
+    exit;
+}
+
+switch ($_SESSION['nomeplano']) {
+    case 'PLANOVIPORTOCARTAO':
+      $preco = 99;
+      break;
+    case 'UNIDENTISVIPORTO':
+      $preco = 99;
+      break;
+    case 'UNIDENTISVIPCARTAO':
+      switch ($_SESSION['valorplano']) {
+        case '23.9':
+          $preco = 22.9;
+          $infoLocal = 'PB';
+          break;
+        case '25.9':
+          $preco = 24.9;
+          $infoLocal = 'RN';
+          break;
+      }
+      break;
+    case 'UNIDENTISVIPFAMILIACARTAO':
+      switch ($_SESSION['valorplano']) {
+        case '60':
+          $preco = 30;
+          $infoLocal = 'PB';
+          break;
+        case '30':
+          $preco = 20;
+          $infoLocal = 'PB';
+          break;
+        case '66':
+          $preco = 33;
+          $infoLocal = 'RN';
+          break;
+        case '33':
+          $preco = 22;
+          $infoLocal = 'RN';
+          break;
+      }
+      break;
+    case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
+        switch ($_SESSION['valorplano']) {
+            case '21.90':
+                $preco = 20.90;
+                $infoLocal = 'PB';
+                break;
+            case '20.90':
+                $preco = 19.90;
+                $infoLocal = 'PB';
+                break;
+            case '25':
+                $preco = 24;
+                $infoLocal = 'RN';
+                break;
+            case '24':
+                $preco = 23;
+                $infoLocal = 'RN';
+                break;
+            }
+      break;
+    case 'UNIDENTISVIPUNIVERSITARIO':
+        switch ($_SESSION['valorplano']) {
+            case '21.90':
+              $preco = 20.90;
+              $infoLocal = 'PB';
+              break;
+            case '20.90':
+              $preco = 19.90;
+              $infoLocal = 'PB';
+              break;
+            case '25':
+              $preco = 24;
+              $infoLocal = 'RN';
+              break;
+            case '24':
+              $preco = 23;
+              $infoLocal = 'RN';
+              break;
+        }
+      break;
+    case 'UNIDENTISVIPEMPRESARIAL':
+      $preco = 18;
+      break;
+    default:
+      echo "<body onload='window.history.back();'>";
+      exit;
+      break;
+  }
+
   
+
+if(!empty($infoLocal)):
+    if($_SESSION['nomeplano'] === 'UNIDENTISVIPBOLETO' and $infoLocal === 'PB'){
+        $plano = 13032;
+    }elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPCARTAO' and $infoLocal === 'PB' OR $_SESSION['nomeplano'] == 'UNIDENTISVIP'){
+        $plano = 13046;
+    }elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPFAMILIACARTAO' and $infoLocal === 'PB' OR $_SESSION['nomeplano'] == 'UNIDENTISVIPFAMILIA'){
+        $plano = 13050;
+    }elseif($_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' and $infoLocal === 'PB' OR $_SESSION['nomeplano'] == 'UNIDENTISVIPUNIVERSITARIO') {
+        $plano = 13051;
+    }elseif($infoLocal === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTISVIPBOLETO'){
+        $plano = 13058;
+
+    }elseif ($infoLocal === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTISVIPCARTAO' OR $_SESSION['nomeplano'] == 'UNIDENTISVIP'){
+        $plano = 13053;
+
+    }elseif ($infoLocal === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTISVIPFAMILIACARTAO' OR $_SESSION['nomeplano'] == 'UNIDENTISVIPFAMILIA'){
+        $plano = 13055;
+
+    }elseif ($infoLocal === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' OR $_SESSION['nomeplano'] == 'UNIDENTISVIPUNIVERSITARIO'){
+        $plano = 13056;
+    }
+endif;
+
+if($_SESSION['nomeplano'] === 'PLANOVIPORTOCARTAO' OR $_SESSION['nomeplano'] == 'UNIDENTISVIPORTO'){
+    $plano = 13040;
+}elseif($_SESSION['nomeplano'] === 'UNIDENTISVIPEMPRESARIAL'){
+    $plano = 13034;
 }
 
-if($_SESSION['nomeplano'] === 'UNIDENTIS VIP' &&  $_SESSION['ufdependente'] === 'PB'){
-    $preco = 35;
-}elseif($_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO' &&  $_SESSION['ufdependente'] === 'PB'){
-    $preco = 20.90;
-}elseif($_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO' &&  $cont >= '1' &&  $_SESSION['ufdependente'] === 'PB'){
-    $preco = 19.90;
-}elseif ($_SESSION['nomeplano'] === 'UNIDENTIS VIP FAMILIA CARTAO'  && $_SESSION['ufdependente'] === 'PB'){
-    $preco =  19.00;
-}elseif($_SESSION['nomeplano'] === 'UNIDENTIS VIP CARTAO' &&  $_SESSION['ufdependente']=== 'PB'){
-    $preco = 20.00;
-}
-
-
-if($_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO' &&  $_SESSION['ufdependente'] === 'RN'){
-    $preco= 21.00;
-}elseif ($_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO' &&  $_SESSION['ufdependente'] === 'RN' &&  $cont >= 1){
-    $preco = 20.00;
-}elseif ($_SESSION['nomeplano'] === 'UNIDENTIS VIP FAMILIA CARTAO' &&  $_SESSION['ufdependente'] === 'RN'    ){
-    $preco = 20.00;
-}elseif($_SESSION['nomeplano'] === 'UNIDENTIS VIP CARTAO' &&  $_SESSION['ufdependente'] === 'RN'){
-    $preco = 22.00;
-}
-
-if($_SESSION['nomeplano'] === 'UNIDENTIS VIP' and $_SESSION['ufdependente'] === 'PB'){
-    $plano = 13032;   
-}elseif ($_SESSION['nomeplano']=== 'UNIDENTIS VIP CARTAO' and $_SESSION['ufdependente'] === 'PB'){
-    $plano = 13046;   
-}elseif ($_SESSION['nomeplano'] === 'UNIDENTIS VIP FAMILIA CARTAO' and $_SESSION['ufdependente']=== 'PB'){
-    $plano = 13050;   
-}elseif($_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO' and $_SESSION['ufdependente'] === 'PB') {
-    $plano = 13051;   
-}elseif($_SESSION['ufdependente'] === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTIS VIP'){
-    $plano = 13058;
-
-}elseif ($_SESSION['ufdependente'] === 'RN' and $_SESSION['nomeplano']=== 'UNIDENTIS VIP CARTAO'){
-    $plano = 13053;
-}elseif ($_SESSION['ufdependente'] === 'RN' and $_SESSION['nomeplano'] === 'UNIDENTIS VIP FAMILIA CARTAO'){
-    $plano = 13055;
-}elseif ($_SESSION['ufdependente']=== 'RN' and $_SESSION['nomeplano'] === 'UNIDENTIS VIP UNIVERSITARIO CARTAO'){
-    $plano = 13056;
-}else{
-    echo 'erro no plano';
-}
-$result_usuario11 = "SELECT * from vendedor where email = '$row_usuario6[vendedor]'";
+$result_usuario11 = "SELECT * from vendedor where email = '$dadosDependentes[vendedor]'";
 $resultado_usuario11 = mysqli_query($conexao, $result_usuario11);
 $row_usuario11 = mysqli_fetch_assoc($resultado_usuario11);
 $vendedor = substr($row_usuario11['vendedor'] , 0 ,5);
-echo $vendedor;
+
 while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
+    $row_usuario7['cpf'] = str_replace('-','',str_replace('.','', $row_usuario7['cpf']));
     $data1 =   array(
         "token"=> "rHFxpzIE8Ny86TNhgGzoybf93bcIopkXxqKdfShdgUbdpoALw0",
         "dados"=> array(
@@ -145,10 +209,6 @@ while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
         )
     );
     
-    
-    
-    
-    
     $payload1 = json_encode($data1);
     
     // Prepare new cURL resource
@@ -176,9 +236,8 @@ while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
     } 
     
     if ($result1['codigo'] == '1') {
-      
-        $sql2 = "UPDATE dependentes SET status='Implantado', ativo = '0' WHERE cpf_titular='$cpf'";
-       if( $conexao->query($sql2) === TRUE){
+        $sql2 = "UPDATE dependentes SET status='Implantado', ativo = '0' WHERE  forekey ='$cpf'";
+        if( $conexao->query($sql2) === TRUE){
 ?>
 <html lang="pt-br">
 <head>
@@ -280,10 +339,10 @@ while($row_usuario7 = mysqli_fetch_assoc($resultado_usuario7)){
 </html>
 
 <?php
-
-          
        }
     }else{
-        echo 'erro contate o administrador';
+        $_SESSION['erroS4D'] = $result['mensagem'];
+        echo "<body onload='window.history.back();'>";
+        exit;
     }
 ?>

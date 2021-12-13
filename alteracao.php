@@ -55,7 +55,6 @@ if ($x2 === 'Alterar') {
   $sql2 = "UPDATE endereco SET cep='$cep', rua='$rua' ,numero='$numero', cidade='$cidade' ,estado='$estado', complemento='$complemento' WHERE forekey='$cpf' ";
   $sql3 = "UPDATE contratocartao SET nomecartao='$nomecartao', cartao='$numerocartao' ,mes='$validadecartao' WHERE forekey='$cpf' ";
   if ($conexao->query($sql) === TRUE and $conexao->query($sql1) === TRUE and $conexao->query($sql2) === TRUE  and $conexao->query($sql3) === TRUE) {
-    print_r($_POST);
     header('Location: form-wizard.php?key=' . $cpf . '');
     exit;
   } else {

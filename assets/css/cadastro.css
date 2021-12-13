@@ -28,6 +28,20 @@ input,
 select {
   border: 1px solid #606060 !important;
 }
+
+input.isRequired.red,
+select.isRequired.red{
+  border: 1px solid red !important;
+}
+
+span.erroMsg{
+  color: red;
+  font-size: .7rem;
+  line-height: 1rem;
+  display: block;
+  text-align: end;
+}
+
 body {
   background-color: #f6f6f6;
 }

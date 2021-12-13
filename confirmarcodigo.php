@@ -7,7 +7,7 @@ $x = 0;
 
 if (!empty($_POST['codigo'])) {
 
-    $result_usuario = "SELECT * FROM dependentes where cpf_titular = '$_SESSION[cpf]'";
+    $result_usuario = "SELECT * FROM dependentes where forekey = '$_SESSION[forekey]'";
     $resultado_usuario = mysqli_query($conexao, $result_usuario);
     while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
         if ($row_usuario['senha'] == $codigo) {
@@ -15,11 +15,13 @@ if (!empty($_POST['codigo'])) {
         }
     }
 
-
-
     if ($x == 1) {
-        $_SESSION['sms'] = 'Código correto, dependente enviado para análise!';
-        header('Location: confirmacao');
+        $sql = "UPDATE dependentes SET vizu = '1' WHERE forekey = '{$forekey}'"; 
+
+        if($conexao->query($sql) === TRUE){
+            $_SESSION['sms'] = 'Código correto, dependente enviado para análise!';
+            header('Location: confirmacao');
+        }
     }
 }
 ?>

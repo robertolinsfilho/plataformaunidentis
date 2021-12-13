@@ -24,8 +24,6 @@ class Helpers
             echo "<pre>";
         }
 
-        print_r($mixed);
-
         if (php_sapi_name() !== "cli") {
             echo "</pre>";
         } else {

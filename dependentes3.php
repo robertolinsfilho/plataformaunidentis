@@ -30,6 +30,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="./assets/img/favicon.ico">
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -46,7 +47,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
     $("#telefone, #celular").mask("(00) 00000-0000");
   </script>
   <script type="text/javascript">
-    $("#cpf").mask("000.000.000-00");
+    $("[cpf]").mask("000.000.000-00");
   </script>
   <script type="text/javascript">
     $("#rg").mask("0.000.000");
@@ -60,6 +61,8 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
     })
   </script>
   <link rel="stylesheet" href="./assets/css/cadDependentes.css">
+  <link rel="stylesheet" href="./assets/css/isRequired.css">
+
   <!-- =======================================================
   * Template Name: BizLand - v1.1.0
   * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
@@ -111,15 +114,15 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
         <div class="row">
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" minlength="10" Completo" required>
+            <input type="text" name="nome" class="form-control isRequired" minlength="10" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF</label>
-            <input type="text" name="cpf" id="cpf" class="form-control">
+            <input type="text" name="cpf" id="cpf" cpf class="form-control isRequired" required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Parentesco</label>
-            <select name="parentesco" class="form-control" required>
+            <select name="parentesco" class="form-control isRequired" required>
               <option value="3">CONJUGE</option>
               <option value="4">FILHO(A)</option>
               <option value="8">PAI/MÃE</option>
@@ -130,7 +133,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Sexo</label>
-            <select name="sexo" class="form-control">
+            <select name="sexo" class="form-control isRequired" required>
               <option value="1">masculino</option>
               <option value="0">feminino</option>
               <option selected disabled value="">Selecione</option>
@@ -139,7 +142,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
           
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF Titular</label>
-            <input type="text" name="cpf_titular" value="<?php echo $_SESSION['cpf'] ?>" class="form-control" Completo" readonly>
+            <input type="text" name="cpf_titular" cpf value="<?php echo $_SESSION['cpf'] ?>" class="form-control isRequired" Completo" readonly required>
           </div>
 
           <div class="col-md-3">
@@ -149,7 +152,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado Civil</label>
-            <select class="form-control" name="estadocivil" required>
+            <select class="form-control isRequired" name="estadocivil" required>
               <option>casado</option>
               <option>solteiro</option>
               <option>viuvo</option>
@@ -159,14 +162,14 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data Nascimento</label>
-            <input type="text" name="datas" id="data" class="form-control" MM/ANO" required>
+            <input type="text" name="datas" id="data" class="form-control isRequired" MM/ANO" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome da Mãe</label>
-            <input type="text" name="mae" class="form-control" minlenght="10" da Mae" required>
+            <input type="text" name="mae" class="form-control isRequired" minlenght="10" da Mae" required>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary saveBtn">Salvar</button>
+        <button type="submit" isRequired class="btn btn-primary saveBtn check">Salvar</button>
       </form>
     </div>
     <div class="container" style="margin-top: 1.5rem;" data-aos="zoom-out" data-aos-delay="100">
@@ -224,195 +227,103 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
       $_SESSION['nomeplano'] = tirarAcentos($_SESSION['nomeplano']);
 
       $preco = 0;
-
-      // RIO GRANDE DO NORTE
-      // if ($_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO'  &&  $_SESSION['ufdependente'] === 'RN') {
-      //   $preco = 24.00;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $_SESSION['ufdependente'] === 'RN' &&  $cont >= 1) {
-      //   $preco = 23.00;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPFAMILIA' &&  $_SESSION['ufdependente'] === 'RN') {
-      //   $preco = 22.00;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPCARTAO' &&  $_SESSION['ufdependente'] === 'RN') {
-      //   $preco = 24.90;
-      // }     
-      // PARAIBA
-      // if ($_SESSION['nomeplano'] === 'UNIDENTISVIP' &&  $_SESSION['ufdependente'] === 'PB') {
-      //   $preco = 35;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $_SESSION['ufdependente'] == 'PB') {
-      //   $preco = 20.90;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $cont >= '1' &&  $_SESSION['ufdependente'] === 'PB') {
-      //   $preco = 19.90;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPFAMILIA'  && $_SESSION['ufdependente'] === 'PB') {
-      //   $preco =  20.00;
-      // } elseif ($_SESSION['nomeplano'] === 'UNIDENTISVIPCARTAO' &&  $_SESSION['ufdependente'] === 'PB') {
-      //   $preco = 22.90;
-      // }
-
-      switch ($_SESSION['ufdependente']) {
-        case 'RN':
-          switch ($_SESSION['nomeplano']) {
-              // Universitário
-            case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
-              $preco2 = 24.00;
-              if ($cont >= 1) {
-                $preco2 = 23.00;
-              }
+      switch ($_SESSION['nomeplano']) {
+        case 'PLANOVIPORTOCARTAO':
+          $preco = 99;
+          break;
+        case 'UNIDENTISVIPORTO':
+          $preco = 99;
+          break;
+        case 'UNIDENTISVIPCARTAO':
+          switch ($_SESSION['valorplano']) {
+            case '23.9':
+              $preco = 22.9;
               break;
-            case 'UNIDENTISUNIVERSITARIORN':
-              $preco2 = 24.00;
-              if ($cont >= 1) {
-                $preco2 = 23.00;
-              }
-              break;
-
-              // RN não tem pra servidor público
-              // ->
-
-              // Família
-            case 'UNIDENTISVIPFAMILIA':
-              $preco2 = 22.00;
-              break;
-            case 'UNIDENTISFAMILIARN':
-              $preco2 = 22.00;
-              break;
-
-              // Cartão
-            case 'UNIDENTISVIPCARTAO':
-              $preco2 = 24.90;
-              break;
-            case 'UNIDENTISCARTAORN':
-              $preco2 = 24.90;
-              break;
-
-              // Orto
-            case 'UNIDENTISVIPORTO':
-              $preco2 = 99.00;
+            case '25.9':
+              $preco = 24.9;
               break;
           }
           break;
-        case 'PB':
-          switch ($_SESSION['nomeplano']) {
-              // Universitário
-            case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
-              $preco2 = 20.90;
-              if ($cont > 1) {
-                $preco2 = 19.90;
+        case 'UNIDENTISVIPFAMILIACARTAO':
+          switch ($_SESSION['valorplano']) {
+            case '60':
+              $preco = 30;
+              if($cont > 1){
+                $preco = 20;
               }
               break;
-
-            case 'UNIDENTISVIPUNIVERSITARIO':
-              $preco2 = 20.90;
-              if ($cont > 1) {
-                $preco2 = 19.90;
+            case '30':
+              $preco = 20;
+              break;
+            case '66':
+              $preco = 33;
+              if($cont > 1){
+                $preco = 22;
               }
               break;
-
-              // Servidor Público
-            case 'UNIDENTISVIPEMPRESARIAL':
-              $preco2 = 18.00;
-              break;
-
-              // Famila
-            case 'UNIDENTISVIPFAMILIA':
-              $preco2 = 20.00;
-              break;
-            case 'UNIDENTISFAMILIAPB':
-              $preco2 = 20.00;
-              break;
-              // Cartão
-            case 'UNIDENTISVIPCARTAO':
-              $preco2 = 22.90;
-              break;
-            case 'UNIDENTISCARTAOPB':
-              $preco2 = 22.90;
-              break;
-
-              // Orto
-            case 'UNIDENTISVIPORTO':
-              $preco2 = 99.00;
+            case '33':
+              $preco = 22;
               break;
           }
+          break;
+        case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
+          switch ($_SESSION['valorplano']) {
+            case '21.90':
+              $preco = 20.90;
+              if($cont > 1){
+                $preco = 19.90;
+              }
+              break;
+            case '20.90':
+              $preco = 19.90;
+              break;
+            case '25':
+              $preco = 24;
+              if($cont > 1){
+                $preco = 23;
+              }
+              break;
+            case '24':
+              $preco = 23;
+              break;
+          }
+          break;
+        case 'UNIDENTISVIPUNIVERSITARIO':
+          switch ($_SESSION['valorplano']) {
+            case '21.90':
+              $preco = 20.90;
+              if($cont > 1){
+                $preco = 19.90;
+              }
+              break;
+            case '20.90':
+              $preco = 19.90;
+              break;
+            case '25':
+              $preco = 24;
+              if($cont > 1){
+                $preco = 23;
+              }
+              break;
+            case '24':
+              $preco = 23;
+              break;
+          }
+          break;
+        case 'UNIDENTISVIPEMPRESARIAL':
+          $preco = 18;
+          break;
+        default:
+          $preco = $_SESSION['valorplano'];
           break;
       }
-      switch ($_SESSION['ufdependente']) {
-        case 'RN':
-          switch ($_SESSION['nomeplano']) {
-              // Universitário
-            case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
-              $preco = 25.00;
-              break;
-            case 'UNIDENTISUNIVERSITARIORN':
-              $preco = 25.00;
-              break;
 
-              // RN não tem pra servidor público
-              // ->
-
-              // Família
-            case 'UNIDENTISVIPFAMILIA':
-              $preco = 66.00;
-              break;
-            case 'UNIDENTISFAMILIARN':
-              $preco = 66.00;
-              break;
-
-              // Cartão
-            case 'UNIDENTISVIPCARTAO':
-              $preco = 25.90;
-              break;
-            case 'UNIDENTISCARTAORN':
-              $preco = 25.90;
-              break;
-
-              // Orto
-            case 'UNIDENTISVIPORTO':
-              $preco = 99.00;
-              break;
-          }
-          break;
-        case 'PB':
-          switch ($_SESSION['nomeplano']) {
-              // Universitário
-            case 'UNIDENTISVIPUNIVERSITARIOCARTAO':
-              $preco = 21.90;
-              break;
-
-            case 'UNIDENTISVIPUNIVERSITARIO':
-              $preco = 21.90;
-              break;
-
-              // Servidor Público
-            case 'UNIDENTISVIPEMPRESARIAL':
-              $preco = 18.00;
-              break;
-
-              // Famila
-            case 'UNIDENTISVIPFAMILIA':
-              $preco = 60.00;
-              break;
-            case 'UNIDENTISFAMILIAPB':
-              $preco = 60.00;
-              break;
-              // Cartão
-            case 'UNIDENTISVIPCARTAO':
-              $preco = 23.90;
-              break;
-            case 'UNIDENTISCARTAOPB':
-              $preco = 23.90;
-              break;
-
-              // Orto
-            case 'UNIDENTISVIPORTO':
-              $preco = 99.00;
-              break;
-          }
-          break;
+      if($preco == 0){
+        $preco = $_SESSION['valorplano'];
       }
-      $preco4 = $preco;
-      if ($cont > 0) {
-        $preco3 = $preco2 * $cont;
-        $preco = $preco + $preco3;
-      }
+
+      $preco3 = $preco * $cont;
+      $preco = $preco + $preco3;
       
       $_SESSION['preco'] = $preco;
 
@@ -421,9 +332,9 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
         <div id="resumo" class="mr-auto">
           <h2 style="font-family: 'Poppins', sans-serif;font-size:1rem; color: #ffffff;text-transform: uppercase;">Resumo da Proposta </h2>
-          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Valor Por Dependente R$<?php echo $preco2 ?></h3>
+          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Valor Por Dependente R$<?php echo $preco ?></h3>
           <hr style='background-color: #ffffff;'>
-          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Total R$<?php echo $preco - $preco4 ?></h3>
+          <h3 style="font-family: 'Poppins', sans-serif;font-size:.9rem">Total R$<?php echo $preco3 ?></h3>
 
         </div>
         <!-- <button type="button" style="margin-right: 1rem;height:40px" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Cadastrar Dependentes</button> -->
@@ -478,7 +389,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
               <div class="col">
                 <input type="hidden" name="id" value="<?= $row_usuario['id'] ?>">
                 <label style="font-family:'Poppins', sans-serif;" for="LabelNome">CPF:</label>
-                <input type="text" name="cpf" id="cpf" class="form-control" value="<?= $row_usuario['cpf'] ?>">
+                <input type="text" name="cpf" id="cpf" cpf class="form-control" value="<?= $row_usuario['cpf'] ?>">
               </div>
               <div class="col">
                 <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Parentesco</label>
@@ -509,7 +420,7 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
               </div>
               <div class="col">
                 <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF Titular:</label>
-                <input type="text" name="cpf_titular" value="<?php echo $_SESSION['cpf'] ?>" class="form-control" Completo" readonly>
+                <input type="text" name="cpf_titular" cpf value="<?php echo $_SESSION['cpf'] ?>" class="form-control" Completo" readonly>
               </div>
 
               <div class="col">
@@ -574,5 +485,6 @@ while ($row_usuario = mysqli_fetch_assoc($resultado_usuario)) {
       </div>
     </div>
   </div>
+  <script src="./assets/js/isRequired.js"></script>
 
 </html>

@@ -1,10 +1,7 @@
 <?php
-
 include_once "conexao.php";
 session_start();
 error_reporting(0);
-
-
 $cpf = $_GET['key'];
 
 $id = $_GET['id'];
@@ -16,7 +13,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 $queryDadosDependentes = mysqli_query($conexao, "SELECT * from dependentes where forekey ='$cpf'");
 $dadosDependentes = mysqli_fetch_assoc($queryDadosDependentes);
 
-$uCpf = $dadosDependentes['cpf_titular'];
+$uCpf = str_replace('-','',str_replace('.','',$dadosDependentes['cpf_titular']));
 
 //consultar no banco de dados
 $_SESSION['cpfnova'] = $uCpf;
@@ -155,6 +152,12 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 				top: -5rem;
 			}
 
+			<?php if($dadosDependentes['status'] === 'Implantado'): ?>
+				ul.tabs{
+				top: -2.75rem;
+				}
+			<?php endif;?>
+
 			div.submitBtns{
 				position: relative;
 				top: -2rem;
@@ -194,6 +197,11 @@ $row_usuario12 = mysqli_fetch_assoc($resultado_usuario12);
 								</ol>
 							</nav>
 						</div>
+						<?php 
+							if(isset($_SESSION['erroS4'])):
+						?>
+						<div class="alert alert-danger aviso-de-erro" role="alert"> <?= $_SESSION['erroS4']?> </div>
+						<?php endif?>
 						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30 main-box-wizard">
 							<div class="wizard-content">
 								<form action="alteracao.php?key=<?= $cpf ?>&id=<?= $id ?>" method="POST" class="tab-wizard wizard-circle wizard"><br>

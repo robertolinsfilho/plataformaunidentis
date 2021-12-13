@@ -22,6 +22,7 @@ $_SESSION['emaildependente'] = $_POST['email'];
     <!-- Favicons -->
     <link href="assets/img/icon.ico" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -129,6 +130,7 @@ $_SESSION['emaildependente'] = $_POST['email'];
         }
     </style>
     <link rel="stylesheet" href="./assets/css/step-fake.css">
+    <link rel="stylesheet" href="./assets/css/isRequired.css">
 
 </head>
 
@@ -224,10 +226,7 @@ $_SESSION['emaildependente'] = $_POST['email'];
                 <hr>
                 <span class="fake-step-three"><i class="far fa-circle"></i> Beneficiários</span>
             </div>
-            <!-- <div style="font-size:26px" class="alert alert-primary" role="alert">
-                Incluir Dependente - <?php //echo $_SESSION['nomeplano'] 
-                                        ?>
-            </div> -->
+            
             <div class="flexLabel">
                 <label class="labelInput">Dados do Endereço</label>
                 <hr>
@@ -236,22 +235,22 @@ $_SESSION['emaildependente'] = $_POST['email'];
 
                 <div class="col">
                     <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CEP:</label>
-                    <input type="text" name="CEP" class="form-control" value="<?php echo $_SESSION['cepdependente'] ?>" placeholder="Nome Completo" readonly>
+                    <input type="text" name="CEP" class="form-control isRequired" value="<?php echo $_SESSION['cepdependente'] ?>" placeholder="Nome Completo" readonly required>
                 </div>
                 <div class="col">
                     <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Rua</label>
-                    <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['ruadependente'] ?>" placeholder="Nome Completo" readonly>
+                    <input type="text" name="nome" class="form-control isRequired" value="<?php echo $_SESSION['ruadependente'] ?>" placeholder="Nome Completo" readonly required>
                 </div>
                 <div class="col">
                     <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado:</label>
-                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['ufdependente'] ?>" class="form-control" placeholder="Nome Completo" readonly>
+                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['ufdependente'] ?>" class="form-control isRequired" placeholder="Nome Completo" readonly required>
                 </div>
             </div>
             <div class="row">
 
                 <div class="col">
                     <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Numero:</label>
-                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['numerodependente'] ?>" class="form-control" placeholder="Nome Completo" required>
+                    <input type="text" name="cpf_titular" value="<?php echo $_SESSION['numerodependente'] ?>" class="form-control isRequired" placeholder="Nome Completo" required>
                 </div>
 
 
@@ -263,7 +262,7 @@ $_SESSION['emaildependente'] = $_POST['email'];
                 <br>
             </div>
             <br>
-            <a href="dependentes3?#form"> <button type="submit" class="btn-get-started scrollto">prosseguir</button></a>
+            <a href="dependentes3?#form"> <button type="submit" isRequired class="btn-get-started scrollto check">prosseguir</button></a>
         </div>
         </div>
     </section>
@@ -287,5 +286,6 @@ $_SESSION['emaildependente'] = $_POST['email'];
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="./assets/js/isRequired.js"></script>
 
 </html>

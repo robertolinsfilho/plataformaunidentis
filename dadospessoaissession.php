@@ -124,6 +124,10 @@ $x = 0;
     $maetitular        = mysqli_real_escape_string($conexao, trim($_POST['maetitular']));
     $sustitular        = mysqli_real_escape_string($conexao, trim($_POST['sustitular']));
 
+    $admissao = explode('/', $admissao);
+    $admissao = $admissao[2].'-'.$admissao[1].'-'.$admissao[0];
+    $admissao = date_format(date_create($admissao), "Y-m-d H:i:s");
+
     $_SESSION['nometitular'] = $_POST['nometitular'];
     $_SESSION['cpftitular']  = $_POST['cpftitular'];
     $_SESSION['cpftitular1'] = $_POST['cpftitular'];

@@ -63,12 +63,12 @@ error_reporting(0);
 
 							<tbody>
 							<?php
+								
 								//consultar no banco de dados
-
+								
 								$usuario = $_SESSION['usuario']; 
-								$forekey = [];
-								$count = 0;
-
+								$nomeTitular;
+								
 								if($usuario == 'cadastro@s4e.com.br'):
 									$result_usuario = "SELECT * from dependentes  where vizu = '1'";
 									$resultado_usuario = mysqli_query($conexao, $result_usuario);
@@ -81,16 +81,19 @@ error_reporting(0);
 								while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
 									// Tratamento de data!!
 									$data = date('d/m/Y', strtotime($row_usuario['data']));
-									$forekey += array($row_usuario['forekey']);
-									$count++;
-									if($forekey[$count] == $forekey[$count - 1]){
+									
+									if($nomeTitular == ''){
+										$nomeTitular = $row_usuario['nome_titular'];
+									}elseif($nomeTitular == $row_usuario['nome_titular']){
 										continue;
-									};
+									}else{
+										$nomeTitular = $row_usuario['nome_titular'];
+									};						
         					?>
 								<tr onclick="location.href = 'resumodependente.php?key=<?= $row_usuario['forekey'] ?>&id=<?= $row_usuario['id'] ?>';"> 
 								<td class="table-plus"><?php echo $row_usuario['nome_titular']; ?></td>	
                                		
-									<td><?= $row_usuario['cpf_titular']; ?> </td>
+									<td cpf><?= $row_usuario['cpf_titular']; ?> </td>
 									<td><?= $row_usuario['vendedor']; ?></td>
 									<td><?php
 									$contadorDependentes = mysqli_query($conexao, "SELECT COUNT(*) as contador from dependentes where forekey = '{$row_usuario['forekey']}'");
@@ -102,6 +105,7 @@ error_reporting(0);
                                     <td><?= $row_usuario['status']; ?></td>                
 									
 								</tr>
+								<br>
 								<?php 
 									}
 								?>
@@ -125,6 +129,7 @@ error_reporting(0);
 	<script src="src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
 	<script src="src/plugins/datatables/media/js/dataTables.responsive.js"></script>
 	<script src="src/plugins/datatables/media/js/responsive.bootstrap4.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 	<!-- buttons for Export datatable -->
 	<script src="src/plugins/datatables/media/js/button/dataTables.buttons.js"></script>
 	<script src="src/plugins/datatables/media/js/button/buttons.bootstrap4.js"></script>
@@ -134,6 +139,7 @@ error_reporting(0);
 	<script src="src/plugins/datatables/media/js/button/pdfmake.min.js"></script>
 	<script src="src/plugins/datatables/media/js/button/vfs_fonts.js"></script>
 	<script>
+		$("[cpf]").mask("000.000.000-00");
 		$('document').ready(function(){
 			$('.data-table').DataTable({
 				scrollCollapse: true,

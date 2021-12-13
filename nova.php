@@ -118,7 +118,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
 												<td> <?= $row_usuario['vendedor']; ?></td>
 												<td> <?= $row_usuario['nome']; ?></td>
-												<td> <?= $row_usuario['cpf']; ?></td>
+												<td cpf> <?= $row_usuario['cpf']; ?></td>
 												<td> <?= $row_usuario['plano']; ?></td>
 												<td> <?= $count; ?></td>
 												<td>R$<?= $row_usuario['preco']; ?></td>
@@ -129,7 +129,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 											?>
 
 												<td><?php echo $row_usuario['nome']; ?></td>
-												<td><?php echo $row_usuario['cpf']; ?></td>
+												<td cpf><?php echo $row_usuario['cpf']; ?></td>
 												<td><?php echo $row_usuario['plano']; ?></td>
 												<td><?php echo $count; ?></td>
 												<td>R$<?php echo $row_usuario['preco']; ?></td>
@@ -163,6 +163,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 	<script src="src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
 	<script src="src/plugins/datatables/media/js/dataTables.responsive.js"></script>
 	<script src="src/plugins/datatables/media/js/responsive.bootstrap4.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 	<!-- buttons for Export datatable -->
 	<script src="src/plugins/datatables/media/js/button/dataTables.buttons.js"></script>
 	<script src="src/plugins/datatables/media/js/button/buttons.bootstrap4.js"></script>
@@ -173,6 +174,7 @@ $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 	<script src="src/plugins/datatables/media/js/button/vfs_fonts.js"></script>
 
 	<script>
+		$("[cpf]").mask("000.000.000-00");
 		$('document').ready(function() {
 			$('.data-table').DataTable({
 				scrollCollapse: true,

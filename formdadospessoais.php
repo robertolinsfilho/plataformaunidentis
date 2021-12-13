@@ -131,6 +131,7 @@ if (isset($_GET['key'])) {
       }
     } */
   </style>
+  <link rel="stylesheet" href="./assets/css/isRequired.css">
 
 </head>
 
@@ -178,7 +179,7 @@ if (isset($_GET['key'])) {
         <div class="row">
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Sexo:</label>
-            <select name="sexo" placeholder="selecione" class="form-control">
+            <select name="sexo" placeholder="selecione" class="form-control isRequired" required>
               <option value="1">Masculino</option>
               <option value="0">Feminino</option>
               <option value="" selected disabled>Selecione</option>
@@ -187,16 +188,16 @@ if (isset($_GET['key'])) {
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Whats's App:</label>
-            <input type="text" name="whats" minlenght="15" id="celular" class="form-control" placeholder="*" required>
+            <input type="text" name="whats" minlenght="15" id="celular" class="form-control isRequired" placeholder="*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">RG:</label>
-            <input type="text" name="rg" class="form-control" placeholder="*" required>
+            <input type="text" name="rg" class="form-control isRequired" placeholder="*" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado Civil:</label>
-            <select class="form-control" placeholder="selecione" name="estadocivil">
+            <select class="form-control isRequired" placeholder="selecione" name="estadocivil" required>
               <option value="Casado(a)">Casado(a)</option>
               <option value="Solteiro(a)">Solteiro(a)</option>
               <option value="Viuvo(a)">Viuvo(a)</option>
@@ -206,16 +207,16 @@ if (isset($_GET['key'])) {
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data Nascimento</label>
-            <input type="text" name="datas" id="data" class="form-control" placeholder="DD/MM/ANO *" required>
+            <input type="text" name="datas" id="data" class="form-control isRequired" placeholder="DD/MM/ANO *" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Orgao Expedidor</label>
-            <input type="text" name="expedidor" class="form-control" placeholder="*" required>
+            <input type="text" name="expedidor" class="form-control isRequired" placeholder="*" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome da Mae</label>
-            <input type="text" name="mae" class="form-control" placeholder="*" required>
+            <input type="text" name="mae" class="form-control isRequired" placeholder="*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone fixo</label>
@@ -229,29 +230,29 @@ if (isset($_GET['key'])) {
         <div class="row">
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CEP:</label>
-            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP*" required>
+            <input type="text" name="cep" id="cep" class="form-control isRequired" placeholder="CEP*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Rua:</label>
-            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*" required>
+            <input type="text" class="form-control isRequired" id="rua" name="rua" placeholder="Rua*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Numero:</label>
-            <input type="text" class="form-control" name="numero" placeholder="Numero*" required>
+            <input type="text" class="form-control isRequired" name="numero" placeholder="Numero*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Bairro</label>
-            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairo*" required>
+            <input type="text" name="bairro" id="bairro" class="form-control isRequired" placeholder="Bairo*" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Cidade:</label>
-            <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required>
+            <input type="text" name="cidade" id="cidade" class="form-control isRequired" placeholder="Ex: joao pessoa*" required>
           </div>
 
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado</label>
-            <input type="text" name="estado" id="uf" class="form-control" placeholder="estado*" required>
+            <input type="text" name="estado" id="uf" class="form-control isRequired" placeholder="estado*" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Complemento</label>
@@ -259,7 +260,7 @@ if (isset($_GET['key'])) {
           </div>
         </div>
         <input type="hidden" name="forekey" value="<?= $_SESSION['forekey']; ?>">
-        <button type="submit" class="btn-get-started scrollto">prosseguir</button>
+        <button type="submit" isRequired class="btn-get-started scrollto check">prosseguir</button>
       </form>
     </div>
   </section>
@@ -348,5 +349,6 @@ if (isset($_GET['key'])) {
     });
   });
 </script>
+<script src="./assets/js/isRequired.js"></script>
 
 </html>

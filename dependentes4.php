@@ -1,31 +1,6 @@
 <?php 
 include "conexao.php";
 session_start();
-function generatePassword($qtyCaraceters = 8)
-{
-    // //Letras minúsculas embaralhadas
-    // $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
- 
-    // //Letras maiúsculas embaralhadas
-    // $capitalLetters = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
- 
-    //Números aleatórios
-    $numbers = (((date('Ymd') / 12) * 24) + mt_rand(800, 9999));
-    $numbers .= 1234567890;
- 
-    // //Caracteres Especiais
-    // $specialCharacters = str_shuffle('!@#$%*-');
- 
-    //Junta tudo
-    $characters = $numbers.$numbers.$numbers.$numbers;
- 
-    //Embaralha e pega apenas a quantidade de caracteres informada no parâmetro
-    $password = substr(str_shuffle($characters), 0, $qtyCaraceters);
- 
-    //Retorna a senha
-    return $password;
-}
-$_SESSION['senhadependente'] = 'u'.generatePassword(5);
 
 $cpf = str_replace("-", "", str_replace(".", "", $_POST['cpf']));
 $nome        = $_POST['nome'];
@@ -38,8 +13,6 @@ $estadocivil = $_POST['estadocivil'];
 $datas       = $_POST['datas'];
 $mae         = $_POST['mae'];
 $forekey     = $_SESSION['forekey'];
-
-print_r($forekey);
 
 if(empty($_SESSION['vendedor1'])){
     $_SESSION['vendedor1'] = 'sac2@unidentis.com.br';
@@ -139,7 +112,7 @@ exit();
 }
 
 $sql = "INSERT INTO dependentes (nome, cpf, sexo, estadocivil, datas, mae, cpf_titular, nome_titular, cns,parentesco,ativo,vendedor,vizu,senha, forekey) 
-VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular', '$nome_titular','$cns','$parentesco','1','{$_SESSION['vendedor1']}', '0','{$_SESSION['senhadependente']}', '$forekey')";
+VALUES ('$nome', '$cpf','$sexo', '$estadocivil','$datas','$mae','$cpf_titular', '$nome_titular','$cns','$parentesco','1','{$_SESSION['vendedor1']}', '0','0', '$forekey')";
 
 if($conexao->query($sql) === TRUE){
     header('Location: dependentes3');

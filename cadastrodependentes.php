@@ -28,81 +28,91 @@ $resultado = json_decode(curl_exec($curl), true);
 $cont = $row_usuario2['total'];
 $_SESSION['cont'] = $cont;
 
-if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO') {
-	$preco1 = 40.00;
-}
-
-
-if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB') {
-	$preco1 = 23.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO'  && $_SESSION['escolha'] === 'PB') {
-	$preco1 = 60.00;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' &&  $_SESSION['escolha'] == 'PB') {
-	$preco1 = 21.90;
-}
-
 if ($_SESSION['plano'] == 'PLANOVIPORTOCARTAO'){
 	$preco1 = 99.00;
-}
-
-if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'RN') {
-	$preco1 = 25.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 66.00;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 25.00;
-}
-
-if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'PB' && $cont == 0) {
-	$preco1 = 40;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $cont >= 1 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 35;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL'  && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 18;
 }
 
 if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'RN' && $cont == 0) {
 	$preco1 = 40;
 } elseif ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $cont >= 1 && $_SESSION['escolha'] == 'RN') {
 	$preco1 = 35;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL'  && $_SESSION['escolha'] == 'RN') {
+}
+
+if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB') {
+	switch ($cont) {
+		case 0:
+			$preco1 = 23.90;
+			break;
+		default:
+			$preco1 = 22.90;
+			break;
+	}
+	
+} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $_SESSION['escolha'] === 'PB') {
+	switch ($cont) {
+		case 0:
+			$preco1 = 60;
+			break;
+		case 1:
+			$preco1 = 30; 
+		default:
+			$preco1 = 20;
+			break;
+		$preco1 = 60;
+	}
+}  elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $_SESSION['escolha'] == 'PB') {
+	
+	switch ($cont) {
+		case 0:
+			$preco1 = 21.90;
+			break;
+		case 1:
+			$preco1 = 20.90; 
+		default:
+			$preco1 = 19.90;
+			break;
+	}
+}
+if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'RN') {
+	switch ($cont) {
+		case 0:
+			$preco1 = 25.90;
+			break;
+		default:
+			$preco1 = 24.90;
+			break;
+	}
+	
+}  elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $_SESSION['escolha'] == 'RN') {
+	switch ($cont) {
+		case 0:
+			$preco1 = 66;
+			break;
+		case 1:
+			$preco1 = 33; 
+		default:
+			$preco1 = 22;
+			break;
+	}
+	
+}  elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $_SESSION['escolha'] == 'RN') {
+	switch ($cont) {
+		case 0:
+			$preco1 = 25;
+			break;
+		case 1:
+			$preco1 = 24; 
+		default:
+			$preco1 = 23;
+			break;
+	}
+}
+
+if ($_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL') {
 	$preco1 = 18;
 }
 
-if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB' && $cont == 0) {
-	$preco1 = 23.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] == 'PB' && $cont >= 1) {
-	$preco1 = 22.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] === 'PB') {
-	$preco1 = 60;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 1 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 30;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont >= 2 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 20;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 21.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 1 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 20.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont >= 2 && $_SESSION['escolha'] == 'PB') {
-	$preco1 = 19.90;
-}
-if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'RN' && $cont == 0) {
-	$preco1 = 25.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] == 'RN' && $cont >= 1) {
-	$preco1 = 24.90;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 66;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 1 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 33;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont >= 2 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 22;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 25;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 1 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 24;
-} elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont >= 2 && $_SESSION['escolha'] == 'RN') {
-	$preco1 = 23;
-}
+$plano2 = explode();
 
 $cont = $cont + 1;
 $_SESSION['precototal'] = $cont * $preco1;
@@ -241,6 +251,12 @@ $plano = $_SESSION['plano'];
 	</style>
 	<!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
 	<link rel="stylesheet" href="./assets/css/cadastro.css">
+	<link rel="stylesheet" href="./assets/css/isRequired.css">
+	<style>
+		span.erroMsg{
+			top: .25rem;
+		}
+	</style>
 </head>
 
 <body>
@@ -285,24 +301,24 @@ $plano = $_SESSION['plano'];
 							<div class="col-md-4">
 								<div class="form-group">
 
-									<input type="text" name="nomedependente" class="form-control" placeholder="Nome Completo" minlength="10" Completo" required>
+									<input type="text" name="nomedependente" class="form-control isRequired" placeholder="Nome Completo" minlength="10" required>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<input type="text" name="cpfdependente" id="cpf" formato="cpf" placeholder="CPF" class="form-control">
+									<input type="text" name="cpfdependente" id="cpf" formato="cpf" placeholder="CPF" class="form-control isRequired" required>
 								</div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 
-									<select name="parentesco" class="form-control" required>
+									<select name="parentesco" class="form-control isRequired" required>
+										<option selected disabled>Selecione</option>
 										<option value="3">CONJUGE</option>
 										<option value="4">FILHO(A)</option>
 										<option value="8">PAI/MÃE</option>
 										<option value="6">ENTEADO(A)</option>
 										<option value="10">OUTRO(A)</option>
-										<option selected disabled>Selecione</option>
 									</select>
 								</div>
 							</div>
@@ -310,10 +326,10 @@ $plano = $_SESSION['plano'];
 							<div class="col-md-2">
 								<div class="form-group">
 
-									<select name="sexodependentes" class="form-control">
+									<select name="sexodependentes" class="form-control isRequired" required>
+										<option selected disabled >Selecione</option>
 										<option value="1">masculino</option>
 										<option value="0">feminino</option>
-										<option selected disabled>Selecione</option>
 									</select>
 								</div>
 							</div>
@@ -330,14 +346,14 @@ $plano = $_SESSION['plano'];
 							<div class="col-md-3">
 								<div class="form-group">
 
-									<input type="text" name="cnsdependente" class="form-control" formato="cns" placeholder="CNS-CARTAO SUS" minlength="15" maxlength="15" do cartão">
+									<input type="text" name="cnsdependente" class="form-control" formato="cns" placeholder="CNS-CARTAO SUS" minlength="15" maxlength="15">
 								</div>
 							</div>
 
 							<div class="col-md-3">
 								<div class="form-group">
 
-									<select class="form-control" name="estadodependente" required>
+									<select class="form-control isRequired" name="estadodependente" required>
 										<option>casado</option>
 										<option>solteiro</option>
 										<option>viuvo</option>
@@ -349,17 +365,17 @@ $plano = $_SESSION['plano'];
 							<div class="col-md-3">
 								<div class="form-group">
 
-									<input type="text" name="datadependente" id="data" placeholder="Data Nascimento" class="form-control" formato="data" required>
+									<input type="text" name="datadependente" id="data" placeholder="Data Nascimento" class="form-control isRequired" formato="data" required>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 
-									<input type="text" name="maedependente" class="form-control" placeholder="Nome da Mãe" minlenght="10" da Mae" required>
+									<input type="text" name="maedependente" class="form-control isRequired" placeholder="Nome da Mãe" minlenght="10" da Mae" required>
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary saveBtn">Salvar</button>
+						<button type="submit" isRequired class="btn btn-primary saveBtn check">Salvar</button>
 					</form>
 					<?php
 					if ($_SESSION['cliente'] === 'servidorpublico') {
@@ -397,7 +413,6 @@ $plano = $_SESSION['plano'];
 										</tr>
 									</thead>
 									<tbody>
-										<?php print_r($_SESSION['escolha']) ?>
 										<tr>
 											<td class="table-plus"><?php echo $_SESSION['nome']; ?></td>
 											<td class="table-plus" formato="cpf"><?php echo $_SESSION['cpf']; ?></td>
@@ -563,6 +578,8 @@ $plano = $_SESSION['plano'];
 			});
 		});
 	</script>
+<script src="./assets/js/isRequired.js"></script>
+
 </body>
 
 </html>

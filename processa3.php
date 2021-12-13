@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/preloader.css">
-    <title>Carregando Fotos</title>
+    <title>Carregando</title>
 </head>
 <body>
     <div id="preloader"></div>
@@ -47,6 +47,7 @@ if($dadosGeraisAssocidado['etapa'] == 1){
 $email = strip_tags((string)$dadosPrincipaisAssocidado['email']);
 $senha = strip_tags((string)$dadosPrincipaisAssocidado['initpass']);
 
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -71,7 +72,7 @@ try {
 
     //Recipients
     $mail->setFrom('sendmail@unidentis.com.br', 'Plano Unidentis');
-    $mail->addAddress( $email  , 'Unidentis');     // Add a recipient
+    $mail->addAddress($email, 'Unidentis');     // Add a recipient
     // Name is optional
  
     // Content
@@ -214,17 +215,6 @@ try {
     </tr>
   </table>
   ' ;
-    
-    //'<body style="background-color:white">
-    
-    // <img style="width:100%"src="http://unidentisdigital.com.br/assets/img/PROPOSTACADASTRADA2.png"> 
-    // <div style="background-color:#f5f5f5;width:85%;margin-left:8%;height:175px;border-radius:5px">
-    // <h2 style="text-align:center;align-text:center;color:#404bb5" >FINALIZAR PROPOSTA</h2>
-    // <h3 style="text-align:center;align-text:center;color:#404bb5">ACESSE NOSSO SISTEMA  CLICANDO NO BOTAO A SEGUIR  PARA CONCLUIR O CADASTRO DA PROPOSTA</h3>
-  
-    // </div>
-    // <a href="'.$link.'"><button style="margin-left:18%;width:65%;border-color:blue;border-radius:7px;height:8%;font-size:18px;text-color:#f5f5f5">Clique aqui </button></a> <br><br></body>';
-
     $mail->send();
     	
     echo "<script>window.location.assign('form-wizard?key=".$cpf."')</script>";

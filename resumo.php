@@ -33,123 +33,91 @@ switch ($_SESSION['sexo']) {
 
 <?php
             $cont = $_SESSION['cont'];
-            if ($_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'PB' && $cont == 0) {
-              $preco = 40;
-            } elseif ( $_SESSION['plano'] == 'UNIDENTISVIPBOLETO' && $cont >= 1 && $_SESSION['escolha'] == 'PB') {
-              $preco = 35;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-              $_SESSION['escolha'] == 'PB'
-            ) {
-              $preco = 18;
-            }
 
             if ($_SESSION['plano'] == 'PLANOVIPORTOCARTAO'){
               $preco = 99.00;
             }
 
+            if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB') {
+              switch ($cont) {
+                case 0:
+                $preco = 23.90;
+                break;
+                
+                default:
+                  $preco = 22.90;
+                  break;
+              }
+            } elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] === 'PB') {
+              switch ($cont) {
+                case 0:
+                  $preco = 60;
+                  break;
+                case 1:
+                  $preco = 30;
+                  break;
+                default:
+                  $preco = 20;
+                  break;
+              }
+            }  elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $_SESSION['escolha'] == 'PB') {
+              switch ($cont) {
+                case 0:
+                  $preco = 21.90;
+                  break;
+                case 1:
+                  $preco = 20.90;
+                  break;
+                default:
+                  $preco = 19.90;
+                  break;
+              }
+              
+            } 
+            if ($_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'RN' && $cont == 0) {
+              switch ($cont) {
+                case 0:
+                  $preco = 25.90;;
+                break;
+                
+                default:
+                  $preco = 24.90;
+                  break;
+              }
+              
+            }  elseif ($_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' && $_SESSION['escolha'] == 'RN') {
+                switch ($cont) {
+                  case 0:
+                    $preco = 66;
+                    break;
+                  case 1:
+                    $preco = 33;
+                    break;
+                  default:
+                    $preco = 22;
+                    break;
+                }
+            }  elseif ($_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO' && $_SESSION['escolha'] == 'RN') {
+              switch ($cont) {
+                case 0:
+                  $preco = 25;
+                  break;
+                case 1:
+                  $preco = 24;
+                  break;
+                default:
+                  $preco = 23;
+                  break;
+              }
+              $preco = 25;
+            } 
+
             if (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPBOLETO' && $_SESSION['escolha'] == 'RN' && $cont == 0
-            ) {
-              $preco = 40;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPBOLETO'
-              && $cont >= 1 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 35;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL' &&
-              $_SESSION['escolha'] == 'RN'
+              $_SESSION['plano'] == 'UNIDENTISVIPEMPRESARIAL'
             ) {
               $preco = 18;
             }
-            if (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] === 'PB' && $cont == 0
-            ) {
-              $preco = 23.90;
-            } elseif (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPCARTAO' && $_SESSION['escolha'] == 'PB' && $cont >= 1
-            ) {
-              $preco = 22.90;
-            } elseif (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont == 0 && $_SESSION['escolha'] ===
-              'PB'
-            ) {
-              $preco = 60;
-            } elseif (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont == 1 && $_SESSION['escolha'] ==
-              'PB'
-            ) {
-              $preco = 30;
-            } elseif (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPFAMILIACARTAO' && $cont >= 2 && $_SESSION['escolha'] ==
-              'PB'
-            ) {
-              $preco = 20;
-            } elseif (
-              $_SESSION['plano'] ==
-              'UNIDENTISVIPUNIVERSITARIOCARTAO' && $cont == 0 &&
-              $_SESSION['escolha'] == 'PB'
-            ) {
-              $preco = 21.90;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 1 && $_SESSION['escolha'] == 'PB'
-            ) {
-              $preco = 20.90;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont >= 2 && $_SESSION['escolha'] == 'PB'
-            ) {
-              $preco = 19.90;
-            }
-            if (
-              $_SESSION['plano'] == 'UNIDENTISVIPCARTAO' && $_SESSION['escolha']
-              === 'RN' && $cont == 0
-            ) {
-              $preco = 25.90;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPCARTAO' &&
-              $_SESSION['escolha'] == 'RN' && $cont >= 1
-            ) {
-              $preco = 24.90;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont == 0 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 66;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont == 1 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 33;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPFAMILIACARTAO' &&
-              $cont >= 2 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 22;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 0 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 25;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont == 1 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 24;
-            } elseif (
-              $_SESSION['plano'] == 'UNIDENTISVIPUNIVERSITARIOCARTAO'
-              && $cont >= 2 && $_SESSION['escolha'] == 'RN'
-            ) {
-              $preco = 23;
-            }
+
             $cont += 1;
             $preco2 = $cont * $preco;
             $_SESSION['precoPlano'] = $preco;

@@ -46,7 +46,6 @@ foreach ((array)$resultado as $value) {
           $_SESSION['emaildependente'] = (string)$contato['descricaoContato'];
         }
       }
-
       $_SESSION['ruadependente']    = $value['logradouro'];
       $_SESSION['bairrodependente'] = $value['bairro'];
       $_SESSION['cepdependente']    = $value['cep'];
@@ -57,6 +56,9 @@ foreach ((array)$resultado as $value) {
       $_SESSION['nomedependente'] = $value1['nomeDependente'];
       $_SESSION['nomeCpf'] = $value['nome'];
       $_SESSION['nomeplano'] = $value1['nomePlano'];
+      
+      $_SESSION['valorplano'] = (float)str_replace(',', '.', explode(' ',$value1['valorPlano'])[1]);
+
       // if ($_SESSION['nomeplano'] == 'UNIDENTIS VIP CARTÃO') {
       //   $_SESSION['nomeplano'] == 'UNIDENTIS VIP CARTAO';
       // }

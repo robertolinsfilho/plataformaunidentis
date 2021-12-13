@@ -104,9 +104,6 @@ if ($conexao->query($sql) === TRUE) {
 
     // Submit the POST request
     $result1 = curl_exec($ch1);
-
-    var_dump($result1);
-
     curl_close($ch1);
   }
 }

@@ -2,9 +2,6 @@
 include("conexao.php");
 session_start();
 $cpf = $_SESSION['cpf'];
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +17,7 @@ $cpf = $_SESSION['cpf'];
   <!-- Favicons -->
   <link href="assets/img/icon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="./assets/img/favicon.ico">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -104,6 +102,8 @@ $cpf = $_SESSION['cpf'];
     }
   </style>
   <link rel="stylesheet" href="./assets/css/step-fake.css">
+  <link rel="stylesheet" href="./assets/css/isRequired.css">
+
 </head>
 
 <body style="background-color: #eee;">
@@ -154,25 +154,25 @@ $cpf = $_SESSION['cpf'];
         <div class="row">
           <div class="col">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['nomeCpf'] ?>" placeholder="Nome Completo" readonly>
+            <input type="text" name="nome" class="form-control isRequired" value="<?php echo $_SESSION['nomeCpf'] ?>" placeholder="Nome Completo" readonly required>
           </div>
 
         </div>
         <div class="row">
           <div class="col">
             <label style="font-family:'Poppins', sans-serif;" for="LabelNome">E-mail</label>
-            <input type="text" name="email" class="form-control" value="<?php echo isset($_SESSION['emaildependente']) ? $_SESSION['emaildependente'] : ''; ?>" required>
+            <input type="text" name="email" class="form-control isRequired" value="<?php echo isset($_SESSION['emaildependente']) ? $_SESSION['emaildependente'] : ''; ?>" required>
 
           </div>
           <div class="col">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Telefone</label>
-            <input type="text" name="celular" class="form-control" value="<?php echo $_SESSION['celulardependente']; ?>" placeholder="Nome Completo" readonly>
+            <input type="text" name="celular" class="form-control isRequired" value="<?php echo $_SESSION['celulardependente']; ?>" placeholder="Nome Completo" readonly required>
           </div>
 
           <br>
         </div>
         <br>
-        <button type="submit" class="btn-get-started scrollto">prosseguir</button>        
+        <button type="submit" isRequired class="btn-get-started scrollto check">prosseguir</button>        
       </form>
     </div>
 
@@ -198,5 +198,6 @@ $cpf = $_SESSION['cpf'];
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="./assets/js/isRequired.js"></script>
 
 </html>

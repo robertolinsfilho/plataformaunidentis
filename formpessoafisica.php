@@ -125,7 +125,7 @@ if ($_SESSION['cpf'] === '') {
 
     } */
   </style>
-
+  <link rel="stylesheet" href="./assets/css/isRequired.css">
 </head>
 
 <body style="background-color: #eee;">
@@ -190,15 +190,15 @@ if ($_SESSION['cpf'] === '') {
           
         <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Nome Completo</label>
-            <input type="text" name="nome" class="form-control" placeholder="*"  required>
+            <input type="text" name="nome" class="form-control isRequired" placeholder="*"  required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">CPF:</label>
-            <input type="text" id="cpf" minlenght="14" name="cpf" placeholder="*" class="form-control" required>
+            <input type="text" id="cpf" minlenght="14" name="cpf" placeholder="*" class="form-control isRequired" required>
           </div>
           <div class="col-md-3">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Email:</label>
-            <input type="email" class="form-control" name="email" placeholder="*"   required>
+            <input type="email" class="form-control isRequired" name="email" placeholder="*"   required>
           </div>
 
           <div class="col-md-3">
@@ -207,7 +207,7 @@ if ($_SESSION['cpf'] === '') {
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Celular:</label>
-            <input type="text" name="celular" id="celular" class="form-control" placeholder="*"  required>
+            <input type="text" name="celular" id="celular" class="form-control isRequired" placeholder="*"  required>
           </div>
           <div class="col-md-2">
             <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Estado:</label>
@@ -253,12 +253,12 @@ if ($_SESSION['cpf'] === '') {
           ?>
 
             <div class=" col-md-2">
-            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Matricula</label>
-            <input type="text" name="matricula" class="form-control" placeholder="*"  required>
+            <label style="font-family:'Poppins', sans-serif; " for="LabelNome">Matricula</label>
+            <input type="text" name="matricula" class="form-control isRequired" placeholder="*"  required>
           </div>
           <div class="col-md-3">
-            <label style="font-family:'Poppins', sans-serif;  " for="LabelNome">Data de Admissão</label>
-            <input type="text" id='data' name="admissao" class="form-control" placeholder="*"  required>
+            <label style="font-family:'Poppins', sans-serif; " for="LabelNome">Data de Admissão</label>
+            <input type="text" id='data' name="admissao" class="form-control isRequired" placeholder="*"  required>
           </div>
         <?php
           }
@@ -287,7 +287,7 @@ if ($_SESSION['cpf'] === '') {
               <label class="form-check-label" for="inlineCheckbox2">Não</label>
             </div>
           </div> -->
-          <button type="submit" class="btn-get-started scrollto">Prosseguir</button>
+          <button type="submit" isRequired class="btn-get-started scrollto check">Prosseguir</button>
         </div>
       </form>
     </div>
@@ -312,5 +312,6 @@ if ($_SESSION['cpf'] === '') {
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="./assets/js/isRequired.js"></script>
 
 </html>

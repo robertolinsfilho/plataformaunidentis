@@ -2,11 +2,6 @@
 session_start();
 include_once("conexao.php");
 
-echo "<pre>";
-print_r($_SESSION);
-print_r($_POST);
-echo "</pre>";
-
 // Dados pessoais
 $_SESSION['sexo']        = mysqli_real_escape_string($conexao, trim($_POST['sexo']));
 $_SESSION['whats']       = mysqli_real_escape_string($conexao, trim($_POST['whats']));

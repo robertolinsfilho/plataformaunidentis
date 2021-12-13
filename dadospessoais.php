@@ -29,7 +29,7 @@ ini_set('display_errors', 0);
     }
 
 
-    $("#data").mask("00/00/0000", {
+    $("[data]").mask("00/00/0000", {
       reverse: true
     });
     $("#cpf").mask("000.000.000-00");
@@ -87,7 +87,6 @@ ini_set('display_errors', 0);
     }
 
     select[name=plano] {
-      max-width: 340px;
       padding-left: 0.25rem;
     }
 
@@ -151,30 +150,28 @@ ini_set('display_errors', 0);
                 if ($_SESSION['cliente'] == 'servidorpublico') {
                 ?>
                   <div class="col-md-10">
-                    <div class="form-group" style="margin: 0 !important;">
+                    <div class="form-group" style="margin: 0 !important;max-width: 340px;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
-                        <option valor="0.0">Selecione</option>
+                      <select name="plano" id="plano" class="form-control custom-select isRequired" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
+                        <option value="">Selecione</option>
                         <option valor="18.0" value="UNIDENTISVIPEMPRESARIAL">UNIDENTIS VIP EMPRESARIAL</option>
 
                       </select>
-                      <span id="textinho0"></span>
                     </div>
                   </div>
                 <?php
                 } elseif ($_SESSION['escolha'] == 'PB') {
                 ?>
                   <div class="col-md-10">
-                    <div class="form-group" style="margin: 0 !important;">
+                    <div class="form-group" style="margin: 0 !important;max-width: 340px;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
-                        <option valor="0" value="" selected>Selecione</option>
+                      <select name="plano" id="plano" class="form-control custom-select isRequired" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
+                        <option value="" selected>Selecione</option>
                         <option valor="23.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 23.90- ROL DA ANS</option>
                         <option valor="60.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 60.00- ROL DA ANS</option>
                         <option valor="21.9" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios PB - 455.913/07-4- R$ 21.90- ROL DA ANS</option>
                         <option valor="99.0" value="PLANOVIPORTOCARTAO">UNIDENTIS VIP ORTO CARTÃO - Familiar -Gr. Municipios PB - 489.643/21-2- R$ 99.00- ROL DA ANS</option>
                       </select>
-                      <span id="textinho0"></span>
                     </div>
                   </div>
                 <?php
@@ -183,16 +180,15 @@ ini_set('display_errors', 0);
                 ?>
 
                   <div class="col-md-10">
-                    <div class="form-group" style="margin: 0 !important;">
+                    <div class="form-group" style="margin: 0 !important;max-width: 340px;">
 
-                      <select name="plano" id="plano" class="form-control custom-select" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
-                        <option valor="0" value="">Selecione</option>
+                      <select name="plano" id="plano" class="form-control custom-select isRequired" style=" -webkit-appearance: none;-moz-appearance: none; appearance: none; background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat; background-position: -1000px;" required>
+                        <option value="">Selecione</option>
                         <option valor="25.9" value="UNIDENTISVIPCARTAO">UNIDENTIS VIP CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 25.90- ROL DA ANS</option>
                         <option valor="66.0" value="UNIDENTISVIPFAMILIACARTAO">UNIDENTIS VIP FAMÍLIA CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 66.00- ROL DA ANS</option>
                         <option valor="25.0" value="UNIDENTISVIPUNIVERSITARIOCARTAO">UNIDENTIS VIP UNIVERSITÁRIO CARTÃO - Familiar -Gr. Municipios RN - 479.253/17-0- R$ 25.00- ROL DA ANS</option>
                         <option valor="99.0" value="PLANOVIPORTOCARTAO">UNIDENTIS VIP ORTO CARTÃO - Familiar -Gr. Municipios PB - 489.643/21-2- R$ 99.00- ROL DA ANS</option>
                       </select>
-                      <span id="textinho0"></span>
                     </div>
                   </div>
 
@@ -233,29 +229,29 @@ ini_set('display_errors', 0);
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input type="text" name="nome" id="nome" placeholder="Nome Completo*" minlength="10" class="form-control" required />
+                      <input type="text" name="nome" id="nome" placeholder="Nome Completo*" minlength="10" class="form-control isRequired" required />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" name="cpf" placeholder="CPF*" id="cpf" class="form-control" required />
+                      <input type="text" name="cpf" placeholder="CPF*" id="cpf" class="form-control isRequired" required />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="rg" minlength="7" maxlength="11" id="rg" placeholder="RG*" required />
+                      <input type="text" class="form-control isRequired" name="rg" minlength="7" maxlength="15" id="rg" placeholder="RG*" required />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" class="form-control" minlength="4" id="emissor" name="emissor" placeholder="Orgão Emissor*" required />
+                      <input type="text" class="form-control isRequired" minlength="4" id="emissor" name="emissor" placeholder="Orgão Emissor*" required />
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-2">
                     <div class="form-group">
-                      <select name="sexo" id="sexo" class="custom-select form-control" required>
+                      <select name="sexo" id="sexo" class="custom-select form-control isRequired" required>
                         <option value="">Sexo*</option>
                         <option value="1">Masculino</option>
                         <option value="0">Feminino</option>
@@ -265,12 +261,12 @@ ini_set('display_errors', 0);
 
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="data" name="nascimento" placeholder="Data de Nascimento*" required />
+                      <input type="text" class="form-control isRequired" data name="nascimento" placeholder="Data de Nascimento*" required />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <select name="estado" id="estado" class="custom-select form-control" required>
+                      <select name="estado" id="estado" class="custom-select form-control isRequired" required>
                         <option value="">Estado Civil*</option>
                         <option value="Solteiro">Solteiro</option>
                         <option value="Casado">Casado</option>
@@ -279,7 +275,7 @@ ini_set('display_errors', 0);
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input type="text" name="mae" id="mae" placeholder="Mãe*" minlength="10" class="form-control" required />
+                      <input type="text" name="mae" id="mae" placeholder="Mãe*" minlength="10" class="form-control isRequired" required />
                     </div>
                   </div>
                   <div class="col-md-3">
@@ -293,13 +289,13 @@ ini_set('display_errors', 0);
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input type="email" placeholder="Email*" id="email" name="email" class="form-control" required />
+                      <input type="email" placeholder="Email*" id="email" name="email" class="form-control isRequired" required />
                     </div>
                   </div>
 
                   <div class="col-md-3">
                     <div class="form-group">
-                      <input type="text" name="telefone" placeholder="Telefone* " id="telefone" class="form-control" required />
+                      <input type="text" name="telefone" placeholder="Telefone* " id="telefone" class="form-control isRequired" required />
                     </div>
                   </div>
 
@@ -316,13 +312,13 @@ ini_set('display_errors', 0);
 
                     <div class="col-md-3">
                       <div class="form-group">
-                        <input type="text" placeholder="Matricula*" name="matricula" minlength="3" class="form-control" required />
+                        <input type="text" placeholder="Matricula*" name="matricula" minlength="3" class="form-control isRequired" required />
                       </div>
                     </div>
 
                     <div class="col-md-3">
                       <div class="form-group">
-                        <input type="date" placeholder="Admissao*" name="admissao" minlength="8" class="form-control" required />
+                        <input type="text" class="form-control isRequired" data name="admissao" minlength="8" placeholder="Data admissao*" required />
                       </div>
                     </div>
                   <?php
@@ -340,25 +336,22 @@ ini_set('display_errors', 0);
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP*" required />
+                    <input type="text" name="cep" id="cep" class="form-control isRequired" placeholder="CEP*" required />
                   </div>
                 </div>
                 <div class="col-md-5">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua*" required />
-                    <span id="textinho11"></span>
+                    <input type="text" class="form-control isRequired" id="rua" name="rua" placeholder="Rua*" required />
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Numero*" required />
+                    <input type="text" class="form-control isRequired" id="numero" name="numero" placeholder="Numero*" required />
                   </div>
-                  <span id="textinho12"></span>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <input type="text" name="uf" id="uf" class="form-control" placeholder="Estado*" required />
-                    <span id="textinho13"></span>
+                    <input type="text" name="uf" id="uf" class="form-control isRequired" placeholder="Estado*" required />
                   </div>
                 </div>
               </div>
@@ -371,15 +364,13 @@ ini_set('display_errors', 0);
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                    <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Ex: joao pessoa*" required />
-                    <span id="textinho14"></span>
+                    <input type="text" name="cidade" id="cidade" class="form-control isRequired" placeholder="Ex: joao pessoa*" required />
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
-                    <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro*" required />
-                    <span id="textinho15"></span>
+                    <input type="text" name="bairro" id="bairro" class="form-control isRequired" placeholder="Bairro*" required />
                   </div>
                 </div>
               </div>
@@ -451,7 +442,7 @@ ini_set('display_errors', 0);
             </div>
 
             <br>
-            <button onclick="validar()" class="btn btn-success" type="submit" id="avanca">Avançar</button>
+            <button class="btn btn-success check" isRequired type="submit" id="avanca">Avançar</button>
             </form>
 
             <!-- Form grid End -->
@@ -526,203 +517,8 @@ ini_set('display_errors', 0);
           });
         });
 
-        function validar() {
-          var input = document.getElementById("nome");
-          if (input.value.length < 3) {
-            input.focus();
-            input.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho").innerHTML = ''; // ou display: none
-            input.style.border = "1px solid #999";
-          }
-
-          var plano = document.getElementById("plano");
-          if (plano.value.length < 12) {
-            plano.focus();
-            plano.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho0").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho0").innerHTML = ''; // ou display: none
-            plano.style.border = "1px solid #999";
-          }
-          var cpf = document.getElementById("cpf");
-          if (cpf.value.length < 3) {
-            cpf.focus();
-            cpf.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho1").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho1").innerHTML = ''; // ou display: none
-            cpf.style.border = "1px solid #999";
-          }
-          var email = document.getElementById("email");
-          if (email.value.length < 3) {
-            email.focus();
-            email.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho2").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho2").innerHTML = ''; // ou display: none
-            email.style.border = "1px solid #999";
-          }
-          var telefone = document.getElementById("telefone");
-          if (telefone.value.length < 3) {
-            telefone.focus();
-            telefone.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho3").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho3").innerHTML = ''; // ou display: none
-            telefone.style.border = "1px solid #999";
-          }
-          var sexo = document.getElementById("sexo");
-          if (sexo.value.length < 7) {
-            sexo.focus();
-            sexo.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho4").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho4").innerHTML = ''; // ou display: none
-            sexo.style.border = "1px solid #999";
-          }
-          var rg = document.getElementById("rg");
-          if (rg.value.length < 3) {
-            rg.focus();
-            rg.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho5").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho5").innerHTML = ''; // ou display: none
-            rg.style.border = "1px solid #999";
-          }
-          var emissor = document.getElementById("emissor");
-          if (emissor.value.length < 3) {
-            emissor.focus();
-            emissor.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho6").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho6").innerHTML = ''; // ou display: none
-            emissor.style.border = "1px solid #999";
-          }
-          var data = document.getElementById("data");
-          if (data.value.length < 3) {
-            data.focus();
-            data.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho7").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho7").innerHTML = ''; // ou display: none
-            data.style.border = "1px solid #999";
-          }
-          var mae = document.getElementById("mae");
-          if (mae.value.length < 3) {
-            mae.focus();
-            mae.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho8").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho8").innerHTML = ''; // ou display: none
-            mae.style.border = "1px solid #999";
-          }
-          var estado = document.getElementById("estado");
-          if (estado.value.length < 3) {
-            estado.focus();
-            estado.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho9").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho9").innerHTML = ''; // ou display: none
-            estado.style.border = "1px solid #999";
-          }
-          var cep = document.getElementById("cep");
-          if (cep.value.length < 3) {
-            cep.focus();
-            cep.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho10").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho10").innerHTML = ''; // ou display: none
-            cep.style.border = "1px solid #999";
-          }
-          var rua = document.getElementById("rua");
-          if (rua.value.length < 3) {
-            rua.focus();
-            rua.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho11").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho11").innerHTML = ''; // ou display: none
-            rua.style.border = "1px solid #999";
-          }
-          var numero = document.getElementById("numero");
-          if (numero.value.length < 3) {
-            numero.focus();
-            numero.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho12").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho12").innerHTML = ''; // ou display: none
-            numero.style.border = "1px solid #999";
-          }
-          var uf = document.getElementById("uf");
-          if (uf.value.length < 3) {
-            uf.focus();
-            uf.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho13").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho13").innerHTML = ''; // ou display: none
-            uf.style.border = "1px solid #999";
-          }
-          var cidade = document.getElementById("cidade");
-          if (cidade.value.length < 3) {
-            cidade.focus();
-            cidade.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho14").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho14").innerHTML = ''; // ou display: none
-            cidade.style.border = "1px solid #999";
-          }
-          var bairro = document.getElementById("bairro");
-          if (bairro.value.length < 3) {
-            bairro.focus();
-            bairro.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho15").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho15").innerHTML = ''; // ou display: none
-            bairro.style.border = "1px solid #999";
-          }
-          var input = document.getElementById("nome");
-          if (input.value.length < 3) {
-            input.focus();
-            input.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho").innerHTML = ''; // ou display: none
-            input.style.border = "1px solid #999";
-          }
-          var input = document.getElementById("nome");
-          if (input.value.length < 3) {
-            input.focus();
-            input.style.border = "1px solid #ef3c59";
-            document.getElementById("textinho").innerHTML = '<p class="help-block ng-binding" style="color:#ef3c59;">Campo obrigatório</p>';
-            return false
-          } else {
-            document.getElementById("textinho").innerHTML = ''; // ou display: none
-            input.style.border = "1px solid #999";
-          }
-
-
-          input.onkeyup = valida_form;
-        }
       </script>
+      <script src="./assets/js/isRequired.js"></script>
 </body>
 
 </html>

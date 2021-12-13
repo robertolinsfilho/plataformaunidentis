@@ -24,8 +24,8 @@ $_SESSION['estado1'] = $_POST['produtos'];
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Latest compiled and minified CSS -->
-
-  <link href="assets/img/icon.ico" rel="icon">
+  <link rel="shortcut icon" href="./assets/img/favicon.ico">
+  <!-- <link href="assets/img/icon.ico" rel="icon"> -->
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -52,35 +52,6 @@ $_SESSION['estado1'] = $_POST['produtos'];
 </head>
 
 <body style="background-color:#f6f6f6 ">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Unidentis</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="assets/img/icon.ico" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-        * Template Name: BizLand - v1.1.0
-        * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
-
-  </head>
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
