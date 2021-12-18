@@ -113,8 +113,11 @@ select.form-control {
   font-weight: normal !important;
 }
 
+.infoPdf span[mobileview]{
+  display: none;
+}
 
-.pdf_embed{
+embed.pdf_embed{
   width: 45%;
   height: 500px;
   min-width: 300px;
@@ -127,6 +130,15 @@ select.form-control {
   margin-bottom: .5rem;
 }
 
+.infoPdf a.linkPdf{
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.infoPdf a.linkPdf > i{
+  font-size: 1.75rem;
+}
+
 /*  */
 
 /*  */
@@ -134,8 +146,71 @@ select.form-control {
   border: none;
 }
 
-
 @media (max-width: 500px) {
+
+  .flexLabel {
+    align-items: center;
+    justify-content: start;
+    margin-left: 0.5rem;
+  }
+  
+  .flexLabel .labelInput {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .flexLabel hr {
+    position: absolute;
+    top: -100rem;
+    display: none;
+  }
+
+  .box-areaBoleto h4{
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+
+  .infoPdf{
+    flex-basis: 50%; 
+    min-width: 90%;
+  }
+
+  .infoPdf a.linkPdf{
+    font-size: .9rem;
+    line-height: 1rem;
+  }
+
+  .infoPdf a.linkPdf > i{
+    font-size: 1rem;
+  }
+
+  .infoPdf .form-check-inline label.form-check-label{
+    font-size: .9rem;
+    line-height: 1rem;
+  }
+
+  .infoPdf span[desktopview]{
+    display: none;
+  }
+
+  .infoPdf span[mobileview]{
+    display: inline;
+  }
+
+  embed.pdf_embed{
+    display: none;
+  }
+
+  .row label,
+  th label {
+    font-size: .9rem;
+  }
+
+  input.form-control,
+  select.form-control {
+    font-size: .85rem;
+  }
+
   .creditCard .col-sm-12 .bg-light .card-flag {
     display: none;
   }

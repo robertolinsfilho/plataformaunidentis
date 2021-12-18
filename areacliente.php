@@ -212,9 +212,17 @@ if (isset($resultado['mensagem'])) {
                         <label class="labelInput">Contrato</label>
                         <hr>
                     </div>
-                    <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a minuta do contrato.</a> <br><br>
-                    <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a manual de orientação.</a><br><br>
-                    <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" style="cursor:pointer;"><i class="far fa-file-pdf" style="font-size:30px; padding: .5rem 0;"></i> Clique aqui para baixar a guia de leitura contratatual.</a><br><br>
+                    <span desktopview>
+                        <a class="linkPdf" link="./pdf/CONTRATO_IND_FAMILIAR.pdf#toolbar=1" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a minuta do contrato.</a> <br><br>
+                        <a class="linkPdf" link="./pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf#toolbar=1" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a manual de orientação.</a><br><br>
+                        <a class="linkPdf" link="./pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf#toolbar=1" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a guia de leitura contratatual.</a><br><br>
+                    </span>
+                    <span mobileview>
+                        <a class="linkPdf" targert="_blank" href="https://www.unidentisdigital.com.br/pdf/CONTRATO_IND_FAMILIAR.pdf" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a minuta do contrato.</a> <br><br>
+                        <a class="linkPdf" targert="_blank" href="https://www.unidentisdigital.com.br/pdf/Manual_de_orientacao_para_contratacao_de_planos_de_saude.pdf" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a manual de orientação.</a><br><br>
+                        <a class="linkPdf" targert="_blank" href="https://www.unidentisdigital.com.br/pdf/GUIA_DE_LEITURA_CONTRATUAL.pdf" style="cursor:pointer;"><i class="far fa-file-pdf"></i> Clique aqui para visualizar a guia de leitura contratatual.</a><br><br>
+                    </span>
+                    
                     <br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="termos" required>
@@ -222,7 +230,7 @@ if (isset($resultado['mensagem'])) {
                     </div>
                 </div>
                 <!-- <iframe src="./pdf/CONTRATO_IND_FAMILIAR.pdf" width="500" height="500"></iframe> -->
-                <embed class="pdf_embed" src="./pdf/CONTRATO_IND_FAMILIAR.pdf" />
+                <embed class="pdf_embed" type="application/pdf" src="./pdf/CONTRATO_IND_FAMILIAR.pdf#toolbar=1"/>
             </section>
 
             <!-- cartão de crédito -->
