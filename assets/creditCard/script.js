@@ -260,6 +260,12 @@ window.onload = function () {
     let check_input = document.querySelector(".form-check-input");
     let check_label = document.querySelector(".form-check-label")
     let cpf_card = document.querySelector("#cpf_card");
+    let card_modal = document.querySelector(".return_message");
+    let modal_close_btn = document.querySelector(".modal_close_btn");
+    
+    modal_close_btn.addEventListener("click", e => {
+        card_modal.style.visibility = "hidden";
+    })
 
     btn.addEventListener("click", (e) => {
         
@@ -300,16 +306,7 @@ window.onload = function () {
                         } 
                     }).then((res) => {
                         if(res.status == 200){
-                            document.querySelector(".return_message").overflow = "auto";
-                            document.querySelector(".return_message").style.visibility = "visible";
-                            document.querySelector(".return_message").style.right = '0';
                             if(res.data.valido){
-                                document.querySelector(".return_message").classList.add('success');
-                                document.querySelector(".return_message").innerHTML = "Cartão Verificado";
-                                setTimeout(() => {
-                                    document.querySelector(".return_message").classList.remove('success');
-                                    document.querySelector(".return_message").style.right = '-100vw';
-                                }, 3000);
                                 btn.classList.remove("check");
                                 if(!check_input.checked){
                                     btn.classList.add("check");
@@ -323,12 +320,12 @@ window.onload = function () {
                                 }
                             }else{
                                 btn.classList.add("check");
-                                document.querySelector(".return_message").classList.add('error');
-                                document.querySelector(".return_message").innerHTML = "Cartão Inválido";
+                                card_modal.style.visibility = "visible";
+                                card_modal.style.top = "2rem";
                                 setTimeout(() => {
-                                    document.querySelector(".return_message").classList.remove('error');
-                                    document.querySelector(".return_message").style.right = '-100vw';
-                                }, 3000);
+                                    card_modal.style.visibility = "hidden";
+                                    card_modal.style.top = "-50rem";
+                                }, 6000);
                             }
                             document.querySelector("div#loader-credit_card").style.visibility = "hidden";
                             document.querySelector("div#loader-credit_card").style.opacity = "0";

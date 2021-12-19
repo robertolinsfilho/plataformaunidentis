@@ -110,7 +110,23 @@ if (isset($resultado['mensagem'])) {
         </div>
     </div>
 
-
+    <span class="return_message">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Valida Cartão</h5>
+                        <button type="button" class="close modal_close_btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                        <h5>Cartão inválido</h5>
+                        <p>Problema ao validar o cartão. Verfique os dados e tente novamente ou entre em contato com a Unidentis.</p>
+                    </div>
+                </div>
+            </div>
+    </span>
 
 
     <section id="form2" class="d-flex align-items-center">
@@ -378,7 +394,7 @@ if (isset($resultado['mensagem'])) {
                     <!-- <div class="field-card-container">
                         <a id="verify_card" class="btn">Verificar</a>
                     </div> -->
-                    <span class="return_message">Cartão Inválido</span>
+                    
                     <div id="loader-credit_card"></div>
                 </div>
             </div>

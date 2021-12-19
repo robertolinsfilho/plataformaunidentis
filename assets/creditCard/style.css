@@ -111,6 +111,14 @@ div.payment_section {
     width: 60px;
 }
 
+@media (max-width: 400px) {
+    .ccicon{
+        height: 30px;
+        top: calc(50% - 14px);
+        width: 48px;
+    }
+}
+
 /* CREDIT CARD IMAGE STYLING */
 /* .preload * {
     -webkit-transition: none !important;
@@ -434,50 +442,45 @@ div.payment_section {
   }
 
   .return_message{
-    visibility: hidden;
-    overflow: hidden;
-    position: absolute;
-    right: -100vw;
-    bottom: 0;
-    font-size: 1rem;
+      visibility: hidden;
+      display: block;
+      position: fixed;
+      z-index: 999999;
+      top: -50rem;
+      left: 50%;
+      transform: translate(-50%);
+      transition: .25s ease-in-out;
+      width: auto;
+      height: auto;
+  }
+  .return_message::before{
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -100%;
+    transform: translate(-50%,-50%);
+    display: block;
+    width: 10000rem;
+    height: 1000rem;
+    background-color: #00000099;
+  }
+  .return_message .modal-body {
+      text-align: center;
+      width: 280px;
+      height: 250px;
+      vertical-align: middle;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .return_message .modal-body h5{
+    text-transform: uppercase;
+    font-size: 1.25rem;
     line-height: 1.5rem;
-    color: #ffffff;
-    transition: .25s ease-in-out;
-    padding: .25rem 1rem .25rem 1.75rem ;
-    border-radius: 1rem;  
   }
-  .return_message.success{
-    background-color: green;
+  .return_message .modal-body i{
+    color: red;
+    font-size: 3rem;
+    line-height: 3rem;
   }
-  .return_message.success::before{
-      content: 'L';
-      font-family: Arial;
-      font-weight: bold;
-      font-size: 1.15rem;
-      width: 8px;
-      height: 1rem;
-      position: relative;
-      display: inline-block;
-      top: 0;
-      left: -.5rem;
-      transform: rotateY(180deg) rotateZ(315deg);
-      transition: .5s ease-in-out;
-    }
-  .return_message.error{
-    background-color: red;
-  }
-  .return_message.error::before{
-    content: 'X';
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 1rem;
-    width: 8px;
-    height: 1rem;
-    position: relative;
-    display: inline-block;
-    top: 0;
-    left: -.75rem;
-    transition: .5s ease-in-out;
-
-  }
-  
