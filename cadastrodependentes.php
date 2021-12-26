@@ -306,7 +306,7 @@ $plano = $_SESSION['plano'];
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<input type="text" name="cpfdependente" id="cpf" formato="cpf" placeholder="CPF" class="form-control isRequired" required>
+									<input type="text" name="cpfdependente" id="cpf" formato="cpf" placeholder="CPF" class="form-control" >
 								</div>
 							</div>
 							<div class="col-md-2">

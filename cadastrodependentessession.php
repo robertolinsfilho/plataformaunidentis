@@ -24,6 +24,7 @@ $forekey = $_SESSION['forekey'];
 
 
 $data1 = $data_atual - $data;
+
  if($data1 > 17 && empty($cpfdependente)){
     ?>
  <html>
