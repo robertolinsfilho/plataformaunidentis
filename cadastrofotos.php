@@ -12,6 +12,19 @@ require __DIR__ . '/vendor/autoload.php';
   <link rel="stylesheet" href="./assets/css/cadastro.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <style>
+        .modal-header, .btn{
+            background-color:#023bbf
+        }
+        .modal-title, .close{
+            color:white;
+            font-family:Poppins;
+        }
+        h2{
+            font-family:Poppins;
+        }
+
+    </style>
   <style>
     #minhaDiv {
       display: none;
@@ -130,21 +143,21 @@ require __DIR__ . '/vendor/autoload.php';
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">RG FRENTE</div>
                   </span>
-                  <input type="file" name="arquivo10[]" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" id="arquivo1" name="arquivo10[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
 
                 <div class="drop-zone">
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">RG VERSO</div>
                   </span>
-                  <input type="file" name="arquivo1[]" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" id="arquivo2" name="arquivo1[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
 
                 <div class="drop-zone">
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">CPF</div>
                   </span>
-                  <input type="file" name="arquivo2[]" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" id="arquivo3" name="arquivo2[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
               </div>
               <div class="d-flex">
@@ -152,7 +165,7 @@ require __DIR__ . '/vendor/autoload.php';
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">COMPROVANTE DE RESIDÊNCIA</div>
                   </span>
-                  <input type="file" name="arquivo3[]" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" id="arquivo4" name="arquivo3[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
 
                 <?php if ($_SESSION['plano'] != 'UNIDENTISVIPBOLETO') {
@@ -162,7 +175,7 @@ require __DIR__ . '/vendor/autoload.php';
                     <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                       <div class="fundoazul">CARTÃO</div>
                     </span>
-                    <input type="file" name="arquivo4[]" multiple="multiple" class="drop-zone__input" required />
+                    <input type="file"  name="arquivo4[]" multiple="multiple" class="drop-zone__input" required />
                   </div>
                 <?php } ?>
 
@@ -170,16 +183,37 @@ require __DIR__ . '/vendor/autoload.php';
                   <span style="color: white" class="drop-zone__prompt"><i style="font-size: 3.5rem; padding: 11%; color: #606060" class="fa fa-download"></i><br />
                     <div class="fundoazul">OUTRO</div>
                   </span>
-                  <input type="file" name="arquivo5[]" multiple="multiple" class="drop-zone__input" required />
+                  <input type="file" id="arquivo5" name="arquivo5[]" multiple="multiple" class="drop-zone__input" required />
                 </div>
               </div>
               
               <input name="SendCadImg" type="submit" id="avanca" class="btn btn-success saveBtn" style="top: -3rem; padding: 0.3rem 0.5rem;" value="Avançar"/>
             </div>
           </form>
-          <a href=javascript:history.back()><button class="btn btn-secondary" id="voltar">Voltar</button></a>
 
-        </div>
+
+          <a href=javascript:history.back()><button class="btn btn-secondary" id="voltar">Voltar</button></a>
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Unidentis</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" style="font-weight: 500 !important;">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <h3 style="font-family: Poppins;text-align: center ">Alguma imagem não foi adicionada .Por favor revise</h3>
+                            <br>
+                            <h2><?php echo $_SESSION['msg2'] ?></h2>
+                        </div>
+                        <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight: 500 !important;">Fechar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php include('include/footer.php'); ?>
       </div>
     </div>
@@ -277,6 +311,21 @@ require __DIR__ . '/vendor/autoload.php';
         }
       }
     </script>
+      <script>
+          $( "#avanca" ).click(function() {
+           var arquivo1 =  document.getElementById('arquivo1').value;
+           var arquivo2 =  document.getElementById('arquivo2').value;
+           var arquivo3 =  document.getElementById('arquivo3').value;
+           var arquivo4 =  document.getElementById('arquivo4').value;
+           var arquivo5 =  document.getElementById('arquivo5').value;
+
+           if(arquivo1 == '' || arquivo2 == '' || arquivo3 == '' || arquivo4 == '' || arquivo5 == '' ){
+               console.log('teste')
+                  $('#myModal').modal('show');
+           }
+
+          });
+      </script>
   </div>
 </body>
 
