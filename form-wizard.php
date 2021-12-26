@@ -349,12 +349,18 @@ switch ($dadosPrincipaisAssociado['sexo']) {
 															<input type="text" name="validadecartao" value="<?php echo $dadosCartao['mes'] ?>" class="form-control">
 														</div>
 													</div>
+                                                    <?php if($_SESSION['usuario'] === 'cadastro@s4e.com.br'){
+                                                        ?>
+                                                    }
 													<div class="col-md-2">
 														<div class="form-group">
 															<label> cvv </label>
 															<input type="text" name="cvvcartao" value="<?php echo $dadosCartao['cvv'] ?>" class="form-control">
 														</div>
 													</div>
+                                                    <?php
+                                                    }
+                                                    ?>
 												</div>
 											<?php
 											}
