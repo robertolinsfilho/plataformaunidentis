@@ -193,13 +193,13 @@ if($conexao->query($sql) === TRUE){
       $mail->CharSet    = 'UTF-8';
       $mail->Host       = 'smtp.hostinger.com';                     // Set the SMTP server to send through
       $mail->SMTPAuth   = true;                               // Enable SMTP authentication
-      $mail->Username   = 'sendmail@unidentis.com.br';           // SMTP username
-      $mail->Password   = 'w&Vbs60j%mYE';                      // SMTP password
+      $mail->Username   = 'unidentisdigital@unidentis.com.br';           // SMTP username
+      $mail->Password   = 'vytjnokrszsgxaqy';                      // SMTP password
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;     // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
       $mail->Port       = 587;                                // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
       //Recipients
-      $mail->setFrom('sendmail@unidentis.com.br', 'Plano Unidentis');
+      $mail->setFrom('unidentisdigital@unidentis.com.br', 'Plano Unidentis');
       // $mail->addAddress('vendas2@unidentis.com.br' , 'Unidentis');     
       $mail->addAddress(strip_tags($_SESSION['emaildependente']) , 'Unidentis');     
 
