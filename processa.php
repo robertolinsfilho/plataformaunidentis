@@ -8,7 +8,7 @@
     <title>Carregando</title>
 </head>
 <body>
-    <div id="preloader"></div>
+   <div id="preloader"></div>
 </body>
 </html>
 
@@ -24,7 +24,7 @@ include_once('conexao.php');
 function generatePassword($qtyCaraceters = 8)
 {
     //Letras minúsculas embaralhadas
-    $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
+    //$smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
  
     // //Letras maiúsculas embaralhadas
     // $capitalLetters = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -38,10 +38,10 @@ function generatePassword($qtyCaraceters = 8)
  
     //Junta tudo
     $characters = $numbers.$numbers.$numbers.$numbers;
- 
+
     //Embaralha e pega apenas a quantidade de caracteres informada no parâmetro
     $password = substr(str_shuffle($characters), 0, $qtyCaraceters);
- 
+
     //Retorna a senha
     return $password;
 }
@@ -49,7 +49,7 @@ function generatePassword($qtyCaraceters = 8)
 $nome     = $_SESSION['nome'];
 $telefone = $_SESSION['telefone'];
 $email    = $_SESSION['email'];
-$senha    = 'u'.strip_tags(generatePassword(5));
+$senha    = strip_tags(generatePassword(6));
 $_SESSION['initpass'] = $senha;
 $plano = $_SESSION['plano'];
 $cpf = $_SESSION['cpf'];
@@ -235,7 +235,7 @@ try {
     $mail->AltBody = strip_tags("email: $email | senha: ".$senha);
    
     $mail->send();
-    	
+header('Location enviofinal.php');
 //Resultado aleatório com 8 caraceters
 echo "<script>window.location.assign('enviofinal2.php')</script>";
 } catch (Exception $e) {

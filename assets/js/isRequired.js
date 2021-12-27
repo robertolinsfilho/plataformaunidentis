@@ -1,5 +1,5 @@
 let btn = document.querySelector("[isRequired]");
-let isRequiredFields = document.querySelectorAll(".isRequired")
+let isRequiredFields = document.querySelectorAll(".isRequired");
 
 btn.addEventListener('click', (e) => {
     if(btn.classList.contains('check')){
@@ -9,7 +9,7 @@ btn.addEventListener('click', (e) => {
             btn.click();
         };
     }
-})
+});
 
 function validar(array){
     let valid = false;

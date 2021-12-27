@@ -244,7 +244,7 @@ ini_set('display_errors', 0);
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <input type="text" class="form-control isRequired" minlength="4" id="emissor" name="emissor" placeholder="Orgão Emissor*" required />
+                      <input type="text" class="form-control isRequired"  name="emissor" minlength="4"  id="emissor" placeholder="Orgão Emissor*" required />
                     </div>
                   </div>
                 </div>
